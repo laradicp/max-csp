@@ -12,6 +12,7 @@ class InstanceGenerator
 {
     private:
 
+        int id;
         int nbCars;
         int nbClasses;
         int nbOptions;
@@ -22,11 +23,12 @@ class InstanceGenerator
         vector<int> nbCarsPerClass;
         vector<vector<bool>> options;
     
+        void defineConstants();
+        void writeInstance(string filePath);
+
     public:
 
         InstanceGenerator(string filePath);
-
-        void defineConstants();
 };
 
 #endif
