@@ -1,5 +1,7 @@
 #include "Data.h"
 
+#include <fstream>
+
 Data::Data(string filePath)
 {
     readInstance(filePath);
@@ -92,4 +94,44 @@ void Data::readUnscheduled(string filePath)
         unscheduled >> idx;
         unscheduled >> nbUnscheduledCars;
     }
+}
+
+int Data::getId()
+{
+    return id;
+}
+
+int Data::getNbCars()
+{
+    return nbCars;
+}
+
+int Data::getNbClasses()
+{
+    return nbClasses;
+}
+
+int Data::getNbOptions()
+{
+    return nbOptions;
+}
+
+int Data::getMaxCarsPerWindow(int j)
+{
+    return maxCarsPerWindow[j];
+}
+
+int Data::getWindowSize(int j)
+{
+    return windowSize[j];
+}
+
+int Data::getNbCarsPerClass(int i)
+{
+    return nbCarsPerClass[i];
+}
+
+int Data::getOption(int i, int j)
+{
+    return options[i][j];
 }

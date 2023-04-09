@@ -1,5 +1,7 @@
 #include "InstanceGenerator.h"
 
+#include <fstream>
+
 InstanceGenerator::InstanceGenerator(string filePath)
 {
     defineConstants();

@@ -2,7 +2,6 @@
 #define DATA_H
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 
@@ -30,6 +29,18 @@ class Data
     public:
 
         Data(string filePath);
+        Data() = default;
+
+        int getId();
+        int getNbCars();
+        int getNbClasses();
+        int getNbOptions();
+
+        int getMaxCarsPerWindow(int j);
+        int getWindowSize(int j);
+
+        int getNbCarsPerClass(int i);
+        int getOption(int i, int j);
 };
 
 #endif

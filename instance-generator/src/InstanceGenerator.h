@@ -2,7 +2,6 @@
 #define INSTANCE_GENERATOR_H
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 
