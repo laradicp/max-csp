@@ -10,8 +10,10 @@ int main(int argc, char** argv)
 
     Model model(argv[1]);
 
-    model.solve();
-    model.output();
+    if(model.solve())
+    {
+        model.output();
+    }
 
     return 0;
 }
