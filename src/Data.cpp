@@ -82,7 +82,7 @@ void Data::readUnscheduled(string filePath)
     }
 
     ifstream unscheduled;
-    unscheduled.open("unscheduled/" + filePath.substr(10, 3) + "_" + to_string(id) + ".out");
+    unscheduled.open("unscheduled/" + filePath.substr(10, 3) + "_" + to_string(id - 1) + ".out");
 
     int idx, nbUnscheduledCars;
     unscheduled >> idx;
@@ -94,6 +94,8 @@ void Data::readUnscheduled(string filePath)
         unscheduled >> idx;
         unscheduled >> nbUnscheduledCars;
     }
+
+    unscheduled.close();
 }
 
 int Data::getId()

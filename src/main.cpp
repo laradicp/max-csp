@@ -1,4 +1,4 @@
-#include "Data.h"
+#include "Model.h"
 
 int main(int argc, char** argv)
 {
@@ -8,7 +8,10 @@ int main(int argc, char** argv)
         exit(1);
     }
 
-    Data data(argv[1]);
+    Model model(argv[1]);
+
+    model.solve();
+    model.output();
 
     return 0;
 }

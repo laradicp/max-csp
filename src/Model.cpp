@@ -10,6 +10,7 @@ Model::Model(string filePath)
 {
     data = Data(filePath);
     model = IloModel(env);
+    definePaths(filePath);
     optionOverlap.resize(data.getNbOptions(), false);
 
     // avoid redundant constraints
@@ -163,6 +164,14 @@ void Model::calculateOptionsIntersections()
     }
 }
 
+void Model::definePaths(string filePath)
+{
+    sequencePath = "sequences/" + filePath.substr(10, 3) + "_" + to_string(data.getId()) +
+        "_" + to_string(data.getNbCars()) + ".out";
+    unscheduledPath = "unscheduled/" + filePath.substr(10, 3) + "_" + to_string(data.getId()) +
+        ".out";
+}
+
 void Model::calculateOptionOverlap()
 {
     calculateOptionsIntersections();
@@ -230,4 +239,33 @@ bool Model::solve()
     }
 
     return false;
+}
+
+void Model::output()
+{
+    ofstream output;
+    output.open(sequencePath);
+
+    for(unsigned int t = 0; t < sequence.size(); t++)
+    {
+        output << sequence[t] << endl;
+    }
+
+    output << "Primal:\t" << primal << endl;
+    output << "Dual:\t" << dual << endl;
+    output << "Status:\t" << status << endl;
+
+    output.close();
+
+    output.open(unscheduledPath);
+
+    for(int i = 0; i < data.getNbClasses(); i++)
+    {
+        if(unscheduled[i] > 0)
+        {
+            output << i << " " << unscheduled[i] << endl;
+        }
+    }
+
+    output.close();
 }

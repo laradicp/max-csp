@@ -17,6 +17,9 @@ class Model
         IloEnv env;
         IloModel model;
         IloArray<IloBoolVarArray> x;
+
+        string sequencePath;
+        string unscheduledPath;
         
         vector<int> carsPerOption;
         vector<vector<int>> optionsIntersections;
@@ -28,6 +31,8 @@ class Model
         IloNum dual;
         IloAlgorithm::Status status;
 
+        void definePaths(string filePath);
+
         void calculateOptionsIntersections();
         void calculateOptionOverlap();
 
@@ -36,6 +41,7 @@ class Model
         Model(string filePath);
 
         bool solve();
+        void output();
 };
 
 #endif
