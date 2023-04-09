@@ -1,4 +1,4 @@
-#include "instance-generator.h"
+#include "InstanceGenerator.h"
 
 int main(int argc, char** argv)
 {

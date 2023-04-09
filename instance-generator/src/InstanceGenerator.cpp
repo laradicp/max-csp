@@ -1,4 +1,4 @@
-#include "instance-generator.h"
+#include "InstanceGenerator.h"
 
 InstanceGenerator::InstanceGenerator(string filePath)
 {
@@ -68,17 +68,17 @@ void InstanceGenerator::writeInstance(string filePath)
         
     instance << nbCars << " " << nbOptions << " " << nbClasses << endl;
 
-    for(unsigned int i = 0; i < maxCarsPerWindow.size() - 1; i++)
+    for(int i = 0; i < nbOptions - 1; i++)
     {
         instance << maxCarsPerWindow[i] << " ";
     }
-    instance << maxCarsPerWindow[maxCarsPerWindow.size() - 1] << endl;
+    instance << maxCarsPerWindow[nbOptions - 1] << endl;
 
-    for(unsigned int i = 0; i < windowSize.size() - 1; i++)
+    for(int i = 0; i < nbOptions - 1; i++)
     {
         instance << windowSize[i] << " ";
     }
-    instance << windowSize[windowSize.size() - 1] << endl;
+    instance << windowSize[nbOptions - 1] << endl;
 
     for(int i = 0; i < nbClasses; i++)
     {
