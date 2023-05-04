@@ -1,12 +1,12 @@
 #detecta se o sistema é de 32 ou 64 bits
 N_BITS = $(shell getconf LONG_BIT)
 ifeq ($(N_BITS),32)
-   SYSTEM  = x86_sles10_4.1
-   BITS_OPTION = -m32
+	SYSTEM  = x86_sles10_4.1
+	BITS_OPTION = -m32
 else
-   #SYSTEM  = x86-64_sles10_4.1
-   SYSTEM = x86-64_linux
-   BITS_OPTION = -m64
+	SYSTEM  = x86-64_sles10_4.1
+	SYSTEM = x86-64_linux
+	BITS_OPTION = -m64
 endif
 
 
@@ -69,7 +69,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CPPC) $(CCFLAGS) -c $< -o $@
 #	@echo  "\033[32m \ncreating $< dependency file: \033[0m"
 	$(CPPC)  -MM $< > $(basename $@).d
-	@mv -f $(basename $@).d $(basename $@).d.tmp #proximas tres linhas colocam o diretorio no arquivo de dependencias (g++ nao coloca, surprisingly!)
+	@mv -f $(basename $@).d $(basename $@).d.tmp
+#	proximas tres linhas colocam o diretorio no arquivo de dependencias (g++ nao coloca, surprisingly!)
 	@sed -e 's|.*:|$(basename $@).o:|' < $(basename $@).d.tmp > $(basename $@).d
 	@rm -f $(basename $@).d.tmp
 

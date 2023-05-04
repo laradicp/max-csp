@@ -6,7 +6,7 @@
 #include <cmath>
 #include <chrono>
 
-Model::Model(string filePath)
+Model::Model(string filePath, bool sos1Branching)
 {
     data = Data(filePath);
     model = IloModel(env);
@@ -41,17 +41,58 @@ Model::Model(string filePath)
         }
     }
 
-    // add objective function (OF)
-    IloExpr sumX(env);
-    for(int i = 0; i < data.getNbClasses(); i++) 
+    if(sos1Branching)
     {
-        for(int t = 0; t < data.getNbCars(); t++)
+        sos1();
+    }
+    else
+    {
+        // add objective function (OF)
+        IloExpr sumX(env);
+        for(int i = 0; i < data.getNbClasses(); i++) 
         {
-            sumX += x[i][t];
+            for(int t = 0; t < data.getNbCars(); t++)
+            {
+                sumX += x[i][t];
+            }
+        }
+        model.add(IloMaximize(env, sumX));
+
+        // constraints 2: each position is occupied by at most one car
+        for(int t = 0; t < data.getNbCars(); t++)  
+        {
+            IloExpr sumX(env);
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                sumX += x[i][t];
+            }
+
+            IloRange r = (sumX <= 1);
+            char name[100];
+            sprintf(name, "PositionOccupied(%d)", t);
+            r.setName(name);
+            model.add(r);
+        }
+
+        // constraints 4: there should be unoccupied spaces only at the end
+        for(int t = 0; t < data.getNbCars() - 1; t++) 
+        {
+            IloExpr sumX1(env);
+            IloExpr sumX2(env);
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                sumX1 += x[i][t];
+                sumX2 += x[i][t + 1];
+            }
+
+            IloRange r = (sumX2 - sumX1 <= 0);
+            char name[100];
+            sprintf(name, "UnoccupiedEnd(%d)", t);
+            r.setName(name);
+            model.add(r);
         }
     }
-    model.add(IloMaximize(env, sumX));
-
+    
     // constraints 1: respect class demand
     for(int i = 0; i < data.getNbClasses(); i++) 
     {
@@ -64,22 +105,6 @@ Model::Model(string filePath)
         IloRange r = (sumX <= data.getNbCarsPerClass(i));
         char name[100];
         sprintf(name, "CarsProduced(%d)", i);
-        r.setName(name);
-        model.add(r);
-    }
-
-    // constraints 2: each position is occupied by one car
-    for(int t = 0; t < data.getNbCars(); t++)  
-    {
-        IloExpr sumX(env);
-        for(int i = 0; i < data.getNbClasses(); i++)
-        {
-            sumX += x[i][t];
-        }
-
-        IloRange r = (sumX <= 1);
-        char name[100];
-        sprintf(name, "PositionOccupied(%d)", t);
         r.setName(name);
         model.add(r);
     }
@@ -120,24 +145,6 @@ Model::Model(string filePath)
             r.setName(name);
             model.add(r);
         }
-    }
-
-    // constraints 4: there should be unoccupied spaces only at the end
-    for(int t = 0; t < data.getNbCars() - 1; t++) 
-    {
-        IloExpr sumX1(env);
-        IloExpr sumX2(env);
-        for(int i = 0; i < data.getNbClasses(); i++)
-        {
-            sumX1 += x[i][t];
-            sumX2 += x[i][t + 1];
-        }
-
-        IloRange r = (sumX2 - sumX1 <= 0);
-        char name[100];
-        sprintf(name, "UnoccupiedEnd(%d)", t);
-        r.setName(name);
-        model.add(r);
     }
 }
 
@@ -197,6 +204,65 @@ void Model::calculateOptionOverlap()
             }
         }
     }
+}
+
+void Model::sos1()
+{
+    // let Zt assume value 1 if t is the first empty position in the sequence, and 0 otherwise
+    IloBoolVarArray z(env, data.getNbCars() + 1);
+
+    // add variable z to the model
+    for(int t = 1; t < data.getNbCars() + 1; t++)
+    {
+        char name[100];
+        sprintf(name, "Z(%d)", t);
+        z[t].setName(name);
+        model.add(z[t]);
+    }
+
+    // add objective function (OF)
+    IloExpr sumZ(env);
+    for(int t = 1; t < data.getNbCars() + 1; t++) 
+    {
+        sumZ += t*z[t];
+    }
+    model.add(IloMaximize(env, sumZ));
+
+    // constraints 2: each position is occupied by at most one car,
+    //  and z defines the first empty position
+    for(int t = 0; t < data.getNbCars(); t++)  
+    {
+        IloExpr sumX(env);
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            sumX += x[i][t];
+        }
+
+        IloExpr sumZ(env);
+        for(int t2 = 1; t2 <= t; t2++)
+        {
+            sumZ += z[t2];
+        }
+
+        IloRange r = (sumX + sumZ == 1);
+        char name[100];
+        sprintf(name, "PositionOccupied(%d)", t);
+        r.setName(name);
+        model.add(r);
+    }
+
+    // sos1
+    sumZ.clear();
+    for(int t = 1; t < data.getNbCars() + 1; t++)  
+    {
+        sumZ += z[t];
+    }
+
+    IloRange r = (sumZ == 1);
+    char name[100];
+    sprintf(name, "SOS1");
+    r.setName(name);
+    model.add(r);
 }
 
 bool Model::solve()

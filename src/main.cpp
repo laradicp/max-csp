@@ -2,18 +2,32 @@
 
 int main(int argc, char** argv)
 {
-    if(argc != 2)
+    if(argc < 2)
     {
         cout << "Correct usage: ./max-csp.exe <path>" << endl;
         exit(1);
     }
 
-    Model model(argv[1]);
-
-    if(model.solve())
+    if((argc > 2)&&(strcmp(argv[2], "-sos1") == 0))
     {
-        model.output();
-    }
+        Model model(argv[1], true);
 
+        if(model.solve())
+        {
+            model.output();
+        }
+
+        return 0;
+    }
+    else
+    {
+        Model model(argv[1]);
+
+        if(model.solve())
+        {
+            model.output();
+        }
+    }
+    
     return 0;
 }

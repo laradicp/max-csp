@@ -36,9 +36,11 @@ class Model
         void calculateOptionsIntersections();
         void calculateOptionOverlap();
 
+        void sos1();
+
     public:
 
-        Model(string filePath);
+        Model(string filePath, bool sos1Branching = false);
 
         bool solve();
         void output();
