@@ -30,6 +30,7 @@ class Model
         IloNum primal;
         IloNum dual;
         IloAlgorithm::Status status;
+        IloNum elapsedTime;
 
         void definePaths(string filePath);
 

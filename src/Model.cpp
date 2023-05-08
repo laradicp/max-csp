@@ -295,6 +295,7 @@ bool Model::solve()
             primal = maxCSP.getObjValue();
             dual = maxCSP.getBestObjValue();
             status = maxCSP.getStatus();
+            elapsedTime = maxCSP.getTime();
             
             return true;
         }
@@ -320,6 +321,7 @@ void Model::output()
     output << "Primal:\t" << primal << endl;
     output << "Dual:\t" << dual << endl;
     output << "Status:\t" << status << endl;
+    output << "Time:\t" << elapsedTime << endl;
 
     output.close();
 

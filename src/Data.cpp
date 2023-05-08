@@ -5,7 +5,9 @@
 Data::Data(string filePath, bool cumulative)
 {
     readInstance(filePath);
-    
+
+    retrieveId(filePath);
+
     if(cumulative)
     {
         readUnscheduled(filePath);
@@ -78,8 +80,6 @@ void Data::readInstance(string filePath)
 
 void Data::readUnscheduled(string filePath)
 {
-    retrieveId(filePath);
-    
     if(id == 0)
     {
         return;
