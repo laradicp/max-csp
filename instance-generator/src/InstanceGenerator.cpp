@@ -2,7 +2,19 @@
 
 #include <fstream>
 
-InstanceGenerator::InstanceGenerator(string filePath)
+InstanceGenerator::InstanceGenerator(string filePath, bool literature)
+{
+    if(literature)
+    {
+        literatureInstances(filePath);
+    }
+    else
+    {
+        realDemands(filePath);
+    }
+}
+
+void InstanceGenerator::realDemands(string filePath)
 {
     defineConstants();
 
@@ -37,6 +49,12 @@ InstanceGenerator::InstanceGenerator(string filePath)
     file.close();
 }
 
+void InstanceGenerator::literatureInstances(string filePath)
+{
+    readInstance(filePath);
+    condWriteInstance("../instances/sun_" + to_string(id) + "_" + to_string(nbCars) + ".in");
+}
+
 void InstanceGenerator::defineConstants()
 {
     id = 0;
@@ -60,6 +78,52 @@ void InstanceGenerator::defineConstants()
         {0, 1, 1, 0, 0, 0},
         {0, 1, 1, 1, 0, 0}
     };
+}
+
+void InstanceGenerator::readInstance(string filePath)
+{
+    ifstream idFile;
+    idFile.open("id.txt");
+    idFile >> id;
+    idFile.close();
+
+    ifstream instance;
+    instance.open(filePath);
+
+    instance >> nbCars;
+    instance >> nbOptions;
+    instance >> nbClasses;
+
+    maxCarsPerWindow.resize(nbOptions);
+    for(int i = 0; i < nbOptions; i++)
+    {
+        instance >> maxCarsPerWindow[i];
+    }
+
+    windowSize.resize(nbOptions);
+    for(int i = 0; i < nbOptions; i++)
+    {
+        instance >> windowSize[i];
+    }
+
+    nbCarsPerClass.resize(nbClasses);
+    options.resize(nbClasses);
+    for(int i = 0; i < nbClasses; i++)
+    {
+        int idx;
+        instance >> idx; // the index is ignored
+
+        instance >> nbCarsPerClass[i];
+
+        for(int j = 0; j < nbOptions; j++)
+        {
+            int hasOption;
+            instance >> hasOption;
+            options[i].push_back(hasOption == 1);
+        }
+    }
+
+    instance.close();
 }
 
 void InstanceGenerator::writeInstance(string filePath)
@@ -94,4 +158,22 @@ void InstanceGenerator::writeInstance(string filePath)
     }
 
     instance.close();
+}
+
+void InstanceGenerator::condWriteInstance(string filePath)
+{
+    for(int i = 0; i < nbOptions; i++)
+    {
+        if((maxCarsPerWindow[i] > 1)&&(windowSize[i] != maxCarsPerWindow[i] + 1))
+        {
+            return;
+        }
+    }
+
+    writeInstance(filePath);
+
+    ofstream idFile;
+    idFile.open("id.txt");
+    idFile << id + 1;
+    idFile.close();
 }

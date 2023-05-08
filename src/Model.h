@@ -40,7 +40,7 @@ class Model
 
     public:
 
-        Model(string filePath, bool sos1Branching = false);
+        Model(string filePath, bool sos1Branching = false, bool cumulative = false);
 
         bool solve();
         void output();

@@ -28,7 +28,7 @@ class Data
 
     public:
 
-        Data(string filePath);
+        Data(string filePath, bool cumulative);
         Data() = default;
 
         int getId();

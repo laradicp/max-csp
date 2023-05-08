@@ -4,30 +4,31 @@ int main(int argc, char** argv)
 {
     if(argc < 2)
     {
-        cout << "Correct usage: ./max-csp.exe <path>" << endl;
+        cout << "Correct usage: ./max-csp.exe <path> -<flags>" << endl;
         exit(1);
     }
 
-    if((argc > 2)&&(strcmp(argv[2], "-sos1") == 0))
-    {
-        Model model(argv[1], true);
+    bool sos1Branching = false;
+    bool cumulative = false;
 
-        if(model.solve())
+    for(int i = 2; i < argc; i++)
+    {
+        if(strcmp(argv[2], "-sos1") == 0)
         {
-            model.output();
+            sos1Branching = true;
         }
-
-        return 0;
-    }
-    else
-    {
-        Model model(argv[1]);
-
-        if(model.solve())
+        else if(strcmp(argv[2], "-cumulative") == 0)
         {
-            model.output();
+            cumulative = true;
         }
     }
-    
+
+    Model model(argv[1], sos1Branching, cumulative);
+
+    if(model.solve())
+    {
+        model.output();
+    }
+
     return 0;
 }

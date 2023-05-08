@@ -2,10 +2,14 @@
 
 #include <fstream>
 
-Data::Data(string filePath)
+Data::Data(string filePath, bool cumulative)
 {
     readInstance(filePath);
-    readUnscheduled(filePath);
+    
+    if(cumulative)
+    {
+        readUnscheduled(filePath);
+    }
 }
 
 void Data::retrieveId(string filePath)

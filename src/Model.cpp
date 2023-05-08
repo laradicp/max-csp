@@ -6,9 +6,9 @@
 #include <cmath>
 #include <chrono>
 
-Model::Model(string filePath, bool sos1Branching)
+Model::Model(string filePath, bool sos1Branching, bool cumulative)
 {
-    data = Data(filePath);
+    data = Data(filePath, cumulative);
     model = IloModel(env);
     definePaths(filePath);
     optionOverlap.resize(data.getNbOptions(), false);

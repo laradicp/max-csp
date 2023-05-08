@@ -23,11 +23,15 @@ class InstanceGenerator
         vector<vector<bool>> options;
     
         void defineConstants();
+        void readInstance(string filePath);
         void writeInstance(string filePath);
+        void condWriteInstance(string filePath);
+        void realDemands(string filePath);
+        void literatureInstances(string filePath);
 
     public:
 
-        InstanceGenerator(string filePath);
+        InstanceGenerator(string filePath, bool literature = false);
 };
 
 #endif
