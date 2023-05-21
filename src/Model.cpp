@@ -6,7 +6,7 @@
 #include <cmath>
 #include <chrono>
 
-Model::Model(string filePath, bool sos1Branching, bool cumulative)
+Model::Model(string filePath, bool sos1Branching, bool cumulative, int customSearch)
 {
     data = Data(filePath, cumulative);
     model = IloModel(env);
@@ -21,18 +21,26 @@ Model::Model(string filePath, bool sos1Branching, bool cumulative)
         unscheduled.push_back(data.getNbCarsPerClass(i));
     }
 
+    nbPositions = data.getNbCars();
+
+    // the customSearch sets the number of positions to be evaluated as feasible or not for scheduling
+    if(customSearch > 0)
+    {
+        nbPositions = customSearch;
+    }
+
     // let Xit assume value 1 if any car of class i is assigned to position t, and 0 otherwise
     x = IloArray<IloBoolVarArray>(env, data.getNbClasses());
     for(int i = 0; i < data.getNbClasses(); i++)
     {
-        IloBoolVarArray v(env, data.getNbCars());
+        IloBoolVarArray v(env, nbPositions);
         x[i] = v;
     }
 
     // add variable x to the model
     for(int i = 0; i < data.getNbClasses(); i++)
     {
-        for(int t = 0; t < data.getNbCars(); t++)
+        for(int t = 0; t < nbPositions; t++)
         {
             char name[100];
             sprintf(name, "X(%d,%d)", i, t);
@@ -47,49 +55,70 @@ Model::Model(string filePath, bool sos1Branching, bool cumulative)
     }
     else
     {
-        // add objective function (OF)
-        IloExpr sumX(env);
-        for(int i = 0; i < data.getNbClasses(); i++) 
+        if(customSearch > 0)
         {
-            for(int t = 0; t < data.getNbCars(); t++)
+            // constraints 2: each position is occupied by exactly one car
+            for(int t = 0; t < nbPositions; t++)  
             {
-                sumX += x[i][t];
+                IloExpr sumX(env);
+                for(int i = 0; i < data.getNbClasses(); i++)
+                {
+                    sumX += x[i][t];
+                }
+
+                IloRange r = (sumX == 1);
+                char name[100];
+                sprintf(name, "PositionOccupied(%d)", t);
+                r.setName(name);
+                model.add(r);
             }
         }
-        model.add(IloMaximize(env, sumX));
-
-        // constraints 2: each position is occupied by at most one car
-        for(int t = 0; t < data.getNbCars(); t++)  
+        else
         {
+            // add objective function (OF)
             IloExpr sumX(env);
-            for(int i = 0; i < data.getNbClasses(); i++)
+            for(int i = 0; i < data.getNbClasses(); i++) 
             {
-                sumX += x[i][t];
+                for(int t = 0; t < nbPositions; t++)
+                {
+                    sumX += x[i][t];
+                }
+            }
+            model.add(IloMaximize(env, sumX));
+
+            // constraints 2: each position is occupied by at most one car
+            for(int t = 0; t < nbPositions; t++)  
+            {
+                IloExpr sumX(env);
+                for(int i = 0; i < data.getNbClasses(); i++)
+                {
+                    sumX += x[i][t];
+                }
+
+                IloRange r = (sumX <= 1);
+                char name[100];
+                sprintf(name, "PositionOccupied(%d)", t);
+                r.setName(name);
+                model.add(r);
             }
 
-            IloRange r = (sumX <= 1);
-            char name[100];
-            sprintf(name, "PositionOccupied(%d)", t);
-            r.setName(name);
-            model.add(r);
-        }
-
-        // constraints 4: there should be unoccupied spaces only at the end
-        for(int t = 0; t < data.getNbCars() - 1; t++) 
-        {
-            IloExpr sumX1(env);
-            IloExpr sumX2(env);
-            for(int i = 0; i < data.getNbClasses(); i++)
+            // constraints 4: there should be unoccupied spaces only at the end
+            for(int t = 0; t < nbPositions - 1; t++) 
             {
-                sumX1 += x[i][t];
-                sumX2 += x[i][t + 1];
-            }
+                IloExpr sumX1(env);
+                IloExpr sumX2(env);
+                for(int i = 0; i < data.getNbClasses(); i++)
+                {
+                    sumX1 += x[i][t];
+                    sumX2 += x[i][t + 1];
+                }
 
-            IloRange r = (sumX2 - sumX1 <= 0);
-            char name[100];
-            sprintf(name, "UnoccupiedEnd(%d)", t);
-            r.setName(name);
-            model.add(r);
+                IloRange r = (sumX2 - sumX1 <= 0);
+                char name[100];
+                sprintf(name, "UnoccupiedEnd(%d)", t);
+                r.setName(name);
+                model.add(r);
+            }
         }
     }
     
@@ -97,7 +126,7 @@ Model::Model(string filePath, bool sos1Branching, bool cumulative)
     for(int i = 0; i < data.getNbClasses(); i++) 
     {
         IloExpr sumX(env);
-        for(int t = 0; t < data.getNbCars(); t++)
+        for(int t = 0; t < nbPositions; t++)
         {
             sumX += x[i][t];
         }
@@ -110,7 +139,7 @@ Model::Model(string filePath, bool sos1Branching, bool cumulative)
     }
     
     // constraints 3: respect capacities
-    for(int t = 0; t < data.getNbCars(); t++) 
+    for(int t = 0; t < nbPositions; t++) 
     {
         for(int j = 0; j < data.getNbOptions(); j++)
         {
@@ -127,7 +156,7 @@ Model::Model(string filePath, bool sos1Branching, bool cumulative)
                 {
                     for(int k = 0; k < data.getWindowSize(j); k++)
                     {
-                        if(t + k < data.getNbCars())
+                        if(t + k < nbPositions)
                         {
                             sumX += x[i][t + k];
                         }
@@ -279,7 +308,7 @@ bool Model::solve()
         {
             sequence.clear();
 
-            for(int t = 0; t < data.getNbCars(); t++)
+            for(int t = 0; t < nbPositions; t++)
             {
                 for(int i = 0; i < data.getNbClasses(); i++)
                 {

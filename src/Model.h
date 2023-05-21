@@ -25,6 +25,8 @@ class Model
         vector<vector<int>> optionsIntersections;
         vector<bool> optionOverlap;
 
+        int nbPositions;
+
         vector<int> sequence;
         vector<int> unscheduled;
         IloNum primal;
@@ -41,7 +43,12 @@ class Model
 
     public:
 
-        Model(string filePath, bool sos1Branching = false, bool cumulative = false);
+        Model(
+            string filePath,
+            bool sos1Branching = false,
+            bool cumulative = false,
+            int customSearch = 0
+        );
 
         bool solve();
         void output();
