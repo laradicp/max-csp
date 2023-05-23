@@ -9,14 +9,16 @@ CustomAlgorithms::CustomAlgorithms(Model* model)
 int CustomAlgorithms::binarySearch(int lb, int ub)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
+	elapsedTime = chrono::steady_clock::now() - start;
 
-	while(ub > lb)
+	while((elapsedTime.count() < 600.0)&&(ub > lb))
 	{
 		int mid = ceil((lb + ub)/2.0);
 
 		model->initModel(false, mid);
 
-		if(!model->solve())
+		elapsedTime = chrono::steady_clock::now() - start;
+		if(!model->solve(elapsedTime.count()))
 		{
 			ub = mid - 1;
 		}
@@ -24,6 +26,8 @@ int CustomAlgorithms::binarySearch(int lb, int ub)
 		{
 			lb = mid;
 		}
+
+		elapsedTime = chrono::steady_clock::now() - start;
 	}
 
 	defineOutput(lb, ub, start);
@@ -34,20 +38,26 @@ int CustomAlgorithms::binarySearch(int lb, int ub)
 int CustomAlgorithms::descIterativeSearch(int ub)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
+	elapsedTime = chrono::steady_clock::now() - start;
+	int lb = 1;
 
-	while(ub)
+	while((elapsedTime.count() < 600.0)&&(ub >= lb))
 	{
 		model->initModel(false, ub);
 
-		if(model->solve())
+		elapsedTime = chrono::steady_clock::now() - start;
+		if(model->solve(elapsedTime.count()))
 		{
+			lb = ub;
 			break;
 		}
 
 		ub--;
+
+		elapsedTime = chrono::steady_clock::now() - start;
 	}
 
-	defineOutput(ub, ub, start);
+	defineOutput(lb, ub, start);
 
 	return ub;
 }
@@ -55,12 +65,14 @@ int CustomAlgorithms::descIterativeSearch(int ub)
 int CustomAlgorithms::ascIterativeSearch(int lb)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
+	elapsedTime = chrono::steady_clock::now() - start;
 
-	while(lb <= model->data.getNbCars())
+	while((elapsedTime.count() < 600.0)&&(lb <= model->data.getNbCars()))
 	{
 		model->initModel(false, lb + 1);
 
-		if(!model->solve())
+		elapsedTime = chrono::steady_clock::now() - start;
+		if(!model->solve(elapsedTime.count()))
 		{
 			dual = lb;
 			elapsedTime = chrono::steady_clock::now() - start;
@@ -69,6 +81,8 @@ int CustomAlgorithms::ascIterativeSearch(int lb)
 
 		lb++;
 		defineOutput(lb, model->data.getNbCars(), start);
+
+		elapsedTime = chrono::steady_clock::now() - start;
 	}
 
 	return lb;

@@ -307,10 +307,10 @@ void Model::sos1()
     model.add(r);
 }
 
-bool Model::solve()
+bool Model::solve(double elapsedTime)
 {
     IloCplex maxCSP(model);
-    maxCSP.setParam(IloCplex::Param::TimeLimit, 10*60);
+    maxCSP.setParam(IloCplex::Param::TimeLimit, 600.0 - elapsedTime);
     maxCSP.setParam(IloCplex::Param::Threads, 1);
     maxCSP.setParam(IloCplex::Param::MIP::Strategy::VariableSelect, 3);
     maxCSP.exportModel("model.lp");
@@ -320,6 +320,11 @@ bool Model::solve()
         if(maxCSP.solve())
         {
             sequence.clear();
+            unscheduled.clear();
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                unscheduled.push_back(data.getNbCarsPerClass(i));
+            }
 
             for(int t = 0; t < nbPositions; t++)
             {
