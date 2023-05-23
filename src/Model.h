@@ -13,7 +13,6 @@ class Model
 {
     private:
 
-        Data data;
         IloEnv env;
         IloModel model;
         IloArray<IloBoolVarArray> x;
@@ -42,16 +41,15 @@ class Model
         void sos1();
 
     public:
+    
+        Data data;
 
-        Model(
-            string filePath,
-            bool sos1Branching = false,
-            bool cumulative = false,
-            int customSearch = 0
-        );
+        Model(string filePath, bool cumulative = false);
+
+        void initModel(bool sos1Branching = false, int customSearch = 0);
 
         bool solve();
-        void output();
+        void output(bool toFile = false);
 };
 
 #endif

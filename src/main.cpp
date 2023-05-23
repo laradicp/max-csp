@@ -1,4 +1,6 @@
 #include "Model.h"
+#include "CustomAlgorithms.h"
+#include "FlagHandler.h"
 
 int main(int argc, char** argv)
 {
@@ -8,83 +10,29 @@ int main(int argc, char** argv)
         exit(1);
     }
 
-    bool sos1Branching = false;
-    bool cumulative = false;
-    bool binarySearch = false;
-    bool descIterativeSearch = false;
-    bool ascIterativeSearch = false;
+    FlagHandler flags(argc, argv);
+    Model model(argv[1], flags.getCumulative());
+    CustomAlgorithms customAlgorithms(&model);
 
-    for(int i = 2; i < argc; i++)
+    if(flags.getBinarySearch())
     {
-        if(strcmp(argv[i], "-sos1") == 0)
-        {
-            sos1Branching = true;
-        }
-        else if(strcmp(argv[i], "-cumulative") == 0)
-        {
-            cumulative = true;
-        }
-        else if(strcmp(argv[i], "-binsearch") == 0)
-        {
-            if(sos1Branching)
-            {
-                cout << "Cannot use both -sos1 and -binsearch flags" << endl;
-                exit(1);
-            }
-
-            binarySearch = true;
-        }
-        else if(strcmp(argv[i], "-descitsearch") == 0)
-        {
-            if(sos1Branching)
-            {
-                cout << "Cannot use both -sos1 and -descitsearch flags" << endl;
-                exit(1);
-            }
-
-            if(binarySearch)
-            {
-                cout << "Cannot use both -binsearch and -descitsearch flags" << endl;
-                exit(1);
-            }
-            
-            descIterativeSearch = true;
-        }
-        else if(strcmp(argv[i], "-ascitsearch") == 0)
-        {
-            if(sos1Branching)
-            {
-                cout << "Cannot use both -sos1 and -ascitsearch flags" << endl;
-                exit(1);
-            }
-
-            if(binarySearch)
-            {
-                cout << "Cannot use both -binsearch and -ascitsearch flags" << endl;
-                exit(1);
-            }
-
-            if(descIterativeSearch)
-            {
-                cout << "Cannot use both -descitsearch and -ascitsearch flags" << endl;
-                exit(1);
-            }
-            
-            ascIterativeSearch = true;
-        }
-        else
-        {
-            cout << "Invalid flag: " << argv[i] << endl;
-            exit(1);
-        }
+        customAlgorithms.binarySearch(1, model.data.getNbCars());
     }
-
-    Model model(argv[1], sos1Branching, cumulative, binarySearch || descIterativeSearch || ascIterativeSearch);
-
-    if(model.solve())
+    else if(flags.getDescIterativeSearch())
     {
-        model.output();
+        customAlgorithms.descIterativeSearch(model.data.getNbCars());
     }
+    else if(flags.getAscIterativeSearch())
+    {
+        customAlgorithms.ascIterativeSearch(1);
+    }
+    else
+    {
+        model.initModel(flags.getSos1Branching());
+        model.solve();
+    }
+    
+    model.output();
 
     return 0;
 }

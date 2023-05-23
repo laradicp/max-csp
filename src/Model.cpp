@@ -6,11 +6,15 @@
 #include <cmath>
 #include <chrono>
 
-Model::Model(string filePath, bool sos1Branching, bool cumulative, int customSearch)
+Model::Model(string filePath, bool cumulative)
 {
     data = Data(filePath, cumulative);
-    model = IloModel(env);
     definePaths(filePath);
+}
+
+void Model::initModel(bool sos1Branching, int customSearch)
+{
+    model = IloModel(env);
     optionOverlap.resize(data.getNbOptions(), false);
 
     // avoid redundant constraints
@@ -202,10 +206,19 @@ void Model::calculateOptionsIntersections()
 
 void Model::definePaths(string filePath)
 {
-    sequencePath = "sequences/" + filePath.substr(10, 3) + "_" + to_string(data.getId()) +
-        "_" + to_string(data.getNbCars()) + ".out";
-    unscheduledPath = "unscheduled/" + filePath.substr(10, 3) + "_" + to_string(data.getId()) +
-        ".out";
+    // the file must be inside the folder instances
+    for(unsigned int i = 10; i < filePath.size(); i++)
+    {
+        if(filePath[i] == '.')
+        {
+            sequencePath = "sequences/" + filePath.substr(10, i - 10) + ".out";
+            unscheduledPath = "unscheduled/" + filePath.substr(10, i - 10) + ".out";
+            return;
+        }
+    }
+
+    sequencePath = "sequences/" + filePath.substr(10, filePath.size() - 10) + ".out";
+    unscheduledPath = "unscheduled/" + filePath.substr(10, filePath.size() - 10) + ".out";
 }
 
 void Model::calculateOptionOverlap()
@@ -337,32 +350,46 @@ bool Model::solve()
     return false;
 }
 
-void Model::output()
+void Model::output(bool toFile)
 {
-    ofstream output;
-    output.open(sequencePath);
-
-    for(unsigned int t = 0; t < sequence.size(); t++)
+    if(toFile)
     {
-        output << sequence[t] << endl;
-    }
+        ofstream output;
 
-    output << "Primal:\t" << primal << endl;
-    output << "Dual:\t" << dual << endl;
-    output << "Status:\t" << status << endl;
-    output << "Time:\t" << elapsedTime << endl;
+        output.open(sequencePath);
 
-    output.close();
-
-    output.open(unscheduledPath);
-
-    for(int i = 0; i < data.getNbClasses(); i++)
-    {
-        if(unscheduled[i] > 0)
+        for(unsigned int t = 0; t < sequence.size(); t++)
         {
-            output << i << " " << unscheduled[i] << endl;
+            output << sequence[t] << endl;
         }
-    }
+        output << "Primal:\t" << primal << endl;
+        output << "Dual:\t" << dual << endl;
+        output << "Status:\t" << status << endl;
+        output << "Time:\t" << elapsedTime << endl;
 
-    output.close();
+        output.close();
+
+        output.open(unscheduledPath);
+
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            if(unscheduled[i] > 0)
+            {
+                output << i << " " << unscheduled[i] << endl;
+            }
+        }
+
+        output.close();
+    }
+    else
+    {
+        for(unsigned int t = 0; t < sequence.size(); t++)
+        {
+            cout << sequence[t] << endl;
+        }
+        cout << "Primal:\t" << primal << endl;
+        cout << "Dual:\t" << dual << endl;
+        cout << "Status:\t" << status << endl;
+        cout << "Time:\t" << elapsedTime << endl;
+    }
 }
