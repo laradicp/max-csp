@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <ilcplex/ilocplex.h>
 
 #include "Data.h"
@@ -50,6 +51,14 @@ class Model
 
         bool solve();
         void output(bool toFile = false);
+
+        int getSequenceSize();
+        int getUnscheduledSize();
+        int getSequence(int i);
+        int getUnscheduled(int i);
+        IloAlgorithm::Status getStatus();
+        string getSequencePath();
+        string getUnscheduledPath();
 };
 
 #endif

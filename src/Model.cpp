@@ -393,3 +393,38 @@ void Model::output(bool toFile)
         cout << "Time:\t" << elapsedTime << endl;
     }
 }
+
+int Model::getSequenceSize()
+{
+    return sequence.size();
+}
+
+int Model::getUnscheduledSize()
+{
+    return unscheduled.size();
+}
+
+int Model::getSequence(int i)
+{
+    return sequence[i];
+}
+
+int Model::getUnscheduled(int i)
+{
+    return unscheduled[i];
+}
+
+IloAlgorithm::Status Model::getStatus()
+{
+    return status;
+}
+
+string Model::getSequencePath()
+{
+    return sequencePath;
+}
+
+string Model::getUnscheduledPath()
+{
+    return unscheduledPath;
+}

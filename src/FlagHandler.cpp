@@ -4,6 +4,12 @@
 
 FlagHandler::FlagHandler(int argc, char** argv)
 {
+    sos1Branching = false;
+    cumulative = false;
+    binarySearch = false;
+    descIterativeSearch = false;
+    ascIterativeSearch = false;
+    
 	for(int i = 2; i < argc; i++)
     {
         if(strcmp(argv[i], "-sos1") == 0)
