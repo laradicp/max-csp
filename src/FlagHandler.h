@@ -11,6 +11,8 @@ class FlagHandler
 		bool binarySearch;
 		bool descIterativeSearch;
 		bool ascIterativeSearch;
+		bool heuristic;
+		bool noExact;
 	
 	public:
 		FlagHandler(int argc, char** argv);
@@ -19,6 +21,9 @@ class FlagHandler
 		bool getBinarySearch();
 		bool getDescIterativeSearch();
 		bool getAscIterativeSearch();
+		bool getHeuristic();
+		bool getNoExact();
+		
 };
 
 #endif

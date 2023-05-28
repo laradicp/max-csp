@@ -9,6 +9,8 @@ FlagHandler::FlagHandler(int argc, char** argv)
     binarySearch = false;
     descIterativeSearch = false;
     ascIterativeSearch = false;
+    heuristic = false;
+    noExact = false;
     
 	for(int i = 2; i < argc; i++)
     {
@@ -68,6 +70,14 @@ FlagHandler::FlagHandler(int argc, char** argv)
             
             ascIterativeSearch = true;
         }
+        else if(strcmp(argv[i], "-heuristic") == 0)
+        {
+            heuristic = true;
+        }
+        else if(strcmp(argv[i], "-noexact") == 0)
+        {
+            noExact = true;
+        }
         else
         {
             cout << "Invalid flag: " << argv[i] << endl;
@@ -99,4 +109,14 @@ bool FlagHandler::getDescIterativeSearch()
 bool FlagHandler::getAscIterativeSearch()
 {
 	return ascIterativeSearch;
+}
+
+bool FlagHandler::getHeuristic()
+{
+    return heuristic;
+}
+
+bool FlagHandler::getNoExact()
+{
+    return noExact;
 }

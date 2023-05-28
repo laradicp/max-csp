@@ -1,5 +1,6 @@
 #include "Model.h"
 #include "CustomAlgorithms.h"
+#include "Heuristic.h"
 #include "FlagHandler.h"
 
 int main(int argc, char** argv)
@@ -14,9 +15,24 @@ int main(int argc, char** argv)
     Model model(argv[1], flags.getCumulative());
     CustomAlgorithms customAlgorithms(&model);
 
+    int lb = 1;
+    vector<int> primalSolution;
+
+    if(flags.getHeuristic())
+    {
+        Heuristic heuristic(model.data);
+        heuristic.output();
+        
+        lb = heuristic.getSequenceSize();
+        for(int i = 0; i < lb; i++)
+        {
+            primalSolution.push_back(heuristic.getSequence(i));
+        }
+    }
+
     if(flags.getBinarySearch())
     {
-        customAlgorithms.binarySearch(1, model.data.getNbCars());
+        customAlgorithms.binarySearch(lb, model.data.getNbCars());
         customAlgorithms.output();
     }
     else if(flags.getDescIterativeSearch())
@@ -26,10 +42,10 @@ int main(int argc, char** argv)
     }
     else if(flags.getAscIterativeSearch())
     {
-        customAlgorithms.ascIterativeSearch(1);
+        customAlgorithms.ascIterativeSearch(lb);
         customAlgorithms.output();
     }
-    else
+    else if(!flags.getNoExact())
     {
         model.initModel(flags.getSos1Branching());
         model.solve();
