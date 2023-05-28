@@ -17,9 +17,6 @@ class Model
         IloEnv env;
         IloModel model;
         IloArray<IloBoolVarArray> x;
-
-        string sequencePath;
-        string unscheduledPath;
         
         vector<int> carsPerOption;
         vector<vector<int>> optionsIntersections;
@@ -54,11 +51,10 @@ class Model
 
         int getSequenceSize();
         int getUnscheduledSize();
-        int getSequence(int i);
+        int getSequence(int t);
         int getUnscheduled(int i);
         IloAlgorithm::Status getStatus();
-        string getSequencePath();
-        string getUnscheduledPath();
+
 };
 
 #endif

@@ -16,6 +16,9 @@ class Data
         int nbClasses;
         int nbOptions;
 
+        string sequencePath;
+        string unscheduledPath;
+
         vector<int> maxCarsPerWindow;
         vector<int> windowSize;
 
@@ -25,6 +28,8 @@ class Data
         void retrieveId(string filePath);
         void readInstance(string filePath);
         void readUnscheduled(string filePath);
+
+        void definePaths(string filePath);
 
     public:
 
@@ -41,6 +46,9 @@ class Data
 
         int getNbCarsPerClass(int i);
         bool getOption(int i, int j);
+
+        string getSequencePath();
+        string getUnscheduledPath();
 };
 
 #endif

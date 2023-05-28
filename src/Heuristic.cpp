@@ -1,5 +1,5 @@
 #include "Heuristic.h"
-#include <chrono>
+#include <fstream>
 
 void Heuristic::calculateMaxWindow()
 {
@@ -575,6 +575,7 @@ Heuristic::Heuristic(Data data)
         if(currentBestSequence.size() == this->data.getNbCars())
         {
             bestSequence = currentBestSequence;
+            bestUnscheduled = currentBestUnscheduled;
             break;
         }
         
@@ -611,6 +612,7 @@ Heuristic::Heuristic(Data data)
         if(currentBestSequence.size() > bestSequence.size())
         {
             bestSequence = currentBestSequence;
+            bestUnscheduled = currentBestUnscheduled;
 
             if(bestSequence.size() == this->data.getNbCars())
             {
@@ -623,4 +625,64 @@ Heuristic::Heuristic(Data data)
             break;
         }
     }
+}
+
+void Heuristic::output(bool toFile)
+{
+    if(toFile)
+    {
+        ofstream output;
+
+        output.open(data.getSequencePath());
+
+        for(unsigned int t = 0; t < bestSequence.size(); t++)
+        {
+            output << bestSequence[t] << endl;
+        }
+        output << "Primal:\t" << bestSequence.size() << endl;
+        output << "Time:\t" << elapsedTime.count() << endl;
+
+        output.close();
+
+        output.open(data.getUnscheduledPath());
+
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            if(bestUnscheduled[i] > 0)
+            {
+                output << i << " " << bestUnscheduled[i] << endl;
+            }
+        }
+
+        output.close();
+    }
+    else
+    {
+        for(unsigned int t = 0; t < bestSequence.size(); t++)
+        {
+            cout << bestSequence[t] << endl;
+        }
+        cout << "Primal:\t" << bestSequence.size() << endl;
+        cout << "Time:\t" << elapsedTime.count() << endl;
+    }
+}
+
+int Heuristic::getSequenceSize()
+{
+    return bestSequence.size();
+}
+
+int Heuristic::getUnscheduledSize()
+{
+    return bestUnscheduled.size();
+}
+
+int Heuristic::getSequence(int t)
+{
+    return bestSequence[t];
+}
+
+int Heuristic::getUnscheduled(int i)
+{
+    return bestUnscheduled[i];
 }

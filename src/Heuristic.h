@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <chrono>
 #include "Data.h"
 
 using namespace std;
@@ -18,6 +19,7 @@ class Heuristic
 		vector<int> bestSequence;
 		vector<int> unscheduled;
 		vector<int> currentBestUnscheduled;
+		vector<int> bestUnscheduled;
 		vector<char> infeasibleSwapPos; // char because boolean takes longer to access
 		chrono::duration<double> elapsedTime;
 		int maxWindow;
@@ -39,12 +41,19 @@ class Heuristic
 
 		bool feasibleSwap(int t1, int t2);
 		void swap(int t1, int t2);
-		
+
 		void perturbation();
 
     public:
 
 		Heuristic(Data data);
+
+		void output(bool toFile = false);
+
+		int getSequenceSize();
+        int getUnscheduledSize();
+        int getSequence(int t);
+        int getUnscheduled(int i);
         
 };
 

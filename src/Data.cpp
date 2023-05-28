@@ -12,6 +12,8 @@ Data::Data(string filePath, bool cumulative)
     {
         readUnscheduled(filePath);
     }
+
+    definePaths(filePath);
 }
 
 void Data::retrieveId(string filePath)
@@ -102,6 +104,23 @@ void Data::readUnscheduled(string filePath)
     unscheduled.close();
 }
 
+void Data::definePaths(string filePath)
+{
+    // the file must be inside the folder instances
+    for(unsigned int i = 10; i < filePath.size(); i++)
+    {
+        if(filePath[i] == '.')
+        {
+            sequencePath = "sequences/" + filePath.substr(10, i - 10) + ".out";
+            unscheduledPath = "unscheduled/" + filePath.substr(10, i - 10) + ".out";
+            return;
+        }
+    }
+
+    sequencePath = "sequences/" + filePath.substr(10, filePath.size() - 10) + ".out";
+    unscheduledPath = "unscheduled/" + filePath.substr(10, filePath.size() - 10) + ".out";
+}
+
 int Data::getId()
 {
     return id;
@@ -140,4 +159,14 @@ int Data::getNbCarsPerClass(int i)
 bool Data::getOption(int i, int j)
 {
     return options[i][j];
+}
+
+string Data::getSequencePath()
+{
+    return sequencePath;
+}
+
+string Data::getUnscheduledPath()
+{
+    return unscheduledPath;
 }

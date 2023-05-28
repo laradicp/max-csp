@@ -92,9 +92,9 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 {
 	sequence.clear();
 
-	for(int i = 0; i < model->getSequenceSize(); i++)
+	for(int t = 0; t < model->getSequenceSize(); t++)
 	{
-		sequence.push_back(model->getSequence(i));
+		sequence.push_back(model->getSequence(t));
 	}
 
 	unscheduled.clear();
@@ -116,7 +116,7 @@ void CustomAlgorithms::output(bool toFile)
     {
         ofstream output;
 
-        output.open(model->getSequencePath());
+        output.open(model->data.getSequencePath());
 
         for(unsigned int t = 0; t < sequence.size(); t++)
         {
@@ -129,7 +129,7 @@ void CustomAlgorithms::output(bool toFile)
 
         output.close();
 
-        output.open(model->getUnscheduledPath());
+        output.open(model->data.getUnscheduledPath());
 
         for(int i = 0; i < model->data.getNbClasses(); i++)
         {

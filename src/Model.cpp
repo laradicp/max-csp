@@ -9,7 +9,6 @@
 Model::Model(string filePath, bool cumulative)
 {
     data = Data(filePath, cumulative);
-    definePaths(filePath);
 }
 
 void Model::initModel(bool sos1Branching, int customSearch)
@@ -204,23 +203,6 @@ void Model::calculateOptionsIntersections()
     }
 }
 
-void Model::definePaths(string filePath)
-{
-    // the file must be inside the folder instances
-    for(unsigned int i = 10; i < filePath.size(); i++)
-    {
-        if(filePath[i] == '.')
-        {
-            sequencePath = "sequences/" + filePath.substr(10, i - 10) + ".out";
-            unscheduledPath = "unscheduled/" + filePath.substr(10, i - 10) + ".out";
-            return;
-        }
-    }
-
-    sequencePath = "sequences/" + filePath.substr(10, filePath.size() - 10) + ".out";
-    unscheduledPath = "unscheduled/" + filePath.substr(10, filePath.size() - 10) + ".out";
-}
-
 void Model::calculateOptionOverlap()
 {
     calculateOptionsIntersections();
@@ -361,7 +343,7 @@ void Model::output(bool toFile)
     {
         ofstream output;
 
-        output.open(sequencePath);
+        output.open(data.getSequencePath());
 
         for(unsigned int t = 0; t < sequence.size(); t++)
         {
@@ -374,7 +356,7 @@ void Model::output(bool toFile)
 
         output.close();
 
-        output.open(unscheduledPath);
+        output.open(data.getUnscheduledPath());
 
         for(int i = 0; i < data.getNbClasses(); i++)
         {
@@ -409,9 +391,9 @@ int Model::getUnscheduledSize()
     return unscheduled.size();
 }
 
-int Model::getSequence(int i)
+int Model::getSequence(int t)
 {
-    return sequence[i];
+    return sequence[t];
 }
 
 int Model::getUnscheduled(int i)
@@ -422,14 +404,4 @@ int Model::getUnscheduled(int i)
 IloAlgorithm::Status Model::getStatus()
 {
     return status;
-}
-
-string Model::getSequencePath()
-{
-    return sequencePath;
-}
-
-string Model::getUnscheduledPath()
-{
-    return unscheduledPath;
 }
