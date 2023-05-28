@@ -137,7 +137,7 @@ int Data::getNbCarsPerClass(int i)
     return nbCarsPerClass[i];
 }
 
-int Data::getOption(int i, int j)
+bool Data::getOption(int i, int j)
 {
     return options[i][j];
 }

@@ -40,7 +40,7 @@ class Data
         int getWindowSize(int j);
 
         int getNbCarsPerClass(int i);
-        int getOption(int i, int j);
+        bool getOption(int i, int j);
 };
 
 #endif
