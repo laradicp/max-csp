@@ -14,8 +14,9 @@ void Heuristic::calculateMaxWindow()
     }
 }
 
-void Heuristic::initializeUnscheduled()
+void Heuristic::initialization()
 {
+    sequence.clear();
     unscheduled.resize(data.getNbClasses());
 	for(int i = 0; i < data.getNbClasses(); i++)
 	{
@@ -564,12 +565,12 @@ Heuristic::Heuristic(Data data)
 
     for(int i = 0; i < 25; i++)
     {
-        initializeUnscheduled();
+        initialization();
 
         construction();
 
-        currentBestSequence = sequence;
-        currentBestUnscheduled = unscheduled;
+        vector<int> currentBestSequence = sequence;
+        vector<int> currentBestUnscheduled = unscheduled;
         
         if(currentBestSequence.size() == this->data.getNbCars())
         {

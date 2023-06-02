@@ -15,17 +15,15 @@ class Heuristic
 
         Data data;
 		vector<int> sequence;
-		vector<int> currentBestSequence;
 		vector<int> bestSequence;
 		vector<int> unscheduled;
-		vector<int> currentBestUnscheduled;
 		vector<int> bestUnscheduled;
 		vector<char> infeasibleSwapPos; // char because boolean takes longer to access
 		chrono::duration<double> elapsedTime;
 		int maxWindow;
 		
 		void calculateMaxWindow();
-		void initializeUnscheduled();
+		void initialization();
 
 		bool isInfeasible();
 
