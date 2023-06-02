@@ -59,7 +59,8 @@ void Heuristic::construction()
 
     for(int i = 0; i < data.getNbClasses(); i++)
     {
-        feasibleClasses.push_back(i);
+        if(unscheduled[i] > 0)
+            feasibleClasses.push_back(i);
     }
 
     while(feasibleClasses.size())
@@ -113,8 +114,6 @@ void Heuristic::construction()
             }
         }
     }
-
-    return;
 }
 
 bool Heuristic::feasibleInsertion(int t, int i)
