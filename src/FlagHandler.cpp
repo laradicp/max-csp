@@ -24,50 +24,14 @@ FlagHandler::FlagHandler(int argc, char** argv)
         }
         else if(strcmp(argv[i], "-binsearch") == 0)
         {
-            if(sos1Branching)
-            {
-                cout << "Cannot use both -sos1 and -binsearch flags" << endl;
-                exit(1);
-            }
-
             binarySearch = true;
         }
         else if(strcmp(argv[i], "-descitsearch") == 0)
         {
-            if(sos1Branching)
-            {
-                cout << "Cannot use both -sos1 and -descitsearch flags" << endl;
-                exit(1);
-            }
-
-            if(binarySearch)
-            {
-                cout << "Cannot use both -binsearch and -descitsearch flags" << endl;
-                exit(1);
-            }
-            
             descIterativeSearch = true;
         }
         else if(strcmp(argv[i], "-ascitsearch") == 0)
         {
-            if(sos1Branching)
-            {
-                cout << "Cannot use both -sos1 and -ascitsearch flags" << endl;
-                exit(1);
-            }
-
-            if(binarySearch)
-            {
-                cout << "Cannot use both -binsearch and -ascitsearch flags" << endl;
-                exit(1);
-            }
-
-            if(descIterativeSearch)
-            {
-                cout << "Cannot use both -descitsearch and -ascitsearch flags" << endl;
-                exit(1);
-            }
-            
             ascIterativeSearch = true;
         }
         else if(strcmp(argv[i], "-heuristic") == 0)
@@ -81,6 +45,80 @@ FlagHandler::FlagHandler(int argc, char** argv)
         else
         {
             cout << "Invalid flag: " << argv[i] << endl;
+            exit(1);
+        }
+    }
+
+    checkValidFlags();
+}
+
+void FlagHandler::checkValidFlags()
+{
+    if(sos1Branching)
+    {
+        if(binarySearch)
+        {
+            cout << "Cannot use both -sos1 and -binsearch flags" << endl;
+            exit(1);
+        }
+
+        if(descIterativeSearch)
+        {
+            cout << "Cannot use both -sos1 and -descitsearch flags" << endl;
+            exit(1);
+        }
+
+        if(ascIterativeSearch)
+        {
+            cout << "Cannot use both -sos1 and -ascitsearch flags" << endl;
+            exit(1);
+        }
+    }
+
+    if(binarySearch)
+    {
+        if(descIterativeSearch)
+        {
+            cout << "Cannot use both -binsearch and -descitsearch flags" << endl;
+            exit(1);
+        }
+
+        if(ascIterativeSearch)
+        {
+            cout << "Cannot use both -binsearch and -ascitsearch flags" << endl;
+            exit(1);
+        }
+    }
+
+    if(descIterativeSearch&&ascIterativeSearch)
+    {
+        cout << "Cannot use both -descitsearch and -ascitsearch flags" << endl;
+        exit(1);
+    }
+
+    if(noExact)
+    {
+        if(sos1Branching)
+        {
+            cout << "Cannot use both -noexact and -sos1 flags" << endl;
+            exit(1);
+        }
+
+        if(binarySearch)
+        {
+            cout << "Cannot use both -noexact and -binsearch flags" << endl;
+            exit(1);
+        }
+
+        if(descIterativeSearch)
+        {
+            cout << "Cannot use both -noexact and -descitsearch flags" << endl;
+            exit(1);
+        }
+
+        if(ascIterativeSearch)
+        {
+            cout << "Cannot use both -noexact and -ascitsearch flags" << endl;
             exit(1);
         }
     }
