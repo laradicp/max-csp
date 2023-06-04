@@ -25,11 +25,20 @@ class Data
         vector<int> nbCarsPerClass;
         vector<vector<bool>> options;
 
+        vector<int> primalSol;
+        vector<int> unscheduled;
+
         void retrieveId(string filePath);
         void readInstance(string filePath);
         void readUnscheduled(string filePath);
 
         void definePaths(string filePath);
+
+        int Data::used(int r, int s, vector<double> &score, vector<int> &nbCarsPerScore,
+            vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection);
+
+        void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore,
+            vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection);
 
     public:
 
@@ -49,6 +58,11 @@ class Data
 
         string getSequencePath();
         string getUnscheduledPath();
+
+        int Data::getUpperBound();
+        int Data::getLowerBound();
+        int Data::getLowerBoundSol(int t);
+        
 };
 
 #endif
