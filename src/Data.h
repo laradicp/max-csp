@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <chrono>
 
 using namespace std;
 
@@ -25,9 +26,13 @@ class Data
         vector<int> nbCarsPerClass;
         vector<vector<bool>> options;
 
+        int ub;
+        chrono::duration<double> elapsedTimeUB;
+
         vector<int> lb;
         vector<int> primalSol;
         vector<int> unscheduled;
+        chrono::duration<double> elapsedTimeLB;
 
         void retrieveId(string filePath);
         void readInstance(string filePath);
@@ -60,9 +65,12 @@ class Data
         string getSequencePath();
         string getUnscheduledPath();
 
-        int Data::getUpperBound();
-        int Data::getLowerBound();
-        int Data::getPrimalSol(int t);
+        int getUpperBound();
+        double getElapsedTimeUB();
+
+        int getLowerBound();
+        int getPrimalSol(int t);
+        double getElapsedTimeLB();
         
 };
 

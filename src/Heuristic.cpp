@@ -686,3 +686,8 @@ int Heuristic::getUnscheduled(int i)
 {
     return bestUnscheduled[i];
 }
+
+double Heuristic::getElapsedTime()
+{
+    return elapsedTime.count();
+}

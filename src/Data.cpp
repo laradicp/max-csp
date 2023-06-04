@@ -1,6 +1,7 @@
 #include "Data.h"
 
 #include <fstream>
+#include <math.h>
 
 Data::Data(string filePath, bool cumulative)
 {
@@ -14,6 +15,8 @@ Data::Data(string filePath, bool cumulative)
     }
 
     definePaths(filePath);
+
+    ub = -1;
 }
 
 void Data::retrieveId(string filePath)
@@ -173,43 +176,50 @@ string Data::getUnscheduledPath()
 
 int Data::getUpperBound()
 {
-    // setup
-    vector<int> nbCarsPerOption(nbOptions, 0);
-    vector<int> surplus(nbOptions, 0);
-    vector<vector<int>> intersect(nbOptions, vector<int>(nbOptions, 0));
-    for(int j1 = 0; j1 < nbOptions; j1++)
+    if(ub == -1)
     {
-        for(int i = 0; i < nbClasses; i++)
+        auto start = chrono::system_clock::now();
+
+        // setup
+        vector<int> nbCarsPerOption(nbOptions, 0);
+        vector<int> surplus(nbOptions, 0);
+        vector<vector<int>> intersect(nbOptions, vector<int>(nbOptions, 0));
+        for(int j1 = 0; j1 < nbOptions; j1++)
         {
-            if(getOption(i, j1))
+            for(int i = 0; i < nbClasses; i++)
             {
-                nbCarsPerOption[j1] += getNbCarsPerClass(i);
-                for(int j2 = 0; j2 < nbOptions; j2++)
+                if(getOption(i, j1))
                 {
-                    if(getOption(i, j2))
+                    nbCarsPerOption[j1] += getNbCarsPerClass(i);
+                    for(int j2 = 0; j2 < nbOptions; j2++)
                     {
-                        intersect[j1][j2] += getNbCarsPerClass(i);
+                        if(getOption(i, j2))
+                        {
+                            intersect[j1][j2] += getNbCarsPerClass(i);
+                        }
                     }
                 }
             }
-        }
 
-        surplus[j1] = nbCarsPerOption[j1] - ceil(getMaxCarsPerWindow(j1)*nbCars/
-                      (double)(getWindowSize(j1)));
-        surplus[j1] = surplus[j1] > 0 ? surplus[j1] : 0;
-
-        for(int j2 = 0; j2 < j1; j2++)
-        {
-            int min = surplus[j2] < intersect[j1][j2] ? surplus[j2] : intersect[j1][j2];
-            surplus[j1] -= min;
+            surplus[j1] = nbCarsPerOption[j1] - ceil(getMaxCarsPerWindow(j1)*nbCars/
+                        (double)(getWindowSize(j1)));
             surplus[j1] = surplus[j1] > 0 ? surplus[j1] : 0;
-        }
-    }
 
-    int ub = nbCars;
-    for(int j = 0; j < nbOptions; j++)
-    {
-        ub -= surplus[j];
+            for(int j2 = 0; j2 < j1; j2++)
+            {
+                int min = surplus[j2] < intersect[j1][j2] ? surplus[j2] : intersect[j1][j2];
+                surplus[j1] -= min;
+                surplus[j1] = surplus[j1] > 0 ? surplus[j1] : 0;
+            }
+        }
+
+        ub = nbCars;
+        for(int j = 0; j < nbOptions; j++)
+        {
+            ub -= surplus[j];
+        }
+
+        elapsedTimeUB = chrono::system_clock::now() - start;
     }
 
     return ub;
@@ -310,13 +320,13 @@ void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore
 
                         for(int k = begin; k < t; k++)
                         {
-                            if(data.getOption(primalSol[k], j))
+                            if(getOption(primalSol[k], j))
                             {
                                 sum++;
                             }
                         }
 
-                        if(sum > data.getMaxCarsPerWindow(j))
+                        if(sum > getMaxCarsPerWindow(j))
                         {
                             feasibleClass = false;
                             break;
@@ -324,17 +334,17 @@ void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore
 
                         for(int k = t; k < end; k++)
                         {
-                            if((k - data.getWindowSize(j) + 1 >= 0)&&
-                                (data.getOption(primalSol[k - data.getWindowSize(j) + 1], j)))
+                            if((k - getWindowSize(j) + 1 >= 0)&&
+                                (getOption(primalSol[k - getWindowSize(j) + 1], j)))
                             {
                                 sum--;
                             }
 
-                            if(data.getOption(primalSol[k], j))
+                            if(getOption(primalSol[k], j))
                             {
                                 sum++;
 
-                                if(sum > data.getMaxCarsPerWindow(j))
+                                if(sum > getMaxCarsPerWindow(j))
                                 {
                                     feasibleClass = false;
                                     break;
@@ -365,6 +375,8 @@ int Data::getLowerBound()
 {
     if(primalSol.empty())
     {
+        auto start = chrono::system_clock::now();
+
         lb.resize(nbOptions + 1, -1);
         unscheduled.resize(nbClasses);
         for(int i = 0; i < nbClasses; i++)
@@ -389,7 +401,7 @@ int Data::getLowerBound()
             bool noOption = true;
             for(int s = 1; s < nbOptions + 1; s++)
             {
-                if(getCadencesPerFamily(i, s - 1))
+                if(getOption(i, s - 1))
                 {
                     noOption = false;
                     bool mostRestrictive = true;
@@ -440,6 +452,8 @@ int Data::getLowerBound()
                 }
             }
         }
+
+        elapsedTimeLB = chrono::system_clock::now() - start;
     }
 
     return primalSol.size();
@@ -449,4 +463,14 @@ int Data::getPrimalSol(int t)
 {
     getLowerBound();
     return primalSol[t];
+}
+
+double Data::getElapsedTimeUB()
+{
+    return elapsedTimeUB.count();
+}
+
+double Data::getElapsedTimeLB()
+{
+    return elapsedTimeLB.count();
 }

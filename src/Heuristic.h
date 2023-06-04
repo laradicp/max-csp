@@ -52,6 +52,7 @@ class Heuristic
         int getUnscheduledSize();
         int getSequence(int t);
         int getUnscheduled(int i);
+		double getElapsedTime();
         
 };
 

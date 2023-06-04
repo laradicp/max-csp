@@ -6,19 +6,19 @@ CustomAlgorithms::CustomAlgorithms(Model* model)
 	this->model = model;
 }
 
-int CustomAlgorithms::binarySearch(int lb, int ub)
+int CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
 
-	while((elapsedTime.count() < 600.0)&&(ub > lb))
+	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(ub > lb))
 	{
 		int mid = ceil((lb + ub)/2.0);
 
 		model->initModel(false, mid);
 
 		elapsedTime = chrono::steady_clock::now() - start;
-		if(!model->solve(elapsedTime.count()))
+		if(!model->solve(elapsedTime.count() + prevElapsedTime))
 		{
 			ub = mid - 1;
 		}
@@ -35,18 +35,18 @@ int CustomAlgorithms::binarySearch(int lb, int ub)
 	return lb;
 }
 
-int CustomAlgorithms::descIterativeSearch(int ub)
+int CustomAlgorithms::descIterativeSearch(int ub, double prevElapsedTime)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
 	int lb = 1;
 
-	while((elapsedTime.count() < 600.0)&&(ub >= lb))
+	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(ub >= lb))
 	{
 		model->initModel(false, ub);
 
 		elapsedTime = chrono::steady_clock::now() - start;
-		if(model->solve(elapsedTime.count()))
+		if(model->solve(elapsedTime.count() + prevElapsedTime))
 		{
 			lb = ub;
 			break;
@@ -62,17 +62,17 @@ int CustomAlgorithms::descIterativeSearch(int ub)
 	return ub;
 }
 
-int CustomAlgorithms::ascIterativeSearch(int lb)
+int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
 
-	while((elapsedTime.count() < 600.0)&&(lb <= model->data.getNbCars()))
+	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(lb <= model->data.getNbCars()))
 	{
 		model->initModel(false, lb + 1);
 
 		elapsedTime = chrono::steady_clock::now() - start;
-		if(!model->solve(elapsedTime.count()))
+		if(!model->solve(elapsedTime.count() + prevElapsedTime))
 		{
 			dual = lb;
 			elapsedTime = chrono::steady_clock::now() - start;

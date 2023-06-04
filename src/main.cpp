@@ -2,6 +2,9 @@
 #include "CustomAlgorithms.h"
 #include "Heuristic.h"
 #include "FlagHandler.h"
+#include <vector>
+
+using namespace std;
 
 int main(int argc, char** argv)
 {
@@ -17,6 +20,7 @@ int main(int argc, char** argv)
 
     int lb = 1;
     int ub = model.data.getNbCars();
+    double elapsedTime = 0.0;
     vector<int> primalSolution;
 
     if(flags.getHeuristic())
@@ -29,6 +33,7 @@ int main(int argc, char** argv)
         {
             primalSolution.push_back(heuristic.getSequence(t));
         }
+        elapsedTime = heuristic.getElapsedTime();
     }
     else if(!flags.getTrivialLB())
     {
@@ -37,32 +42,34 @@ int main(int argc, char** argv)
         {
             primalSolution.push_back(model.data.getPrimalSol(t));
         }
+        elapsedTime = model.data.getElapsedTimeLB();
     }
 
     if(!flags.getTrivialUB())
     {
         ub = model.data.getUpperBound();
+        elapsedTime += model.data.getElapsedTimeUB();
     }
 
     if(flags.getBinarySearch())
     {
-        customAlgorithms.binarySearch(lb, ub);
+        customAlgorithms.binarySearch(lb, ub, elapsedTime);
         customAlgorithms.output();
     }
     else if(flags.getDescIterativeSearch())
     {
-        customAlgorithms.descIterativeSearch(ub);
+        customAlgorithms.descIterativeSearch(ub, elapsedTime);
         customAlgorithms.output();
     }
     else if(flags.getAscIterativeSearch())
     {
-        customAlgorithms.ascIterativeSearch(lb);
+        customAlgorithms.ascIterativeSearch(lb, elapsedTime);
         customAlgorithms.output();
     }
     else if(!flags.getNoExact())
     {
         model.initModel(flags.getSos1Branching());
-        model.solve();
+        model.solve(elapsedTime);
         model.output();
     }
 

@@ -289,10 +289,10 @@ void Model::sos1()
     model.add(r);
 }
 
-bool Model::solve(double elapsedTime)
+bool Model::solve(double prevElapsedTime)
 {
     IloCplex maxCSP(model);
-    maxCSP.setParam(IloCplex::Param::TimeLimit, 600.0 - elapsedTime);
+    maxCSP.setParam(IloCplex::Param::TimeLimit, 600.0 - prevElapsedTime);
     maxCSP.setParam(IloCplex::Param::Threads, 1);
     maxCSP.setParam(IloCplex::Param::MIP::Strategy::VariableSelect, 3);
     maxCSP.exportModel("model.lp");

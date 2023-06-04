@@ -22,9 +22,9 @@ class CustomAlgorithms
 
 	public:
 		CustomAlgorithms(Model* model);
-		int binarySearch(int lb, int ub);
-		int descIterativeSearch(int ub);
-		int ascIterativeSearch(int lb);
+		int binarySearch(int lb, int ub, double prevElapsedTime = 0.0);
+		int descIterativeSearch(int ub, double prevElapsedTime = 0.0);
+		int ascIterativeSearch(int lb, double prevElapsedTime = 0.0);
 
 		void output(bool toFile = false);
 };
