@@ -13,12 +13,14 @@ class FlagHandler
 		bool ascIterativeSearch;
 		bool heuristic;
 		bool noExact;
+		bool trivialUB;
+		bool trivialLB;
 	
 	public:
 		FlagHandler(int argc, char** argv);
 
 		void checkValidFlags();
-		
+
 		bool getSos1Branching();
 		bool getCumulative();
 		bool getBinarySearch();
@@ -26,6 +28,8 @@ class FlagHandler
 		bool getAscIterativeSearch();
 		bool getHeuristic();
 		bool getNoExact();
+		bool getTrivialUB();
+		bool getTrivialLB();
 		
 };
 

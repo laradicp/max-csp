@@ -25,6 +25,7 @@ class Data
         vector<int> nbCarsPerClass;
         vector<vector<bool>> options;
 
+        vector<int> lb;
         vector<int> primalSol;
         vector<int> unscheduled;
 
@@ -61,7 +62,7 @@ class Data
 
         int Data::getUpperBound();
         int Data::getLowerBound();
-        int Data::getLowerBoundSol(int t);
+        int Data::getPrimalSol(int t);
         
 };
 

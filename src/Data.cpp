@@ -445,7 +445,7 @@ int Data::getLowerBound()
     return primalSol.size();
 }
 
-int Data::getLowerBoundSol(int t)
+int Data::getPrimalSol(int t)
 {
     getLowerBound();
     return primalSol[t];

@@ -16,6 +16,7 @@ int main(int argc, char** argv)
     CustomAlgorithms customAlgorithms(&model);
 
     int lb = 1;
+    int ub = model.data.getNbCars();
     vector<int> primalSolution;
 
     if(flags.getHeuristic())
@@ -24,20 +25,33 @@ int main(int argc, char** argv)
         heuristic.output();
         
         lb = heuristic.getSequenceSize();
-        for(int i = 0; i < lb; i++)
+        for(int t = 0; t < lb; t++)
         {
-            primalSolution.push_back(heuristic.getSequence(i));
+            primalSolution.push_back(heuristic.getSequence(t));
         }
+    }
+    else if(!flags.getTrivialLB())
+    {
+        lb = model.data.getLowerBound();
+        for(int t = 0; t < lb; t++)
+        {
+            primalSolution.push_back(model.data.getPrimalSol(t));
+        }
+    }
+
+    if(!flags.getTrivialUB())
+    {
+        ub = model.data.getUpperBound();
     }
 
     if(flags.getBinarySearch())
     {
-        customAlgorithms.binarySearch(lb, model.data.getNbCars());
+        customAlgorithms.binarySearch(lb, ub);
         customAlgorithms.output();
     }
     else if(flags.getDescIterativeSearch())
     {
-        customAlgorithms.descIterativeSearch(model.data.getNbCars());
+        customAlgorithms.descIterativeSearch(ub);
         customAlgorithms.output();
     }
     else if(flags.getAscIterativeSearch())

@@ -11,6 +11,8 @@ FlagHandler::FlagHandler(int argc, char** argv)
     ascIterativeSearch = false;
     heuristic = false;
     noExact = false;
+    trivialUB = false;
+    trivialLB = false;
     
 	for(int i = 2; i < argc; i++)
     {
@@ -41,6 +43,14 @@ FlagHandler::FlagHandler(int argc, char** argv)
         else if(strcmp(argv[i], "-noexact") == 0)
         {
             noExact = true;
+        }
+        else if(strcmp(argv[i], "-trivialub") == 0)
+        {
+            trivialUB = true;
+        }
+        else if(strcmp(argv[i], "-triviallb") == 0)
+        {
+            trivialLB = true;
         }
         else
         {
@@ -157,4 +167,14 @@ bool FlagHandler::getHeuristic()
 bool FlagHandler::getNoExact()
 {
     return noExact;
+}
+
+bool FlagHandler::getTrivialUB()
+{
+    return trivialUB;
+}
+
+bool FlagHandler::getTrivialLB()
+{
+    return trivialLB;
 }
