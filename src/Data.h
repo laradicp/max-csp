@@ -40,10 +40,10 @@ class Data
 
         void definePaths(string filePath);
 
-        int Data::used(int r, int s, vector<double> &score, vector<int> &nbCarsPerScore,
+        int used(int r, int s, vector<double> &score, vector<int> &nbCarsPerScore,
             vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection);
 
-        void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore,
+        void calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore,
             vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection);
 
     public:
