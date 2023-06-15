@@ -6,11 +6,11 @@
 Data::Data(string filePath, bool cumulative)
 {
     readInstance(filePath);
-
-    retrieveId(filePath);
+    id = -1;
 
     if(cumulative)
     {
+        retrieveId(filePath);
         readUnscheduled(filePath);
     }
 

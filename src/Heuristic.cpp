@@ -573,7 +573,7 @@ Heuristic::Heuristic(Data data)
         vector<int> currentBestSequence = sequence;
         vector<int> currentBestUnscheduled = unscheduled;
         
-        if(currentBestSequence.size() == this->data.getNbCars())
+        if(currentBestSequence.size() == this->data.getUpperBound())
         {
             bestSequence = currentBestSequence;
             bestUnscheduled = currentBestUnscheduled;
@@ -589,7 +589,7 @@ Heuristic::Heuristic(Data data)
                 currentBestSequence = sequence;
                 currentBestUnscheduled = unscheduled;
 
-                if(currentBestSequence.size() == this->data.getNbCars())
+                if(currentBestSequence.size() == this->data.getUpperBound())
                 {
                     break;
                 }
@@ -614,7 +614,7 @@ Heuristic::Heuristic(Data data)
             bestSequence = currentBestSequence;
             bestUnscheduled = currentBestUnscheduled;
 
-            if(bestSequence.size() == this->data.getNbCars())
+            if(bestSequence.size() == this->data.getUpperBound())
             {
                 break;
             }
