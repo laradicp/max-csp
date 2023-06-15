@@ -563,6 +563,7 @@ Heuristic::Heuristic(Data data)
     calculateMaxWindow();
     infeasibleSwapPos.resize(this->data.getNbCars(), '0');
 
+    int iterMax = 2*this->data.getNbCars();
     for(int i = 0; i < 25; i++)
     {
         initialization();
@@ -579,7 +580,6 @@ Heuristic::Heuristic(Data data)
             break;
         }
         
-        int iterMax = 2*this->data.getNbCars();
         for(int j = 0; j < iterMax; j++)
         {
             insertion();
