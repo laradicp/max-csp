@@ -447,10 +447,20 @@ void Heuristic::swap(int t1, int t2)
     sequence[t2] = aux;
 }
 
+int Heuristic::perturbationType()
+{
+    if(pType == 2)
+    {
+        return rand()%2;
+    }
+
+    return pType;
+}
+
 void Heuristic::perturbation()
 {
-    int p = rand()%2;
-    int n = sequence.size()/2 < data.getNbCars()/15 ? sequence.size()/2 : data.getNbCars()/15;
+    int p = perturbationType();
+    int n = sequence.size()/2 < data.getNbCars()/pDiv ? sequence.size()/2 : data.getNbCars()/pDiv;
 
     if(n == 0)
     {
@@ -551,9 +561,11 @@ void Heuristic::perturbation()
     }
 }
 
-Heuristic::Heuristic(Data data)
+Heuristic::Heuristic(Data data, int iR, int iILS, int pType, int pDiv)
 {
     this->data = data;
+    this->pType = pType;
+    this->pDiv = pDiv;
 
     auto start = chrono::system_clock::now();
 
@@ -563,7 +575,7 @@ Heuristic::Heuristic(Data data)
     calculateMaxWindow();
     infeasibleSwapPos.resize(this->data.getNbCars(), '0');
 
-    for(int i = 0; i < 25; i++)
+    for(int i = 0; i < iR; i++)
     {
         initialization();
 
@@ -579,8 +591,7 @@ Heuristic::Heuristic(Data data)
             break;
         }
         
-        int iterMax = 2*this->data.getNbCars();
-        for(int j = 0; j < iterMax; j++)
+        for(int j = 0; j < iILS; j++)
         {
             insertion();
             

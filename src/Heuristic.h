@@ -21,6 +21,8 @@ class Heuristic
 		vector<char> infeasibleSwapPos; // char because boolean takes longer to access
 		chrono::duration<double> elapsedTime;
 		int maxWindow;
+		int pType;
+		int pDiv;
 		
 		void calculateMaxWindow();
 		void initialization();
@@ -40,11 +42,12 @@ class Heuristic
 		bool feasibleSwap(int t1, int t2);
 		void swap(int t1, int t2);
 
+		int perturbationType();
 		void perturbation();
 
     public:
 
-		Heuristic(Data data);
+		Heuristic(Data data, int iR, int iILS, int pType, int pDiv);
 
 		void output(bool toFile = false);
 
