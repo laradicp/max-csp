@@ -69,7 +69,7 @@ int main(int argc, char** argv)
     else if(!flags.getNoExact())
     {
         model.initModel(flags.getSos1Branching());
-        model.solve(elapsedTime);
+        model.solve(elapsedTime, &primalSolution);
         model.output();
     }
 

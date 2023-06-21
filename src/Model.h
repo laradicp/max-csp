@@ -46,7 +46,7 @@ class Model
 
         void initModel(bool sos1Branching = false, int customSearch = 0);
 
-        bool solve(double prevElapsedTime = 0.0);
+        bool solve(double prevElapsedTime = 0.0, vector<int>* initialSol = nullptr);
         void output(bool toFile = false);
 
         int getSequenceSize();

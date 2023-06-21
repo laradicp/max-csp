@@ -289,12 +289,41 @@ void Model::sos1()
     model.add(r);
 }
 
-bool Model::solve(double prevElapsedTime)
+bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
 {
     IloCplex maxCSP(model);
     maxCSP.setParam(IloCplex::Param::TimeLimit, 600.0 - prevElapsedTime);
     maxCSP.setParam(IloCplex::Param::Threads, 1);
     maxCSP.setParam(IloCplex::Param::MIP::Strategy::VariableSelect, 3);
+
+    if(initialSol != nullptr)
+    {
+        // set initial solution
+        IloNumVarArray startVar(env);
+        IloNumArray startVal(env);
+        for(int t = 0; t < initialSol->size(); t++)
+        {
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                startVar.add(x[i][t]);
+                startVal.add(initialSol->at(t) == i);
+            }
+        }
+
+        for(int t = initialSol->size(); t < nbPositions; t++)
+        {
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                startVar.add(x[i][t]);
+                startVal.add(0);
+            }
+        }
+        
+        maxCSP.addMIPStart(startVar, startVal);
+        startVal.end();
+        startVar.end();
+    }
+
     maxCSP.exportModel("model.lp");
 
     try
