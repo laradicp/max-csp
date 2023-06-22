@@ -5,6 +5,18 @@
 
 make
 
+mkdir -p results/real/cumulative
+mkdir -p results/real/regular
+mkdir -p results/real/sos1
+mkdir -p results/real/desc-iterative/combinatorial
+mkdir -p results/real/desc-iterative/trivial
+mkdir -p results/real/asc-iterative/combinatorial
+mkdir -p results/real/asc-iterative/trivial
+mkdir -p results/real/asc-iterative/heuristic
+mkdir -p results/real/binary/combinatorial
+mkdir -p results/real/binary/trivial
+mkdir -p results/real/binary/heuristic
+
 for file in $(ls instances/real/jan_*_* | sort -t_ -n -k2); do
     echo "Running $file"
     ./max-csp.exe "$file" -cumulative > results/real/cumulative/"$(basename "$file" .in)".out
