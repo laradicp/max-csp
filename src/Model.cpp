@@ -331,10 +331,9 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
         if(maxCSP.solve())
         {
             sequence.clear();
-            unscheduled.clear();
             for(int i = 0; i < data.getNbClasses(); i++)
             {
-                unscheduled.push_back(data.getNbCarsPerClass(i));
+                unscheduled[i] = data.getNbCarsPerClass(i);
             }
 
             for(int t = 0; t < nbPositions; t++)
@@ -384,18 +383,6 @@ void Model::output(bool toFile)
         output << "Time:\t" << elapsedTime << endl;
 
         output.close();
-
-        output.open(data.getUnscheduledPath());
-
-        for(int i = 0; i < data.getNbClasses(); i++)
-        {
-            if(unscheduled[i] > 0)
-            {
-                output << i << " " << unscheduled[i] << endl;
-            }
-        }
-
-        output.close();
     }
     else
     {
@@ -408,16 +395,27 @@ void Model::output(bool toFile)
         cout << "Status:\t" << status << endl;
         cout << "Time:\t" << elapsedTime << endl;
     }
+
+    if(data.isCumulative())
+    {
+        ofstream unscheduledOutput;
+        unscheduledOutput.open(data.getUnscheduledPath());
+
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            if(unscheduled[i] > 0)
+            {
+                unscheduledOutput << i << " " << unscheduled[i] << endl;
+            }
+        }
+
+        unscheduledOutput.close();
+    }
 }
 
 int Model::getSequenceSize()
 {
     return sequence.size();
-}
-
-int Model::getUnscheduledSize()
-{
-    return unscheduled.size();
 }
 
 int Model::getSequence(int t)

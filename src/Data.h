@@ -34,6 +34,8 @@ class Data
         vector<int> unscheduled;
         chrono::duration<double> elapsedTimeLB;
 
+        bool cumulative;
+
         void retrieveId(string filePath);
         void readInstance(string filePath);
         void readUnscheduled(string filePath);
@@ -70,7 +72,10 @@ class Data
 
         int getLowerBound();
         int getPrimalSol(int t);
+        int getUnscheduled(int i);
         double getElapsedTimeLB();
+
+        bool isCumulative();
         
 };
 

@@ -5,10 +5,12 @@
 
 Data::Data(string filePath, bool cumulative)
 {
+    this->cumulative = cumulative;
+
     readInstance(filePath);
     id = -1;
 
-    if(cumulative)
+    if(this->cumulative)
     {
         retrieveId(filePath);
         readUnscheduled(filePath);
@@ -465,6 +467,12 @@ int Data::getPrimalSol(int t)
     return primalSol[t];
 }
 
+int Data::getUnscheduled(int i)
+{
+    getLowerBound();
+    return unscheduled[i];
+}
+
 double Data::getElapsedTimeUB()
 {
     return elapsedTimeUB.count();
@@ -473,4 +481,9 @@ double Data::getElapsedTimeUB()
 double Data::getElapsedTimeLB()
 {
     return elapsedTimeLB.count();
+}
+
+bool Data::isCumulative()
+{
+    return cumulative;
 }

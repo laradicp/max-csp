@@ -49,7 +49,6 @@ class Heuristic
 		void output(bool toFile = false);
 
 		int getSequenceSize();
-        int getUnscheduledSize();
         int getSequence(int t);
         int getUnscheduled(int i);
 		double getElapsedTime();

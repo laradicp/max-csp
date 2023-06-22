@@ -640,18 +640,6 @@ void Heuristic::output(bool toFile)
         output << "Time:\t" << elapsedTime.count() << endl;
 
         output.close();
-
-        output.open(data.getUnscheduledPath());
-
-        for(int i = 0; i < data.getNbClasses(); i++)
-        {
-            if(bestUnscheduled[i] > 0)
-            {
-                output << i << " " << bestUnscheduled[i] << endl;
-            }
-        }
-
-        output.close();
     }
     else
     {
@@ -662,16 +650,28 @@ void Heuristic::output(bool toFile)
         cout << "Primal:\t" << bestSequence.size() << endl;
         cout << "Time:\t" << elapsedTime.count() << endl;
     }
+
+    if(data.isCumulative())
+    {
+        ofstream unscheduledOutput;
+
+        unscheduledOutput.open(data.getUnscheduledPath());
+
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            if(bestUnscheduled[i] > 0)
+            {
+                unscheduledOutput << i << " " << bestUnscheduled[i] << endl;
+            }
+        }
+
+        unscheduledOutput.close();
+    }
 }
 
 int Heuristic::getSequenceSize()
 {
     return bestSequence.size();
-}
-
-int Heuristic::getUnscheduledSize()
-{
-    return bestUnscheduled.size();
 }
 
 int Heuristic::getSequence(int t)
