@@ -152,7 +152,7 @@ void CustomAlgorithms::output(bool toFile)
     {
         ofstream output;
 
-        output.open(model->data.getSequencePath());
+        output.open(model->data.getResultPath());
 
         for(unsigned int t = 0; t < sequence.size(); t++)
         {

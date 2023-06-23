@@ -92,8 +92,25 @@ void Data::readUnscheduled(string filePath)
         return;
     }
 
+    for(int i = filePath.size() - 1; i >= 0; i--)
+    {
+        if(filePath[i] == '/')
+        {
+            for(int j = 1; j < filePath.size(); j++)
+            {
+                if(filePath[i + j] == '_')
+                {
+                    filePath = filePath.substr(i + 1, j - 1);
+                    break;
+                }
+            }
+
+            break;
+        }
+    }
+
     ifstream unscheduled;
-    unscheduled.open("unscheduled/" + filePath.substr(10, 3) + "_" + to_string(id - 1) + ".out");
+    unscheduled.open("unscheduled/" + filePath + "_" + to_string(id - 1) + ".out");
 
     int idx, nbUnscheduledCars;
     unscheduled >> idx;
@@ -111,19 +128,34 @@ void Data::readUnscheduled(string filePath)
 
 void Data::definePaths(string filePath)
 {
-    // the file must be inside the folder instances
-    for(unsigned int i = 10; i < filePath.size(); i++)
+    resultPath = "results/";
+    unscheduledPath.clear();
+
+    for(int i = filePath.size() - 1; i >= 0; i--)
     {
-        if(filePath[i] == '.')
+        if(filePath[i] == '/')
         {
-            sequencePath = "sequences/" + filePath.substr(10, i - 10) + ".out";
-            unscheduledPath = "unscheduled/" + filePath.substr(10, i - 10) + ".out";
-            return;
+            for(int j = 1; j < filePath.size(); j++)
+            {
+                resultPath += filePath[i + j];
+
+                if(unscheduledPath.empty()&&(filePath[i + j] == '_'))
+                {
+                    unscheduledPath = "unscheduled/" + filePath.substr(i + 1, j) +
+                        to_string(id) + ".out";
+                }
+                else if(filePath[i + j] == '.')
+                {
+                    resultPath += "out";
+                    return;
+                }
+            }
+
+            break;
         }
     }
 
-    sequencePath = "sequences/" + filePath.substr(10, filePath.size() - 10) + ".out";
-    unscheduledPath = "unscheduled/" + filePath.substr(10, filePath.size() - 10) + ".out";
+    resultPath += ".out";
 }
 
 int Data::getId()
@@ -166,9 +198,9 @@ bool Data::getOption(int i, int j)
     return options[i][j];
 }
 
-string Data::getSequencePath()
+string Data::getResultPath()
 {
-    return sequencePath;
+    return resultPath;
 }
 
 string Data::getUnscheduledPath()

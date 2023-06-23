@@ -371,7 +371,7 @@ void Model::output(bool toFile)
     {
         ofstream output;
 
-        output.open(data.getSequencePath());
+        output.open(data.getResultPath());
 
         for(unsigned int t = 0; t < sequence.size(); t++)
         {

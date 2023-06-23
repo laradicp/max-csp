@@ -17,7 +17,7 @@ class Data
         int nbClasses;
         int nbOptions;
 
-        string sequencePath;
+        string resultPath;
         string unscheduledPath;
 
         vector<int> maxCarsPerWindow;
@@ -64,7 +64,7 @@ class Data
         int getNbCarsPerClass(int i);
         bool getOption(int i, int j);
 
-        string getSequencePath();
+        string getResultPath();
         string getUnscheduledPath();
 
         int getUpperBound();
