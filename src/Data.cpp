@@ -5,12 +5,14 @@
 
 Data::Data(string filePath, bool cumulative)
 {
+    this->cumulative = cumulative;
+
     readInstance(filePath);
+    id = -1;
 
-    retrieveId(filePath);
-
-    if(cumulative)
+    if(this->cumulative)
     {
+        retrieveId(filePath);
         readUnscheduled(filePath);
     }
 
@@ -90,8 +92,25 @@ void Data::readUnscheduled(string filePath)
         return;
     }
 
+    for(int i = filePath.size() - 1; i >= 0; i--)
+    {
+        if(filePath[i] == '/')
+        {
+            for(int j = 1; j < filePath.size(); j++)
+            {
+                if(filePath[i + j] == '_')
+                {
+                    filePath = filePath.substr(i + 1, j - 1);
+                    break;
+                }
+            }
+
+            break;
+        }
+    }
+
     ifstream unscheduled;
-    unscheduled.open("unscheduled/" + filePath.substr(10, 3) + "_" + to_string(id - 1) + ".out");
+    unscheduled.open("unscheduled/" + filePath + "_" + to_string(id - 1) + ".out");
 
     int idx, nbUnscheduledCars;
     unscheduled >> idx;
@@ -109,19 +128,34 @@ void Data::readUnscheduled(string filePath)
 
 void Data::definePaths(string filePath)
 {
-    // the file must be inside the folder instances
-    for(unsigned int i = 10; i < filePath.size(); i++)
+    resultPath = "results/";
+    unscheduledPath.clear();
+
+    for(int i = filePath.size() - 1; i >= 0; i--)
     {
-        if(filePath[i] == '.')
+        if(filePath[i] == '/')
         {
-            sequencePath = "sequences/" + filePath.substr(10, i - 10) + ".out";
-            unscheduledPath = "unscheduled/" + filePath.substr(10, i - 10) + ".out";
-            return;
+            for(int j = 1; j < filePath.size(); j++)
+            {
+                resultPath += filePath[i + j];
+
+                if(unscheduledPath.empty()&&(filePath[i + j] == '_'))
+                {
+                    unscheduledPath = "unscheduled/" + filePath.substr(i + 1, j) +
+                        to_string(id) + ".out";
+                }
+                else if(filePath[i + j] == '.')
+                {
+                    resultPath += "out";
+                    return;
+                }
+            }
+
+            break;
         }
     }
 
-    sequencePath = "sequences/" + filePath.substr(10, filePath.size() - 10) + ".out";
-    unscheduledPath = "unscheduled/" + filePath.substr(10, filePath.size() - 10) + ".out";
+    resultPath += ".out";
 }
 
 int Data::getId()
@@ -164,9 +198,9 @@ bool Data::getOption(int i, int j)
     return options[i][j];
 }
 
-string Data::getSequencePath()
+string Data::getResultPath()
 {
-    return sequencePath;
+    return resultPath;
 }
 
 string Data::getUnscheduledPath()
@@ -203,13 +237,12 @@ int Data::getUpperBound()
 
             surplus[j1] = nbCarsPerOption[j1] - ceil(getMaxCarsPerWindow(j1)*nbCars/
                         (double)(getWindowSize(j1)));
-            surplus[j1] = surplus[j1] > 0 ? surplus[j1] : 0;
+            surplus[j1] = max(surplus[j1], 0);
 
             for(int j2 = 0; j2 < j1; j2++)
             {
-                int min = surplus[j2] < intersect[j1][j2] ? surplus[j2] : intersect[j1][j2];
-                surplus[j1] -= min;
-                surplus[j1] = surplus[j1] > 0 ? surplus[j1] : 0;
+                surplus[j1] -= min(surplus[j2], intersect[j1][j2]);
+                surplus[j1] = max(surplus[j1], 0);
             }
         }
 
@@ -233,11 +266,10 @@ int Data::used(int r, int s, vector<double> &score, vector<int> &nbCarsPerScore,
     int nbFittingCars = ceil(lb[s - 1]/score[s]);
     if(r == s)
     {
-        return nbFittingCars < nbCarsPerScore[s] ? nbFittingCars : nbCarsPerScore[s] ;
+        return min(nbFittingCars, nbCarsPerScore[s]);
     }
 
-    int min = nbFittingCars < intersection[s][r] ? nbFittingCars : intersection[s][r];
-    return used(r, s - 1, score, nbCarsPerScore, classesPerScore, intersection) + min;
+    return used(r, s - 1, score, nbCarsPerScore, classesPerScore, intersection) + min(nbFittingCars, intersection[s][r]);
 }
 
 void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore,
@@ -278,8 +310,7 @@ void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore
     
     calculateLB(s - 1, score, nbCarsPerScore, classesPerScore, intersection);
 
-    int min = ceil(lb[s - 1]/score[s]) < nbCarsPerScore[s] ? ceil(lb[s - 1]/score[s]) : nbCarsPerScore[s],
-        violations = 0;
+    int violations = 0;
     int usedPos = 0;
     if(s == 1)
     {
@@ -290,85 +321,92 @@ void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore
     for(int r = 1; r < s; r++)
     {
         usedPos = used(r, s, score, nbCarsPerScore, classesPerScore, intersection);
-        violations += intersection[s][r] < usedPos ? intersection[s][r] : usedPos;
+        violations += min(intersection[s][r], usedPos);
     }
 
-    int max = min - violations > 0 ? min - violations : 0; // number of cars added to solution
+    int nbCarsToSchedule = max(min((int)ceil(lb[s - 1]/score[s]), nbCarsPerScore[s]) - violations, 0);
     
     // update primal solution
     int nbScheduled = 0;
     for(int t = 0; t < primalSol.size(); t++)
     {
-        if(nbScheduled == max)
+        if(nbScheduled == nbCarsToSchedule)
         {
             break;
         }
 
         for(int iIdx = 0; iIdx < classesPerScore[s].size(); iIdx++)
         {	
-            if(getNbCarsPerClass(classesPerScore[s][iIdx]))
+            if(unscheduled[classesPerScore[s][iIdx]] == 0)
             {
-                bool feasibleClass = true; // true if inserting class i = classesPerScore[s][iIdx] in position t is feasible
+                continue;
+            }
 
-                for(int j = 0; j < s; j++) // M can have cars with option up to j = s - 1
+            bool feasibleClass = true; // true if inserting class i = classesPerScore[s][iIdx] in position t is feasible
+
+            for(int j = 0; j < s; j++) // M can have cars with option up to j = s - 1
+            {
+                if(getOption(classesPerScore[s][iIdx], j))
                 {
-                    if(getOption(classesPerScore[s][iIdx], j))
+                    int begin = max(t - getWindowSize(j) + 1, 0);
+                    int end = min(t + getWindowSize(j) - 1, (int)primalSol.size());
+                    int sum = 1;
+
+                    for(int k = begin; k < t; k++)
                     {
-                        int begin = t - getWindowSize(j) + 1 > 0 ? t - getWindowSize(j) + 1 : 0;
-                        int end = t + getWindowSize(j) - 1 < primalSol.size() ? t + getWindowSize(j) - 1 : primalSol.size();
-                        int sum = 1;
-
-                        for(int k = begin; k < t; k++)
+                        if(getOption(primalSol[k], j))
                         {
-                            if(getOption(primalSol[k], j))
-                            {
-                                sum++;
-                            }
+                            sum++;
+                        }
+                    }
+
+                    if(sum > getMaxCarsPerWindow(j))
+                    {
+                        feasibleClass = false;
+                        break;
+                    }
+
+                    for(int k = t; k < end; k++)
+                    {
+                        if((k - getWindowSize(j) + 1 >= 0)&&
+                            (getOption(primalSol[k - getWindowSize(j) + 1], j)))
+                        {
+                            sum--;
                         }
 
-                        if(sum > getMaxCarsPerWindow(j))
+                        if(getOption(primalSol[k], j))
                         {
-                            feasibleClass = false;
-                            break;
-                        }
+                            sum++;
 
-                        for(int k = t; k < end; k++)
-                        {
-                            if((k - getWindowSize(j) + 1 >= 0)&&
-                                (getOption(primalSol[k - getWindowSize(j) + 1], j)))
+                            if(sum > getMaxCarsPerWindow(j))
                             {
-                                sum--;
-                            }
-
-                            if(getOption(primalSol[k], j))
-                            {
-                                sum++;
-
-                                if(sum > getMaxCarsPerWindow(j))
-                                {
-                                    feasibleClass = false;
-                                    break;
-                                }
+                                feasibleClass = false;
+                                break;
                             }
                         }
                     }
                 }
 
-                if(feasibleClass)
+                if(!feasibleClass)
                 {
-                    primalSol.insert(primalSol.begin() + t, classesPerScore[s][iIdx]);
-                    unscheduled[classesPerScore[s][iIdx]]--;
+                    break;
+                }
+            }
 
-                    if(++nbScheduled == max)
-                    {
-                        break;
-                    }
+            if(feasibleClass)
+            {
+                primalSol.insert(primalSol.begin() + t, classesPerScore[s][iIdx]);
+                unscheduled[classesPerScore[s][iIdx]]--;
+
+                if(++nbScheduled == nbCarsToSchedule)
+                {
+                    break;
                 }
             }
         }
     }
 
-    lb[s] = lb[s - 1] + max;
+    lb[s] = lb[s - 1] + nbScheduled;
 }
 
 int Data::getLowerBound()
@@ -440,11 +478,11 @@ int Data::getLowerBound()
         
         calculateLB(nbOptions, score, nbCarsPerScore, classesPerScore, intersection);
 
-        if(lb[nbOptions] == 0)
+        if(lb[nbOptions] == 0) // trivial solution
         {
             for(int i = 0; i < nbClasses; i++)
             {
-                if(getNbCarsPerClass(i) > 0)
+                if(unscheduled[i] > 0)
                 {
                     primalSol.push_back(i);
                     unscheduled[i]--;
@@ -465,6 +503,12 @@ int Data::getPrimalSol(int t)
     return primalSol[t];
 }
 
+int Data::getUnscheduled(int i)
+{
+    getLowerBound();
+    return unscheduled[i];
+}
+
 double Data::getElapsedTimeUB()
 {
     return elapsedTimeUB.count();
@@ -473,4 +517,9 @@ double Data::getElapsedTimeUB()
 double Data::getElapsedTimeLB()
 {
     return elapsedTimeLB.count();
+}
+
+bool Data::isCumulative()
+{
+    return cumulative;
 }

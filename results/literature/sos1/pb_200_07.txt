@@ -1,0 +1,245 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.99998651999999
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 1.0000.
+Tried aggregator 1 time.
+MIP Presolve eliminated 12 rows and 0 columns.
+MIP Presolve modified 53 coefficients.
+Reduced MIP has 1012 rows, 4800 columns, and 66590 nonzeros.
+Reduced MIP has 4800 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.07 sec. (93.53 ticks)
+Probing time = 0.02 sec. (14.66 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 12 coefficients.
+Reduced MIP has 1012 rows, 4800 columns, and 66944 nonzeros.
+Reduced MIP has 4800 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.06 sec. (79.19 ticks)
+Probing time = 0.02 sec. (14.71 ticks)
+Clique table members: 598.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.37 sec. (449.54 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            1.0000    20100.0000              --- 
+      0     0      200.0000   697        1.0000      200.0000     2498     --- 
+*     0+    0                          200.0000      200.0000             0.00%
+      0     0        cutoff            200.0000      200.0000     2498    0.00%
+Elapsed time = 3.42 sec. (3939.03 ticks, tree = 0.01 MB, solutions = 2)
+
+Root node processing (before b&c):
+  Real time             =    3.42 sec. (3939.21 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    3.42 sec. (3939.21 ticks)
+19
+1
+9
+17
+0
+11
+17
+1
+7
+10
+13
+17
+5
+7
+7
+15
+19
+7
+5
+7
+17
+15
+19
+19
+3
+17
+7
+13
+21
+17
+13
+9
+19
+12
+9
+1
+17
+11
+0
+17
+9
+1
+19
+9
+0
+7
+11
+13
+7
+7
+3
+19
+7
+6
+7
+17
+5
+7
+14
+17
+9
+13
+7
+6
+7
+7
+3
+19
+19
+15
+17
+7
+5
+19
+7
+12
+17
+11
+13
+17
+9
+12
+19
+9
+1
+7
+21
+13
+7
+7
+13
+4
+7
+7
+16
+19
+7
+12
+7
+11
+1
+7
+3
+8
+19
+16
+17
+17
+4
+19
+19
+3
+7
+18
+5
+19
+17
+3
+8
+13
+7
+7
+16
+18
+17
+5
+17
+17
+3
+19
+17
+0
+19
+17
+5
+7
+18
+5
+7
+19
+3
+8
+19
+3
+17
+19
+4
+7
+17
+16
+7
+7
+0
+11
+7
+1
+17
+9
+2
+7
+9
+13
+17
+9
+2
+17
+7
+1
+9
+18
+1
+9
+7
+1
+18
+9
+13
+7
+11
+12
+7
+9
+1
+19
+8
+3
+7
+19
+3
+20
+17
+3
+19
+17
+14
+7
+9
+1
+17
+22
+Primal:	200
+Dual:	200
+Status:	Optimal
+Time:	3.43

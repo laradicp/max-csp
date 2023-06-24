@@ -1,0 +1,145 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.99998626399997
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 1.0000.
+Tried aggregator 1 time.
+MIP Presolve eliminated 12 rows and 0 columns.
+MIP Presolve modified 80 coefficients.
+Reduced MIP has 511 rows, 2300 columns, and 25491 nonzeros.
+Reduced MIP has 2300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (43.76 ticks)
+Probing time = 0.01 sec. (8.80 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 11 coefficients.
+Reduced MIP has 511 rows, 2300 columns, and 25950 nonzeros.
+Reduced MIP has 2300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.03 sec. (28.67 ticks)
+Probing time = 0.01 sec. (8.87 ticks)
+Clique table members: 302.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.06 sec. (70.02 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            1.0000     5050.0000              --- 
+      0     0      100.0000   223        1.0000      100.0000      951     --- 
+*     0+    0                          100.0000      100.0000             0.00%
+      0     0        cutoff            100.0000      100.0000      951    0.00%
+Elapsed time = 0.32 sec. (316.74 ticks, tree = 0.01 MB, solutions = 2)
+
+Root node processing (before b&c):
+  Real time             =    0.32 sec. (316.83 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.32 sec. (316.83 ticks)
+6
+13
+2
+14
+0
+5
+7
+1
+0
+4
+8
+10
+4
+1
+9
+14
+10
+15
+0
+4
+10
+2
+4
+2
+1
+21
+9
+8
+4
+2
+2
+6
+0
+5
+4
+9
+10
+4
+1
+9
+14
+10
+15
+6
+0
+9
+6
+15
+0
+0
+17
+9
+0
+17
+20
+1
+12
+0
+5
+4
+16
+0
+7
+10
+0
+7
+11
+9
+4
+5
+9
+4
+18
+5
+4
+9
+1
+7
+1
+0
+7
+10
+0
+4
+10
+15
+14
+2
+3
+19
+8
+2
+12
+1
+9
+9
+6
+9
+11
+7
+Primal:	100
+Dual:	100
+Status:	Optimal
+Time:	0.3

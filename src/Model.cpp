@@ -13,23 +13,23 @@ Model::Model(string filePath, bool cumulative)
 
 void Model::initModel(bool sos1Branching, int customSearch)
 {
+    env.end();
+    env = IloEnv();
+
     model = IloModel(env);
     optionOverlap.resize(data.getNbOptions(), false);
 
     // avoid redundant constraints
     calculateOptionOverlap();
 
-    for(int i = 0; i < data.getNbClasses(); i++)
-    {
-        unscheduled.push_back(data.getNbCarsPerClass(i));
-    }
-
-    nbPositions = data.getNbCars();
-
     // the customSearch sets the number of positions to be evaluated as feasible or not for scheduling
     if(customSearch > 0)
     {
         nbPositions = customSearch;
+    }
+    else
+    {
+        nbPositions = data.getNbCars();
     }
 
     // let Xit assume value 1 if any car of class i is assigned to position t, and 0 otherwise
@@ -289,12 +289,41 @@ void Model::sos1()
     model.add(r);
 }
 
-bool Model::solve(double prevElapsedTime)
+bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
 {
     IloCplex maxCSP(model);
     maxCSP.setParam(IloCplex::Param::TimeLimit, 600.0 - prevElapsedTime);
     maxCSP.setParam(IloCplex::Param::Threads, 1);
     maxCSP.setParam(IloCplex::Param::MIP::Strategy::VariableSelect, 3);
+
+    if(initialSol != nullptr)
+    {
+        // set initial solution
+        IloNumVarArray startVar(env);
+        IloNumArray startVal(env);
+        for(int t = 0; t < initialSol->size(); t++)
+        {
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                startVar.add(x[i][t]);
+                startVal.add(initialSol->at(t) == i);
+            }
+        }
+
+        for(int t = initialSol->size(); t < nbPositions; t++)
+        {
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                startVar.add(x[i][t]);
+                startVal.add(0);
+            }
+        }
+        
+        maxCSP.addMIPStart(startVar, startVal);
+        startVal.end();
+        startVar.end();
+    }
+
     maxCSP.exportModel("model.lp");
 
     try
@@ -302,10 +331,10 @@ bool Model::solve(double prevElapsedTime)
         if(maxCSP.solve())
         {
             sequence.clear();
-            unscheduled.clear();
+            unscheduled.resize(data.getNbClasses());
             for(int i = 0; i < data.getNbClasses(); i++)
             {
-                unscheduled.push_back(data.getNbCarsPerClass(i));
+                unscheduled[i] = data.getNbCarsPerClass(i);
             }
 
             for(int t = 0; t < nbPositions; t++)
@@ -325,7 +354,7 @@ bool Model::solve(double prevElapsedTime)
             dual = maxCSP.getBestObjValue();
             status = maxCSP.getStatus();
             elapsedTime = maxCSP.getTime();
-            
+
             return true;
         }
     }
@@ -343,7 +372,7 @@ void Model::output(bool toFile)
     {
         ofstream output;
 
-        output.open(data.getSequencePath());
+        output.open(data.getResultPath());
 
         for(unsigned int t = 0; t < sequence.size(); t++)
         {
@@ -353,18 +382,6 @@ void Model::output(bool toFile)
         output << "Dual:\t" << dual << endl;
         output << "Status:\t" << status << endl;
         output << "Time:\t" << elapsedTime << endl;
-
-        output.close();
-
-        output.open(data.getUnscheduledPath());
-
-        for(int i = 0; i < data.getNbClasses(); i++)
-        {
-            if(unscheduled[i] > 0)
-            {
-                output << i << " " << unscheduled[i] << endl;
-            }
-        }
 
         output.close();
     }
@@ -379,16 +396,27 @@ void Model::output(bool toFile)
         cout << "Status:\t" << status << endl;
         cout << "Time:\t" << elapsedTime << endl;
     }
+
+    if(data.isCumulative())
+    {
+        ofstream unscheduledOutput;
+        unscheduledOutput.open(data.getUnscheduledPath());
+
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            if(unscheduled[i] > 0)
+            {
+                unscheduledOutput << i << " " << unscheduled[i] << endl;
+            }
+        }
+
+        unscheduledOutput.close();
+    }
 }
 
 int Model::getSequenceSize()
 {
     return sequence.size();
-}
-
-int Model::getUnscheduledSize()
-{
-    return unscheduled.size();
 }
 
 int Model::getSequence(int t)

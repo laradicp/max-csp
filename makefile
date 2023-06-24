@@ -1,4 +1,3 @@
-#detecta se o sistema é de 32 ou 64 bits
 N_BITS = $(shell getconf LONG_BIT)
 ifeq ($(N_BITS),32)
 	SYSTEM  = x86_sles10_4.1
@@ -8,7 +7,6 @@ else
 	SYSTEM = x86-64_linux
 	BITS_OPTION = -m64
 endif
-
 
 LIBFORMAT = static_pic
 
@@ -36,7 +34,7 @@ CCFLAGS = $(CCOPT) -I$(CPLEXINCDIR) -I$(CONCERTINCDIR) #-I$(GUROBIINC)
 
 #### flags do linker
 #CCLNFLAGS = -L$(CPLEXLIBDIR) -lilocplex -lcplex -L$(CONCERTLIBDIR) -lconcert -L$(GUROBILIB) -lgurobi_c++ -lgurobi55 -lgmpxx -lgmp -lm -lpthread -ldl        #Without lgmpxx  
-#CCLNFLAGS = -L$(CPLEXLIBDIR) -lilocplex -lcplex -L$(CONCERTLIBDIR) -lconcert -L$(GUROBILIB) -lgurobi_c++ -lgurobi55 -lm -lpthread -ldl       #Without lgmpxx        
+#CCLNFLAGS = -L$(CPLEXLIBDIR) -lilocplex -lcplex -L$(CONCERTLIBDIR) -lconcert -L$(GUROBILIB) -lgurobi_c++ -lgurobi55 -lm -lpthread -ldl       #Without lgmpxx
 CCLNFLAGS = -L$(CPLEXLIBDIR) -L$(CONCERTLIBDIR) -lilocplex -lcplex -lconcert -lm -lpthread -ldl
              # -lilocplex -lcplex -L$(CONCERTLIBDIR) -lconcert                                                        #Without Gurobi and lgmpxx
 #############################
@@ -57,7 +55,11 @@ max-csp.exe: $(OBJS)
 	$(CPPC) $(BITS_OPTION) $(OBJS) -o $@ $(CCLNFLAGS)
 ############################
 
-all: max-csp.exe
+all: mkdir_obj max-csp.exe
+
+# Create the "obj" directory
+mkdir_obj:
+	mkdir -p obj
 
 #inclui os arquivos de dependencias
 -include $(OBJS:.o=.d)
@@ -78,5 +80,4 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 clean:
 	@echo "\033[31mcleaning obj directory \033[0m"
 	@rm -f $(OBJDIR)/*.o $(OBJDIR)/*.d max-csp.exe
-rebuild: clean max-csp.exe
-
+rebuild: clean all

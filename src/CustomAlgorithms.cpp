@@ -4,10 +4,13 @@
 CustomAlgorithms::CustomAlgorithms(Model* model)
 {
 	this->model = model;
+	initialLB = 1;
 }
 
 int CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 {
+	initialLB = lb;
+
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
 
@@ -35,13 +38,14 @@ int CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 	return lb;
 }
 
-int CustomAlgorithms::descIterativeSearch(int ub, double prevElapsedTime)
+int CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTime)
 {
+	initialLB = lb;
+
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
-	int lb = 1;
 
-	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(ub >= lb))
+	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(ub > lb))
 	{
 		model->initModel(false, ub);
 
@@ -64,6 +68,8 @@ int CustomAlgorithms::descIterativeSearch(int ub, double prevElapsedTime)
 
 int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 {
+	initialLB = lb;
+
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
 
@@ -90,24 +96,65 @@ int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 
 void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::steady_clock> start)
 {
+	elapsedTime = chrono::steady_clock::now() - start;
+	status = model->getStatus();
+
 	sequence.clear();
-
-	for(int t = 0; t < model->getSequenceSize(); t++)
+	unscheduled.resize(model->data.getNbClasses());
+	
+	if(status == IloAlgorithm::Status::Infeasible || status == IloAlgorithm::Status::Unknown)
+	// descent iterative search with no feasible solution or no solution found
 	{
-		sequence.push_back(model->getSequence(t));
+		if(lb == ub)
+		{
+			status = IloAlgorithm::Status::Optimal;
+		}
+		else
+		{
+			status = IloAlgorithm::Status::Feasible;
+		}
+		
+		if(initialLB == model->data.getLowerBound()) // combinatorial lb
+		{
+			for(int t = 0; t < model->data.getLowerBound(); t++)
+			{
+				sequence.push_back(model->data.getPrimalSol(t));
+			}
+
+			for(int i = 0; i < model->data.getNbClasses(); i++)
+			{
+				unscheduled[i] = model->data.getUnscheduled(i);
+			}
+		}
+		else // trivial lb
+		{
+			for(int i = 0; i < model->data.getNbClasses(); i++)
+			{
+				unscheduled[i] = model->data.getNbCarsPerClass(i);
+
+				if((unscheduled[i] > 0)&&sequence.empty())
+				{
+					sequence.push_back(i);
+					unscheduled[i]--;
+				}
+			}
+		}
 	}
-
-	unscheduled.clear();
-
-	for(int i = 0; i < model->getUnscheduledSize(); i++)
+	else
 	{
-		unscheduled.push_back(model->getUnscheduled(i));
+		for(int t = 0; t < model->getSequenceSize(); t++)
+		{
+			sequence.push_back(model->getSequence(t));
+		}
+
+		for(int i = 0; i < model->data.getNbClasses(); i++)
+		{
+			unscheduled[i] = model->getUnscheduled(i);
+		}
 	}
 
 	primal = lb;
 	dual = ub;
-	status = model->getStatus();
-	elapsedTime = chrono::steady_clock::now() - start;
 }
 
 void CustomAlgorithms::output(bool toFile)
@@ -116,7 +163,7 @@ void CustomAlgorithms::output(bool toFile)
     {
         ofstream output;
 
-        output.open(model->data.getSequencePath());
+        output.open(model->data.getResultPath());
 
         for(unsigned int t = 0; t < sequence.size(); t++)
         {
@@ -126,18 +173,6 @@ void CustomAlgorithms::output(bool toFile)
         output << "Dual:\t" << dual << endl;
         output << "Status:\t" << status << endl;
         output << "Time:\t" << elapsedTime.count() << endl;
-
-        output.close();
-
-        output.open(model->data.getUnscheduledPath());
-
-        for(int i = 0; i < model->data.getNbClasses(); i++)
-        {
-            if(unscheduled[i] > 0)
-            {
-                output << i << " " << unscheduled[i] << endl;
-            }
-        }
 
         output.close();
     }
@@ -152,4 +187,21 @@ void CustomAlgorithms::output(bool toFile)
         cout << "Status:\t" << status << endl;
         cout << "Time:\t" << elapsedTime.count() << endl;
     }
+
+	if(model->data.isCumulative())
+	{
+		ofstream unscheduledOutput;
+
+		unscheduledOutput.open(model->data.getUnscheduledPath());
+
+        for(int i = 0; i < model->data.getNbClasses(); i++)
+        {
+            if(unscheduled[i] > 0)
+            {
+                unscheduledOutput << i << " " << unscheduled[i] << endl;
+            }
+        }
+
+        unscheduledOutput.close();
+	}
 }

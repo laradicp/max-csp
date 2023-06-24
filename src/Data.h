@@ -17,7 +17,7 @@ class Data
         int nbClasses;
         int nbOptions;
 
-        string sequencePath;
+        string resultPath;
         string unscheduledPath;
 
         vector<int> maxCarsPerWindow;
@@ -33,6 +33,8 @@ class Data
         vector<int> primalSol;
         vector<int> unscheduled;
         chrono::duration<double> elapsedTimeLB;
+
+        bool cumulative;
 
         void retrieveId(string filePath);
         void readInstance(string filePath);
@@ -62,7 +64,7 @@ class Data
         int getNbCarsPerClass(int i);
         bool getOption(int i, int j);
 
-        string getSequencePath();
+        string getResultPath();
         string getUnscheduledPath();
 
         int getUpperBound();
@@ -70,7 +72,10 @@ class Data
 
         int getLowerBound();
         int getPrimalSol(int t);
+        int getUnscheduled(int i);
         double getElapsedTimeLB();
+
+        bool isCumulative();
         
 };
 

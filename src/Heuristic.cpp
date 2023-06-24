@@ -33,11 +33,10 @@ bool Heuristic::isInfeasible()
             if(data.getOption(sequence[t], j))
             {
                 int sum = 1;
-                int end = t + data.getWindowSize(j) < sequence.size() ?
-					t + data.getWindowSize(j) : sequence.size();
+                int end = min(t + data.getWindowSize(j), (int)sequence.size());
                 for(int k = t + 1; k < end; k++)
                 {
-                    if(data.getOption(sequence[k], k))
+                    if(data.getOption(sequence[k], j))
                     {
                         sum++;
                     }
@@ -45,7 +44,7 @@ bool Heuristic::isInfeasible()
 
                 if(sum > data.getMaxCarsPerWindow(j))
 				{
-					return true;
+                    return true;
 				}
             }
         }
@@ -83,8 +82,7 @@ void Heuristic::construction()
                 {
                     if(data.getOption(i, j))
                     {
-                        int begin = sequence.size() - data.getWindowSize(j) + 1 > 0 ?
-                                    sequence.size() - data.getWindowSize(j) + 1 : 0;
+                        int begin = max((int)sequence.size() - data.getWindowSize(j) + 1, 0);
 						int sum = 1;
 
 						for(int k = begin; k < sequence.size(); k++)
@@ -128,10 +126,8 @@ bool Heuristic::feasibleInsertion(int t, int i)
     {
         if(data.getOption(i, j))
         {
-            int begin = t - data.getWindowSize(j) + 1 > 0 ?
-                t - data.getWindowSize(j) + 1 : 0;
-            int end = t + data.getWindowSize(j) - 1 < sequence.size() ?
-                t + data.getWindowSize(j) - 1 : sequence.size();
+            int begin = max(t - data.getWindowSize(j) + 1, 0);
+            int end = min(t + data.getWindowSize(j) - 1, (int)sequence.size());
             int sum = 1;
             
             for(int k = begin; k < t; k++)
@@ -211,9 +207,8 @@ bool Heuristic::feasibleRemoval(int t)
             continue;
         }
 
-        int begin = t - data.getWindowSize(j) + 1 > 0 ? t - data.getWindowSize(j) + 1 : 0; 
-        int end = t + data.getWindowSize(j) < sequence.size() ?
-            t + data.getWindowSize(j) : sequence.size();
+        int begin = max(t - data.getWindowSize(j) + 1, 0); 
+        int end = min(t + data.getWindowSize(j), (int)sequence.size());
         int sum = 0;
 
         for(int k = begin; k < t; k++)
@@ -317,10 +312,8 @@ bool Heuristic::feasibleSwap(int t1, int t2)
         {
             if(!data.getOption(sequence[t2], j))
             {
-                int begin = t2 - data.getWindowSize(j) + 1 > 0 ?
-                    t2 - data.getWindowSize(j) + 1 : 0;
-                int end = t2 + data.getWindowSize(j) < sequence.size() ?
-                    t2 + data.getWindowSize(j) : sequence.size();
+                int begin = max(t2 - data.getWindowSize(j) + 1, 0);
+                int end = min(t2 + data.getWindowSize(j), (int)sequence.size());
                 int sum = 1;
 
                 if(data.getMaxCarsPerWindow(j) == 1)
@@ -343,6 +336,11 @@ bool Heuristic::feasibleSwap(int t1, int t2)
 
                 for(int k = begin; k < t2; k++)
                 {
+                    if(k == t1)
+                    {
+                        continue;
+                    }
+
                     if(data.getOption(sequence[k], j))
                     {
                         sum++;
@@ -356,7 +354,7 @@ bool Heuristic::feasibleSwap(int t1, int t2)
 
                 for(int k = t2 + 1; k < end; k++)
                 {
-                    if((k - data.getWindowSize(j) >= 0)&&
+                    if((k - data.getWindowSize(j) >= begin)&&(k - data.getWindowSize(j) != t1)&&
                         (data.getOption(sequence[k - data.getWindowSize(j)], j)))
                     {
                         sum--;
@@ -374,63 +372,63 @@ bool Heuristic::feasibleSwap(int t1, int t2)
                 }
             }
         }
-        else
+        else if(data.getOption(sequence[t2], j))
         {
-            if(data.getOption(sequence[t2], j))
+            int begin = max(t1 - data.getWindowSize(j) + 1, 0);
+            int end = min(t1 + data.getWindowSize(j), (int)sequence.size());
+            int sum = 1;
+
+            if(data.getMaxCarsPerWindow(j) == 1)
             {
-                int begin = t1 - data.getWindowSize(j) + 1 > 0 ?
-                    t1 - data.getWindowSize(j) + 1 : 0;
-                int end = t1 + data.getWindowSize(j) < sequence.size() ?
-                    t1 + data.getWindowSize(j) : sequence.size();
-                int sum = 1;
-
-                if(data.getMaxCarsPerWindow(j) == 1)
+                if(t2 < end)
                 {
-                    if(t2 < end)
-                    {
-                        end = t2 - data.getWindowSize(j) + 1;
-                        // there is no job with option j closer to t2 than
-                        // data.getWindowSize(j) - 1 positions
-                    }
+                    end = t2 - data.getWindowSize(j) + 1;
+                    // there is no job with option j closer to t2 than
+                    // data.getWindowSize(j) - 1 positions
                 }
-                else if(data.getMaxCarsPerWindow(j) == data.getWindowSize(j) - 1)
+            }
+            else if(data.getMaxCarsPerWindow(j) == data.getWindowSize(j) - 1)
+            {
+                if(t2 < end)
                 {
-                    if(t2 < end)
-                    {
-                        end = t2;
-                        // position t2 will be filled by sequence[t1], which doesn't have option j
-                    }
+                    end = t2;
+                    // position t2 will be filled by sequence[t1], which doesn't have option j
+                }
+            }
+
+            for(int k = begin; k < t1; k++)
+            {
+                if(data.getOption(sequence[k], j))
+                {
+                    sum++;
+                }
+            }
+
+            if(sum > data.getMaxCarsPerWindow(j))
+            {
+                return false;
+            }
+
+            for(int k = t1 + 1; k < end; k++)
+            {
+                if((k - data.getWindowSize(j) >= begin)&&
+                    (data.getOption(sequence[k - data.getWindowSize(j)], j)))
+                {
+                    sum--;
                 }
 
-                for(int k = begin; k < t1; k++)
+                if(k == t2)
                 {
-                    if(data.getOption(sequence[k], j))
-                    {
-                        sum++;
-                    }
+                    continue;
                 }
 
-                if(sum > data.getMaxCarsPerWindow(j))
+                if(data.getOption(sequence[k], j))
                 {
-                    return false;
-                }
+                    sum++;
 
-                for(int k = t1 + 1; k < end; k++)
-                {
-                    if((k - data.getWindowSize(j) >= 0)&&
-                        (data.getOption(sequence[k - data.getWindowSize(j)], j)))
+                    if(sum > data.getMaxCarsPerWindow(j))
                     {
-                        sum--;
-                    }
-
-                    if(data.getOption(sequence[k], j))
-                    {
-                        sum++;
-
-                        if(sum > data.getMaxCarsPerWindow(j))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
             }
@@ -460,7 +458,7 @@ int Heuristic::perturbationType()
 void Heuristic::perturbation()
 {
     int p = perturbationType();
-    int n = sequence.size()/2 < data.getNbCars()/pDiv ? sequence.size()/2 : data.getNbCars()/pDiv;
+    int n = min((int)sequence.size()/2, data.getNbCars()/pDiv);
 
     if(n == 0)
     {
@@ -484,9 +482,8 @@ void Heuristic::perturbation()
         for(int j = 1; j < n; j++)
         {
             // update candidate list
-            int beginSearch = *iter - maxWindow + 1 > 1 ? *iter - maxWindow + 1 : 1;
-            int endSearch = *iter + maxWindow - 1 < sequence.size() - 1 ?
-                *iter + maxWindow - 1 : sequence.size() - 1;
+            int beginSearch = max(*iter - maxWindow + 1, 1);
+            int endSearch = min(*iter + maxWindow - 1, (int)sequence.size() - 1);
             removalCL(beginSearch, endSearch, feasiblePositions, feasiblePositionsSize);
 
             i = rand()%feasiblePositionsSize;
@@ -584,7 +581,7 @@ Heuristic::Heuristic(Data data, int iR, int iILS, int pType, int pDiv)
         vector<int> currentBestSequence = sequence;
         vector<int> currentBestUnscheduled = unscheduled;
         
-        if(currentBestSequence.size() == this->data.getNbCars())
+        if(currentBestSequence.size() == this->data.getUpperBound())
         {
             bestSequence = currentBestSequence;
             bestUnscheduled = currentBestUnscheduled;
@@ -600,7 +597,7 @@ Heuristic::Heuristic(Data data, int iR, int iILS, int pType, int pDiv)
                 currentBestSequence = sequence;
                 currentBestUnscheduled = unscheduled;
 
-                if(currentBestSequence.size() == this->data.getNbCars())
+                if(currentBestSequence.size() == this->data.getUpperBound())
                 {
                     break;
                 }
@@ -625,7 +622,7 @@ Heuristic::Heuristic(Data data, int iR, int iILS, int pType, int pDiv)
             bestSequence = currentBestSequence;
             bestUnscheduled = currentBestUnscheduled;
 
-            if(bestSequence.size() == this->data.getNbCars())
+            if(bestSequence.size() == this->data.getUpperBound())
             {
                 break;
             }
@@ -644,7 +641,7 @@ void Heuristic::output(bool toFile)
     {
         ofstream output;
 
-        output.open(data.getSequencePath());
+        output.open(data.getResultPath());
 
         for(unsigned int t = 0; t < bestSequence.size(); t++)
         {
@@ -652,18 +649,6 @@ void Heuristic::output(bool toFile)
         }
         output << "Primal:\t" << bestSequence.size() << endl;
         output << "Time:\t" << elapsedTime.count() << endl;
-
-        output.close();
-
-        output.open(data.getUnscheduledPath());
-
-        for(int i = 0; i < data.getNbClasses(); i++)
-        {
-            if(bestUnscheduled[i] > 0)
-            {
-                output << i << " " << bestUnscheduled[i] << endl;
-            }
-        }
 
         output.close();
     }
@@ -676,16 +661,28 @@ void Heuristic::output(bool toFile)
         cout << "Primal:\t" << bestSequence.size() << endl;
         cout << "Time:\t" << elapsedTime.count() << endl;
     }
+
+    if(data.isCumulative())
+    {
+        ofstream unscheduledOutput;
+
+        unscheduledOutput.open(data.getUnscheduledPath());
+
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            if(bestUnscheduled[i] > 0)
+            {
+                unscheduledOutput << i << " " << bestUnscheduled[i] << endl;
+            }
+        }
+
+        unscheduledOutput.close();
+    }
 }
 
 int Heuristic::getSequenceSize()
 {
     return bestSequence.size();
-}
-
-int Heuristic::getUnscheduledSize()
-{
-    return bestUnscheduled.size();
 }
 
 int Heuristic::getSequence(int t)
