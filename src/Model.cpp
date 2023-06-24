@@ -13,6 +13,9 @@ Model::Model(string filePath, bool cumulative)
 
 void Model::initModel(bool sos1Branching, int customSearch)
 {
+    env.end();
+    env = IloEnv();
+
     model = IloModel(env);
     optionOverlap.resize(data.getNbOptions(), false);
 
@@ -351,7 +354,7 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
             dual = maxCSP.getBestObjValue();
             status = maxCSP.getStatus();
             elapsedTime = maxCSP.getTime();
-            
+
             return true;
         }
     }
