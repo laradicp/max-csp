@@ -1,0 +1,174 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.99998556599996
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 1.0000.
+Tried aggregator 1 time.
+MIP Presolve eliminated 20 rows and 0 columns.
+MIP Presolve modified 4 coefficients.
+Reduced MIP has 704 rows, 2500 columns, and 43614 nonzeros.
+Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (18.51 ticks)
+Probing time = 0.00 sec. (4.20 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 704 rows, 2500 columns, and 43614 nonzeros.
+Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (20.67 ticks)
+Probing time = 0.00 sec. (4.20 ticks)
+Clique table members: 101.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.30 sec. (334.84 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            1.0000     2500.0000              --- 
+      0     0      100.0000   454        1.0000      100.0000     2044     --- 
+*     0+    0                           58.0000      100.0000            72.41%
+*     0+    0                           83.0000      100.0000            20.48%
+      0     0        cutoff             83.0000      100.0000     2044   20.48%
+Detecting symmetries...
+      0     2      100.0000   179       83.0000      100.0000     2044   20.48%
+Elapsed time = 4.60 sec. (5047.73 ticks, tree = 0.01 MB, solutions = 3)
+      1     3      100.0000   427       83.0000      100.0000     4853   20.48%
+      2     4      100.0000   376       83.0000      100.0000     6831   20.48%
+      3     5      100.0000   374       83.0000      100.0000     7457   20.48%
+      5     7      100.0000   346       83.0000      100.0000     7556   20.48%
+      7     9      100.0000   344       83.0000      100.0000     7561   20.48%
+      9    11      100.0000   366       83.0000      100.0000     9502   20.48%
+     11    13      100.0000   333       83.0000      100.0000     9532   20.48%
+     12    14      100.0000   368       83.0000      100.0000    11623   20.48%
+     14    16      100.0000   332       83.0000      100.0000    11687   20.48%
+     18    20      100.0000   335       83.0000      100.0000    14616   20.48%
+Elapsed time = 8.98 sec. (10331.10 ticks, tree = 0.10 MB, solutions = 3)
+     22    24      100.0000   235       83.0000      100.0000    18063   20.48%
+     27    29      100.0000   288       83.0000      100.0000    21539   20.48%
+     30    32      100.0000   207       83.0000      100.0000    22474   20.48%
+     36    38      100.0000   154       83.0000      100.0000    23835   20.48%
+     42    44      100.0000   144       83.0000      100.0000    25486   20.48%
+     49    51      100.0000   127       83.0000      100.0000    27579   20.48%
+     53    55      100.0000   161       83.0000      100.0000    30090   20.48%
+     57    59      100.0000   155       83.0000      100.0000    34759   20.48%
+     61    63      100.0000   155       83.0000      100.0000    38087   20.48%
+     65    67      100.0000   152       83.0000      100.0000    41858   20.48%
+Elapsed time = 18.92 sec. (21932.74 ticks, tree = 0.34 MB, solutions = 3)
+     70    72      100.0000    89       83.0000      100.0000    46123   20.48%
+     76    77      100.0000    90       83.0000      100.0000    49267   20.48%
+     83    83      100.0000   103       83.0000      100.0000    50912   20.48%
+     88    88      100.0000   130       83.0000      100.0000    55060   20.48%
+*    90     2      integral     0      100.0000      100.0000    56513    0.00%
+
+Root node processing (before b&c):
+  Real time             =    4.59 sec. (5030.93 ticks)
+Sequential b&c:
+  Real time             =   18.45 sec. (21558.97 ticks)
+                          ------------
+Total (root+branch&cut) =   23.04 sec. (26589.91 ticks)
+15
+13
+17
+7
+9
+16
+6
+1
+24
+12
+14
+4
+2
+24
+10
+5
+8
+13
+11
+5
+22
+0
+21
+10
+2
+24
+1
+4
+19
+9
+17
+3
+24
+23
+8
+14
+18
+11
+13
+7
+0
+21
+16
+4
+15
+3
+8
+10
+12
+1
+13
+7
+24
+23
+16
+3
+24
+21
+16
+6
+8
+6
+24
+14
+18
+7
+13
+7
+0
+23
+22
+6
+8
+1
+18
+11
+5
+24
+0
+23
+11
+9
+15
+3
+10
+24
+9
+1
+6
+19
+7
+20
+5
+19
+17
+8
+4
+2
+10
+19
+Primal:	100
+Dual:	100
+Status:	Optimal
+Time:	23.05
