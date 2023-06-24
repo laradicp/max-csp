@@ -100,6 +100,7 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 	status = model->getStatus();
 
 	sequence.clear();
+	unscheduled.resize(model->data.getNbClasses());
 	
 	if(status == IloAlgorithm::Status::Infeasible)
 	{

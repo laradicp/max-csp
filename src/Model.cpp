@@ -19,17 +19,14 @@ void Model::initModel(bool sos1Branching, int customSearch)
     // avoid redundant constraints
     calculateOptionOverlap();
 
-    for(int i = 0; i < data.getNbClasses(); i++)
-    {
-        unscheduled.push_back(data.getNbCarsPerClass(i));
-    }
-
-    nbPositions = data.getNbCars();
-
     // the customSearch sets the number of positions to be evaluated as feasible or not for scheduling
     if(customSearch > 0)
     {
         nbPositions = customSearch;
+    }
+    else
+    {
+        nbPositions = data.getNbCars();
     }
 
     // let Xit assume value 1 if any car of class i is assigned to position t, and 0 otherwise
@@ -331,6 +328,7 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
         if(maxCSP.solve())
         {
             sequence.clear();
+            unscheduled.resize(data.getNbClasses());
             for(int i = 0; i < data.getNbClasses(); i++)
             {
                 unscheduled[i] = data.getNbCarsPerClass(i);
