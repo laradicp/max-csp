@@ -102,9 +102,19 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 	sequence.clear();
 	unscheduled.resize(model->data.getNbClasses());
 	
-	if(status == IloAlgorithm::Status::Infeasible)
+	if(status == IloAlgorithm::Status::Infeasible || status == IloAlgorithm::Status::Unknown)
+	// descent iterative search with no feasible solution or no solution found
 	{
-		if(initialLB == model->data.getLowerBound())
+		if(lb == ub)
+		{
+			status = IloAlgorithm::Status::Optimal;
+		}
+		else
+		{
+			status = IloAlgorithm::Status::Feasible;
+		}
+		
+		if(initialLB == model->data.getLowerBound()) // combinatorial lb
 		{
 			for(int t = 0; t < model->data.getLowerBound(); t++)
 			{
@@ -116,7 +126,7 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 				unscheduled[i] = model->data.getUnscheduled(i);
 			}
 		}
-		else
+		else // trivial lb
 		{
 			for(int i = 0; i < model->data.getNbClasses(); i++)
 			{
