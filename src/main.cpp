@@ -36,13 +36,13 @@ int main(int argc, char** argv)
             }
 
             heuristicFile >> lb;
+            heuristicFile >> elapsedTime;
             for(int t = 0; t < lb; t++)
             {
                 int car;
                 heuristicFile >> car;
                 primalSolution.push_back(car);
             }
-            heuristicFile >> elapsedTime;
 
             heuristicFile.close();
         }
