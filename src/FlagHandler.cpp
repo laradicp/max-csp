@@ -19,6 +19,7 @@ FlagHandler::FlagHandler(int argc, char** argv)
     {
         heuristicPath = argv[begin];
         begin = 3;
+        heuristic = true;
     }
 
 	for(int i = begin; i < argc; i++)

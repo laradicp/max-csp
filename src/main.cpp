@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 
     if(flags.getHeuristic())
     {
-        if(strcmp(flags.getHeuristicPath(), ""))
+        if(flags.getHeuristicPath() != "")
         {
             ifstream heuristicFile(flags.getHeuristicPath());
 
@@ -82,7 +82,7 @@ int main(int argc, char** argv)
     }
     else if(flags.getDescIterativeSearch())
     {
-        customAlgorithms.descIterativeSearch(ub, elapsedTime);
+        customAlgorithms.descIterativeSearch(ub, lb, elapsedTime);
         customAlgorithms.output();
     }
     else if(flags.getAscIterativeSearch())

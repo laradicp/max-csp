@@ -1,6 +1,8 @@
 #ifndef FLAG_HANDLER_H
 #define FLAG_HANDLER_H
 
+#include <string>
+
 using namespace std;
 
 class FlagHandler
