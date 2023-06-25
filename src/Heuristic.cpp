@@ -642,24 +642,24 @@ void Heuristic::output(bool toFile)
         ofstream output;
 
         output.open(data.getResultPath());
-
+        
+        output << bestSequence.size() << endl;
+        output << elapsedTime.count() << endl;
         for(unsigned int t = 0; t < bestSequence.size(); t++)
         {
             output << bestSequence[t] << endl;
         }
-        output << "Primal:\t" << bestSequence.size() << endl;
-        output << "Time:\t" << elapsedTime.count() << endl;
 
         output.close();
     }
     else
     {
+        cout << bestSequence.size() << endl;
+        cout << elapsedTime.count() << endl;
         for(unsigned int t = 0; t < bestSequence.size(); t++)
         {
             cout << bestSequence[t] << endl;
         }
-        cout << "Primal:\t" << bestSequence.size() << endl;
-        cout << "Time:\t" << elapsedTime.count() << endl;
     }
 
     if(data.isCumulative())

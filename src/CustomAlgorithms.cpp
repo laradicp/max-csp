@@ -102,7 +102,7 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 	sequence.clear();
 	unscheduled.resize(model->data.getNbClasses());
 	
-	if(status == IloAlgorithm::Status::Infeasible || status == IloAlgorithm::Status::Unknown)
+	if((status != IloAlgorithm::Status::Optimal)&&(status != IloAlgorithm::Status::Feasible))
 	// descent iterative search with no feasible solution or no solution found
 	{
 		if(lb == ub)
@@ -165,27 +165,29 @@ void CustomAlgorithms::output(bool toFile)
 
         output.open(model->data.getResultPath());
 
-        for(unsigned int t = 0; t < sequence.size(); t++)
-        {
-            output << sequence[t] << endl;
-        }
         output << "Primal:\t" << primal << endl;
         output << "Dual:\t" << dual << endl;
         output << "Status:\t" << status << endl;
         output << "Time:\t" << elapsedTime.count() << endl;
+		output << "Sequence:" << endl;
+        for(unsigned int t = 0; t < sequence.size(); t++)
+        {
+            output << "\t" << sequence[t] << endl;
+        }
 
         output.close();
     }
     else
     {
-        for(unsigned int t = 0; t < sequence.size(); t++)
-        {
-            cout << sequence[t] << endl;
-        }
-        cout << "Primal:\t" << primal << endl;
+		cout << "Primal:\t" << primal << endl;
         cout << "Dual:\t" << dual << endl;
         cout << "Status:\t" << status << endl;
         cout << "Time:\t" << elapsedTime.count() << endl;
+		cout << "Sequence:" << endl;
+        for(unsigned int t = 0; t < sequence.size(); t++)
+        {
+            cout << "\t" << sequence[t] << endl;
+        }
     }
 
 	if(model->data.isCumulative())

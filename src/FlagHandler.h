@@ -1,6 +1,8 @@
 #ifndef FLAG_HANDLER_H
 #define FLAG_HANDLER_H
 
+#include <string>
+
 using namespace std;
 
 class FlagHandler
@@ -15,6 +17,8 @@ class FlagHandler
 		bool noExact;
 		bool trivialUB;
 		bool trivialLB;
+
+		string heuristicPath;
 	
 	public:
 		FlagHandler(int argc, char** argv);
@@ -30,6 +34,8 @@ class FlagHandler
 		bool getNoExact();
 		bool getTrivialUB();
 		bool getTrivialLB();
+
+		string getHeuristicPath();
 		
 };
 

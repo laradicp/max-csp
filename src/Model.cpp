@@ -374,27 +374,29 @@ void Model::output(bool toFile)
 
         output.open(data.getResultPath());
 
-        for(unsigned int t = 0; t < sequence.size(); t++)
-        {
-            output << sequence[t] << endl;
-        }
         output << "Primal:\t" << primal << endl;
         output << "Dual:\t" << dual << endl;
         output << "Status:\t" << status << endl;
         output << "Time:\t" << elapsedTime << endl;
+        output << "Sequence:" << endl;
+        for(unsigned int t = 0; t < sequence.size(); t++)
+        {
+            output << "\t" << sequence[t] << endl;
+        }
 
         output.close();
     }
     else
     {
-        for(unsigned int t = 0; t < sequence.size(); t++)
-        {
-            cout << sequence[t] << endl;
-        }
         cout << "Primal:\t" << primal << endl;
         cout << "Dual:\t" << dual << endl;
         cout << "Status:\t" << status << endl;
         cout << "Time:\t" << elapsedTime << endl;
+        cout << "Sequence:" << endl;
+        for(unsigned int t = 0; t < sequence.size(); t++)
+        {
+            cout << "\t" << sequence[t] << endl;
+        }
     }
 
     if(data.isCumulative())
