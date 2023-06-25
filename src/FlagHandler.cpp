@@ -14,7 +14,14 @@ FlagHandler::FlagHandler(int argc, char** argv)
     trivialUB = false;
     trivialLB = false;
     
-	for(int i = 2; i < argc; i++)
+    int begin = 2;
+    if(argv[begin][0] != '-') // the third argument is the path for the heuristic solution
+    {
+        heuristicPath = argv[begin];
+        begin = 3;
+    }
+
+	for(int i = begin; i < argc; i++)
     {
         if(strcmp(argv[i], "-sos1") == 0)
         {
@@ -177,4 +184,9 @@ bool FlagHandler::getTrivialUB()
 bool FlagHandler::getTrivialLB()
 {
     return trivialLB;
+}
+
+string FlagHandler::getHeuristicPath()
+{
+    return heuristicPath;
 }

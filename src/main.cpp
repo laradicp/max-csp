@@ -25,15 +25,39 @@ int main(int argc, char** argv)
 
     if(flags.getHeuristic())
     {
-        Heuristic heuristic(model.data);
-        heuristic.output();
-        
-        lb = heuristic.getSequenceSize();
-        for(int t = 0; t < lb; t++)
+        if(strcmp(flags.getHeuristicPath(), ""))
         {
-            primalSolution.push_back(heuristic.getSequence(t));
+            ifstream heuristicFile(flags.getHeuristicPath());
+
+            if(!heuristicFile.is_open())
+            {
+                cout << "Error opening heuristic file" << endl;
+                exit(1);
+            }
+
+            heuristicFile >> lb;
+            for(int t = 0; t < lb; t++)
+            {
+                int car;
+                heuristicFile >> car;
+                primalSolution.push_back(car);
+            }
+            heuristicFile >> elapsedTime;
+
+            heuristicFile.close();
         }
-        elapsedTime = heuristic.getElapsedTime();
+        else
+        {
+            Heuristic heuristic(model.data);
+            heuristic.output();
+            
+            lb = heuristic.getSequenceSize();
+            for(int t = 0; t < lb; t++)
+            {
+                primalSolution.push_back(heuristic.getSequence(t));
+            }
+            elapsedTime = heuristic.getElapsedTime();
+        }
     }
     else if(!flags.getTrivialLB())
     {

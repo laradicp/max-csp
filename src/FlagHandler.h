@@ -15,6 +15,8 @@ class FlagHandler
 		bool noExact;
 		bool trivialUB;
 		bool trivialLB;
+
+		string heuristicPath;
 	
 	public:
 		FlagHandler(int argc, char** argv);
@@ -30,6 +32,8 @@ class FlagHandler
 		bool getNoExact();
 		bool getTrivialUB();
 		bool getTrivialLB();
+
+		string getHeuristicPath();
 		
 };
 
