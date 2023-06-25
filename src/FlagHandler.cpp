@@ -15,7 +15,7 @@ FlagHandler::FlagHandler(int argc, char** argv)
     trivialLB = false;
     
     int begin = 2;
-    if(argv[begin][0] != '-') // the third argument is the path for the heuristic solution
+    if((begin < argc)&&(argv[begin][0] != '-')) // the third argument is the path for the heuristic solution
     {
         heuristicPath = argv[begin];
         begin = 3;
