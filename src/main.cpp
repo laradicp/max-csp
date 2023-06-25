@@ -1,7 +1,6 @@
 #include "Model.h"
 #include "Heuristic.h"
 #include <vector>
-#include <unistd.h>
 
 using namespace std;
 
@@ -21,8 +20,6 @@ int main(int argc, char** argv)
     Model model(argv[1]);
     Heuristic heuristic(model.data, iR, ilsMult*model.data.getNbCars(), pType, pDiv);
     heuristic.output();
-
-    sleep(1);
 
     return 0;
 }
