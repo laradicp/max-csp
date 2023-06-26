@@ -635,49 +635,25 @@ Heuristic::Heuristic(Data data, int iR, int iILS, int pType, int pDiv)
     }
 }
 
-void Heuristic::output(bool toFile)
+void Heuristic::output(string filePath)
 {
-    if(toFile)
-    {
-        ofstream output;
+    ifstream inputFile(filePath);
 
-        output.open(data.getResultPath());
-        
-        output << bestSequence.size() << endl;
-        output << elapsedTime.count() << endl;
-        for(unsigned int t = 0; t < bestSequence.size(); t++)
-        {
-            output << bestSequence[t] << endl;
-        }
-
-        output.close();
-    }
-    else
+    int sumPrimal = 0;
+    double sumTime = 0;
+    int n = 0;
+    if(inputFile)
     {
-        cout << bestSequence.size() << endl;
-        cout << elapsedTime.count() << endl;
-        for(unsigned int t = 0; t < bestSequence.size(); t++)
-        {
-            cout << bestSequence[t] << endl;
-        }
+        inputFile >> sumPrimal;
+        inputFile >> sumTime;
+        inputFile >> n;
     }
 
-    if(data.isCumulative())
-    {
-        ofstream unscheduledOutput;
-
-        unscheduledOutput.open(data.getUnscheduledPath());
-
-        for(int i = 0; i < data.getNbClasses(); i++)
-        {
-            if(bestUnscheduled[i] > 0)
-            {
-                unscheduledOutput << i << " " << bestUnscheduled[i] << endl;
-            }
-        }
-
-        unscheduledOutput.close();
-    }
+    ofstream outputFile(filePath);
+    
+    outputFile << sumPrimal + bestSequence.size() << endl;
+    outputFile << sumTime + elapsedTime.count() << endl;
+    outputFile << n + 1 << endl;
 }
 
 int Heuristic::getSequenceSize()

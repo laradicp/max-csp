@@ -49,7 +49,7 @@ class Heuristic
 
 		Heuristic(Data data, int iR, int iILS, int pType, int pDiv);
 
-		void output(bool toFile = false);
+		void output(string filePath);
 
 		int getSequenceSize();
         int getSequence(int t);
