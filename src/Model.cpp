@@ -435,3 +435,169 @@ IloAlgorithm::Status Model::getStatus()
 {
     return status;
 }
+
+void Model::minViolationsModel(bool penalize)
+{
+    env.end();
+    env = IloEnv();
+
+    model = IloModel(env);
+    
+    // let Xit assume value 1 if any car of class i is assigned to position t, and 0 otherwise
+    x = IloArray<IloBoolVarArray>(env, data.getNbClasses());
+    for(int i = 0; i < data.getNbClasses(); i++)
+    {
+        IloBoolVarArray v(env, data.getNbCars());
+        x[i] = v;
+    }
+
+    // add variable x to the model
+    for(int i = 0; i < data.getNbClasses(); i++)
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            char name[100];
+            sprintf(name, "X(%d,%d)", i, t);
+            x[i][t].setName(name);
+            model.add(x[i][t]);
+        }
+    }
+
+    // let Zjt be the positive difference between the maximum number of times that option j may
+    // appear and the number of times that it does appear in the segment ending at position t
+    z = IloArray<IloNumVarArray>(env, data.getNbCars());
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        IloNumVarArray v(env, data.getNbCars());
+        z[j] = v;
+    }
+
+    // add variable z to the model
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            char name[100];
+            sprintf(name, "Z(%d,%d)", j, t);
+            z[j][t].setName(name);
+            model.add(z[j][t]);
+        }
+    }
+
+    // let Yjt be the positive difference between the number of times that option j appears and the
+    // maximum number of times that it may appear in the segment ending at position t
+    y = IloArray<IloNumVarArray>(env, data.getNbOptions());
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        IloNumVarArray v(env, data.getNbCars());
+        y[j] = v;
+    }
+
+    // add variable y to the model
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            char name[100];
+            sprintf(name, "Y(%d,%d)", j, t);
+            y[j][t].setName(name);
+            model.add(y[j][t]);
+        }
+    }
+
+    // add objective function (OF)
+    IloExpr sumYZ(env);
+    for(int j = 0; j < data.getNbOptions(); j++) 
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            sumYZ += y[j][t] + z[j][t]; // TODO: add penalties
+        }
+    }
+    model.add(IloMinimize(env, sumYZ));
+
+    // each position is occupied by exactly one car
+    for(int t = 0; t < data.getNbCars(); t++)  
+    {
+        IloExpr sumX(env);
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            sumX += x[i][t];
+        }
+
+        IloRange r = (sumX == 1);
+        char name[100];
+        sprintf(name, "PositionOccupied(%d)", t);
+        r.setName(name);
+        model.add(r);
+    }
+
+    // respect class demand
+    for(int i = 0; i < data.getNbClasses(); i++) 
+    {
+        IloExpr sumX(env);
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            sumX += x[i][t];
+        }
+
+        IloRange r = (sumX == data.getNbCarsPerClass(i));
+        char name[100];
+        sprintf(name, "CarsProduced(%d)", i);
+        r.setName(name);
+        model.add(r);
+    }
+
+    // link x to y and z
+    for(int t = 0; t < data.getNbCars(); t++) 
+    {
+        for(int j = 0; j < data.getNbOptions(); j++)
+        {
+            IloExpr sumX(env);
+
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                if(data.getOption(i, j))
+                {
+                    for(int k = 0; k < data.getWindowSize(j); k++)
+                    {
+                        if(t - k >= 0)
+                        {
+                            sumX += x[i][t - k];
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            int maxCarsInSegment = min(data.getMaxCarsPerWindow(j), t + 1);
+                // t + 1 because it is the number of positions until t
+            IloRange r = (z[j][t] - y[j][t] + sumX == maxCarsInSegment);
+            char name[100];
+            sprintf(name, "DefineYZ(%d,%d)", t, j);
+            r.setName(name);
+            model.add(r);
+        }
+    }
+
+    // y and z are positive
+    for(int t = 0; t < data.getNbCars(); t++) 
+    {
+        for(int j = 0; j < data.getNbOptions(); j++)
+        {
+            IloRange r = (y[j][t] >= 0);
+            char name[100];
+            sprintf(name, "YPositive(%d,%d)", t, j);
+            r.setName(name);
+            model.add(r);
+
+            r = (z[j][t] >= 0);
+            sprintf(name, "ZPositive(%d,%d)", t, j);
+            r.setName(name);
+            model.add(r);
+        }
+    }
+}

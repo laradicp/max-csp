@@ -17,6 +17,8 @@ class Model
         IloEnv env;
         IloModel model;
         IloArray<IloBoolVarArray> x;
+        IloArray<IloNumVarArray> y;
+        IloArray<IloNumVarArray> z;
         
         vector<int> carsPerOption;
         vector<vector<int>> optionsIntersections;
@@ -53,6 +55,8 @@ class Model
         int getSequence(int t);
         int getUnscheduled(int i);
         IloAlgorithm::Status getStatus();
+
+        void minViolationsModel(bool penalize = false);
 
 };
 
