@@ -54,7 +54,7 @@ int main(int argc, char** argv)
         {
             ifstream inputFile(perturbationTypes[i] + "/" + perturbationDivisors[j] + "/gap-time.txt");
 
-            int sumGap = 0;
+            double sumGap = 0;
             double sumTime = 0;
             int n = 0;
             if(inputFile)
