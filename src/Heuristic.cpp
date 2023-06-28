@@ -448,7 +448,7 @@ void Heuristic::swap(int t1, int t2)
 void Heuristic::perturbation()
 {
     int p = rand()%2;
-    int n = min((int)sequence.size()/2, data.getNbCars()/15);
+    int n = min((int)sequence.size()/2, data.getNbCars()/10);
 
     if(n == 0)
     {
