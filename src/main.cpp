@@ -15,8 +15,16 @@ int main(int argc, char** argv)
     }
 
     FlagHandler flags(argc, argv);
-    Model model(argv[1], flags.getCumulative());
+    Model model(argv[1]);
     CustomAlgorithms customAlgorithms(&model);
+
+    if(flags.getMinViolations())
+    {
+        model.minViolationsModel();
+        model.solve();
+        model.output();
+        return 0;
+    }
 
     int lb = 1;
     int ub = model.data.getNbCars();

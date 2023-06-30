@@ -13,6 +13,7 @@ FlagHandler::FlagHandler(int argc, char** argv)
     noExact = false;
     trivialUB = false;
     trivialLB = false;
+    minViolations = false;
     
     int begin = 2;
     if((begin < argc)&&(argv[begin][0] != '-')) // the third argument is the path for the heuristic solution
@@ -24,7 +25,12 @@ FlagHandler::FlagHandler(int argc, char** argv)
 
 	for(int i = begin; i < argc; i++)
     {
-        if(strcmp(argv[i], "-sos1") == 0)
+        if(strcmp(argv[i], "-minviolations") == 0)
+        {
+            minViolations = true;
+            break;
+        }
+        else if(strcmp(argv[i], "-sos1") == 0)
         {
             sos1Branching = true;
         }
@@ -190,4 +196,9 @@ bool FlagHandler::getTrivialLB()
 string FlagHandler::getHeuristicPath()
 {
     return heuristicPath;
+}
+
+bool FlagHandler::getMinViolations()
+{
+    return minViolations;
 }
