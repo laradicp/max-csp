@@ -10,6 +10,7 @@ Model::Model(string filePath, bool cumulative)
 {
     data = Data(filePath, cumulative);
     minViolations = false;
+    penalize = false;
     firstViolationPos = data.getNbCars();
 }
 
@@ -400,9 +401,15 @@ void Model::output(bool toFile)
 
         if(minViolations)
         {
-            output << "Primal number of violations:\t" << primal << endl;
-            output << "Dual number of violations:\t" << dual << endl;
-            output << "No violation sequence bound:\t" << firstViolationPos << endl;
+            if(penalize)
+            {
+                output << "Violation-free sequence bound:\t" << firstViolationPos << endl;
+            }
+            else
+            {
+                output << "Primal number of violations:\t" << primal << endl;
+                output << "Dual number of violations:\t" << dual << endl;
+            }
         }
         else
         {
@@ -418,9 +425,9 @@ void Model::output(bool toFile)
             output << "\t" << sequence[t] << endl;
         }
 
-        if(minViolations)
+        if(minViolations&&penalize)
         {
-            output << "No violation sequence:" << endl;
+            output << "Violation-free sequence:" << endl;
             for(int t = 0; t < firstViolationPos; t++)
             {
                 output << "\t" << sequence[t] << endl;
@@ -433,9 +440,15 @@ void Model::output(bool toFile)
     {
         if(minViolations)
         {
-            cout << "Primal number of violations: \t" << primal << endl;
-            cout << "Dual number of violations: \t" << dual << endl;
-            cout << "No violation sequence bound:\t" << firstViolationPos << endl;
+            if(penalize)
+            {
+                cout << "Violation-free sequence bound:\t" << firstViolationPos << endl;
+            }
+            else
+            {
+                cout << "Primal number of violations:\t" << primal << endl;
+                cout << "Dual number of violations:\t" << dual << endl;
+            }
         }
         else
         {
@@ -451,9 +464,9 @@ void Model::output(bool toFile)
             cout << "\t" << sequence[t] << endl;
         }
 
-        if(minViolations)
+        if(minViolations&&penalize)
         {
-            cout << "No violation sequence:" << endl;
+            cout << "Violation-free sequence:" << endl;
             for(int t = 0; t < firstViolationPos; t++)
             {
                 cout << "\t" << sequence[t] << endl;
@@ -504,10 +517,29 @@ void Model::minViolationsModel(bool penalize)
     env = IloEnv();
 
     minViolations = true;
+    this->penalize = penalize;
     nbPositions = data.getNbCars();
     firstViolationPos = data.getNbCars();
 
     model = IloModel(env);
+    vector<double> alpha(data.getNbCars(), 1.0/1000); // weights for penalization
+    // divide by 1000 to avoid surpassing the maximum value of the type
+
+    if(this->penalize)
+    {
+        int sumOptionsInfeasPos = 0;
+        for(int j = 0; j < data.getNbOptions(); j++)
+        {
+            sumOptionsInfeasPos += data.getWindowSize(j) - data.getMaxCarsPerWindow(j);
+        }
+
+        double sumAlphas = 1.0/1000;
+        for(int t = data.getNbCars() - 2; t >=0; t--)
+        {
+            alpha[t] = 1.0/1000 + sumAlphas*sumOptionsInfeasPos/1000;
+            sumAlphas += alpha[t];
+        }
+    }
     
     // let Xit assume value 1 if any car of class i is assigned to position t, and 0 otherwise
     x = IloArray<IloBoolVarArray>(env, data.getNbClasses());
@@ -577,7 +609,7 @@ void Model::minViolationsModel(bool penalize)
     {
         for(int t = 0; t < data.getNbCars(); t++)
         {
-            sumY += y[j][t]; // TODO: add penalties
+            sumY += alpha[t]*y[j][t];
         }
     }
     model.add(IloMinimize(env, sumY));

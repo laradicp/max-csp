@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 
     if(flags.getMinViolations())
     {
-        model.minViolationsModel();
+        model.minViolationsModel(flags.getPenalize());
         model.solve();
         model.output();
         return 0;

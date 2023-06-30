@@ -18,6 +18,7 @@ class FlagHandler
 		bool trivialUB;
 		bool trivialLB;
 		bool minViolations;
+		bool penalize;
 
 		string heuristicPath;
 	
@@ -36,6 +37,7 @@ class FlagHandler
 		bool getTrivialUB();
 		bool getTrivialLB();
 		bool getMinViolations();
+		bool getPenalize();
 
 		string getHeuristicPath();
 		

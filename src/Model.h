@@ -33,6 +33,7 @@ class Model
         IloNum elapsedTime;
 
         bool minViolations;
+        bool penalize;
         int firstViolationPos;
 
         void definePaths(string filePath);
