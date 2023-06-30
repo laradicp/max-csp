@@ -404,6 +404,7 @@ void Model::output(bool toFile)
             if(penalize)
             {
                 output << "Violation-free sequence bound:\t" << firstViolationPos << endl;
+                output << "Unscheduled:\t" << data.getNbCars() - firstViolationPos << endl;
             }
             else
             {
@@ -443,6 +444,7 @@ void Model::output(bool toFile)
             if(penalize)
             {
                 cout << "Violation-free sequence bound:\t" << firstViolationPos << endl;
+                cout << "Unscheduled:\t" << data.getNbCars() - firstViolationPos << endl;
             }
             else
             {
