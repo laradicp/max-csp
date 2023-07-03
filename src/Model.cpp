@@ -373,10 +373,16 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
                         break;
                     }
                 }
+
+                primal = (int)1000*maxCSP.getObjValue();
+                dual = (int)1000*maxCSP.getBestObjValue();
+            }
+            else
+            {
+                primal = maxCSP.getObjValue();
+                dual = maxCSP.getBestObjValue();
             }
 
-            primal = maxCSP.getObjValue();
-            dual = maxCSP.getBestObjValue();
             status = maxCSP.getStatus();
             elapsedTime = maxCSP.getTime();
 
