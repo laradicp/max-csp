@@ -1,0 +1,353 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.99427442700005
+Tried aggregator 1 time.
+MIP Presolve eliminated 12 rows and 0 columns.
+Reduced MIP has 1511 rows, 6900 columns, and 67816 nonzeros.
+Reduced MIP has 6900 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (33.09 ticks)
+Probing time = 0.01 sec. (6.47 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 1511 rows, 6900 columns, and 67816 nonzeros.
+Reduced MIP has 6900 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.05 sec. (41.15 ticks)
+Probing time = 0.01 sec. (6.47 ticks)
+Clique table members: 897.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.52 sec. (551.26 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000   994                      0.0000     2694         
+      0     2        0.0000    34                      0.0000     2694         
+Elapsed time = 8.22 sec. (8549.73 ticks, tree = 0.01 MB, solutions = 0)
+      1     3        0.0000    12                      0.0000     3540         
+      2     4        0.0000    90                      0.0000     5020         
+      3     5        0.0000    63                      0.0000     6335         
+      4     6        0.0000   145                      0.0000     7475         
+      5     7        0.0000    63                      0.0000     7484         
+      6     8        0.0000   557                      0.0000    10336         
+      7     9        0.0000    45                      0.0000    11402         
+      8    10        0.0000    42                      0.0000    12759         
+      9    11        0.0000    40                      0.0000    12766         
+     10    12        0.0000   105                      0.0000    18671         
+Elapsed time = 13.62 sec. (14231.26 ticks, tree = 0.06 MB, solutions = 0)
+     13    15        0.0000    58                      0.0000    24813         
+*    15     1      integral     0        0.0000        0.0000    25464    0.00%
+
+Root node processing (before b&c):
+  Real time             =    8.19 sec. (8522.19 ticks)
+Sequential b&c:
+  Real time             =    7.86 sec. (8237.99 ticks)
+                          ------------
+Total (root+branch&cut) =   16.05 sec. (16760.19 ticks)
+Primal:	300
+Dual:	300
+Status:	Optimal
+Time:	16.0907
+Sequence:
+	20
+	4
+	12
+	7
+	18
+	11
+	4
+	18
+	2
+	4
+	4
+	3
+	6
+	4
+	2
+	4
+	5
+	14
+	17
+	18
+	2
+	5
+	4
+	0
+	18
+	2
+	18
+	10
+	7
+	6
+	10
+	18
+	7
+	10
+	18
+	8
+	12
+	4
+	4
+	16
+	17
+	12
+	7
+	10
+	4
+	8
+	12
+	5
+	14
+	4
+	17
+	3
+	18
+	4
+	10
+	17
+	7
+	10
+	4
+	21
+	12
+	10
+	8
+	10
+	18
+	14
+	4
+	6
+	14
+	4
+	18
+	2
+	6
+	4
+	2
+	4
+	12
+	8
+	18
+	10
+	7
+	5
+	11
+	7
+	12
+	4
+	21
+	11
+	4
+	19
+	12
+	18
+	8
+	10
+	4
+	18
+	3
+	0
+	4
+	19
+	12
+	5
+	20
+	10
+	4
+	16
+	5
+	0
+	7
+	4
+	12
+	7
+	17
+	12
+	7
+	18
+	10
+	8
+	5
+	10
+	4
+	21
+	11
+	5
+	19
+	10
+	4
+	21
+	11
+	5
+	19
+	10
+	5
+	7
+	1
+	4
+	19
+	12
+	4
+	21
+	0
+	4
+	21
+	10
+	5
+	7
+	0
+	18
+	19
+	10
+	5
+	19
+	0
+	4
+	16
+	18
+	4
+	14
+	17
+	18
+	14
+	4
+	4
+	3
+	5
+	17
+	14
+	4
+	5
+	2
+	6
+	4
+	14
+	18
+	4
+	1
+	19
+	4
+	12
+	7
+	0
+	5
+	19
+	10
+	18
+	8
+	12
+	4
+	2
+	5
+	17
+	2
+	18
+	4
+	10
+	9
+	4
+	12
+	7
+	4
+	0
+	3
+	4
+	4
+	16
+	4
+	0
+	19
+	5
+	10
+	7
+	5
+	0
+	7
+	4
+	12
+	19
+	5
+	11
+	7
+	4
+	12
+	7
+	4
+	1
+	19
+	5
+	10
+	7
+	4
+	1
+	7
+	18
+	10
+	7
+	4
+	13
+	4
+	21
+	10
+	4
+	21
+	11
+	4
+	3
+	4
+	5
+	14
+	4
+	17
+	3
+	4
+	12
+	7
+	11
+	18
+	19
+	12
+	4
+	15
+	5
+	4
+	3
+	4
+	11
+	7
+	5
+	12
+	19
+	4
+	10
+	3
+	18
+	4
+	14
+	4
+	18
+	14
+	6
+	4
+	2
+	18
+	4
+	13
+	7
+	4
+	12
+	10
+	4
+	8
+	12
+	12
+	7
+	4
+	0
+	4
+	7
+	12
+	4
+	22
