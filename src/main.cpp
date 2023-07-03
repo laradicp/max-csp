@@ -15,8 +15,19 @@ int main(int argc, char** argv)
     }
 
     FlagHandler flags(argc, argv);
-    Model model(argv[1]);
+    Model model(argv[1], flags.getCumulative());
     CustomAlgorithms customAlgorithms(&model);
+
+    int lb = 1;
+    int ub = model.data.getNbCars();
+    double elapsedTime = 0.0;
+    vector<int> primalSolution;
+
+    if(ub == 0)
+    {
+        cout << "No cars to schedule" << endl;
+        return 0;
+    }
 
     if(flags.getMinViolations())
     {
@@ -25,11 +36,6 @@ int main(int argc, char** argv)
         model.output();
         return 0;
     }
-
-    int lb = 1;
-    int ub = model.data.getNbCars();
-    double elapsedTime = 0.0;
-    vector<int> primalSolution;
 
     if(flags.getHeuristic())
     {

@@ -7,6 +7,8 @@ cd ..
 
 make
 
+mkdir -p unscheduled
+
 mkdir -p results/real/cumulative
 
 mkdir -p results/real/regular/heuristic-primal

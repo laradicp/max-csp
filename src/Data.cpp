@@ -118,6 +118,7 @@ void Data::readUnscheduled(string filePath)
     while(!unscheduled.eof())
     {
         nbCarsPerClass[idx] += nbUnscheduledCars;
+        nbCars += nbUnscheduledCars;
 
         unscheduled >> idx;
         unscheduled >> nbUnscheduledCars;
