@@ -68,12 +68,13 @@ int CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTime
 
 int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 {
-	initialLB = lb;
-
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
 
-	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(lb <= model->data.getNbCars()))
+	initialLB = lb;
+	defineOutput(lb, model->data.getUpperBound(), start);
+
+	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(lb <= model->data.getUpperBound()))
 	{
 		model->initModel(false, lb + 1);
 
@@ -86,7 +87,7 @@ int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 		}
 
 		lb++;
-		defineOutput(lb, model->data.getNbCars(), start);
+		defineOutput(lb, model->data.getUpperBound(), start);
 
 		elapsedTime = chrono::steady_clock::now() - start;
 	}
@@ -103,7 +104,7 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 	unscheduled.resize(model->data.getNbClasses());
 	
 	if((status != IloAlgorithm::Status::Optimal)&&(status != IloAlgorithm::Status::Feasible))
-	// descent iterative search with no feasible solution or no solution found
+	// no solution found
 	{
 		if(lb == ub)
 		{
