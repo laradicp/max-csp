@@ -374,8 +374,8 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
                     }
                 }
 
-                primal = (int)1000*maxCSP.getObjValue();
-                dual = (int)1000*maxCSP.getBestObjValue();
+                primal = (int)10000*maxCSP.getObjValue();
+                dual = (int)10000*maxCSP.getBestObjValue();
             }
             else
             {
@@ -530,8 +530,8 @@ void Model::minViolationsModel(bool penalize)
     firstViolationPos = data.getNbCars();
 
     model = IloModel(env);
-    vector<double> alpha(data.getNbCars(), 1.0/1000); // weights for penalization
-    // divide by 1000 to avoid surpassing the maximum value of the type
+    vector<double> alpha(data.getNbCars(), 1.0/10000); // weights for penalization
+    // divide by 10000 to avoid surpassing the maximum value of the type
 
     if(this->penalize)
     {
@@ -541,10 +541,10 @@ void Model::minViolationsModel(bool penalize)
             sumOptionsInfeasPos += data.getWindowSize(j) - data.getMaxCarsPerWindow(j);
         }
 
-        double sumAlphas = 1.0/1000;
+        double sumAlphas = 1.0/10000;
         for(int t = data.getNbCars() - 2; t >=0; t--)
         {
-            alpha[t] = 1.0/1000 + sumAlphas*sumOptionsInfeasPos/1000;
+            alpha[t] = 1.0/10000 + sumAlphas*sumOptionsInfeasPos/100;
             sumAlphas += alpha[t];
         }
     }
