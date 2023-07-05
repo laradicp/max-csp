@@ -22,10 +22,10 @@ void Model::initModel(bool sos1Branching, int customSearch)
     minViolations = false;
 
     model = IloModel(env);
-    optionOverlap.resize(data.getNbOptions(), false);
+    // optionOverlap.resize(data.getNbOptions(), false);
 
     // avoid redundant constraints
-    calculateOptionOverlap();
+    // calculateOptionOverlap();
 
     // the customSearch sets the number of positions to be evaluated as feasible or not for scheduling
     if(customSearch > 0)
@@ -151,10 +151,10 @@ void Model::initModel(bool sos1Branching, int customSearch)
     {
         for(int j = 0; j < data.getNbOptions(); j++)
         {
-            if(optionOverlap[j])
-            {
-                continue;
-            }
+            // if(optionOverlap[j])
+            // {
+            //     continue;
+            // }
 
             IloExpr sumX(env);
 
