@@ -1,172 +1,166 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998420400004
+CPXPARAM_TimeLimit                               599.99998270599997
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 1.0000.
 Tried aggregator 1 time.
-MIP Presolve eliminated 18 rows and 0 columns.
-MIP Presolve modified 103 coefficients.
-Reduced MIP has 803 rows, 2100 columns, and 24939 nonzeros.
+MIP Presolve eliminated 19 rows and 0 columns.
+MIP Presolve modified 123 coefficients.
+Reduced MIP has 902 rows, 2100 columns, and 26072 nonzeros.
 Reduced MIP has 2100 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.04 sec. (45.99 ticks)
+Presolve time = 0.04 sec. (49.87 ticks)
 Probing time = 0.01 sec. (8.93 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
-MIP Presolve modified 12 coefficients.
-Reduced MIP has 803 rows, 2100 columns, and 25369 nonzeros.
+MIP Presolve modified 13 coefficients.
+Reduced MIP has 902 rows, 2100 columns, and 26490 nonzeros.
 Reduced MIP has 2100 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.03 sec. (27.99 ticks)
-Probing time = 0.01 sec. (8.99 ticks)
-Clique table members: 396.
+Presolve time = 0.03 sec. (29.16 ticks)
+Probing time = 0.01 sec. (8.98 ticks)
+Clique table members: 495.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.12 sec. (125.58 ticks)
+Root relaxation solution time = 0.14 sec. (134.28 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
 *     0+    0                            1.0000     5050.0000              --- 
-      0     0      100.0000   411        1.0000      100.0000     1386     --- 
-      0     0      100.0000   102        1.0000    Cliques: 2     1810     --- 
-      0     0      100.0000   294        1.0000      Cuts: 85     2784     --- 
-      0     0      100.0000   139        1.0000    Cliques: 4     3089     --- 
-*     0+    0                           89.0000      100.0000            12.36%
-*     0+    0                           97.0000      100.0000             3.09%
-      0     0        cutoff             97.0000      100.0000     3089    3.09%
-      0     0      100.0000   308       97.0000      Cuts: 66     4021    3.09%
-*     0+    0                           98.0000      100.0000             2.04%
-      0     0        cutoff             98.0000      100.0000     4021    2.04%
+      0     0      100.0000   402        1.0000      100.0000     1414     --- 
+*     0+    0                           91.0000      100.0000             9.89%
+      0     0        cutoff             91.0000      100.0000     1414    9.89%
 Detecting symmetries...
-      0     2      100.0000   105       98.0000      100.0000     4021    2.04%
-Elapsed time = 3.58 sec. (3435.24 ticks, tree = 0.01 MB, solutions = 4)
-      2     4      100.0000   129       98.0000      100.0000     5824    2.04%
-      4     6      100.0000   192       98.0000      100.0000     6378    2.04%
-      6     8      100.0000   128       98.0000      100.0000     7527    2.04%
-      9    11      100.0000   312       98.0000      100.0000     8514    2.04%
-     12    14      100.0000   179       98.0000      100.0000     8706    2.04%
-     15    17      100.0000   165       98.0000      100.0000    10285    2.04%
-     18    20      100.0000   182       98.0000      100.0000    11105    2.04%
-     19    21      100.0000   285       98.0000      100.0000    12674    2.04%
-     22    24      100.0000   182       98.0000      100.0000    13534    2.04%
-     31    33      100.0000   237       98.0000      100.0000    18306    2.04%
-Elapsed time = 7.11 sec. (7002.36 ticks, tree = 0.21 MB, solutions = 4)
-     39    41      100.0000    50       98.0000      100.0000    23732    2.04%
-*    43     1      integral     0      100.0000      100.0000    26631    0.00%
-
-Clique cuts applied:  27
-Zero-half cuts applied:  3
-Lift and project cuts applied:  1
-Gomory fractional cuts applied:  1
+      0     2      100.0000   136       91.0000      100.0000     1414    9.89%
+Elapsed time = 1.89 sec. (1759.53 ticks, tree = 0.01 MB, solutions = 2)
+      1     3      100.0000   347       91.0000      100.0000     3673    9.89%
+      3     5      100.0000   369       91.0000      100.0000     5872    9.89%
+      6     8      100.0000   385       91.0000      100.0000     7574    9.89%
+      9    11      100.0000   146       91.0000      100.0000     8557    9.89%
+     12    14      100.0000   155       91.0000      100.0000     8995    9.89%
+     15    17      100.0000   146       91.0000      100.0000     9819    9.89%
+     19    21      100.0000   187       91.0000      100.0000    10859    9.89%
+     20    22      100.0000   345       91.0000      100.0000    13007    9.89%
+     23    25      100.0000   170       91.0000      100.0000    14121    9.89%
+     31    33      100.0000   281       91.0000      100.0000    18469    9.89%
+Elapsed time = 6.07 sec. (5841.07 ticks, tree = 0.07 MB, solutions = 2)
+     42    44      100.0000   240       91.0000      100.0000    20590    9.89%
+     52    54      100.0000   205       91.0000      100.0000    24604    9.89%
+     63    65      100.0000   146       91.0000      100.0000    28368    9.89%
+*    70+   70                           97.0000      100.0000             3.09%
+     76    78       99.9912   139       97.0000      100.0000    33746    3.09%
+*    96    80      integral     0       98.0000      100.0000    37388    2.04%
+*   107     1      integral     0      100.0000      100.0000    41111    0.00%
 
 Root node processing (before b&c):
-  Real time             =    3.56 sec. (3425.71 ticks)
+  Real time             =    1.89 sec. (1759.53 ticks)
 Sequential b&c:
-  Real time             =    4.95 sec. (4968.95 ticks)
+  Real time             =   10.18 sec. (9827.83 ticks)
                           ------------
-Total (root+branch&cut) =    8.52 sec. (8394.66 ticks)
-13
-9
-11
-8
-5
-0
-8
-19
-11
-14
-5
-11
-8
-9
-7
-4
-9
-2
-12
-15
-1
-2
-9
-4
-10
-9
-4
-10
-7
-15
-2
-6
-9
-13
-6
-0
-18
-6
-16
-18
-7
-6
-18
-16
-7
-18
-17
-16
-18
-1
-17
-13
-9
-12
-13
-19
-16
-8
-9
-3
-8
-5
-11
-8
-5
-17
-2
-15
-12
-2
-19
-4
-10
-19
-4
-10
-16
-15
-10
-1
-15
-2
-17
-15
-2
-7
-15
-10
-11
-5
-13
-6
-19
-14
-6
-5
-13
-6
-6
-18
+Total (root+branch&cut) =   12.07 sec. (11587.35 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	8.51
+Time:	12.07
+Sequence:
+	15
+	10
+	0
+	15
+	2
+	17
+	15
+	2
+	1
+	19
+	8
+	6
+	5
+	13
+	11
+	9
+	8
+	1
+	5
+	8
+	17
+	9
+	2
+	4
+	19
+	10
+	4
+	9
+	2
+	4
+	11
+	10
+	15
+	1
+	2
+	15
+	6
+	10
+	4
+	5
+	6
+	13
+	19
+	6
+	14
+	5
+	17
+	8
+	9
+	16
+	13
+	9
+	12
+	13
+	19
+	16
+	8
+	9
+	7
+	13
+	9
+	12
+	2
+	15
+	16
+	2
+	15
+	6
+	10
+	5
+	4
+	10
+	19
+	3
+	8
+	5
+	12
+	0
+	18
+	17
+	7
+	18
+	16
+	11
+	18
+	7
+	6
+	14
+	11
+	9
+	13
+	6
+	7
+	18
+	6
+	7
+	18
+	16
+	11
+	18
