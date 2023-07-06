@@ -25,8 +25,6 @@ class Heuristic
 		void calculateMaxWindow();
 		void initialization();
 
-		bool isInfeasible();
-
 		void construction();
 
 		bool feasibleInsertion(int t, int i);

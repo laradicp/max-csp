@@ -2,6 +2,7 @@
 #include "CustomAlgorithms.h"
 #include "Heuristic.h"
 #include "FlagHandler.h"
+#include "Checker.h"
 #include <vector>
 
 using namespace std;
@@ -26,6 +27,23 @@ int main(int argc, char** argv)
     if(ub == 0)
     {
         cout << "No cars to schedule" << endl;
+        return 0;
+    }
+
+    if(flags.getChecker())
+    {
+        Checker checker(model.data);
+        checker.readSequence("sequence-to-check.txt");
+        
+        if(checker.isFeasible())
+        {
+            cout << "Feasible" << endl;
+        }
+        else
+        {
+            cout << "Infeasible" << endl;
+        }
+
         return 0;
     }
 

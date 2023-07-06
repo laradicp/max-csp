@@ -15,6 +15,7 @@ FlagHandler::FlagHandler(int argc, char** argv)
     trivialLB = false;
     minViolations = false;
     penalize = false;
+    checker = false;
     
     int begin = 2;
     if((begin < argc)&&(argv[begin][0] != '-')) // the third argument is the path for the heuristic solution
@@ -69,6 +70,10 @@ FlagHandler::FlagHandler(int argc, char** argv)
         else if(strcmp(argv[i], "-triviallb") == 0)
         {
             trivialLB = true;
+        }
+        else if(strcmp(argv[i], "-checker") == 0)
+        {
+            checker = true;
         }
         else
         {
@@ -216,4 +221,9 @@ bool FlagHandler::getMinViolations()
 bool FlagHandler::getPenalize()
 {
     return penalize;
+}
+
+bool FlagHandler::getChecker()
+{
+    return checker;
 }
