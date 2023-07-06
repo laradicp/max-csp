@@ -17,6 +17,9 @@ class FlagHandler
 		bool noExact;
 		bool trivialUB;
 		bool trivialLB;
+		bool minViolations;
+		bool penalize;
+		bool checker;
 
 		string heuristicPath;
 	
@@ -34,6 +37,9 @@ class FlagHandler
 		bool getNoExact();
 		bool getTrivialUB();
 		bool getTrivialLB();
+		bool getMinViolations();
+		bool getPenalize();
+		bool getChecker();
 
 		string getHeuristicPath();
 		

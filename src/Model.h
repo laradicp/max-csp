@@ -17,6 +17,7 @@ class Model
         IloEnv env;
         IloModel model;
         IloArray<IloBoolVarArray> x;
+        IloArray<IloNumVarArray> y;
         
         vector<int> carsPerOption;
         vector<vector<int>> optionsIntersections;
@@ -30,6 +31,10 @@ class Model
         IloNum dual;
         IloAlgorithm::Status status;
         IloNum elapsedTime;
+
+        bool minViolations;
+        bool penalize;
+        int firstViolationPos;
 
         void definePaths(string filePath);
 
@@ -53,6 +58,8 @@ class Model
         int getSequence(int t);
         int getUnscheduled(int i);
         IloAlgorithm::Status getStatus();
+
+        void minViolationsModel(bool penalize = false);
 
 };
 

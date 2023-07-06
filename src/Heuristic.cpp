@@ -24,35 +24,6 @@ void Heuristic::initialization()
 	}
 }
 
-bool Heuristic::isInfeasible()
-{
-    for(int t = 0; t < sequence.size(); t++)
-    {
-        for(int j = 0; j < data.getNbOptions(); j++)
-        {
-            if(data.getOption(sequence[t], j))
-            {
-                int sum = 1;
-                int end = min(t + data.getWindowSize(j), (int)sequence.size());
-                for(int k = t + 1; k < end; k++)
-                {
-                    if(data.getOption(sequence[k], j))
-                    {
-                        sum++;
-                    }
-                }
-
-                if(sum > data.getMaxCarsPerWindow(j))
-				{
-                    return true;
-				}
-            }
-        }
-    }
-
-    return false;
-}
-
 void Heuristic::construction()
 {
     vector<int> feasibleClasses;

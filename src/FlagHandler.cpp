@@ -13,6 +13,9 @@ FlagHandler::FlagHandler(int argc, char** argv)
     noExact = false;
     trivialUB = false;
     trivialLB = false;
+    minViolations = false;
+    penalize = false;
+    checker = false;
     
     int begin = 2;
     if((begin < argc)&&(argv[begin][0] != '-')) // the third argument is the path for the heuristic solution
@@ -24,7 +27,15 @@ FlagHandler::FlagHandler(int argc, char** argv)
 
 	for(int i = begin; i < argc; i++)
     {
-        if(strcmp(argv[i], "-sos1") == 0)
+        if(strcmp(argv[i], "-minviolations") == 0)
+        {
+            minViolations = true;
+        }
+        else if(strcmp(argv[i], "-penalize") == 0)
+        {
+            penalize = true;
+        }
+        else if(strcmp(argv[i], "-sos1") == 0)
         {
             sos1Branching = true;
         }
@@ -59,6 +70,10 @@ FlagHandler::FlagHandler(int argc, char** argv)
         else if(strcmp(argv[i], "-triviallb") == 0)
         {
             trivialLB = true;
+        }
+        else if(strcmp(argv[i], "-checker") == 0)
+        {
+            checker = true;
         }
         else
         {
@@ -140,6 +155,12 @@ void FlagHandler::checkValidFlags()
             exit(1);
         }
     }
+
+    if(penalize&&!minViolations)
+    {
+        cout << "Flag -penalize cannot be used without flag -minviolations" << endl;
+        exit(1);
+    }
 }
 
 bool FlagHandler::getSos1Branching()
@@ -190,4 +211,19 @@ bool FlagHandler::getTrivialLB()
 string FlagHandler::getHeuristicPath()
 {
     return heuristicPath;
+}
+
+bool FlagHandler::getMinViolations()
+{
+    return minViolations;
+}
+
+bool FlagHandler::getPenalize()
+{
+    return penalize;
+}
+
+bool FlagHandler::getChecker()
+{
+    return checker;
 }

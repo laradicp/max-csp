@@ -9,6 +9,9 @@
 Model::Model(string filePath, bool cumulative)
 {
     data = Data(filePath, cumulative);
+    minViolations = false;
+    penalize = false;
+    firstViolationPos = data.getNbCars();
 }
 
 void Model::initModel(bool sos1Branching, int customSearch)
@@ -16,11 +19,13 @@ void Model::initModel(bool sos1Branching, int customSearch)
     env.end();
     env = IloEnv();
 
+    minViolations = false;
+
     model = IloModel(env);
-    optionOverlap.resize(data.getNbOptions(), false);
+    // optionOverlap.resize(data.getNbOptions(), false);
 
     // avoid redundant constraints
-    calculateOptionOverlap();
+    // calculateOptionOverlap();
 
     // the customSearch sets the number of positions to be evaluated as feasible or not for scheduling
     if(customSearch > 0)
@@ -146,10 +151,10 @@ void Model::initModel(bool sos1Branching, int customSearch)
     {
         for(int j = 0; j < data.getNbOptions(); j++)
         {
-            if(optionOverlap[j])
-            {
-                continue;
-            }
+            // if(optionOverlap[j])
+            // {
+            //     continue;
+            // }
 
             IloExpr sumX(env);
 
@@ -213,13 +218,13 @@ void Model::calculateOptionOverlap()
         {
             for(int j2 = 0; j2 < data.getNbOptions(); j2++)
             {
-                if(data.getMaxCarsPerWindow(j2) == 1)
+                if((j1 != j2)&&(data.getMaxCarsPerWindow(j2) == 1))
                 {
                     if((carsPerOption[j1] - optionsIntersections[j1][j2] +
                         ceil((data.getMaxCarsPerWindow(j1))/(data.getWindowSize(j2))) <
                         data.getMaxCarsPerWindow(j1))&&
-                        (optionsIntersections[j1][j2]*(data.getWindowSize(j2) - 1) >=
-                        data.getMaxCarsPerWindow(j1)))
+                        (optionsIntersections[j1][j2]*(data.getWindowSize(j2) -
+                        data.getMaxCarsPerWindow(j2)) >= data.getMaxCarsPerWindow(j1)))
                     {
                         optionOverlap[j1] = true;
                         break;
@@ -301,7 +306,7 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
         // set initial solution
         IloNumVarArray startVar(env);
         IloNumArray startVal(env);
-        for(int t = 0; t < initialSol->size(); t++)
+        for(unsigned int t = 0; t < initialSol->size(); t++)
         {
             for(int i = 0; i < data.getNbClasses(); i++)
             {
@@ -350,8 +355,35 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
                 }
             }
 
-            primal = maxCSP.getObjValue();
-            dual = maxCSP.getBestObjValue();
+            if(minViolations)
+            {
+                firstViolationPos = nbPositions;
+
+                for(int j = 0; j < data.getNbOptions(); j++)
+                {
+                    for(int t = 0; t < nbPositions; t++)
+                    {
+                        if(maxCSP.getValue(y[j][t]) > 0.5)
+                        {
+                            if(firstViolationPos > t)
+                            {
+                                firstViolationPos = t;
+                            }
+
+                            break;
+                        }
+                    }
+                }
+
+                primal = (int)10000*maxCSP.getObjValue();
+                dual = (int)10000*maxCSP.getBestObjValue();
+            }
+            else
+            {
+                primal = maxCSP.getObjValue();
+                dual = maxCSP.getBestObjValue();
+            }
+
             status = maxCSP.getStatus();
             elapsedTime = maxCSP.getTime();
 
@@ -374,8 +406,25 @@ void Model::output(bool toFile)
 
         output.open(data.getResultPath());
 
-        output << "Primal:\t" << primal << endl;
-        output << "Dual:\t" << dual << endl;
+        if(minViolations)
+        {
+            if(penalize)
+            {
+                output << "Violation-free sequence bound:\t" << firstViolationPos << endl;
+                output << "Unscheduled:\t" << data.getNbCars() - firstViolationPos << endl;
+            }
+            else
+            {
+                output << "Primal number of violations:\t" << primal << endl;
+                output << "Dual number of violations:\t" << dual << endl;
+            }
+        }
+        else
+        {
+            output << "Primal:\t" << primal << endl;
+            output << "Dual:\t" << dual << endl;
+        }
+        
         output << "Status:\t" << status << endl;
         output << "Time:\t" << elapsedTime << endl;
         output << "Sequence:" << endl;
@@ -384,18 +433,53 @@ void Model::output(bool toFile)
             output << "\t" << sequence[t] << endl;
         }
 
+        if(minViolations&&penalize)
+        {
+            output << "Violation-free sequence:" << endl;
+            for(int t = 0; t < firstViolationPos; t++)
+            {
+                output << "\t" << sequence[t] << endl;
+            }
+        }
+
         output.close();
     }
     else
     {
-        cout << "Primal:\t" << primal << endl;
-        cout << "Dual:\t" << dual << endl;
+        if(minViolations)
+        {
+            if(penalize)
+            {
+                cout << "Violation-free sequence bound:\t" << firstViolationPos << endl;
+                cout << "Unscheduled:\t" << data.getNbCars() - firstViolationPos << endl;
+            }
+            else
+            {
+                cout << "Primal number of violations:\t" << primal << endl;
+                cout << "Dual number of violations:\t" << dual << endl;
+            }
+        }
+        else
+        {
+            cout << "Primal:\t" << primal << endl;
+            cout << "Dual:\t" << dual << endl;
+        }
+
         cout << "Status:\t" << status << endl;
         cout << "Time:\t" << elapsedTime << endl;
         cout << "Sequence:" << endl;
         for(unsigned int t = 0; t < sequence.size(); t++)
         {
             cout << "\t" << sequence[t] << endl;
+        }
+
+        if(minViolations&&penalize)
+        {
+            cout << "Violation-free sequence:" << endl;
+            for(int t = 0; t < firstViolationPos; t++)
+            {
+                cout << "\t" << sequence[t] << endl;
+            }
         }
     }
 
@@ -434,4 +518,175 @@ int Model::getUnscheduled(int i)
 IloAlgorithm::Status Model::getStatus()
 {
     return status;
+}
+
+void Model::minViolationsModel(bool penalize)
+{
+    env.end();
+    env = IloEnv();
+
+    minViolations = true;
+    this->penalize = penalize;
+    nbPositions = data.getNbCars();
+    firstViolationPos = data.getNbCars();
+
+    model = IloModel(env);
+    vector<double> alpha(data.getNbCars(), 1.0/10000); // weights for penalization
+    // divide by 10000 to avoid surpassing the maximum value of the type
+
+    if(this->penalize)
+    {
+        int sumOptionsInfeasPos = 0;
+        for(int j = 0; j < data.getNbOptions(); j++)
+        {
+            sumOptionsInfeasPos += data.getWindowSize(j) - data.getMaxCarsPerWindow(j);
+        }
+
+        double sumAlphas = 1.0/10000;
+        for(int t = data.getNbCars() - 2; t >=0; t--)
+        {
+            alpha[t] = 1.0/10000 + sumAlphas*sumOptionsInfeasPos/100;
+            sumAlphas += alpha[t];
+        }
+    }
+    
+    // let Xit assume value 1 if any car of class i is assigned to position t, and 0 otherwise
+    x = IloArray<IloBoolVarArray>(env, data.getNbClasses());
+    for(int i = 0; i < data.getNbClasses(); i++)
+    {
+        IloBoolVarArray v(env, data.getNbCars());
+        x[i] = v;
+    }
+
+    // add variable x to the model
+    for(int i = 0; i < data.getNbClasses(); i++)
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            char name[100];
+            sprintf(name, "X(%d,%d)", i, t);
+            x[i][t].setName(name);
+            model.add(x[i][t]);
+        }
+    }
+
+    // let Zjt be the positive difference between the maximum number of times that option j may
+    // appear and the number of times that it does appear in the segment ending at position t
+    IloArray<IloNumVarArray> z(env, data.getNbOptions());
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        IloNumVarArray v(env, data.getNbCars(), 0, data.getMaxCarsPerWindow(j), ILOINT);
+        z[j] = v;
+    }
+
+    // add variable z to the model
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            char name[100];
+            sprintf(name, "Z(%d,%d)", j, t);
+            z[j][t].setName(name);
+            model.add(z[j][t]);
+        }
+    }
+
+    // let Yjt be the positive difference between the number of times that option j appears and the
+    // maximum number of times that it may appear in the segment ending at position t
+    y = IloArray<IloNumVarArray>(env, data.getNbOptions());
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        IloNumVarArray v(env, data.getNbCars(), 0, data.getWindowSize(j) - data.getMaxCarsPerWindow(j), ILOINT);
+        y[j] = v;
+    }
+
+    // add variable y to the model
+    for(int j = 0; j < data.getNbOptions(); j++)
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            char name[100];
+            sprintf(name, "Y(%d,%d)", j, t);
+            y[j][t].setName(name);
+            model.add(y[j][t]);
+        }
+    }
+
+    // add objective function (OF)
+    IloExpr sumY(env);
+    for(int j = 0; j < data.getNbOptions(); j++) 
+    {
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            sumY += alpha[t]*y[j][t];
+        }
+    }
+    model.add(IloMinimize(env, sumY));
+
+    // each position is occupied by exactly one car
+    for(int t = 0; t < data.getNbCars(); t++)  
+    {
+        IloExpr sumX(env);
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            sumX += x[i][t];
+        }
+
+        IloRange r = (sumX == 1);
+        char name[100];
+        sprintf(name, "PositionOccupied(%d)", t);
+        r.setName(name);
+        model.add(r);
+    }
+
+    // respect class demand
+    for(int i = 0; i < data.getNbClasses(); i++) 
+    {
+        IloExpr sumX(env);
+        for(int t = 0; t < data.getNbCars(); t++)
+        {
+            sumX += x[i][t];
+        }
+
+        IloRange r = (sumX == data.getNbCarsPerClass(i));
+        char name[100];
+        sprintf(name, "CarsProduced(%d)", i);
+        r.setName(name);
+        model.add(r);
+    }
+
+    // link x to y and z
+    for(int t = 0; t < data.getNbCars(); t++) 
+    {
+        for(int j = 0; j < data.getNbOptions(); j++)
+        {
+            IloExpr sumX(env);
+
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                if(data.getOption(i, j))
+                {
+                    for(int k = 0; k < data.getWindowSize(j); k++)
+                    {
+                        if(t - k >= 0)
+                        {
+                            sumX += x[i][t - k];
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            int maxCarsInSegment = min(data.getMaxCarsPerWindow(j), t + 1);
+                // t + 1 because it is the number of positions until t
+            IloRange r = (z[j][t] - y[j][t] + sumX == maxCarsInSegment);
+            char name[100];
+            sprintf(name, "DefineYZ(%d,%d)", t, j);
+            r.setName(name);
+            model.add(r);
+        }
+    }
 }
