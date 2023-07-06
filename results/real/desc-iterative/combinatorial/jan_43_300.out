@@ -1,53 +1,53 @@
-Version identifier: 22.1.1.0 | 2022-11-28 | 9160aff4d
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99818735600002
+CPXPARAM_TimeLimit                               599.99380684000005
 Tried aggregator 1 time.
-MIP Presolve eliminated 314 rows and 1200 columns.
-Reduced MIP has 1498 rows, 2400 columns, and 17292 nonzeros.
+MIP Presolve eliminated 315 rows and 1200 columns.
+Reduced MIP has 1797 rows, 2400 columns, and 19684 nonzeros.
 Reduced MIP has 2400 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.01 sec. (9.48 ticks)
-Found incumbent of value 0.000000 after 0.03 sec. (29.09 ticks)
+Presolve time = 0.02 sec. (11.20 ticks)
+Found incumbent of value 0.000000 after 0.07 sec. (31.78 ticks)
 
 Root node processing (before b&c):
-  Real time             =    0.03 sec. (29.23 ticks)
+  Real time             =    0.07 sec. (31.91 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.03 sec. (29.23 ticks)
+Total (root+branch&cut) =    0.07 sec. (31.91 ticks)
 Primal:	300
 Dual:	300
 Status:	Optimal
-Time:	0.0378082
+Time:	0.106483
 Sequence:
 	4
 	9
-	9
-	1
+	10
+	4
 	5
 	9
 	5
 	4
-	0
+	9
 	4
 	1
 	4
 	0
 	9
 	6
-	1
+	4
 	9
 	0
-	1
+	4
 	5
-	4
+	9
 	9
 	0
 	10
 	9
 	4
+	0
 	9
-	1
 	10
 	0
 	9
@@ -64,24 +64,24 @@ Sequence:
 	0
 	4
 	10
-	1
+	9
 	9
 	4
 	0
 	9
 	4
 	9
-	9
+	4
 	1
 	4
 	4
 	9
 	9
 	4
-	9
-	1
+	10
+	4
 	5
-	4
+	0
 	1
 	4
 	0
@@ -96,7 +96,7 @@ Sequence:
 	10
 	4
 	0
-	9
+	1
 	4
 	1
 	4
@@ -109,13 +109,13 @@ Sequence:
 	4
 	1
 	9
-	4
+	1
 	4
 	1
 	0
 	9
 	1
-	1
+	9
 	1
 	9
 	9
@@ -123,7 +123,7 @@ Sequence:
 	9
 	1
 	4
-	9
+	10
 	0
 	9
 	4
@@ -138,183 +138,183 @@ Sequence:
 	9
 	10
 	4
-	9
+	1
 	4
 	9
-	4
+	1
 	8
 	9
-	10
-	9
-	4
-	9
-	9
-	9
-	9
-	10
-	4
-	4
-	1
-	4
-	9
-	0
-	9
-	4
-	1
-	9
-	6
-	4
-	9
-	9
-	1
-	9
-	9
-	9
-	9
-	0
-	4
-	4
-	9
-	9
-	0
-	4
-	10
-	9
-	4
-	1
-	10
-	9
-	4
-	4
-	9
-	4
-	4
-	9
-	4
-	4
-	9
-	1
-	0
-	10
-	4
-	9
-	4
-	10
-	1
-	0
-	4
-	9
-	0
-	4
-	9
-	9
-	1
-	0
-	4
-	9
-	1
-	9
-	0
-	4
-	9
-	4
-	10
-	9
-	1
-	10
-	4
-	9
-	1
-	9
-	4
-	4
-	10
-	9
-	0
-	9
-	10
-	0
-	10
-	9
-	9
-	10
-	4
-	9
-	1
-	5
-	6
-	9
-	4
-	10
-	4
-	0
-	4
-	10
-	9
-	4
-	4
-	9
-	4
-	4
-	1
-	0
-	9
-	4
-	4
-	9
-	4
-	10
-	0
-	4
-	4
-	9
-	0
-	6
-	4
-	0
-	9
-	4
-	10
-	4
-	9
-	4
-	4
-	10
-	9
-	1
-	0
-	4
-	6
-	1
-	9
-	10
-	5
-	0
-	4
-	4
-	9
-	4
-	1
-	0
-	9
-	9
-	1
-	9
-	4
-	9
-	1
-	9
-	9
-	9
-	9
-	1
 	5
 	9
+	4
+	9
+	9
+	9
+	9
+	10
+	4
+	4
+	1
+	4
+	10
+	0
+	9
+	4
+	1
+	9
+	6
+	4
+	1
+	9
+	1
+	9
+	9
+	9
+	9
+	0
+	4
+	4
+	9
+	9
+	0
+	4
+	10
+	9
+	4
+	0
+	10
+	9
+	4
+	4
+	1
+	4
+	4
+	9
+	4
+	4
+	9
+	1
+	0
+	10
+	4
+	9
+	4
+	4
+	1
+	0
+	1
+	9
+	0
+	4
+	9
+	9
+	1
+	4
+	4
+	9
+	1
+	9
+	0
+	4
+	9
+	4
+	10
+	9
+	9
+	10
+	4
+	9
+	1
+	9
+	4
+	4
+	10
+	9
+	0
+	9
+	10
+	0
+	10
+	9
+	9
+	10
+	4
+	9
+	1
+	0
+	6
+	9
+	4
+	10
+	4
+	0
+	4
+	10
+	9
+	1
+	4
+	9
+	4
+	4
+	1
+	4
+	9
+	4
+	4
+	9
+	4
+	10
+	0
+	4
+	1
+	9
+	0
+	6
+	4
+	0
+	9
+	4
+	10
+	4
+	9
+	4
+	4
+	10
+	9
+	1
+	9
+	4
+	6
+	9
+	9
+	0
+	5
+	9
+	4
+	1
+	9
+	4
+	1
+	0
+	9
+	9
+	1
+	9
+	4
+	9
+	1
+	9
+	9
+	9
+	9
+	9
+	5
+	9
 	0
 	9
 	1
-	10
 	9
+	1
 	0
 	4
 	10

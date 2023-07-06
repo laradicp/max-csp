@@ -357,20 +357,21 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
 
             if(minViolations)
             {
+                firstViolationPos = nbPositions;
+
                 for(int j = 0; j < data.getNbOptions(); j++)
                 {
                     for(int t = 0; t < nbPositions; t++)
                     {
                         if(maxCSP.getValue(y[j][t]) > 0.5)
                         {
-                            firstViolationPos = t;
+                            if(firstViolationPos > t)
+                            {
+                                firstViolationPos = t;
+                            }
+
                             break;
                         }
-                    }
-
-                    if(firstViolationPos < data.getNbCars())
-                    {
-                        break;
                     }
                 }
 

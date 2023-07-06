@@ -1,24 +1,25 @@
-Version identifier: 22.1.1.0 | 2022-11-28 | 9160aff4d
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99787370599995
+CPXPARAM_TimeLimit                               599.99448665399996
 Tried aggregator 1 time.
 MIP Presolve eliminated 18 rows and 1056 columns.
-Reduced MIP has 2106 rows, 3168 columns, and 25522 nonzeros.
+MIP Presolve modified 3 coefficients.
+Reduced MIP has 2458 rows, 3168 columns, and 29038 nonzeros.
 Reduced MIP has 3168 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.01 sec. (13.78 ticks)
-Found incumbent of value 0.000000 after 0.03 sec. (42.31 ticks)
+Presolve time = 0.03 sec. (17.39 ticks)
+Found incumbent of value 0.000000 after 0.07 sec. (46.61 ticks)
 
 Root node processing (before b&c):
-  Real time             =    0.03 sec. (42.47 ticks)
+  Real time             =    0.08 sec. (46.77 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.03 sec. (42.47 ticks)
+Total (root+branch&cut) =    0.08 sec. (46.77 ticks)
 Primal:	352
 Dual:	352
 Status:	Optimal
-Time:	0.0475375
+Time:	0.109359
 Sequence:
 	4
 	9
@@ -151,9 +152,9 @@ Sequence:
 	2
 	1
 	9
-	0
+	6
 	4
-	9
+	2
 	4
 	1
 	4
@@ -217,7 +218,7 @@ Sequence:
 	9
 	4
 	0
-	6
+	9
 	11
 	4
 	2
@@ -269,7 +270,7 @@ Sequence:
 	0
 	4
 	9
-	9
+	0
 	3
 	9
 	4
@@ -288,14 +289,14 @@ Sequence:
 	0
 	4
 	4
-	2
-	4
-	9
-	4
-	2
-	9
-	9
 	1
+	4
+	9
+	4
+	2
+	9
+	9
+	9
 	5
 	2
 	4

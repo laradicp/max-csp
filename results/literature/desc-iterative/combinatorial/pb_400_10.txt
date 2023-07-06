@@ -1,441 +1,449 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.98429667599999
+CPXPARAM_TimeLimit                               599.98925050900004
 Tried aggregator 1 time.
-MIP Presolve eliminated 12 rows and 0 columns.
-Reduced MIP has 2013 rows, 10000 columns, and 98156 nonzeros.
+MIP Presolve eliminated 13 rows and 0 columns.
+Reduced MIP has 2412 rows, 10000 columns, and 108530 nonzeros.
 Reduced MIP has 10000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.07 sec. (48.45 ticks)
-Probing time = 0.01 sec. (7.95 ticks)
+Presolve time = 0.08 sec. (53.63 ticks)
+Probing time = 0.01 sec. (7.96 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
-Reduced MIP has 2013 rows, 10000 columns, and 98156 nonzeros.
+Reduced MIP has 2412 rows, 10000 columns, and 108530 nonzeros.
 Reduced MIP has 10000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.07 sec. (59.70 ticks)
-Probing time = 0.01 sec. (7.95 ticks)
-Clique table members: 1197.
+Presolve time = 0.09 sec. (65.91 ticks)
+Probing time = 0.01 sec. (7.96 ticks)
+Clique table members: 1596.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.73 sec. (748.67 ticks)
+Root relaxation solution time = 1.89 sec. (1888.26 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000  1099                      0.0000     3288         
+      0     0        0.0000  1530                      0.0000     5513         
+      0     0        0.0000   155                  Cliques: 1     5515         
+      0     0        0.0000   717                    Cuts: 53     8252         
+      0     0        0.0000    92                 ZeroHalf: 1     8261         
+      0     0        0.0000    74                 ZeroHalf: 6     8923         
+      0     0        0.0000   155                 ZeroHalf: 6     9857         
 *     0+    0                            0.0000        0.0000             0.00%
-      0     0        cutoff              0.0000        0.0000     3288    0.00%
-Elapsed time = 5.10 sec. (5156.21 ticks, tree = 0.01 MB, solutions = 1)
+      0     0        cutoff              0.0000        0.0000     9857    0.00%
+Elapsed time = 35.98 sec. (32098.59 ticks, tree = 0.01 MB, solutions = 1)
+
+Clique cuts applied:  1
+Zero-half cuts applied:  7
 
 Root node processing (before b&c):
-  Real time             =    5.10 sec. (5156.51 ticks)
+  Real time             =   35.98 sec. (32098.88 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    5.10 sec. (5156.51 ticks)
+Total (root+branch&cut) =   35.98 sec. (32098.88 ticks)
 Primal:	400
 Dual:	400
 Status:	Optimal
-Time:	5.18858
+Time:	36.0539
 Sequence:
+	21
 	11
-	8
-	12
-	16
-	5
-	7
-	19
-	5
+	13
 	5
 	16
-	7
-	5
-	18
-	5
-	5
-	4
-	5
-	1
-	9
-	5
-	14
-	9
-	14
-	5
-	12
-	24
-	5
-	1
-	9
-	12
-	7
-	23
-	12
-	22
-	9
-	12
-	21
-	9
-	15
-	5
-	5
-	14
-	23
-	22
-	12
-	9
-	7
-	12
-	9
-	21
-	12
-	22
-	5
-	16
-	21
-	12
-	11
-	12
-	5
-	11
-	12
-	21
-	9
-	12
-	7
-	5
-	12
-	11
-	20
-	1
-	9
-	6
-	12
-	11
-	12
-	7
-	9
-	12
-	7
-	23
-	12
 	7
 	20
-	16
-	21
-	20
-	1
-	6
-	5
-	16
-	21
-	5
 	3
+	20
+	6
+	16
+	7
 	5
-	0
-	21
-	9
-	14
-	20
-	9
-	1
-	20
-	20
 	18
 	6
-	21
-	16
-	5
-	14
-	23
-	1
 	20
-	10
-	14
+	3
 	20
-	23
-	14
-	6
-	7
-	12
-	9
-	21
-	0
-	5
-	23
-	12
-	20
-	19
-	20
-	14
-	23
-	20
-	1
-	9
-	21
-	0
-	23
-	12
-	7
-	9
-	12
-	7
-	23
-	13
-	21
-	16
-	21
-	20
-	16
-	21
-	6
-	18
-	20
-	20
-	18
-	5
 	7
 	16
-	20
-	1
-	10
-	20
-	1
-	9
+	5
 	21
-	0
-	23
-	1
-	5
-	23
-	13
-	7
-	18
-	20
-	5
 	2
-	7
-	20
-	16
 	21
-	20
+	5
 	16
-	8
+	5
 	5
 	18
-	5
-	5
-	3
-	5
-	5
-	0
-	11
+	7
+	12
+	10
 	20
 	1
-	9
-	6
-	1
-	23
 	21
+	9
 	12
-	23
 	6
+	16
+	5
 	14
 	9
-	5
-	1
-	23
+	7
+	12
+	9
 	5
 	15
 	9
+	20
+	1
+	23
 	7
 	12
 	9
 	21
-	13
+	0
+	23
+	5
+	12
 	9
+	22
+	1
+	20
+	5
+	16
+	8
+	20
+	3
+	20
+	5
+	19
+	5
+	20
+	3
+	20
+	7
+	16
+	5
+	21
+	0
 	14
 	5
+	12
+	11
+	20
+	1
+	20
+	6
+	16
+	5
+	21
+	1
+	20
+	10
+	12
 	7
+	23
+	1
+	20
+	5
+	13
+	11
+	14
+	5
+	23
+	0
+	21
+	11
+	12
+	5
+	16
+	5
+	22
+	3
+	20
+	5
+	12
+	10
+	21
+	1
+	23
+	5
+	12
+	11
+	20
+	1
+	23
+	5
+	14
+	9
+	21
+	0
+	20
+	11
+	12
+	7
+	23
+	0
+	21
+	9
+	12
+	7
+	23
+	1
+	20
+	5
+	14
+	9
+	12
+	8
+	23
+	1
+	20
+	9
+	13
+	5
+	11
+	14
+	5
 	17
-	20
-	5
-	3
-	20
-	5
-	16
-	7
-	5
-	3
-	6
-	20
-	3
-	5
-	20
-	13
-	11
-	20
-	1
-	23
-	20
-	1
-	10
-	5
-	1
-	9
-	21
-	13
-	20
-	20
-	3
-	7
-	5
-	16
-	5
-	20
-	3
-	6
-	5
-	16
-	7
-	5
-	13
-	7
-	23
-	1
-	5
-	23
-	1
-	6
-	21
-	16
-	20
-	7
-	16
-	21
-	12
-	9
-	7
-	0
-	11
-	20
-	12
-	11
-	5
-	0
-	21
-	23
-	12
-	21
-	5
-	16
-	7
-	6
-	1
-	9
 	5
 	14
-	23
-	13
-	7
 	9
-	12
-	5
-	11
-	1
-	0
-	5
-	9
-	1
 	7
-	23
-	0
-	20
-	11
-	1
-	20
-	23
 	13
-	20
+	9
 	7
 	12
-	11
-	5
-	0
+	9
 	7
+	12
+	7
+	23
+	0
+	21
+	5
+	18
+	5
+	12
+	11
+	12
+	6
+	23
+	1
+	21
+	9
+	13
+	5
+	23
+	1
+	21
+	6
+	16
+	5
+	21
+	1
+	20
+	9
+	12
+	7
+	23
+	0
+	20
+	9
+	14
+	5
+	16
+	5
 	20
 	3
 	20
-	5
-	18
-	5
-	22
-	16
-	5
-	5
-	18
 	7
-	5
-	13
 	16
 	5
+	7
+	13
+	9
 	20
 	1
-	9
-	1
-	6
 	23
+	7
 	12
+	9
+	15
+	5
+	16
+	7
+	20
+	4
+	20
+	5
+	18
+	5
 	21
+	0
+	20
+	11
 	12
+	7
+	23
+	0
+	21
+	9
+	12
+	5
+	24
+	1
+	20
+	9
+	12
+	7
+	16
+	7
+	6
+	12
+	11
+	12
+	5
+	18
+	6
+	14
+	9
+	20
+	1
+	23
+	5
+	12
+	9
+	21
+	1
+	23
+	6
+	12
+	9
+	21
+	1
+	23
+	5
+	12
+	11
+	21
+	0
+	23
+	5
+	14
+	11
+	13
+	5
+	23
+	1
+	21
+	9
+	12
+	5
+	18
+	5
+	21
+	2
+	20
+	7
+	16
+	7
+	20
+	2
+	21
+	5
+	16
+	5
 	8
-	23
+	18
+	5
 	12
-	21
 	9
+	22
+	1
+	20
+	9
+	12
+	7
+	23
 	0
 	21
+	5
+	18
+	5
+	13
+	11
+	12
+	7
+	16
+	6
+	20
+	1
 	23
+	7
+	12
+	9
 	14
 	5
-	9
-	1
-	20
-	23
-	0
-	21
 	18
+	6
 	20
-	5
-	2
-	5
-	21
 	1
-	9
 	20
+	9
 	13
-	11
-	20
-	12
+	7
 	23
-	21
-	12
-	9
+	1
+	20
+	5
+	19
+	5
+	20
+	1
+	23
 	7
 	13
-	11
-	12
+	9
 	20
+	1
+	21
+	5
+	16
+	6
+	21
+	3
+	20
+	5
 	16
 	7
-	7
+	21
 	2
 	20
-	20
+	5
 	18
 	7
+	12
+	9
+	20
+	1
+	22
 	5
-	2
+	16
 	5
+	21
+	3
+	20
+	5
+	13
+	9
+	14
 	7
+	23
+	0
+	20
+	11
+	12
+	7
+	23

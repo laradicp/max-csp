@@ -1,44 +1,44 @@
-Version identifier: 22.1.1.0 | 2022-11-28 | 9160aff4d
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99857017700003
+CPXPARAM_TimeLimit                               599.99688785599994
 Tried aggregator 1 time.
-MIP Presolve eliminated 17 rows and 492 columns.
+MIP Presolve eliminated 18 rows and 492 columns.
 MIP Presolve modified 1 coefficients.
-Reduced MIP has 1471 rows, 2460 columns, and 19740 nonzeros.
+Reduced MIP has 1716 rows, 2460 columns, and 22190 nonzeros.
 Reduced MIP has 2460 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.01 sec. (10.38 ticks)
-Probing time = 0.00 sec. (2.54 ticks)
+Presolve time = 0.02 sec. (12.20 ticks)
+Probing time = 0.00 sec. (2.60 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
-Reduced MIP has 1471 rows, 2460 columns, and 19740 nonzeros.
+Reduced MIP has 1716 rows, 2460 columns, and 22190 nonzeros.
 Reduced MIP has 2460 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.01 sec. (12.07 ticks)
-Probing time = 0.00 sec. (2.54 ticks)
-Clique table members: 975.
+Presolve time = 0.02 sec. (14.05 ticks)
+Probing time = 0.00 sec. (2.60 ticks)
+Clique table members: 1220.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.02 sec. (25.13 ticks)
+Root relaxation solution time = 0.03 sec. (21.38 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000   132                      0.0000      582         
+      0     0        0.0000   241                      0.0000      544         
 *     0+    0                            0.0000        0.0000             0.00%
-      0     0        cutoff              0.0000        0.0000      582    0.00%
-Elapsed time = 0.08 sec. (109.89 ticks, tree = 0.01 MB, solutions = 1)
+      0     0        cutoff              0.0000        0.0000      544    0.00%
+Elapsed time = 0.23 sec. (179.13 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.08 sec. (109.98 ticks)
+  Real time             =    0.23 sec. (179.23 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.08 sec. (109.98 ticks)
+Total (root+branch&cut) =    0.23 sec. (179.23 ticks)
 Primal:	246
 Dual:	246
 Status:	Optimal
-Time:	0.0914073
+Time:	0.253018
 Sequence:
 	0
 	9
@@ -46,45 +46,13 @@ Sequence:
 	0
 	9
 	9
-	8
-	9
-	9
-	0
-	9
-	9
-	9
-	9
-	9
-	5
-	9
-	0
-	9
-	9
 	9
 	9
 	9
 	0
 	9
 	9
-	0
 	9
-	9
-	0
-	9
-	9
-	9
-	0
-	9
-	9
-	5
-	5
-	9
-	0
-	5
-	9
-	9
-	9
-	0
 	9
 	9
 	9
@@ -95,47 +63,7 @@ Sequence:
 	9
 	9
 	9
-	9
 	0
-	9
-	9
-	9
-	0
-	1
-	9
-	9
-	9
-	0
-	9
-	9
-	9
-	9
-	9
-	0
-	5
-	9
-	0
-	9
-	9
-	9
-	0
-	9
-	5
-	0
-	9
-	9
-	9
-	8
-	9
-	9
-	0
-	9
-	9
-	9
-	9
-	9
-	0
-	9
 	9
 	9
 	0
@@ -143,30 +71,6 @@ Sequence:
 	9
 	0
 	9
-	11
-	5
-	0
-	9
-	1
-	9
-	3
-	0
-	6
-	9
-	0
-	1
-	9
-	0
-	9
-	4
-	5
-	0
-	4
-	5
-	0
-	5
-	9
-	0
 	9
 	9
 	0
@@ -174,103 +78,199 @@ Sequence:
 	9
 	0
 	5
-	1
-	9
-	1
-	0
-	4
-	11
-	0
-	6
-	9
-	0
-	1
-	5
-	9
-	1
-	5
-	0
-	4
-	4
-	0
-	3
-	4
-	0
-	4
-	5
-	0
-	9
-	3
-	0
-	4
-	5
-	0
-	6
-	9
-	5
-	0
-	1
-	9
-	0
-	1
-	9
-	0
-	3
 	9
 	0
 	5
-	4
-	0
-	5
-	3
-	4
-	0
 	9
-	1
-	0
 	5
-	4
-	0
-	4
-	5
-	0
-	11
 	9
 	0
 	9
-	1
-	0
-	5
-	4
-	0
-	1
-	4
+	9
+	9
 	5
 	2
+	9
 	5
+	9
+	9
+	9
+	9
+	0
+	9
+	9
+	9
+	0
+	1
+	9
+	0
+	9
+	9
+	9
+	0
+	9
+	9
+	9
+	0
+	5
+	9
+	0
+	9
+	9
+	9
+	0
+	9
+	5
+	9
+	9
+	9
+	9
+	8
+	9
+	9
+	0
+	9
+	9
+	5
+	9
+	9
+	0
+	9
+	9
+	9
+	0
+	9
+	9
+	0
+	9
+	5
+	0
+	9
+	3
+	4
+	5
+	0
+	9
+	6
+	4
+	0
+	4
+	6
+	0
+	9
+	4
 	5
 	0
 	4
 	5
+	0
+	5
+	9
+	0
+	9
+	9
+	0
+	9
+	3
+	0
+	5
+	4
+	1
+	0
+	1
+	4
+	11
+	0
+	9
+	5
+	0
+	9
+	5
+	0
+	4
+	5
+	0
+	4
+	1
+	0
+	3
+	4
+	0
+	4
+	1
+	8
+	9
+	3
+	0
+	1
+	9
+	0
+	1
+	9
+	5
+	0
+	1
+	9
+	0
+	1
+	9
+	1
+	0
+	1
+	9
+	0
+	3
+	4
+	5
+	0
+	5
+	9
+	0
+	1
+	4
+	0
+	4
+	11
+	0
+	5
+	4
+	1
 	0
 	11
 	9
 	0
-	4
-	1
-	0
-	9
-	1
-	3
-	0
 	9
 	5
 	0
+	5
 	4
+	0
+	5
+	9
+	5
+	0
+	9
+	11
+	0
+	5
+	9
+	5
+	0
 	3
+	9
 	0
 	9
 	1
+	4
+	0
+	1
+	9
+	0
+	3
+	9
+	0
+	6
+	4
 	0
 	4
 	6
@@ -281,8 +281,8 @@ Sequence:
 	6
 	9
 	0
-	5
-	4
+	9
 	1
 	0
+	9
 	3
