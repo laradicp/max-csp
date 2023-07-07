@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    vector<string> pDiv = {"10", "15"};
+    vector<string> pDiv = {"10", "5"};
     vector<string> ir = {"5", "10", "15", "25", "50"};
     vector<string> iils = {"j-2", "j", "2j"};
     vector<vector<vector<double>>> gaps;
