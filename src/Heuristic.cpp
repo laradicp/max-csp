@@ -419,7 +419,7 @@ void Heuristic::swap(int t1, int t2)
 void Heuristic::perturbation()
 {
     int p = rand()%2;
-    int n = min((int)sequence.size()/2, data.getNbCars()/10);
+    int n = min((int)sequence.size()/2, data.getNbCars()/5);
 
     if(n == 0)
     {
@@ -532,7 +532,7 @@ Heuristic::Heuristic(Data data)
     infeasibleSwapPos.resize(this->data.getNbCars(), '0');
 
     int iterMax = 2*this->data.getNbCars();
-    for(int i = 0; i < 25; i++)
+    for(int i = 0; i < 15; i++)
     {
         initialization();
 
