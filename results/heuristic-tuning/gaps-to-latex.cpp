@@ -10,7 +10,7 @@ int main(int argc, char** argv)
     vector<string> perturbationTypes = {"removal", "swap", "both"};
     vector<string> perturbationDivisors = {"50", "25", "20", "15", "10", "5"};
 
-    vector<string> pDiv = {"10", "15"};
+    vector<string> pDiv = {"10", "5"};
     vector<string> ir = {"5", "10", "15", "25", "50"};
     vector<string> iils = {"j-2", "j", "2j"};
 
