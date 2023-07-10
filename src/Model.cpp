@@ -220,11 +220,10 @@ void Model::calculateOptionOverlap()
             {
                 if((j1 != j2)&&(data.getMaxCarsPerWindow(j2) == 1))
                 {
-                    if((carsPerOption[j1] - optionsIntersections[j1][j2] +
-                        ceil((data.getMaxCarsPerWindow(j1))/(data.getWindowSize(j2))) <
-                        data.getMaxCarsPerWindow(j1))&&
-                        (optionsIntersections[j1][j2]*(data.getWindowSize(j2) -
-                        data.getMaxCarsPerWindow(j2)) >= data.getMaxCarsPerWindow(j1)))
+                    if(carsPerOption[j1] - optionsIntersections[j1][j2] +
+                        min((int)ceil((data.getMaxCarsPerWindow(j1))/(data.getWindowSize(j2))),
+                        optionsIntersections[j1][j2]) <=
+                        data.getMaxCarsPerWindow(j1))
                     {
                         optionOverlap[j1] = true;
                         break;
