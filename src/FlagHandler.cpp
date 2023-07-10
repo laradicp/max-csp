@@ -16,6 +16,7 @@ FlagHandler::FlagHandler(int argc, char** argv)
     minViolations = false;
     penalize = false;
     checker = false;
+    minPaceDelay = false;
     
     int begin = 2;
     if((begin < argc)&&(argv[begin][0] != '-')) // the third argument is the path for the heuristic solution
@@ -74,6 +75,10 @@ FlagHandler::FlagHandler(int argc, char** argv)
         else if(strcmp(argv[i], "-checker") == 0)
         {
             checker = true;
+        }
+        else if(strcmp(argv[i], "-minpacedelay") == 0)
+        {
+            minPaceDelay = true;
         }
         else
         {
@@ -226,4 +231,9 @@ bool FlagHandler::getPenalize()
 bool FlagHandler::getChecker()
 {
     return checker;
+}
+
+bool FlagHandler::getMinPaceDelay()
+{
+    return minPaceDelay;
 }

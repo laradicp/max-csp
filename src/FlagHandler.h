@@ -20,6 +20,7 @@ class FlagHandler
 		bool minViolations;
 		bool penalize;
 		bool checker;
+		bool minPaceDelay;
 
 		string heuristicPath;
 	
@@ -40,6 +41,7 @@ class FlagHandler
 		bool getMinViolations();
 		bool getPenalize();
 		bool getChecker();
+		bool getMinPaceDelay();
 
 		string getHeuristicPath();
 		

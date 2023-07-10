@@ -65,7 +65,7 @@ void Model::initModel(bool sos1Branching, int customSearch)
     {
         if(customSearch > 0)
         {
-            // constraints 2: each position is occupied by exactly one car
+            // each position is occupied by exactly one car
             for(int t = 0; t < nbPositions; t++)  
             {
                 IloExpr sumX(env);
@@ -94,7 +94,7 @@ void Model::initModel(bool sos1Branching, int customSearch)
             }
             model.add(IloMaximize(env, sumX));
 
-            // constraints 2: each position is occupied by at most one car
+            // each position is occupied by at most one car
             for(int t = 0; t < nbPositions; t++)  
             {
                 IloExpr sumX(env);
@@ -110,7 +110,7 @@ void Model::initModel(bool sos1Branching, int customSearch)
                 model.add(r);
             }
 
-            // constraints 4: there should be unoccupied spaces only at the end
+            // there should be unoccupied spaces only at the end
             for(int t = 0; t < nbPositions - 1; t++) 
             {
                 IloExpr sumX1(env);
@@ -130,7 +130,7 @@ void Model::initModel(bool sos1Branching, int customSearch)
         }
     }
     
-    // constraints 1: respect class demand
+    // respect class demand
     for(int i = 0; i < data.getNbClasses(); i++) 
     {
         IloExpr sumX(env);
@@ -146,7 +146,7 @@ void Model::initModel(bool sos1Branching, int customSearch)
         model.add(r);
     }
     
-    // constraints 3: respect capacities
+    // respect capacities
     for(int t = 0; t < nbPositions; t++) 
     {
         for(int j = 0; j < data.getNbOptions(); j++)
@@ -256,8 +256,7 @@ void Model::sos1()
     }
     model.add(IloMaximize(env, sumZ));
 
-    // constraints 2: each position is occupied by at most one car,
-    //  and z defines the first empty position
+    // each position is occupied by at most one car, and z defines the first empty position
     for(int t = 0; t < data.getNbCars(); t++)  
     {
         IloExpr sumX(env);
@@ -690,6 +689,110 @@ void Model::minViolationsModel(bool penalize)
             IloRange r = (z[j][t] - y[j][t] + sumX == maxCarsInSegment);
             char name[100];
             sprintf(name, "DefineYZ(%d,%d)", t, j);
+            r.setName(name);
+            model.add(r);
+        }
+    }
+}
+
+void Model::minPaceDelay()
+{
+    env.end();
+    env = IloEnv();
+
+    nbPositions = data.getNbCars();
+    
+    model = IloModel(env);
+
+    // let Xit assume value 1 if any car of class i is assigned to position t, and 0 otherwise
+    x = IloArray<IloBoolVarArray>(env, data.getNbClasses());
+    for(int i = 0; i < data.getNbClasses(); i++)
+    {
+        IloBoolVarArray v(env, nbPositions);
+        x[i] = v;
+    }
+
+    // add variable x to the model
+    for(int i = 0; i < data.getNbClasses(); i++)
+    {
+        for(int t = 0; t < nbPositions; t++)
+        {
+            char name[100];
+            sprintf(name, "X(%d,%d)", i, t);
+            x[i][t].setName(name);
+            model.add(x[i][t]);
+        }
+    }
+
+    // let d be the pace delay of the assembly line,
+    // e.g. d = 1 means that the assembly line moves at half the usual speed
+    IloNumVar d(env, 0, nbPositions, ILOFLOAT);
+    d.setName("d");
+    model.add(d);
+
+    // add objective function (OF)
+    model.add(IloMinimize(env, d));
+
+    // each position is occupied by exactly one car
+    for(int t = 0; t < nbPositions; t++)  
+    {
+        IloExpr sumX(env);
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            sumX += x[i][t];
+        }
+
+        IloRange r = (sumX == 1);
+        char name[100];
+        sprintf(name, "PositionOccupied(%d)", t);
+        r.setName(name);
+        model.add(r);
+    }
+            
+    // respect class demand
+    for(int i = 0; i < data.getNbClasses(); i++) 
+    {
+        IloExpr sumX(env);
+        for(int t = 0; t < nbPositions; t++)
+        {
+            sumX += x[i][t];
+        }
+
+        IloRange r = (sumX <= data.getNbCarsPerClass(i));
+        char name[100];
+        sprintf(name, "CarsProduced(%d)", i);
+        r.setName(name);
+        model.add(r);
+    }
+    
+    // respect capacities
+    for(int t = 0; t < nbPositions; t++) 
+    {
+        for(int j = 0; j < data.getNbOptions(); j++)
+        {
+            IloExpr sumX(env);
+
+            for(int i = 0; i < data.getNbClasses(); i++)
+            {
+                if(data.getOption(i, j))
+                {
+                    for(int k = 0; k < data.getWindowSize(j); k++)
+                    {
+                        if(t + k < nbPositions)
+                        {
+                            sumX += x[i][t + k];
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            IloRange r = (sumX - data.getMaxCarsPerWindow(j)*(1 + d) <= 0);
+            char name[100];
+            sprintf(name, "Capacity(%d,%d)", t, j);
             r.setName(name);
             model.add(r);
         }

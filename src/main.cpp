@@ -47,6 +47,14 @@ int main(int argc, char** argv)
         return 0;
     }
 
+    if(flags.getMinPaceDelay())
+    {
+        model.minPaceDelay();
+        model.solve();
+        model.output();
+        return 0;
+    }
+
     if(flags.getMinViolations())
     {
         model.minViolationsModel(flags.getPenalize());

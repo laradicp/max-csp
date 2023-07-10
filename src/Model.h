@@ -61,6 +61,8 @@ class Model
 
         void minViolationsModel(bool penalize = false);
 
+        void minPaceDelay();
+
 };
 
 #endif
