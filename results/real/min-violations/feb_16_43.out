@@ -1,0 +1,86 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               600
+Tried aggregator 1 time.
+MIP Presolve eliminated 48 rows and 301 columns.
+Reduced MIP has 265 rows, 731 columns, and 2698 nonzeros.
+Reduced MIP has 560 binaries, 171 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (1.71 ticks)
+Found incumbent of value 130.000000 after 0.01 sec. (4.11 ticks)
+Probing fixed 0 vars, tightened 5 bounds.
+Probing time = 0.00 sec. (2.20 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 265 rows, 731 columns, and 2698 nonzeros.
+Reduced MIP has 562 binaries, 169 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (1.79 ticks)
+Probing time = 0.00 sec. (2.06 ticks)
+Cover probing fixed 0 vars, tightened 41 bounds.
+Clique table members: 1982.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (1.67 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                          130.0000        0.0000           100.00%
+*     0     0      integral     0        0.0000        0.0000      102    0.00%
+Elapsed time = 0.02 sec. (13.77 ticks, tree = 0.00 MB, solutions = 2)
+
+Root node processing (before b&c):
+  Real time             =    0.02 sec. (13.81 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.02 sec. (13.81 ticks)
+Primal number of violations:	0
+Dual number of violations:	0
+Status:	Optimal
+Time:	0.02
+Sequence:
+	5
+	0
+	5
+	9
+	0
+	4
+	9
+	2
+	4
+	9
+	0
+	4
+	4
+	2
+	5
+	4
+	2
+	5
+	4
+	0
+	5
+	4
+	0
+	9
+	9
+	0
+	9
+	9
+	2
+	9
+	5
+	0
+	9
+	5
+	2
+	1
+	9
+	4
+	2
+	4
+	9
+	3
+	2
