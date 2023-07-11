@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <string.h>
 #include <fstream>
 #include <unordered_map>
 
@@ -93,37 +94,34 @@ void Analytics::print(string path)
 
 int main(int argc, char** argv)
 {
-    if(argc != 2)
+    if(argc != 3)
     {
-        cout << "Usage: ./calculate-gaps <instance>" << endl;
-        return 0;
+        cout << "Usage: ./calculate-gaps <instance> -<instance set>" << endl;
+        exit(1);
     }
 
-    vector<string> instanceSets = {"real", "literature"};
+    string instanceSet = argv[2] + 1;
     vector<string> paths = {
         "asc-iterative/combinatorial", "asc-iterative/trivial", "asc-iterative/heuristic",
         "binary/combinatorial", "binary/combinatorial-trivial", "binary/trivial",
         "binary/trivial-combinatorial", "binary/heuristic-combinatorial", "binary/heuristic-trivial",
         "desc-iterative/combinatorial", "desc-iterative/trivial", "desc-iterative/combinatorial/heuristic-primal",
-        "min-violations/penalize",
+        // "min-violations/penalize",
         "regular", "regular/heuristic-primal",
         "sos1", "sos1/heuristic-primal"
     };
 
     Analytics analytics(argv[1]);
 
-    for(string instanceSet : instanceSets)
+    // populate dicts and find best dual
+    for(string path : paths)
     {
-        for(string path : paths)
-        {
-            // populate dicts and find best dual
-            analytics.readFile(instanceSet + "/" + path);
-        }
-
-        for(string path : paths)
-        {
-            analytics.print(instanceSet + "/" + path);
-        }
+        analytics.readFile(instanceSet + "/" + path);
+    }
+    
+    for(string path : paths)
+    {
+        analytics.print(instanceSet + "/" + path);
     }
 
     return 0;
