@@ -1,0 +1,245 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               600
+Tried aggregator 1 time.
+Reduced MIP has 625 rows, 3500 columns, and 25913 nonzeros.
+Reduced MIP has 2900 binaries, 600 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (10.58 ticks)
+Found incumbent of value 9.7483236e+74 after 0.03 sec. (26.43 ticks)
+Probing time = 0.00 sec. (4.21 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 625 rows, 3500 columns, and 25913 nonzeros.
+Reduced MIP has 2900 binaries, 600 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (13.75 ticks)
+Probing time = 0.00 sec. (4.21 ticks)
+Clique table members: 112.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.13 sec. (134.60 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                       9.74832e+74        0.0000           100.00%
+      0     0        0.0000   532   9.74832e+74        0.0000     1308  100.00%
+*     0+    0                       4.11206e+72        0.0000           100.00%
+Detecting symmetries...
+      0     2        0.0000    18   4.11206e+72        0.0000     1308  100.00%
+Elapsed time = 1.98 sec. (2181.54 ticks, tree = 0.01 MB, solutions = 2)
+*     1     1      integral     0        0.0000        0.0000     1324    0.00%
+
+Root node processing (before b&c):
+  Real time             =    1.98 sec. (2181.55 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (1.84 ticks)
+                          ------------
+Total (root+branch&cut) =    1.98 sec. (2183.40 ticks)
+Violation-free sequence bound:	100
+Unscheduled:	0
+Status:	Optimal
+Time:	1.99
+Sequence:
+	8
+	2
+	16
+	8
+	14
+	16
+	16
+	18
+	3
+	1
+	16
+	8
+	2
+	8
+	16
+	18
+	2
+	8
+	23
+	8
+	23
+	9
+	14
+	9
+	24
+	9
+	17
+	6
+	14
+	15
+	13
+	19
+	13
+	19
+	13
+	11
+	13
+	6
+	7
+	12
+	13
+	1
+	2
+	8
+	24
+	16
+	11
+	13
+	19
+	13
+	1
+	3
+	21
+	6
+	17
+	8
+	2
+	9
+	17
+	8
+	20
+	1
+	4
+	24
+	22
+	16
+	23
+	12
+	13
+	0
+	16
+	12
+	2
+	8
+	21
+	3
+	11
+	16
+	8
+	10
+	9
+	21
+	8
+	17
+	2
+	9
+	10
+	8
+	16
+	16
+	18
+	4
+	19
+	16
+	17
+	8
+	16
+	19
+	5
+	8
+Violation-free sequence:
+	8
+	2
+	16
+	8
+	14
+	16
+	16
+	18
+	3
+	1
+	16
+	8
+	2
+	8
+	16
+	18
+	2
+	8
+	23
+	8
+	23
+	9
+	14
+	9
+	24
+	9
+	17
+	6
+	14
+	15
+	13
+	19
+	13
+	19
+	13
+	11
+	13
+	6
+	7
+	12
+	13
+	1
+	2
+	8
+	24
+	16
+	11
+	13
+	19
+	13
+	1
+	3
+	21
+	6
+	17
+	8
+	2
+	9
+	17
+	8
+	20
+	1
+	4
+	24
+	22
+	16
+	23
+	12
+	13
+	0
+	16
+	12
+	2
+	8
+	21
+	3
+	11
+	16
+	8
+	10
+	9
+	21
+	8
+	17
+	2
+	9
+	10
+	8
+	16
+	16
+	18
+	4
+	19
+	16
+	17
+	8
+	16
+	19
+	5
+	8

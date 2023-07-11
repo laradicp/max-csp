@@ -1,0 +1,247 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               600
+Tried aggregator 1 time.
+Reduced MIP has 920 rows, 3600 columns, and 21971 nonzeros.
+Reduced MIP has 2400 binaries, 1200 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (9.24 ticks)
+Found incumbent of value 7.8576799e+74 after 0.05 sec. (23.75 ticks)
+Probing time = 0.01 sec. (3.12 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 920 rows, 3600 columns, and 21971 nonzeros.
+Reduced MIP has 2400 binaries, 1200 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (12.25 ticks)
+Probing time = 0.00 sec. (3.12 ticks)
+Clique table members: 111.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.21 sec. (177.15 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                       7.85768e+74        0.0000           100.00%
+      0     0        0.0000   817   7.85768e+74        0.0000     1778  100.00%
+      0     0        0.0000   321   7.85768e+74   ZeroHalf: 1     1870  100.00%
+      0     0        0.0000   372   7.85768e+74  ZeroHalf: 17     2093  100.00%
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000     2093    0.00%
+Elapsed time = 2.60 sec. (2805.28 ticks, tree = 0.01 MB, solutions = 2)
+
+Zero-half cuts applied:  3
+
+Root node processing (before b&c):
+  Real time             =    2.60 sec. (2805.41 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    2.60 sec. (2805.41 ticks)
+Violation-free sequence bound:	100
+Unscheduled:	0
+Status:	Optimal
+Time:	2.62
+Sequence:
+	17
+	9
+	15
+	19
+	10
+	4
+	17
+	9
+	12
+	11
+	0
+	18
+	19
+	16
+	10
+	19
+	13
+	0
+	8
+	5
+	13
+	2
+	11
+	5
+	10
+	14
+	4
+	10
+	1
+	12
+	18
+	6
+	11
+	2
+	15
+	19
+	10
+	16
+	11
+	7
+	10
+	14
+	3
+	9
+	17
+	16
+	2
+	11
+	7
+	18
+	19
+	4
+	3
+	14
+	10
+	4
+	19
+	18
+	7
+	11
+	2
+	13
+	1
+	18
+	0
+	17
+	9
+	15
+	19
+	10
+	4
+	11
+	0
+	10
+	14
+	15
+	2
+	17
+	4
+	18
+	12
+	0
+	8
+	16
+	12
+	17
+	9
+	3
+	14
+	10
+	12
+	11
+	2
+	15
+	5
+	11
+	2
+	3
+	16
+	8
+Violation-free sequence:
+	17
+	9
+	15
+	19
+	10
+	4
+	17
+	9
+	12
+	11
+	0
+	18
+	19
+	16
+	10
+	19
+	13
+	0
+	8
+	5
+	13
+	2
+	11
+	5
+	10
+	14
+	4
+	10
+	1
+	12
+	18
+	6
+	11
+	2
+	15
+	19
+	10
+	16
+	11
+	7
+	10
+	14
+	3
+	9
+	17
+	16
+	2
+	11
+	7
+	18
+	19
+	4
+	3
+	14
+	10
+	4
+	19
+	18
+	7
+	11
+	2
+	13
+	1
+	18
+	0
+	17
+	9
+	15
+	19
+	10
+	4
+	11
+	0
+	10
+	14
+	15
+	2
+	17
+	4
+	18
+	12
+	0
+	8
+	16
+	12
+	17
+	9
+	3
+	14
+	10
+	12
+	11
+	2
+	15
+	5
+	11
+	2
+	3
+	16
+	8

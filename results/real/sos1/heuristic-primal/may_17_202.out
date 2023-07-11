@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99999565400003
+CPXPARAM_TimeLimit                               599.99999238999999
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 202.0000.
 Tried aggregator 1 time.
@@ -9,7 +9,7 @@ MIP Presolve eliminated 417 rows and 1010 columns.
 MIP Presolve modified 38 coefficients.
 Reduced MIP has 1010 rows, 1616 columns, and 30465 nonzeros.
 Reduced MIP has 1616 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.03 sec. (53.78 ticks)
+Presolve time = 0.05 sec. (53.78 ticks)
 Probing time = 0.01 sec. (7.86 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -31,91 +31,140 @@ Root relaxation solution time = 0.00 sec. (4.26 ticks)
       0     0        cutoff            202.0000                      8     --- 
 
 Root node processing (before b&c):
-  Real time             =    0.11 sec. (136.14 ticks)
+  Real time             =    0.14 sec. (136.14 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.11 sec. (136.14 ticks)
+Total (root+branch&cut) =    0.14 sec. (136.14 ticks)
 Primal:	202
 Dual:	202
 Status:	Optimal
-Time:	0.12
+Time:	0.15
 Sequence:
-	2
 	9
-	1
-	4
-	1
-	2
-	5
-	9
-	4
 	8
-	9
+	1
 	4
+	2
+	9
+	5
+	2
+	9
 	1
 	4
 	2
 	4
 	5
-	0
-	1
-	4
-	1
-	0
+	9
 	5
 	4
-	9
 	1
+	9
 	2
 	9
 	4
 	9
-	9
 	0
-	1
-	9
 	5
 	9
-	0
+	5
+	4
 	1
 	4
-	9
-	4
-	4
-	0
-	1
-	9
-	9
-	9
-	0
-	4
-	9
-	9
-	5
-	4
-	0
-	4
-	4
-	9
-	4
-	4
-	9
-	5
-	4
-	0
-	4
-	5
-	9
 	5
 	2
 	5
-	9
+	4
+	1
 	2
+	4
+	9
+	1
+	4
+	9
+	0
+	5
+	4
+	9
+	9
+	1
+	0
 	9
 	5
-	9
+	0
 	5
+	9
+	1
+	0
+	5
+	9
+	9
+	0
+	4
+	9
+	4
+	1
+	9
+	0
+	4
+	9
+	4
+	9
+	9
+	9
+	0
+	9
+	9
+	0
+	9
+	4
+	0
+	9
+	9
+	4
+	4
+	0
+	9
+	4
+	0
+	9
+	9
+	9
+	9
+	4
+	4
+	9
+	0
+	9
+	9
+	0
+	4
+	4
+	0
+	4
+	9
+	9
+	4
+	4
+	9
+	9
+	0
+	9
+	4
+	0
+	9
+	4
+	4
+	0
+	4
+	9
+	4
+	9
+	9
+	0
+	4
+	4
+	9
 	4
 	0
 	4
@@ -123,43 +172,14 @@ Sequence:
 	0
 	9
 	4
-	9
-	9
-	4
-	0
-	9
-	4
-	9
-	4
-	4
-	0
-	4
-	9
-	0
-	9
-	4
-	4
-	0
-	4
-	4
-	9
 	0
 	9
 	9
-	0
-	4
 	9
-	4
-	0
-	9
-	4
-	4
-	9
-	4
-	0
 	9
 	9
 	0
+	9
 	9
 	9
 	9
@@ -183,28 +203,8 @@ Sequence:
 	9
 	9
 	9
-	0
-	9
 	9
 	0
-	9
-	9
-	9
-	0
-	9
-	9
-	0
-	9
-	9
-	9
-	0
-	9
-	9
-	9
-	9
-	9
-	9
-	9
 	9
 	9
 	9

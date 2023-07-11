@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998672900006
+CPXPARAM_TimeLimit                               599.99997525000003
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 104.0000.
 Tried aggregator 1 time.
@@ -9,20 +9,20 @@ MIP Presolve eliminated 18 rows and 634 columns.
 MIP Presolve modified 49 coefficients.
 Reduced MIP has 2214 rows, 3487 columns, and 80273 nonzeros.
 Reduced MIP has 3487 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.08 sec. (134.49 ticks)
+Presolve time = 0.10 sec. (134.49 ticks)
 Probing time = 0.01 sec. (13.20 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 12 coefficients.
 Reduced MIP has 2214 rows, 3487 columns, and 80432 nonzeros.
 Reduced MIP has 3487 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.08 sec. (123.04 ticks)
-Probing time = 0.01 sec. (13.21 ticks)
+Presolve time = 0.09 sec. (123.04 ticks)
+Probing time = 0.02 sec. (13.21 ticks)
 Clique table members: 1575.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.17 sec. (196.55 ticks)
+Root relaxation solution time = 0.19 sec. (196.55 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -36,22 +36,22 @@ Root relaxation solution time = 0.17 sec. (196.55 ticks)
       0     0      281.0000   461      165.0000   ZeroHalf: 1     2334   70.30%
 *     0+    0                          281.0000      281.0000             0.00%
       0     0        cutoff            281.0000      281.0000     2335    0.00%
-Elapsed time = 1.63 sec. (1701.22 ticks, tree = 0.01 MB, solutions = 3)
+Elapsed time = 1.65 sec. (1701.22 ticks, tree = 0.01 MB, solutions = 3)
 
 Clique cuts applied:  1
 Zero-half cuts applied:  1
 Gomory fractional cuts applied:  2
 
 Root node processing (before b&c):
-  Real time             =    1.63 sec. (1701.42 ticks)
+  Real time             =    1.65 sec. (1701.42 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    1.63 sec. (1701.42 ticks)
+Total (root+branch&cut) =    1.65 sec. (1701.42 ticks)
 Primal:	281
 Dual:	281
 Status:	Optimal
-Time:	1.65
+Time:	1.66
 Sequence:
 	5
 	9

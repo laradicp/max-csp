@@ -1,9 +1,9 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               597.37250185000005
+CPXPARAM_TimeLimit                               597.70105209999997
 1 of 1 MIP starts provided solutions.
-MIP start 'm1' defined initial solution with objective 365.0000.
+MIP start 'm1' defined initial solution with objective 364.0000.
 Tried aggregator 1 time.
 MIP Presolve eliminated 385 rows and 371 columns.
 MIP Presolve modified 38 coefficients.
@@ -27,22 +27,22 @@ Root relaxation solution time = 0.27 sec. (283.70 ticks)
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                          365.0000    69006.0000              --- 
-      0     0      368.0000   821      365.0000      368.0000     1945    0.82%
+*     0+    0                          364.0000    69006.0000              --- 
+      0     0      368.0000   821      364.0000      368.0000     1945    1.10%
 *     0+    0                          368.0000      368.0000             0.00%
       0     0        cutoff            368.0000      368.0000     2428    0.00%
-Elapsed time = 1.41 sec. (1420.24 ticks, tree = 0.01 MB, solutions = 2)
+Elapsed time = 1.38 sec. (1420.24 ticks, tree = 0.01 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    1.41 sec. (1420.43 ticks)
+  Real time             =    1.38 sec. (1420.42 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    1.41 sec. (1420.43 ticks)
+Total (root+branch&cut) =    1.38 sec. (1420.42 ticks)
 Primal:	368
 Dual:	368
 Status:	Optimal
-Time:	1.46
+Time:	1.42
 Sequence:
 	7
 	9

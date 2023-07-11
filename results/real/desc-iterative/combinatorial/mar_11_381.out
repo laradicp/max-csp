@@ -1,13 +1,13 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99511167599996
+CPXPARAM_TimeLimit                               599.991109553
 Tried aggregator 1 time.
 MIP Presolve eliminated 17 rows and 381 columns.
 MIP Presolve modified 1 coefficients.
 Reduced MIP has 2662 rows, 4191 columns, and 40900 nonzeros.
 Reduced MIP has 4191 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.03 sec. (20.97 ticks)
+Presolve time = 0.04 sec. (20.97 ticks)
 Probing time = 0.00 sec. (3.13 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -19,7 +19,7 @@ Clique table members: 1894.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.06 sec. (52.74 ticks)
+Root relaxation solution time = 0.07 sec. (52.74 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -27,18 +27,18 @@ Root relaxation solution time = 0.06 sec. (52.74 ticks)
       0     0        0.0000   328                      0.0000      966         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000      966    0.00%
-Elapsed time = 0.54 sec. (396.04 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 0.60 sec. (396.04 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.54 sec. (396.18 ticks)
+  Real time             =    0.60 sec. (396.18 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.54 sec. (396.18 ticks)
+Total (root+branch&cut) =    0.60 sec. (396.18 ticks)
 Primal:	381
 Dual:	381
 Status:	Optimal
-Time:	0.58422
+Time:	0.648633
 Sequence:
 	7
 	9

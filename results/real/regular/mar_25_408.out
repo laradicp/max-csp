@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998591099995
+CPXPARAM_TimeLimit                               599.99998742499997
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 132.0000.
 Tried aggregator 1 time.
@@ -15,13 +15,13 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 3258 rows, 4080 columns, and 45076 nonzeros.
 Reduced MIP has 4080 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.04 sec. (33.51 ticks)
+Presolve time = 0.03 sec. (33.51 ticks)
 Probing time = 0.00 sec. (5.71 ticks)
 Clique table members: 2030.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.11 sec. (84.08 ticks)
+Root relaxation solution time = 0.10 sec. (84.08 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -30,18 +30,18 @@ Root relaxation solution time = 0.11 sec. (84.08 ticks)
       0     0      408.0000   403      132.0000      408.0000     1659  209.09%
 *     0+    0                          408.0000      408.0000             0.00%
       0     0        cutoff            408.0000      408.0000     1659    0.00%
-Elapsed time = 0.50 sec. (402.41 ticks, tree = 0.01 MB, solutions = 2)
+Elapsed time = 0.47 sec. (402.41 ticks, tree = 0.01 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    0.50 sec. (402.61 ticks)
+  Real time             =    0.47 sec. (402.61 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.50 sec. (402.61 ticks)
+Total (root+branch&cut) =    0.47 sec. (402.61 ticks)
 Primal:	408
 Dual:	408
 Status:	Optimal
-Time:	0.52
+Time:	0.49
 Sequence:
 	6
 	4

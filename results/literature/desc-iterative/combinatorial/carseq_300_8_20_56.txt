@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99407283799997
+CPXPARAM_TimeLimit                               599.99398958300003
 Tried aggregator 1 time.
 MIP Presolve eliminated 17 rows and 0 columns.
 Reduced MIP has 2703 rows, 6000 columns, and 58440 nonzeros.
@@ -12,13 +12,13 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 2703 rows, 6000 columns, and 58440 nonzeros.
 Reduced MIP has 6000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.04 sec. (35.71 ticks)
+Presolve time = 0.05 sec. (35.71 ticks)
 Probing time = 0.01 sec. (3.62 ticks)
 Clique table members: 2089.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 1.18 sec. (1111.81 ticks)
+Root relaxation solution time = 1.24 sec. (1111.81 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -27,21 +27,21 @@ Root relaxation solution time = 1.18 sec. (1111.81 ticks)
       0     0        0.0000   621                    Cuts: 30     9250         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000     9250    0.00%
-Elapsed time = 19.28 sec. (17859.20 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 19.15 sec. (17859.20 ticks, tree = 0.01 MB, solutions = 1)
 
 Clique cuts applied:  19
 Zero-half cuts applied:  2
 
 Root node processing (before b&c):
-  Real time             =   19.28 sec. (17859.39 ticks)
+  Real time             =   19.16 sec. (17859.39 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =   19.28 sec. (17859.39 ticks)
+Total (root+branch&cut) =   19.16 sec. (17859.39 ticks)
 Primal:	300
 Dual:	300
 Status:	Optimal
-Time:	19.317
+Time:	19.1962
 Sequence:
 	9
 	5

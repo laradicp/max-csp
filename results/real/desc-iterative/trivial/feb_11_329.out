@@ -1,12 +1,12 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.995708519
+CPXPARAM_TimeLimit                               599.992202561
 Tried aggregator 1 time.
 MIP Presolve eliminated 19 rows and 987 columns.
 Reduced MIP has 2296 rows, 2961 columns, and 25181 nonzeros.
 Reduced MIP has 2961 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (14.23 ticks)
+Presolve time = 0.03 sec. (14.23 ticks)
 Probing time = 0.00 sec. (2.82 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -18,7 +18,7 @@ Clique table members: 1635.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.02 sec. (22.06 ticks)
+Root relaxation solution time = 0.03 sec. (22.06 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -27,22 +27,22 @@ Root relaxation solution time = 0.02 sec. (22.06 ticks)
       0     0        0.0000    25                     Cuts: 4      495         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000      495    0.00%
-Elapsed time = 0.25 sec. (180.81 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 0.28 sec. (180.81 ticks, tree = 0.01 MB, solutions = 1)
 
 Zero-half cuts applied:  2
 Lift and project cuts applied:  1
 Gomory fractional cuts applied:  1
 
 Root node processing (before b&c):
-  Real time             =    0.25 sec. (180.93 ticks)
+  Real time             =    0.28 sec. (180.93 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.25 sec. (180.93 ticks)
+Total (root+branch&cut) =    0.28 sec. (180.93 ticks)
 Primal:	329
 Dual:	329
 Status:	Optimal
-Time:	0.278093
+Time:	0.323797
 Sequence:
 	4
 	8

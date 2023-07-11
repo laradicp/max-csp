@@ -1,0 +1,247 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               600
+Tried aggregator 1 time.
+Reduced MIP has 619 rows, 2900 columns, and 19192 nonzeros.
+Reduced MIP has 2400 binaries, 500 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (7.80 ticks)
+Found incumbent of value 9.8218321e+74 after 0.02 sec. (19.78 ticks)
+Probing time = 0.00 sec. (4.10 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 619 rows, 2900 columns, and 19192 nonzeros.
+Reduced MIP has 2400 binaries, 500 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (10.28 ticks)
+Probing time = 0.00 sec. (4.10 ticks)
+Clique table members: 109.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.10 sec. (120.29 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                       9.82183e+74        0.0000           100.00%
+      0     0        0.0000   484   9.82183e+74        0.0000     1368  100.00%
+Detecting symmetries...
+      0     2        0.0000   189   9.82183e+74        0.0000     1368  100.00%
+Elapsed time = 1.03 sec. (1095.07 ticks, tree = 0.01 MB, solutions = 1)
+      1     3        0.0000   190   9.82183e+74        0.0000     3825  100.00%
+      3     5        0.0000    83   9.82183e+74        0.0000     5202  100.00%
+      5     7        0.0000   148   9.82183e+74        0.0000     7515  100.00%
+*     6     1      integral     0        0.0000        0.0000     9681    0.00%
+
+Root node processing (before b&c):
+  Real time             =    1.03 sec. (1095.00 ticks)
+Sequential b&c:
+  Real time             =    0.90 sec. (1055.47 ticks)
+                          ------------
+Total (root+branch&cut) =    1.93 sec. (2150.47 ticks)
+Violation-free sequence bound:	100
+Unscheduled:	0
+Status:	Optimal
+Time:	1.94
+Sequence:
+	6
+	1
+	2
+	11
+	16
+	7
+	9
+	11
+	15
+	5
+	3
+	4
+	11
+	0
+	5
+	3
+	4
+	9
+	5
+	12
+	8
+	5
+	4
+	5
+	5
+	7
+	18
+	5
+	0
+	1
+	9
+	7
+	11
+	17
+	4
+	5
+	6
+	12
+	9
+	5
+	15
+	6
+	9
+	12
+	11
+	5
+	15
+	5
+	9
+	4
+	11
+	6
+	12
+	9
+	5
+	0
+	1
+	17
+	7
+	1
+	5
+	2
+	1
+	5
+	7
+	18
+	5
+	2
+	1
+	9
+	7
+	13
+	11
+	0
+	5
+	1
+	10
+	11
+	9
+	12
+	5
+	6
+	4
+	17
+	11
+	0
+	14
+	9
+	2
+	16
+	11
+	10
+	1
+	11
+	0
+	5
+	1
+	0
+	6
+	16
+Violation-free sequence:
+	6
+	1
+	2
+	11
+	16
+	7
+	9
+	11
+	15
+	5
+	3
+	4
+	11
+	0
+	5
+	3
+	4
+	9
+	5
+	12
+	8
+	5
+	4
+	5
+	5
+	7
+	18
+	5
+	0
+	1
+	9
+	7
+	11
+	17
+	4
+	5
+	6
+	12
+	9
+	5
+	15
+	6
+	9
+	12
+	11
+	5
+	15
+	5
+	9
+	4
+	11
+	6
+	12
+	9
+	5
+	0
+	1
+	17
+	7
+	1
+	5
+	2
+	1
+	5
+	7
+	18
+	5
+	2
+	1
+	9
+	7
+	13
+	11
+	0
+	5
+	1
+	10
+	11
+	9
+	12
+	5
+	6
+	4
+	17
+	11
+	0
+	14
+	9
+	2
+	16
+	11
+	10
+	1
+	11
+	0
+	5
+	1
+	0
+	6
+	16

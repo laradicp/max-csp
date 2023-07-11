@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99999595999998
+CPXPARAM_TimeLimit                               599.99999207300004
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 127.0000.
 Tried aggregator 1 time.
@@ -9,7 +9,7 @@ MIP Presolve eliminated 143 rows and 381 columns.
 MIP Presolve modified 72 coefficients.
 Reduced MIP has 759 rows, 1270 columns, and 18796 nonzeros.
 Reduced MIP has 1270 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.03 sec. (32.77 ticks)
+Presolve time = 0.04 sec. (32.77 ticks)
 Probing time = 0.01 sec. (6.49 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -31,80 +31,65 @@ Root relaxation solution time = 0.00 sec. (2.89 ticks)
       0     0        cutoff            127.0000                     10     --- 
 
 Root node processing (before b&c):
-  Real time             =    0.08 sec. (80.04 ticks)
+  Real time             =    0.10 sec. (80.04 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.08 sec. (80.04 ticks)
+Total (root+branch&cut) =    0.10 sec. (80.04 ticks)
 Primal:	127
 Dual:	127
 Status:	Optimal
-Time:	0.09
+Time:	0.12
 Sequence:
+	2
+	7
+	9
+	1
+	9
 	5
 	4
 	1
 	2
-	3
-	4
+	9
 	5
-	0
-	9
-	4
-	7
-	0
-	9
-	1
-	2
-	1
-	9
-	9
-	0
-	7
 	4
 	9
+	7
+	0
+	4
+	1
 	8
-	9
-	5
-	4
-	3
-	4
-	1
-	4
-	4
-	1
-	4
-	7
-	9
-	4
 	5
 	9
 	1
 	9
+	5
 	4
+	0
+	5
 	4
+	3
+	9
+	0
 	1
+	4
+	4
 	9
 	7
-	4
 	9
+	4
 	4
 	9
 	1
-	4
+	9
 	5
 	9
-	3
-	4
-	5
-	9
-	1
-	4
 	7
+	4
 	9
 	9
 	4
-	9
+	4
 	1
 	4
 	7
@@ -112,12 +97,28 @@ Sequence:
 	4
 	1
 	9
+	9
+	1
+	9
+	9
+	7
+	9
+	1
+	4
 	4
 	9
 	7
 	9
+	4
+	1
 	9
+	4
+	7
 	9
+	4
+	4
+	9
+	4
 	9
 	9
 	3
@@ -140,9 +141,13 @@ Sequence:
 	9
 	9
 	9
-	7
+	3
 	9
 	9
+	9
+	9
+	9
+	3
 	9
 	9
 	9
@@ -155,12 +160,7 @@ Sequence:
 	9
 	9
 	9
-	9
 	3
-	9
-	9
-	9
-	9
 	9
 	9
 	9

@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998686900005
+CPXPARAM_TimeLimit                               599.99998844599997
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 68.0000.
 Tried aggregator 1 time.
@@ -21,7 +21,7 @@ Clique table members: 1340.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.08 sec. (58.94 ticks)
+Root relaxation solution time = 0.07 sec. (58.94 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -53,7 +53,7 @@ Detecting symmetries...
       0     0      181.9544   157      169.0000      Cuts: 13     6326    7.67%
 *     0+    0                          181.0000      181.9544             0.53%
       0     0        cutoff            181.0000      181.9544     6326    0.53%
-Elapsed time = 3.07 sec. (2201.11 ticks, tree = 0.01 MB, solutions = 4)
+Elapsed time = 2.89 sec. (2201.11 ticks, tree = 0.01 MB, solutions = 4)
 
 Clique cuts applied:  2
 Implied bound cuts applied:  30
@@ -61,15 +61,15 @@ Zero-half cuts applied:  304
 Gomory fractional cuts applied:  1
 
 Root node processing (before b&c):
-  Real time             =    3.07 sec. (2201.43 ticks)
+  Real time             =    2.89 sec. (2201.43 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    3.07 sec. (2201.43 ticks)
+Total (root+branch&cut) =    2.89 sec. (2201.43 ticks)
 Primal:	181
 Dual:	181
 Status:	Optimal
-Time:	3.08
+Time:	2.89
 Sequence:
 	5
 	9

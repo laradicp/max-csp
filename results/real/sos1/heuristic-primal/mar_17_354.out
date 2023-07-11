@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99980792300005
+CPXPARAM_TimeLimit                               599.99969590000001
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 354.0000.
 Tried aggregator 1 time.
@@ -9,15 +9,15 @@ MIP Presolve eliminated 18 rows and 708 columns.
 MIP Presolve modified 46 coefficients.
 Reduced MIP has 2473 rows, 3894 columns, and 99297 nonzeros.
 Reduced MIP has 3894 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.10 sec. (160.13 ticks)
+Presolve time = 0.11 sec. (160.13 ticks)
 Probing time = 0.02 sec. (14.96 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 12 coefficients.
 Reduced MIP has 2473 rows, 3894 columns, and 99447 nonzeros.
 Reduced MIP has 3894 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.09 sec. (149.91 ticks)
-Probing time = 0.01 sec. (14.97 ticks)
+Presolve time = 0.10 sec. (149.91 ticks)
+Probing time = 0.02 sec. (14.97 ticks)
 Clique table members: 1760.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
@@ -31,100 +31,118 @@ Root relaxation solution time = 0.01 sec. (13.30 ticks)
       0     0        cutoff            354.0000                     11     --- 
 
 Root node processing (before b&c):
-  Real time             =    0.32 sec. (414.57 ticks)
+  Real time             =    0.33 sec. (414.57 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.32 sec. (414.57 ticks)
+Total (root+branch&cut) =    0.33 sec. (414.57 ticks)
 Primal:	354
 Dual:	354
 Status:	Optimal
-Time:	0.35
+Time:	0.37
 Sequence:
 	7
-	0
+	4
+	9
+	10
+	9
 	5
 	4
+	10
+	4
+	10
+	4
+	3
+	9
 	1
+	4
+	5
+	0
+	9
+	6
+	0
+	4
+	9
+	3
+	4
+	9
+	10
+	0
+	4
+	9
 	0
 	6
 	4
 	11
-	0
-	5
 	4
-	1
 	9
-	10
-	9
-	10
-	4
 	1
 	0
 	5
 	4
+	10
+	4
+	9
+	10
+	4
+	6
+	0
+	1
+	9
+	4
+	5
+	0
+	5
+	9
+	5
+	9
+	1
+	9
+	4
+	3
+	0
+	6
+	9
+	4
+	0
+	5
+	9
+	5
+	4
+	9
+	10
+	4
+	5
+	9
+	9
 	11
 	0
-	1
-	4
-	1
-	4
-	1
-	0
-	1
-	9
-	1
-	9
-	10
-	0
-	5
-	9
-	7
-	0
-	5
-	9
-	1
-	0
-	6
-	9
-	1
-	0
-	7
-	9
-	1
-	9
-	5
-	0
-	1
-	9
-	1
-	9
-	1
-	4
-	1
-	9
-	7
-	9
-	10
-	9
 	5
 	4
 	0
-	7
-	9
 	1
 	4
 	6
+	9
+	9
+	0
+	7
+	9
 	0
 	5
 	9
-	1
 	9
 	1
+	0
+	3
 	9
 	6
 	4
-	10
+	0
+	4
+	6
+	9
+	4
 	0
 	3
 	9
@@ -132,228 +150,190 @@ Sequence:
 	9
 	5
 	0
-	5
-	4
-	1
-	0
-	5
-	4
-	9
-	1
-	0
-	5
-	4
-	9
 	7
 	9
-	1
-	4
-	5
+	0
 	9
 	4
-	4
-	3
-	4
-	10
-	4
-	10
-	9
-	1
-	9
 	6
 	9
-	5
-	9
-	3
-	4
 	4
 	9
-	1
 	9
-	1
-	0
-	5
-	4
-	1
+	6
 	0
 	7
+	4
+	1
+	9
+	9
+	5
 	9
 	5
 	4
-	9
+	1
 	4
-	7
-	0
 	5
 	9
-	5
-	4
-	0
-	5
-	4
-	0
-	3
 	9
-	5
 	0
 	6
 	9
 	5
 	4
-	3
+	9
 	0
-	6
 	9
-	5
 	9
-	5
-	9
-	6
+	0
 	4
-	0
 	7
+	0
 	9
+	5
+	9
+	4
 	5
 	9
 	1
 	4
-	5
+	1
 	0
-	5
-	4
-	9
-	6
-	0
-	5
-	9
-	4
-	6
+	7
 	9
 	1
 	0
 	1
 	9
-	5
-	0
+	1
 	4
+	1
 	4
 	1
 	0
-	4
-	7
-	9
-	4
-	0
-	1
-	9
-	1
-	9
-	1
-	4
 	5
+	9
+	7
 	9
 	1
 	0
+	5
+	4
+	1
+	4
+	1
+	0
+	7
+	9
+	5
+	0
+	5
+	4
+	1
+	9
+	1
+	9
+	1
+	9
+	7
+	9
+	1
+	9
+	1
+	9
+	1
+	4
+	5
+	0
+	1
+	4
+	1
+	4
+	1
+	4
+	1
 	9
 	7
 	0
-	9
+	1
 	4
 	1
 	4
+	1
+	9
+	1
+	0
+	5
+	9
+	1
+	9
+	1
+	9
+	1
+	0
+	1
 	4
+	1
 	9
 	5
 	4
-	9
 	1
-	9
-	1
-	9
-	1
-	4
-	9
-	9
-	4
-	4
-	1
-	4
-	4
-	9
-	1
-	9
-	4
 	9
 	5
 	9
-	5
+	1
+	4
+	1
+	4
+	1
 	4
 	1
 	4
 	7
 	9
-	1
-	4
-	4
-	1
-	9
-	7
-	4
-	9
-	9
-	4
-	4
-	9
-	9
 	5
 	4
 	1
 	9
-	4
-	1
-	4
-	9
-	7
-	9
-	5
-	4
-	9
-	4
-	9
-	4
-	4
-	1
-	4
-	7
-	9
 	1
 	9
 	1
 	4
 	1
 	9
-	9
-	4
-	1
-	9
-	9
-	1
-	4
 	5
 	9
 	5
 	9
-	1
-	9
-	7
-	9
+	5
 	4
 	9
 	5
 	9
-	9
 	7
 	9
+	5
+	9
+	1
+	9
+	4
+	7
+	9
+	5
+	9
+	5
+	9
+	4
+	1
+	4
+	1
+	4
+	1
+	4
+	7
+	9
+	9
+	5
 	9
 	1
 	4
@@ -362,21 +342,32 @@ Sequence:
 	4
 	1
 	4
-	5
+	1
+	4
+	1
+	4
+	7
+	9
+	4
+	4
+	1
+	4
+	7
+	9
+	9
 	9
 	1
+	4
+	7
 	9
+	4
+	4
 	1
 	4
 	1
 	9
-	9
+	1
 	4
-	9
-	9
-	4
-	9
-	5
 	4
 	9
 	9
@@ -384,14 +375,23 @@ Sequence:
 	7
 	4
 	1
-	9
 	4
-	1
+	5
 	9
-	1
+	9
 	9
 	5
 	9
-	1
+	9
+	4
+	9
+	5
+	9
+	9
+	9
+	9
+	5
+	9
+	5
 	9
 	5

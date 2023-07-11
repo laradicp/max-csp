@@ -1,0 +1,347 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               600
+Tried aggregator 1 time.
+Reduced MIP has 2720 rows, 10800 columns, and 54474 nonzeros.
+Reduced MIP has 8400 binaries, 2400 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (22.47 ticks)
+Found incumbent of value 1694.000000 after 0.10 sec. (59.19 ticks)
+Probing time = 0.01 sec. (4.44 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 2720 rows, 10800 columns, and 54474 nonzeros.
+Reduced MIP has 8400 binaries, 2400 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (28.52 ticks)
+Probing time = 0.01 sec. (4.44 ticks)
+Clique table members: 318.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 1.12 sec. (960.77 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                         1694.0000        0.0000           100.00%
+      0     0        0.0000  2014     1694.0000        0.0000     4851  100.00%
+      0     0        0.0000   295     1694.0000   ZeroHalf: 1     5352  100.00%
+      0     0        0.0000   867     1694.0000      Cuts: 53     7634  100.00%
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000     7634    0.00%
+Elapsed time = 10.28 sec. (9902.68 ticks, tree = 0.01 MB, solutions = 2)
+
+Zero-half cuts applied:  16
+Gomory fractional cuts applied:  3
+
+Root node processing (before b&c):
+  Real time             =   10.28 sec. (9903.30 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =   10.28 sec. (9903.30 ticks)
+Primal number of violations:	0
+Dual number of violations:	0
+Status:	Optimal
+Time:	10.31
+Sequence:
+	14
+	3
+	4
+	17
+	11
+	1
+	17
+	11
+	1
+	8
+	11
+	5
+	8
+	11
+	5
+	8
+	11
+	1
+	17
+	3
+	10
+	17
+	3
+	6
+	17
+	3
+	6
+	17
+	15
+	6
+	8
+	15
+	6
+	8
+	15
+	6
+	2
+	19
+	10
+	2
+	19
+	10
+	2
+	19
+	6
+	2
+	19
+	10
+	2
+	13
+	11
+	2
+	1
+	19
+	18
+	4
+	19
+	2
+	6
+	19
+	2
+	10
+	13
+	9
+	6
+	0
+	12
+	5
+	16
+	9
+	5
+	16
+	12
+	5
+	16
+	9
+	7
+	16
+	9
+	7
+	16
+	12
+	5
+	6
+	9
+	0
+	10
+	9
+	13
+	10
+	9
+	0
+	10
+	12
+	13
+	10
+	9
+	5
+	16
+	9
+	5
+	10
+	9
+	0
+	6
+	12
+	1
+	16
+	12
+	5
+	16
+	12
+	7
+	16
+	9
+	7
+	16
+	9
+	7
+	16
+	9
+	7
+	16
+	9
+	7
+	16
+	12
+	5
+	0
+	12
+	6
+	0
+	9
+	10
+	13
+	12
+	10
+	13
+	9
+	5
+	16
+	9
+	5
+	16
+	2
+	3
+	13
+	18
+	3
+	13
+	2
+	11
+	13
+	2
+	11
+	0
+	5
+	11
+	2
+	13
+	10
+	9
+	13
+	6
+	2
+	3
+	1
+	14
+	3
+	7
+	0
+	11
+	2
+	7
+	11
+	17
+	4
+	11
+	8
+	5
+	3
+	0
+	18
+	3
+	1
+	14
+	3
+	7
+	14
+	1
+	15
+	14
+	4
+	15
+	8
+	6
+	15
+	0
+	10
+	9
+	13
+	10
+	12
+	13
+	5
+	12
+	16
+	7
+	12
+	16
+	5
+	12
+	10
+	13
+	9
+	6
+	7
+	19
+	18
+	4
+	19
+	18
+	4
+	3
+	14
+	1
+	15
+	14
+	1
+	15
+	14
+	1
+	3
+	14
+	4
+	3
+	17
+	4
+	11
+	8
+	4
+	11
+	8
+	1
+	3
+	8
+	6
+	15
+	8
+	6
+	15
+	8
+	6
+	15
+	17
+	10
+	3
+	17
+	6
+	3
+	2
+	0
+	15
+	18
+	13
+	15
+	18
+	13
+	3
+	18
+	13
+	15
+	18
+	13
+	3
+	18
+	4
+	19
+	18
+	7
+	19
+	18
+	7
+	19
+	18
+	4
+	19
+	2
+	6
+	19
+	2
+	1
+	11
+	8
+	1
+	11
+	8
+	4
+	11
+	8

@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99982362900005
+CPXPARAM_TimeLimit                               599.999644483
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 400.0000.
 Tried aggregator 1 time.
@@ -15,7 +15,7 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 3192 rows, 3200 columns, and 33850 nonzeros.
 Reduced MIP has 3200 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.03 sec. (19.87 ticks)
+Presolve time = 0.02 sec. (19.87 ticks)
 Probing time = 0.00 sec. (2.81 ticks)
 Clique table members: 1989.
 MIP emphasis: balance optimality and feasibility.
@@ -30,332 +30,351 @@ Root relaxation solution time = 0.01 sec. (5.87 ticks)
       0     0        cutoff            400.0000                      8     --- 
 
 Root node processing (before b&c):
-  Real time             =    0.09 sec. (65.15 ticks)
+  Real time             =    0.08 sec. (65.15 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.09 sec. (65.15 ticks)
+Total (root+branch&cut) =    0.08 sec. (65.15 ticks)
 Primal:	400
 Dual:	400
 Status:	Optimal
-Time:	0.11
+Time:	0.1
 Sequence:
-	5
-	0
-	5
+	9
 	4
+	0
+	11
+	4
+	6
+	2
+	1
+	9
+	6
+	9
+	5
+	9
 	2
 	9
-	1
-	4
+	11
 	9
+	9
+	9
+	1
+	9
+	9
+	11
+	2
+	9
+	6
+	4
+	2
+	5
+	9
+	11
 	0
+	6
+	9
+	4
+	2
+	6
+	4
+	0
+	1
+	9
+	2
 	5
 	4
 	11
 	0
 	9
-	1
-	9
 	6
 	4
+	9
+	2
+	1
+	9
+	9
 	11
-	0
-	5
-	4
-	2
 	9
-	6
-	0
+	2
+	4
 	5
-	4
+	0
 	9
-	1
-	0
-	11
-	4
-	2
-	6
-	4
-	1
-	4
-	0
-	11
-	4
-	1
-	2
-	4
-	6
-	0
-	4
-	1
-	4
-	2
-	1
-	4
-	2
-	5
-	9
-	0
 	5
 	4
 	11
-	4
-	0
-	9
-	9
-	5
 	9
 	4
 	5
-	9
-	6
 	2
-	9
+	4
+	6
+	0
 	1
-	4
-	11
-	4
+	9
+	9
 	2
-	6
 	4
+	1
+	0
+	9
+	6
 	0
 	4
+	9
+	0
+	9
+	4
+	2
+	6
+	9
+	0
 	5
 	9
-	9
-	6
-	9
-	2
-	11
-	4
-	0
-	1
-	4
-	6
-	2
-	1
-	4
-	6
-	9
-	2
-	1
-	9
-	1
-	9
-	6
-	9
-	0
-	4
 	5
+	0
+	6
 	9
 	11
-	4
-	4
+	0
 	1
-	2
+	4
+	0
+	5
+	4
+	0
 	9
+	6
+	0
+	9
+	4
+	9
+	1
 	9
 	6
 	2
 	5
-	9
-	6
+	4
 	0
-	11
-	9
-	6
-	0
-	9
 	9
 	1
-	0
 	9
-	5
+	4
 	2
 	1
 	9
+	6
+	4
+	9
+	0
+	4
 	1
+	4
+	0
+	5
+	9
+	1
+	0
+	1
+	9
+	5
+	4
+	1
+	2
+	4
+	9
+	9
+	2
+	5
+	4
 	9
 	2
 	11
 	9
-	4
 	6
-	2
 	9
-	4
-	4
 	1
-	0
-	4
-	6
 	2
+	6
+	9
 	11
-	9
-	2
-	9
-	4
-	0
-	1
-	4
-	4
-	1
-	9
-	1
-	9
-	1
-	9
-	1
-	4
-	0
-	4
-	4
-	9
-	9
-	1
-	4
-	4
-	0
-	4
-	4
-	1
-	2
-	1
-	4
-	0
-	6
-	4
-	2
-	4
-	9
-	6
-	4
-	1
-	9
-	0
-	1
-	4
-	4
-	0
-	1
-	4
-	5
-	2
-	9
-	5
-	2
-	9
-	5
-	2
-	1
-	4
-	5
-	9
-	1
-	9
-	9
-	6
-	2
-	9
-	1
-	0
-	9
-	9
-	0
-	5
-	9
-	1
 	2
 	9
 	6
 	2
 	5
+	4
+	11
+	4
+	2
+	5
+	4
+	0
+	4
+	4
+	1
+	0
+	4
 	9
 	0
 	5
+	4
+	0
+	6
+	9
+	1
+	0
+	1
+	4
+	1
+	9
+	1
+	9
+	0
+	6
+	4
+	9
+	1
+	4
+	2
+	5
+	4
+	0
+	9
+	4
+	9
+	0
+	5
+	4
+	2
+	1
 	9
 	2
-	9
 	4
+	4
+	9
+	9
+	5
+	4
+	2
+	6
+	9
+	0
+	5
+	4
+	1
+	4
+	1
+	0
+	1
+	9
+	9
+	0
+	9
+	5
 	0
 	9
 	4
 	0
+	4
+	9
+	5
+	0
+	9
+	4
+	1
+	4
+	0
+	5
+	4
+	2
+	4
+	5
+	0
+	9
+	1
+	0
+	4
+	5
+	0
+	4
+	4
+	2
+	5
+	4
+	1
+	4
+	1
+	4
+	9
+	0
+	4
 	4
 	1
 	0
 	5
 	4
-	0
+	2
 	9
-	4
-	0
 	1
 	9
-	0
 	9
-	4
-	5
-	0
-	4
-	4
-	0
-	9
-	4
-	4
-	0
-	4
-	5
-	0
-	9
-	5
+	1
 	2
-	9
-	4
-	0
-	9
-	4
-	4
-	0
+	1
 	4
 	9
-	0
-	4
-	9
+	1
 	2
 	4
-	4
-	0
 	9
-	9
-	2
-	4
-	4
-	9
-	2
-	4
-	5
-	9
-	2
-	5
-	4
-	0
-	4
 	5
 	0
 	9
 	4
 	2
 	9
-	5
-	4
-	2
 	9
+	0
+	4
 	9
 	0
 	5
 	9
+	0
+	4
+	4
+	2
+	4
+	4
+	9
+	4
+	4
+	0
+	5
+	9
+	4
+	4
+	2
+	5
+	4
+	0
+	9
+	9
+	5
+	0
+	9
+	9
+	2
+	9
+	4
+	2
+	5
+	4
+	9
+	0
+	4
 	5
 	2
 	9
@@ -363,23 +382,19 @@ Sequence:
 	0
 	9
 	5
+	9
+	9
 	0
+	9
+	9
+	9
+	9
 	5
 	9
 	0
 	9
 	9
-	9
 	0
-	5
-	9
-	5
-	0
-	5
-	9
-	0
-	9
-	9
 	5
 	9
 	5
@@ -387,36 +402,18 @@ Sequence:
 	5
 	0
 	9
-	5
-	9
-	9
-	0
-	5
-	9
-	0
-	5
-	9
-	0
-	5
 	9
 	0
 	9
 	9
 	5
 	9
-	9
 	0
+	5
 	9
-	9
-	9
-	9
+	5
 	0
-	9
-	9
-	0
-	9
-	9
-	9
+	5
 	9
 	9
 	0
@@ -425,12 +422,15 @@ Sequence:
 	0
 	9
 	9
+	0
 	9
 	9
+	0
 	9
 	9
 	9
 	0
+	9
 	9
 	9
 	0

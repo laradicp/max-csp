@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998637800002
+CPXPARAM_TimeLimit                               599.99998771900005
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 119.0000.
 Tried aggregator 1 time.
@@ -9,19 +9,19 @@ MIP Presolve eliminated 386 rows and 372 columns.
 MIP Presolve modified 1 coefficients.
 Reduced MIP has 2601 rows, 4092 columns, and 46614 nonzeros.
 Reduced MIP has 4092 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.04 sec. (28.54 ticks)
+Presolve time = 0.03 sec. (28.54 ticks)
 Probing time = 0.00 sec. (3.24 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 2601 rows, 4092 columns, and 46614 nonzeros.
 Reduced MIP has 4092 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.04 sec. (26.70 ticks)
+Presolve time = 0.03 sec. (26.70 ticks)
 Probing time = 0.00 sec. (3.24 ticks)
 Clique table members: 1481.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.25 sec. (209.54 ticks)
+Root relaxation solution time = 0.23 sec. (209.54 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -33,7 +33,7 @@ Root relaxation solution time = 0.25 sec. (209.54 ticks)
       0     0      369.0000   443      368.0000       Cuts: 6     2944    0.27%
 Detecting symmetries...
       0     2      369.0000     6      368.0000      369.0000     2944    0.27%
-Elapsed time = 4.57 sec. (4009.12 ticks, tree = 0.01 MB, solutions = 2)
+Elapsed time = 4.24 sec. (4009.12 ticks, tree = 0.01 MB, solutions = 2)
       2     2      369.0000     8      368.0000      369.0000     4599    0.27%
 *     3     1      integral     0      369.0000      369.0000     6536    0.00%
       3     0      369.0000     0      369.0000      369.0000     6536    0.00%
@@ -41,15 +41,15 @@ Elapsed time = 4.57 sec. (4009.12 ticks, tree = 0.01 MB, solutions = 2)
 Zero-half cuts applied:  2
 
 Root node processing (before b&c):
-  Real time             =    4.56 sec. (3993.17 ticks)
+  Real time             =    4.23 sec. (3993.17 ticks)
 Sequential b&c:
-  Real time             =    0.67 sec. (660.57 ticks)
+  Real time             =    0.63 sec. (660.57 ticks)
                           ------------
-Total (root+branch&cut) =    5.23 sec. (4653.75 ticks)
+Total (root+branch&cut) =    4.86 sec. (4653.75 ticks)
 Primal:	369
 Dual:	369
 Status:	Optimal
-Time:	5.25
+Time:	4.87
 Sequence:
 	7
 	0

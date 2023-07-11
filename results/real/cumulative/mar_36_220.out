@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99997658699999
+CPXPARAM_TimeLimit                               599.99997728000005
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 62.0000.
 Tried aggregator 1 time.
@@ -9,19 +9,19 @@ MIP Presolve eliminated 19 rows and 1437 columns.
 MIP Presolve modified 4 coefficients.
 Reduced MIP has 3824 rows, 4311 columns, and 50566 nonzeros.
 Reduced MIP has 4311 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.06 sec. (31.44 ticks)
-Probing time = 0.01 sec. (3.21 ticks)
+Presolve time = 0.05 sec. (31.44 ticks)
+Probing time = 0.00 sec. (3.21 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 3824 rows, 4311 columns, and 50566 nonzeros.
 Reduced MIP has 4311 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.05 sec. (29.27 ticks)
+Presolve time = 0.04 sec. (29.27 ticks)
 Probing time = 0.00 sec. (3.21 ticks)
 Clique table members: 2384.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.68 sec. (444.46 ticks)
+Root relaxation solution time = 0.62 sec. (444.46 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -56,7 +56,7 @@ Detecting symmetries...
 *     0+    0                          239.0000      239.8624             0.36%
       0     0        cutoff            239.0000      239.8624    17126    0.36%
       0     0        cutoff            239.0000      239.8624    17126    0.36%
-Elapsed time = 7.23 sec. (5463.89 ticks, tree = 0.01 MB, solutions = 8)
+Elapsed time = 6.75 sec. (5463.89 ticks, tree = 0.01 MB, solutions = 8)
 
 Clique cuts applied:  2
 Implied bound cuts applied:  74
@@ -64,15 +64,15 @@ Zero-half cuts applied:  711
 Gomory fractional cuts applied:  4
 
 Root node processing (before b&c):
-  Real time             =    7.24 sec. (5464.59 ticks)
+  Real time             =    6.75 sec. (5464.59 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    7.24 sec. (5464.59 ticks)
+Total (root+branch&cut) =    6.75 sec. (5464.59 ticks)
 Primal:	239
 Dual:	239
 Status:	Optimal
-Time:	7.25
+Time:	6.75
 Sequence:
 	6
 	0
