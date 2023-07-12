@@ -21,13 +21,13 @@ int CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 		model->initModel(false, mid);
 
 		elapsedTime = chrono::steady_clock::now() - start;
-		if(!model->solve(elapsedTime.count() + prevElapsedTime))
-		{
-			ub = mid - 1;
-		}
-		else
+		if(model->solve(elapsedTime.count() + prevElapsedTime))
 		{
 			lb = mid;
+		}
+		else if(model->getStatus() == IloAlgorithm::Status::Infeasible)
+		{
+			ub = mid - 1;
 		}
 
 		elapsedTime = chrono::steady_clock::now() - start;
@@ -56,7 +56,10 @@ int CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTime
 			break;
 		}
 
-		ub--;
+		if(model->getStatus() == IloAlgorithm::Status::Infeasible)
+		{
+			ub--;
+		}
 
 		elapsedTime = chrono::steady_clock::now() - start;
 	}
@@ -79,7 +82,8 @@ int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 		model->initModel(false, lb + 1);
 
 		elapsedTime = chrono::steady_clock::now() - start;
-		if(!model->solve(elapsedTime.count() + prevElapsedTime))
+		model->solve(elapsedTime.count() + prevElapsedTime);
+		if(model->getStatus() == IloAlgorithm::Infeasible)
 		{
 			dual = lb;
 			elapsedTime = chrono::steady_clock::now() - start;
