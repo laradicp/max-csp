@@ -6,7 +6,7 @@ make
 
 mkdir -p results/literature/sos1
 
-for file in $(ls instances/literature/*); do
+for file in $(find instances/literature/* -maxdepth 1 -type f); do
     echo "Running $file"
     ./max-csp.exe "$file" -sos1 > "results/literature/sos1/$(basename "$file")"
 done

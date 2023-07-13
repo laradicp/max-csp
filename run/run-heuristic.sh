@@ -6,12 +6,12 @@ make
 
 mkdir -p results/heuristic
 
-for file in $(ls instances/real/*); do
+for file in $(find instances/real/* -maxdepth 1 -type f); do
     echo "Running $file"
     ./max-csp.exe "$file" -heuristic -noexact > "results/heuristic/$(basename "$file")"
 done
 
-for file in $(ls instances/literature/*); do
+for file in $(find instances/literature/* -maxdepth 1 -type f); do
     echo "Running $file"
     ./max-csp.exe "$file" -heuristic -noexact > "results/heuristic/$(basename "$file")"
 done

@@ -6,7 +6,7 @@ make
 
 mkdir -p results/literature/asc-iterative/trivial
 
-for file in $(ls instances/literature/*); do
+for file in $(find instances/literature/* -maxdepth 1 -type f); do
     echo "Running $file"
     ./max-csp.exe "$file" -ascitsearch -triviallb -trivialub > "results/literature/asc-iterative/trivial/$(basename "$file")"
 done

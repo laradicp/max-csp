@@ -6,7 +6,7 @@ make
 
 mkdir -p results/literature/regular/heuristic-primal
 
-for file in $(ls instances/literature/*); do
+for file in $(find instances/literature/* -maxdepth 1 -type f); do
     echo "Running $file"
     ./max-csp.exe "$file" "results/heuristic/$(basename "$file")" -heuristic > "results/literature/regular/heuristic-primal/$(basename "$file")"
 done
