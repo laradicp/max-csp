@@ -14,6 +14,8 @@ class Analytics
         void readFile(string path);
         void readHeuristicFile();
         void print(string path, string instanceSubset = "");
+        string getInstance() { return instance; }
+        int getPrimalBound(string path) { return primalBounds[path]; }
 
     private:
         int bestDual;
@@ -161,6 +163,49 @@ int main(int argc, char** argv)
     for(string path : paths)
     {
         analytics.readFile(instanceSet + "/" + path);
+    }
+
+    if(instanceSubset == "-gap")
+    {
+        int lb = analytics.getPrimalBound("heuristic");
+        int ub = -1;
+
+        // find combinatorial ub for instance in file comb-ub.txt
+        ifstream inputFile("comb-ub.txt");
+        string line;
+        while(getline(inputFile, line))
+        {
+            if(line.find(analytics.getInstance()) != string::npos)
+            {
+                ub = stoi(line.substr(line.find(" ") + 1));
+                break;
+            }
+        }
+
+        if(ub == -1)
+        {
+            cout << "Error: could not find combinatorial upper bound for instance " << analytics.getInstance() << endl;
+            exit(1);
+        }
+
+        double gap = (ub - lb)*100.0/lb;
+        
+        if(gap < 1)
+        {
+            instanceSubset = "-0-1";
+        }
+        else if(gap < 5)
+        {
+            instanceSubset = "-1-5";
+        }
+        else if(gap < 10)
+        {
+            instanceSubset = "-5-10";
+        }
+        else
+        {
+            instanceSubset = "-10+";
+        }
     }
     
     analytics.print("heuristic", "-" + instanceSet + instanceSubset);

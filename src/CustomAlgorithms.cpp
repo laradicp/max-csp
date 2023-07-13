@@ -7,7 +7,7 @@ CustomAlgorithms::CustomAlgorithms(Model* model)
 	initialLB = 1;
 }
 
-int CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
+void CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 {
 	initialLB = lb;
 
@@ -34,11 +34,9 @@ int CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 	}
 
 	defineOutput(lb, ub, start);
-
-	return lb;
 }
 
-int CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTime)
+void CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTime)
 {
 	initialLB = lb;
 
@@ -65,20 +63,19 @@ int CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTime
 	}
 
 	defineOutput(lb, ub, start);
-
-	return ub;
 }
 
-int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
+void CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
 
 	initialLB = lb;
-	defineOutput(lb, model->data.getUpperBound(), start);
-
+	
 	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(lb <= model->data.getUpperBound()))
 	{
+		defineOutput(lb, model->data.getUpperBound(), start);
+
 		model->initModel(false, lb + 1);
 
 		elapsedTime = chrono::steady_clock::now() - start;
@@ -91,12 +88,9 @@ int CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 		}
 
 		lb++;
-		defineOutput(lb, model->data.getUpperBound(), start);
 
 		elapsedTime = chrono::steady_clock::now() - start;
 	}
-
-	return lb;
 }
 
 void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::steady_clock> start)
@@ -147,6 +141,11 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 	}
 	else
 	{
+		if(lb < ub)
+		{
+			status = IloAlgorithm::Status::Feasible;
+		}
+		
 		for(int t = 0; t < model->getSequenceSize(); t++)
 		{
 			sequence.push_back(model->getSequence(t));

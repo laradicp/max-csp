@@ -49,7 +49,17 @@ int main(int argc, char** argv)
         "regular", "regular/heuristic-primal",
         "sos1", "sos1/heuristic-primal"
     };
-    instanceSubsets[1].push_back("-hard");
+
+    instanceSubsets[0].push_back("-0-1");
+    instanceSubsets[0].push_back("-1-5");
+    instanceSubsets[0].push_back("-5-10");
+    instanceSubsets[0].push_back("-10+");
+
+    // instanceSubsets[1].push_back("-hard");
+    instanceSubsets[1].push_back("-0-1");
+    instanceSubsets[1].push_back("-1-5");
+    instanceSubsets[1].push_back("-5-10");
+    instanceSubsets[1].push_back("-10+");
 
     cout << "\\hline algorithm & gap & time & instance set \\\\ \\hline" << endl;
     for(int i = 0; i < instanceSets.size(); i++)
