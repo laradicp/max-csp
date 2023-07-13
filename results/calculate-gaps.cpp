@@ -12,11 +12,13 @@ class Analytics
     public:
         Analytics(string instance);
         void readFile(string path);
-        void print(string path);
+        void readHeuristicFile();
+        void print(string path, string instanceSubset = "");
 
     private:
         int bestDual;
         string instance;
+        string heuristicInstance;
         unordered_map<string, int> primalBounds;
         unordered_map<string, double> times;
 };
@@ -25,6 +27,14 @@ Analytics::Analytics(string instance)
 {
     bestDual = __INT_MAX__;
     this->instance = instance;
+    if(instance.substr(instance.size() - 4, 4) == ".out")
+    {
+        heuristicInstance = instance.substr(0, instance.size() - 4) + ".in";
+    }
+    else
+    {
+        heuristicInstance = instance;
+    }
 }
 
 void Analytics::readFile(string path)
@@ -58,11 +68,37 @@ void Analytics::readFile(string path)
             times[path] = stod(line.substr(line.find(":") + 2));
         }
     }
+
+    if(path.find("heuristic") != string::npos)
+    {
+        times[path] += times["heuristic"];
+    }
+
+    inputFile.close();
 }
 
-void Analytics::print(string path)
+void Analytics::readHeuristicFile()
 {
-    ifstream inputFile(path + "/gap-time.txt");
+    ifstream heuristicFile("heuristic/" + heuristicInstance);
+
+    if(!heuristicFile.is_open())
+    {
+        cout << "Error opening file heuristic/" << instance << endl;
+        return;
+    }
+
+    int heuristicPrimal;
+    double heuristicTime;
+    heuristicFile >> heuristicPrimal >> heuristicTime;
+    primalBounds["heuristic"] = heuristicPrimal;
+    times["heuristic"] = heuristicTime;
+
+    heuristicFile.close();
+}
+
+void Analytics::print(string path, string instanceSubset)
+{
+    ifstream inputFile(path + "/gap-time" + instanceSubset + ".txt");
 
     double sumGaps = 0;
     double sumTimes = 0;
@@ -77,12 +113,18 @@ void Analytics::print(string path)
         inputFile.close();    
     }
 
-    ofstream outputFile(path + "/gap-time.txt");
+    ofstream outputFile(path + "/gap-time" + instanceSubset + ".txt");
 
     if(!outputFile.is_open())
     {
         cout << "Error opening file " << path << "/gap-time.txt for writing" << endl;
         return;
+    }
+
+    if(double(bestDual - primalBounds[path])/primalBounds[path] < 0)
+    {
+        cout << "Warning: " << path << " has a negative gap in instance " << instance << endl;
+        cout << primalBounds[path] << " " << bestDual << endl;
     }
 
     outputFile << sumGaps + (double)(bestDual - primalBounds[path])/primalBounds[path] << endl;
@@ -94,13 +136,14 @@ void Analytics::print(string path)
 
 int main(int argc, char** argv)
 {
-    if(argc != 3)
+    if(argc < 3)
     {
-        cout << "Usage: ./calculate-gaps <instance> -<instance set>" << endl;
+        cout << "Usage: ./calculate-gaps <instance> -<instance set> (optional)-<instance subset>" << endl;
         exit(1);
     }
 
     string instanceSet = argv[2] + 1;
+    string instanceSubset = argc == 4 ? argv[3] : "";
     vector<string> paths = {
         "asc-iterative/combinatorial", "asc-iterative/trivial", "asc-iterative/heuristic",
         "binary/combinatorial", "binary/combinatorial-trivial", "binary/trivial",
@@ -114,14 +157,16 @@ int main(int argc, char** argv)
     Analytics analytics(argv[1]);
 
     // populate dicts and find best dual
+    analytics.readHeuristicFile();
     for(string path : paths)
     {
         analytics.readFile(instanceSet + "/" + path);
     }
     
+    analytics.print("heuristic", "-" + instanceSet + instanceSubset);
     for(string path : paths)
     {
-        analytics.print(instanceSet + "/" + path);
+        analytics.print(instanceSet + "/" + path, instanceSubset);
     }
 
     return 0;

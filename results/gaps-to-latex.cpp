@@ -5,9 +5,41 @@
 
 using namespace std;
 
+struct GapTime
+{
+    double gap;
+    double time;
+    int count;
+    GapTime(double gap, double time, int count) : gap(gap), time(time), count(count) {}
+};
+
+GapTime readFile(string gapTimePath)
+{
+    ifstream inputFile(gapTimePath);
+
+    if(!inputFile.is_open())
+    {
+        cout << "Error opening file " << gapTimePath << "/gap-time.txt for reading" << endl;
+        exit(1);
+    }
+
+    double gap;
+    double time;
+    int count;
+
+    inputFile >> gap;
+    inputFile >> time;
+    inputFile >> count;
+
+    inputFile.close();
+
+    return GapTime(gap, time, count);
+}
+
 int main(int argc, char** argv)
 {
     vector<string> instanceSets = {"real", "literature"};
+    vector<vector<string>> instanceSubsets(instanceSets.size(), vector<string>(1, ""));
     vector<string> paths = {
         "asc-iterative/combinatorial", "asc-iterative/trivial", "asc-iterative/heuristic",
         "binary/combinatorial", "binary/combinatorial-trivial", "binary/trivial",
@@ -17,31 +49,25 @@ int main(int argc, char** argv)
         "regular", "regular/heuristic-primal",
         "sos1", "sos1/heuristic-primal"
     };
+    instanceSubsets[1].push_back("-hard");
 
-    for(string instanceSet : instanceSets)
+    cout << "\\hline algorithm & gap & time & instance set \\\\ \\hline" << endl;
+    for(int i = 0; i < instanceSets.size(); i++)
     {
-        cout << instanceSet << endl;
-        for(string path : paths)
+        for(string instanceSubset : instanceSubsets[i])
         {
-            ifstream inputFile(instanceSet + "/" + path + "/gap-time.txt");
-
-            if(!inputFile.is_open())
+            GapTime gapTime = readFile("heuristic/gap-time-" + instanceSets[i] + instanceSubset + ".txt");
+            cout << "heuristic & " << gapTime.gap*100/gapTime.count << "\\\% & " <<
+            gapTime.time/gapTime.count << " & " << "\\multirow{" << paths.size() + 1 <<
+            "}{*}{" << instanceSets[i] + instanceSubset << "} \\\\" << endl;
+        
+            for(string path : paths)
             {
-                cout << "Error opening file " << instanceSet << "/" << path << "/gap-time.txt for reading" << endl;
-                exit(1);
+                gapTime = readFile(instanceSets[i] + "/" + path + "/gap-time" + instanceSubset + ".txt");
+                cout << path << " & " << gapTime.gap*100/gapTime.count << "\\\% & " <<
+                    gapTime.time/gapTime.count << " \\\\" << endl;
             }
-
-            double gap;
-            double time;
-            int count;
-
-            inputFile >> gap;
-            inputFile >> time;
-            inputFile >> count;
-
-            inputFile.close();
-
-            cout << path << " & " << gap*100/count << "\\\% & " << time/count << " \\\\" << endl;
+            cout << "\\hline" << endl;
         }
     }
 
