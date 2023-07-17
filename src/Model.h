@@ -41,7 +41,7 @@ class Model
         void calculateOptionsIntersections();
         void calculateOptionOverlap();
 
-        void sos1();
+        void sos1(int ub);
 
     public:
     
@@ -49,7 +49,7 @@ class Model
 
         Model(string filePath, bool cumulative = false);
 
-        void initModel(bool sos1Branching = false, int customSearch = 0);
+        void initModel(bool sos1Branching = false, int customSearch = 0, int ub = __INT_MAX__);
 
         bool solve(double prevElapsedTime = 0.0, vector<int>* initialSol = nullptr);
         void output(bool toFile = false);

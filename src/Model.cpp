@@ -14,7 +14,7 @@ Model::Model(string filePath, bool cumulative)
     firstViolationPos = data.getNbCars();
 }
 
-void Model::initModel(bool sos1Branching, int customSearch)
+void Model::initModel(bool sos1Branching, int customSearch, int ub)
 {
     env.end();
     env = IloEnv();
@@ -59,7 +59,7 @@ void Model::initModel(bool sos1Branching, int customSearch)
 
     if(sos1Branching)
     {
-        sos1();
+        sos1(ub);
     }
     else
     {
@@ -93,6 +93,11 @@ void Model::initModel(bool sos1Branching, int customSearch)
                 }
             }
             model.add(IloMaximize(env, sumX));
+
+            // add objective function upper bound
+            IloRange r = (sumX <= ub);
+            r.setName("OFUpperBound");
+            model.add(r);
 
             // each position is occupied by at most one car
             for(int t = 0; t < nbPositions; t++)  
@@ -234,7 +239,7 @@ void Model::calculateOptionOverlap()
     }
 }
 
-void Model::sos1()
+void Model::sos1(int ub)
 {
     // let Zt assume value 1 if t is the first empty position in the sequence, and 0 otherwise
     IloBoolVarArray z(env, data.getNbCars() + 1);
@@ -255,6 +260,11 @@ void Model::sos1()
         sumZ += t*z[t];
     }
     model.add(IloMaximize(env, sumZ));
+
+    // add objective function upper bound
+    IloRange r = (sumZ <= ub);
+    r.setName("OFUpperBound");
+    model.add(r);
 
     // each position is occupied by at most one car, and z defines the first empty position
     for(int t = 0; t < data.getNbCars(); t++)  
@@ -285,7 +295,7 @@ void Model::sos1()
         sumZ += z[t];
     }
 
-    IloRange r = (sumZ == 1);
+    r = (sumZ == 1);
     char name[100];
     sprintf(name, "SOS1");
     r.setName(name);
