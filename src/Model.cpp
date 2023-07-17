@@ -397,6 +397,9 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
 
             return true;
         }
+
+        status = maxCSP.getStatus();
+        elapsedTime = maxCSP.getTime();
     }
     catch(IloException& e)
     {
@@ -444,7 +447,8 @@ void Model::output(bool toFile)
         if(minViolations&&penalize)
         {
             output << "Violation-free sequence:" << endl;
-            for(int t = 0; t < firstViolationPos; t++)
+            int end = min(firstViolationPos, (int)sequence.size());
+            for(int t = 0; t < end; t++)
             {
                 output << "\t" << sequence[t] << endl;
             }
@@ -484,6 +488,7 @@ void Model::output(bool toFile)
         if(minViolations&&penalize)
         {
             cout << "Violation-free sequence:" << endl;
+            int end = min(firstViolationPos, (int)sequence.size());
             for(int t = 0; t < firstViolationPos; t++)
             {
                 cout << "\t" << sequence[t] << endl;

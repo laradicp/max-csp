@@ -83,6 +83,7 @@ void CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 		if(model->getStatus() == IloAlgorithm::Infeasible)
 		{
 			dual = lb;
+			status = IloAlgorithm::Status::Optimal;
 			elapsedTime = chrono::steady_clock::now() - start;
 			break;
 		}

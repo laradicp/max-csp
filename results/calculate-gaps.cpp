@@ -13,9 +13,11 @@ class Analytics
         Analytics(string instance);
         void readFile(string path);
         void readHeuristicFile();
-        void print(string path, string instanceSubset = "");
+        void print(string path);
         string getInstance() { return instance; }
         int getPrimalBound(string path) { return primalBounds[path]; }
+        bool getOptimal(string path) { return optimal[path]; }
+        void setHeuristicOptimal();
 
     private:
         int bestDual;
@@ -23,6 +25,7 @@ class Analytics
         string heuristicInstance;
         unordered_map<string, int> primalBounds;
         unordered_map<string, double> times;
+        unordered_map<string, bool> optimal;
 };
 
 Analytics::Analytics(string instance)
@@ -48,10 +51,15 @@ void Analytics::readFile(string path)
         cout << "Error opening file " << path << "/" << instance << endl;
         return;
     }
-    
+
+    optimal[path] = false;
     string line;
     while(getline(inputFile, line))
     {
+        if(line.find("Instance size is too large to solve with penalizations") != string::npos)
+        {
+            return;
+        }
         if(line.find("Primal:") != string::npos ||
             line.find("Violation-free sequence bound:") != string::npos)
         {
@@ -68,6 +76,10 @@ void Analytics::readFile(string path)
         else if(line.find("Time:") != string::npos)
         {
             times[path] = stod(line.substr(line.find(":") + 2));
+        }
+        else if(line.find("Optimal") != string::npos)
+        {
+            optimal[path] = true;
         }
     }
 
@@ -98,24 +110,36 @@ void Analytics::readHeuristicFile()
     heuristicFile.close();
 }
 
-void Analytics::print(string path, string instanceSubset)
+void Analytics::setHeuristicOptimal()
 {
-    ifstream inputFile(path + "/gap-time" + instanceSubset + ".txt");
+    optimal["heuristic"] = primalBounds["heuristic"] == bestDual;
+}
+
+void Analytics::print(string path)
+{
+    if(primalBounds.find(path) == primalBounds.end())
+    {
+        return;
+    }
+
+    ifstream inputFile(path + "/gap-time.txt");
 
     double sumGaps = 0;
     double sumTimes = 0;
     int count = 0;
+    int optimalCount = 0;
 
     if(inputFile.is_open())
     {
         inputFile >> sumGaps;
         inputFile >> sumTimes;
         inputFile >> count;
+        inputFile >> optimalCount;
 
         inputFile.close();    
     }
 
-    ofstream outputFile(path + "/gap-time" + instanceSubset + ".txt");
+    ofstream outputFile(path + "/gap-time.txt");
 
     if(!outputFile.is_open())
     {
@@ -132,6 +156,11 @@ void Analytics::print(string path, string instanceSubset)
     outputFile << sumGaps + (double)(bestDual - primalBounds[path])/primalBounds[path] << endl;
     outputFile << sumTimes + times[path] << endl;
     outputFile << count + 1 << endl;
+    if(optimal[path])
+    {
+        optimalCount++;
+    }
+    outputFile << optimalCount << endl;
 
     outputFile.close();
 }
@@ -145,13 +174,12 @@ int main(int argc, char** argv)
     }
 
     string instanceSet = argv[2] + 1;
-    string instanceSubset = argc == 4 ? argv[3] : "";
     vector<string> paths = {
         "asc-iterative/combinatorial", "asc-iterative/trivial", "asc-iterative/heuristic",
         "binary/combinatorial", "binary/combinatorial-trivial", "binary/trivial",
         "binary/trivial-combinatorial", "binary/heuristic-combinatorial", "binary/heuristic-trivial",
         "desc-iterative/combinatorial", "desc-iterative/trivial", "desc-iterative/combinatorial/heuristic-primal",
-        // "min-violations/penalize",
+        "min-violations/penalize",
         "regular", "regular/heuristic-primal",
         "sos1", "sos1/heuristic-primal"
     };
@@ -164,54 +192,12 @@ int main(int argc, char** argv)
     {
         analytics.readFile(instanceSet + "/" + path);
     }
+    analytics.setHeuristicOptimal();
 
-    if(instanceSubset == "-gap")
-    {
-        int lb = analytics.getPrimalBound("heuristic");
-        int ub = -1;
-
-        // find combinatorial ub for instance in file comb-ub.txt
-        ifstream inputFile("comb-ub.txt");
-        string line;
-        while(getline(inputFile, line))
-        {
-            if(line.find(analytics.getInstance()) != string::npos)
-            {
-                ub = stoi(line.substr(line.find(" ") + 1));
-                break;
-            }
-        }
-
-        if(ub == -1)
-        {
-            cout << "Error: could not find combinatorial upper bound for instance " << analytics.getInstance() << endl;
-            exit(1);
-        }
-
-        double gap = (ub - lb)*100.0/lb;
-        
-        if(gap < 1)
-        {
-            instanceSubset = "-0-1";
-        }
-        else if(gap < 5)
-        {
-            instanceSubset = "-1-5";
-        }
-        else if(gap < 10)
-        {
-            instanceSubset = "-5-10";
-        }
-        else
-        {
-            instanceSubset = "-10+";
-        }
-    }
-    
-    analytics.print("heuristic", "-" + instanceSet + instanceSubset);
+    analytics.print("heuristic");
     for(string path : paths)
     {
-        analytics.print(instanceSet + "/" + path, instanceSubset);
+        analytics.print(instanceSet + "/" + path);
     }
 
     return 0;

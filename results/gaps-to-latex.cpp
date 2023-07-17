@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <map>
 
 using namespace std;
 
@@ -10,7 +11,9 @@ struct GapTime
     double gap;
     double time;
     int count;
-    GapTime(double gap, double time, int count) : gap(gap), time(time), count(count) {}
+    int optimalCount;
+    GapTime(double gap, double time, int count, int optimalCount) :
+        gap(gap), time(time), count(count), optimalCount(optimalCount) {}
 };
 
 GapTime readFile(string gapTimePath)
@@ -26,59 +29,84 @@ GapTime readFile(string gapTimePath)
     double gap;
     double time;
     int count;
+    int optimalCount;
 
     inputFile >> gap;
     inputFile >> time;
     inputFile >> count;
+    inputFile >> optimalCount;
 
     inputFile.close();
 
-    return GapTime(gap, time, count);
+    return GapTime(gap, time, count, optimalCount);
+}
+
+string getMethodName(string method)
+{
+    if(method.find("asc") != string::npos)
+    {
+        return "incremental";
+    }
+    else if(method.find("desc") != string::npos)
+    {
+        return "decremental";
+    }
+    else if(method.find("min-violations") != string::npos)
+    {
+        return "Bautista";
+    }
+
+    return method;
+}
+
+string initialization(string path)
+{
+    if(path.find("heur") != string::npos)
+    {
+        return "initialiazed";
+    }
+    else
+    {
+        return "uninitialized";
+    }
 }
 
 int main(int argc, char** argv)
 {
-    vector<string> instanceSets = {"real", "literature"};
-    vector<vector<string>> instanceSubsets(instanceSets.size(), vector<string>(1, ""));
-    vector<string> paths = {
-        "asc-iterative/combinatorial", "asc-iterative/trivial", "asc-iterative/heuristic",
-        "binary/combinatorial", "binary/combinatorial-trivial", "binary/trivial",
-        "binary/trivial-combinatorial", "binary/heuristic-combinatorial", "binary/heuristic-trivial",
-        "desc-iterative/combinatorial", "desc-iterative/trivial", "desc-iterative/combinatorial/heuristic-primal",
-        // "min-violations/penalize",
-        "regular", "regular/heuristic-primal",
-        "sos1", "sos1/heuristic-primal"
+    vector<string> instanceSets = {
+        // "real",
+        "literature"
     };
+    map<string, vector<string>> methods;
+    methods["asc-iterative"].push_back("heuristic");
+    methods["asc-iterative"].push_back("combinatorial");
+    methods["binary"].push_back("heuristic-combinatorial");
+    methods["binary"].push_back("combinatorial");
+    methods["desc-iterative"].push_back("combinatorial/heuristic-primal");
+    methods["desc-iterative"].push_back("combinatorial");
+    methods["regular"].push_back("heuristic-primal");
+    methods["regular"].push_back("");
+    methods["sos1"].push_back("heuristic-primal");
+    methods["sos1"].push_back("");
+    methods["min-violations"].push_back("penalize");
 
-    instanceSubsets[0].push_back("-0-1");
-    instanceSubsets[0].push_back("-1-5");
-    instanceSubsets[0].push_back("-5-10");
-    instanceSubsets[0].push_back("-10+");
-
-    // instanceSubsets[1].push_back("-hard");
-    instanceSubsets[1].push_back("-0-1");
-    instanceSubsets[1].push_back("-1-5");
-    instanceSubsets[1].push_back("-5-10");
-    instanceSubsets[1].push_back("-10+");
-
-    cout << "\\hline algorithm & gap & time & instance set \\\\ \\hline" << endl;
+    cout << "\\hline method & #optimal & avg. gap (\%) & avg. time (s) \\\\ \\hline" << endl;
     for(int i = 0; i < instanceSets.size(); i++)
     {
-        for(string instanceSubset : instanceSubsets[i])
+        for(auto iter = methods.begin(); iter != methods.end(); iter++)
         {
-            GapTime gapTime = readFile("heuristic/gap-time-" + instanceSets[i] + instanceSubset + ".txt");
-            cout << "heuristic & " << gapTime.gap*100/gapTime.count << "\\\% & " <<
-            gapTime.time/gapTime.count << " & " << "\\multirow{" << paths.size() + 1 <<
-            "}{*}{" << instanceSets[i] + instanceSubset << "} \\\\" << endl;
-        
-            for(string path : paths)
+            cout << getMethodName(iter->first) << " \\\\" << endl;
+            for(int j = 0; j < iter->second.size(); j++)
             {
-                gapTime = readFile(instanceSets[i] + "/" + path + "/gap-time" + instanceSubset + ".txt");
-                cout << path << " & " << gapTime.gap*100/gapTime.count << "\\\% & " <<
-                    gapTime.time/gapTime.count << " \\\\" << endl;
+                GapTime gapTime = readFile(
+                    instanceSets[i] + "/" + iter->first + "/" + iter->second[j] + "/gap-time.txt"
+                );
+                cout << initialization(iter->second[j]) << " & " << gapTime.optimalCount << " & " <<
+                    gapTime.gap*100/gapTime.count << "\\\% & " << gapTime.time/gapTime.count <<
+                    " \\\\" << endl;
             }
-            cout << "\\hline" << endl;
         }
+        cout << "\\hline" << endl;
     }
 
     return 0;
