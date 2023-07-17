@@ -489,7 +489,7 @@ void Model::output(bool toFile)
         {
             cout << "Violation-free sequence:" << endl;
             int end = min(firstViolationPos, (int)sequence.size());
-            for(int t = 0; t < firstViolationPos; t++)
+            for(int t = 0; t < end; t++)
             {
                 cout << "\t" << sequence[t] << endl;
             }
