@@ -555,17 +555,15 @@ void Model::minViolationsModel(bool penalize)
             sumOptionsInfeasPos += data.getWindowSize(j) - data.getMaxCarsPerWindow(j);
         }
 
-        double sumAlphas = 1.0;
         for(int t = data.getNbCars() - 2; t >=0; t--)
         {
-            if(__DBL_MAX__ - 1.0 - sumAlphas*sumOptionsInfeasPos <= 0)
+            if(__DBL_MAX__ - alpha[t + 1]*(1 + data.getNbOptions()*sumOptionsInfeasPos) <= 0)
             {
                 cout << "Instance size is too large to solve with penalizations" << endl;
                 exit(1);
             }
             
-            alpha[t] = 1.0 + sumAlphas*sumOptionsInfeasPos;
-            sumAlphas += alpha[t];
+            alpha[t] = alpha[t + 1]*(1 + data.getNbOptions()*sumOptionsInfeasPos);
         }
     }
     
