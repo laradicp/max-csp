@@ -90,22 +90,24 @@ int main(int argc, char** argv)
     methods["sos1"].push_back("");
     methods["min-violations"].push_back("penalize");
 
-    cout << "\\hline method & #optimal & avg. gap (\%) & avg. time (s) \\\\ \\hline" << endl;
+    cout << "\\hline method & initialization & \\#optimal & avg. gap (\\\%) & avg. time (s) \\\\ \\hline" << endl;
     for(int i = 0; i < instanceSets.size(); i++)
     {
         for(auto iter = methods.begin(); iter != methods.end(); iter++)
         {
-            cout << getMethodName(iter->first) << " \\\\" << endl;
+            cout << "\\multirow{2}{*}{" << getMethodName(iter->first) << "}" << endl;
             for(int j = 0; j < iter->second.size(); j++)
             {
                 GapTime gapTime = readFile(
                     instanceSets[i] + "/" + iter->first + "/" + iter->second[j] + "/gap-time.txt"
                 );
-                cout << initialization(iter->second[j]) << " & " << gapTime.optimalCount << " & " <<
+                cout.setf(ios::fixed,ios::floatfield);
+                cout.precision(3);
+                cout << "& " << initialization(iter->second[j]) << " & " << gapTime.optimalCount << " & " <<
                     gapTime.gap*100/gapTime.count << " & " << gapTime.time/gapTime.count << " \\\\" << endl;
             }
+            cout << "\\hline" << endl;
         }
-        cout << "\\hline" << endl;
     }
 
     return 0;
