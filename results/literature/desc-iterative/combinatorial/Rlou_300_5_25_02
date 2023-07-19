@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99342911799999
+CPXPARAM_TimeLimit                               599.99278063999998
 Tried aggregator 1 time.
 MIP Presolve eliminated 13 rows and 0 columns.
 MIP Presolve modified 1 coefficients.
@@ -13,13 +13,13 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 1812 rows, 7500 columns, and 79140 nonzeros.
 Reduced MIP has 7500 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.06 sec. (43.93 ticks)
+Presolve time = 0.05 sec. (43.93 ticks)
 Probing time = 0.01 sec. (4.31 ticks)
 Clique table members: 899.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.41 sec. (375.67 ticks)
+Root relaxation solution time = 0.40 sec. (375.67 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -27,18 +27,18 @@ Root relaxation solution time = 0.41 sec. (375.67 ticks)
       0     0        0.0000   799                      0.0000     2278         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000     2278    0.00%
-Elapsed time = 2.70 sec. (2442.16 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 2.73 sec. (2442.16 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    2.70 sec. (2442.39 ticks)
+  Real time             =    2.74 sec. (2442.39 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    2.70 sec. (2442.39 ticks)
+Total (root+branch&cut) =    2.74 sec. (2442.39 ticks)
 Primal:	300
 Dual:	300
 Status:	Optimal
-Time:	2.74601
+Time:	2.78293
 Sequence:
 	15
 	16

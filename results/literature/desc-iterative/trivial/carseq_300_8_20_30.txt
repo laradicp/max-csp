@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.98930851
+CPXPARAM_TimeLimit                               599.99434819800001
 Tried aggregator 1 time.
 MIP Presolve eliminated 16 rows and 0 columns.
 Reduced MIP has 2704 rows, 6000 columns, and 51934 nonzeros.
@@ -18,7 +18,7 @@ Clique table members: 2089.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.82 sec. (837.22 ticks)
+Root relaxation solution time = 0.88 sec. (837.22 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -29,21 +29,21 @@ Root relaxation solution time = 0.82 sec. (837.22 ticks)
       0     0        0.0000   379                   Cuts: 113    12358         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000    12358    0.00%
-Elapsed time = 27.68 sec. (27069.05 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 29.22 sec. (27069.05 ticks, tree = 0.01 MB, solutions = 1)
 
 Clique cuts applied:  69
 Zero-half cuts applied:  21
 
 Root node processing (before b&c):
-  Real time             =   27.68 sec. (27069.24 ticks)
+  Real time             =   29.22 sec. (27069.24 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =   27.68 sec. (27069.24 ticks)
+Total (root+branch&cut) =   29.22 sec. (27069.24 ticks)
 Primal:	300
 Dual:	300
 Status:	Optimal
-Time:	27.7292
+Time:	29.2521
 Sequence:
 	19
 	0

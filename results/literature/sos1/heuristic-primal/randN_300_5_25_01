@@ -1,27 +1,27 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               594.12488591299996
+CPXPARAM_TimeLimit                               594.124893284
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 288.0000.
 Tried aggregator 1 time.
-MIP Presolve eliminated 17 rows and 0 columns.
-MIP Presolve modified 6 coefficients.
+MIP Presolve eliminated 18 rows and 0 columns.
+MIP Presolve modified 306 coefficients.
 Reduced MIP has 1809 rows, 7800 columns, and 147016 nonzeros.
 Reduced MIP has 7800 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.11 sec. (135.50 ticks)
+Presolve time = 0.10 sec. (141.64 ticks)
 Probing time = 0.03 sec. (28.89 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 1809 rows, 7800 columns, and 147016 nonzeros.
 Reduced MIP has 7800 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.12 sec. (140.30 ticks)
+Presolve time = 0.10 sec. (140.30 ticks)
 Probing time = 0.03 sec. (28.89 ticks)
 Clique table members: 301.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 2.17 sec. (2480.13 ticks)
+Root relaxation solution time = 1.99 sec. (2480.13 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -32,7 +32,7 @@ Root relaxation solution time = 2.17 sec. (2480.13 ticks)
       0     0      300.0000   715      288.0000      Cuts: 62    12305    4.17%
 Detecting symmetries...
       0     2      300.0000   229      288.0000      300.0000    12305    4.17%
-Elapsed time = 34.15 sec. (38986.78 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 34.30 sec. (38992.93 ticks, tree = 0.01 MB, solutions = 1)
       1     3      300.0000   502      288.0000      300.0000    22896    4.17%
       2     4      300.0000   418      288.0000      300.0000    29712    4.17%
       3     5      300.0000   810      288.0000      300.0000    35835    4.17%
@@ -43,7 +43,7 @@ Elapsed time = 34.15 sec. (38986.78 ticks, tree = 0.01 MB, solutions = 1)
       8    10      300.0000   478      288.0000      300.0000    48045    4.17%
       9    11      300.0000   615      288.0000      300.0000    54297    4.17%
      10    12      300.0000   616      288.0000      300.0000    54735    4.17%
-Elapsed time = 53.26 sec. (60501.16 ticks, tree = 0.11 MB, solutions = 1)
+Elapsed time = 53.70 sec. (60507.31 ticks, tree = 0.11 MB, solutions = 1)
      12    14      300.0000   624      288.0000      300.0000    56768    4.17%
      14    16      300.0000   687      288.0000      300.0000    58839    4.17%
      16    18      300.0000   645      288.0000      300.0000    60713    4.17%
@@ -54,7 +54,7 @@ Elapsed time = 53.26 sec. (60501.16 ticks, tree = 0.11 MB, solutions = 1)
      22    24      300.0000  1037      288.0000      300.0000    94225    4.17%
      24    26      300.0000   517      288.0000      300.0000    99981    4.17%
      26    28      300.0000   600      288.0000      300.0000   111016    4.17%
-Elapsed time = 80.25 sec. (90033.08 ticks, tree = 0.34 MB, solutions = 1)
+Elapsed time = 81.05 sec. (90039.23 ticks, tree = 0.34 MB, solutions = 1)
      28    30      300.0000   396      288.0000      300.0000   113719    4.17%
      30    32      300.0000   539      288.0000      300.0000   118988    4.17%
      32    34      300.0000   390      288.0000      300.0000   119978    4.17%
@@ -65,7 +65,7 @@ Elapsed time = 80.25 sec. (90033.08 ticks, tree = 0.34 MB, solutions = 1)
      40    42      300.0000   580      288.0000      300.0000   145812    4.17%
      41    43      300.0000   520      288.0000      300.0000   152909    4.17%
      42    44      300.0000   975      288.0000      300.0000   154361    4.17%
-Elapsed time = 102.09 sec. (114290.84 ticks, tree = 0.58 MB, solutions = 1)
+Elapsed time = 103.16 sec. (114296.99 ticks, tree = 0.58 MB, solutions = 1)
      44    46      300.0000   570      288.0000      300.0000   155711    4.17%
      47    49      300.0000   630      288.0000      300.0000   161904    4.17%
      49    51      300.0000   626      288.0000      300.0000   167485    4.17%
@@ -76,7 +76,7 @@ Elapsed time = 102.09 sec. (114290.84 ticks, tree = 0.58 MB, solutions = 1)
      59    61      300.0000   675      288.0000      300.0000   199319    4.17%
      61    63      300.0000   866      288.0000      300.0000   200854    4.17%
      63    65      300.0000   891      288.0000      300.0000   202731    4.17%
-Elapsed time = 118.08 sec. (130669.07 ticks, tree = 0.94 MB, solutions = 1)
+Elapsed time = 119.40 sec. (130675.22 ticks, tree = 0.94 MB, solutions = 1)
      65    67      300.0000   945      288.0000      300.0000   205233    4.17%
      67    69      300.0000   499      288.0000      300.0000   213240    4.17%
      68    70      300.0000   487      288.0000      300.0000   215848    4.17%
@@ -87,7 +87,7 @@ Elapsed time = 118.08 sec. (130669.07 ticks, tree = 0.94 MB, solutions = 1)
      78    79      300.0000   568      288.0000      300.0000   231942    4.17%
      80    81      300.0000   502      288.0000      300.0000   236276    4.17%
      82    83      300.0000   510      288.0000      300.0000   236775    4.17%
-Elapsed time = 145.77 sec. (160107.41 ticks, tree = 1.22 MB, solutions = 1)
+Elapsed time = 147.52 sec. (160113.56 ticks, tree = 1.22 MB, solutions = 1)
      83    84      300.0000   618      288.0000      300.0000   240611    4.17%
      85    86      300.0000   572      288.0000      300.0000   244323    4.17%
      87    88      300.0000   589      288.0000      300.0000   248139    4.17%
@@ -98,7 +98,7 @@ Elapsed time = 145.77 sec. (160107.41 ticks, tree = 1.22 MB, solutions = 1)
      96    97      300.0000   589      288.0000      300.0000   266963    4.17%
      97    98      300.0000   733      288.0000      300.0000   271946    4.17%
      98    99      300.0000   497      288.0000      300.0000   274293    4.17%
-Elapsed time = 163.28 sec. (178929.02 ticks, tree = 1.46 MB, solutions = 1)
+Elapsed time = 165.37 sec. (178935.17 ticks, tree = 1.46 MB, solutions = 1)
      99   100      300.0000   519      288.0000      300.0000   277244    4.17%
     100   101      300.0000   548      288.0000      300.0000   277557    4.17%
     102   103      300.0000   485      288.0000      300.0000   280383    4.17%
@@ -109,7 +109,7 @@ Elapsed time = 163.28 sec. (178929.02 ticks, tree = 1.46 MB, solutions = 1)
     110   111      300.0000   664      288.0000      300.0000   308178    4.17%
     113   114      300.0000   650      288.0000      300.0000   317585    4.17%
     116   117      300.0000   645      288.0000      300.0000   322607    4.17%
-Elapsed time = 179.49 sec. (195478.05 ticks, tree = 1.74 MB, solutions = 1)
+Elapsed time = 181.79 sec. (195484.20 ticks, tree = 1.74 MB, solutions = 1)
     120   120      300.0000   709      288.0000      300.0000   326580    4.17%
     122   122      300.0000   709      288.0000      300.0000   333205    4.17%
     124   124      300.0000   629      288.0000      300.0000   340158    4.17%
@@ -120,7 +120,7 @@ Elapsed time = 179.49 sec. (195478.05 ticks, tree = 1.74 MB, solutions = 1)
     133   133      300.0000   604      288.0000      300.0000   387449    4.17%
     136   135      300.0000   669      288.0000      300.0000   393336    4.17%
     138   137      300.0000   675      288.0000      300.0000   402436    4.17%
-Elapsed time = 197.13 sec. (212194.57 ticks, tree = 2.08 MB, solutions = 1)
+Elapsed time = 199.65 sec. (212200.72 ticks, tree = 2.08 MB, solutions = 1)
     142   139      300.0000   655      288.0000      300.0000   404462    4.17%
     145   142      299.8800   721      288.0000      300.0000   413474    4.17%
     148   144      300.0000   665      288.0000      300.0000   416643    4.17%
@@ -131,7 +131,7 @@ Elapsed time = 197.13 sec. (212194.57 ticks, tree = 2.08 MB, solutions = 1)
     159   155      300.0000   596      288.0000      300.0000   453675    4.17%
     161   157      300.0000   587      288.0000      300.0000   460576    4.17%
     163   159      299.7313   638      288.0000      300.0000   468112    4.17%
-Elapsed time = 209.65 sec. (224249.88 ticks, tree = 2.48 MB, solutions = 1)
+Elapsed time = 212.34 sec. (224256.03 ticks, tree = 2.48 MB, solutions = 1)
     165   161      300.0000   590      288.0000      300.0000   475652    4.17%
     168   164      300.0000   583      288.0000      300.0000   481822    4.17%
     171   167      300.0000   586      288.0000      300.0000   487639    4.17%
@@ -142,7 +142,7 @@ Elapsed time = 209.65 sec. (224249.88 ticks, tree = 2.48 MB, solutions = 1)
     184   180      299.6747   655      288.0000      300.0000   526692    4.17%
     186   182      299.9746   688      288.0000      300.0000   534349    4.17%
     195   191      300.0000   655      288.0000      300.0000   557766    4.17%
-Elapsed time = 225.58 sec. (239330.58 ticks, tree = 3.03 MB, solutions = 1)
+Elapsed time = 228.42 sec. (239336.73 ticks, tree = 3.03 MB, solutions = 1)
     204   200      300.0000   618      288.0000      300.0000   580745    4.17%
     213   206      299.1250   629      288.0000      300.0000   602279    4.17%
     223   215      300.0000   604      288.0000      300.0000   622005    4.17%
@@ -153,7 +153,7 @@ Elapsed time = 225.58 sec. (239330.58 ticks, tree = 3.03 MB, solutions = 1)
     266   257      300.0000   536      288.0000      300.0000   763335    4.17%
     276   267      300.0000   570      288.0000      300.0000   792967    4.17%
     286   277      300.0000   551      288.0000      300.0000   819646    4.17%
-Elapsed time = 271.63 sec. (282340.78 ticks, tree = 4.53 MB, solutions = 1)
+Elapsed time = 275.18 sec. (282346.93 ticks, tree = 4.53 MB, solutions = 1)
     297   288      300.0000   500      288.0000      300.0000   854191    4.17%
     308   297      300.0000   469      288.0000      300.0000   884530    4.17%
     320   302      300.0000   480      288.0000      300.0000   918308    4.17%
@@ -164,7 +164,7 @@ Elapsed time = 271.63 sec. (282340.78 ticks, tree = 4.53 MB, solutions = 1)
     394   343      300.0000   399      288.0000      300.0000  1088243    4.17%
     410   343    infeasible            288.0000      300.0000  1135218    4.17%
     427   346      300.0000   438      288.0000      300.0000  1177535    4.17%
-Elapsed time = 318.59 sec. (323194.80 ticks, tree = 5.71 MB, solutions = 1)
+Elapsed time = 323.08 sec. (323200.95 ticks, tree = 5.71 MB, solutions = 1)
     447   349      300.0000   413      288.0000      300.0000  1215227    4.17%
     461   355      300.0000   383      288.0000      300.0000  1250906    4.17%
     485   353    infeasible            288.0000      300.0000  1293783    4.17%
@@ -175,7 +175,7 @@ Elapsed time = 318.59 sec. (323194.80 ticks, tree = 5.71 MB, solutions = 1)
     523   376      300.0000   866      288.0000      300.0000  1398707    4.17%
     525   378      300.0000   468      288.0000      300.0000  1414260    4.17%
     527   380      300.0000   986      288.0000      300.0000  1431589    4.17%
-Elapsed time = 362.27 sec. (364821.52 ticks, tree = 6.30 MB, solutions = 1)
+Elapsed time = 367.58 sec. (364827.67 ticks, tree = 6.30 MB, solutions = 1)
     528   381      300.0000   958      288.0000      300.0000  1447658    4.17%
     533   386      300.0000  1039      288.0000      300.0000  1476041    4.17%
     539   392      300.0000  1057      288.0000      300.0000  1492734    4.17%
@@ -186,7 +186,7 @@ Elapsed time = 362.27 sec. (364821.52 ticks, tree = 6.30 MB, solutions = 1)
     560   413      300.0000  1041      288.0000      300.0000  1590121    4.17%
     566   419      300.0000   750      288.0000      300.0000  1621433    4.17%
     572   425      300.0000   856      288.0000      300.0000  1640308    4.17%
-Elapsed time = 410.34 sec. (413692.91 ticks, tree = 7.06 MB, solutions = 1)
+Elapsed time = 416.70 sec. (413699.06 ticks, tree = 7.06 MB, solutions = 1)
     574   427      300.0000   869      288.0000      300.0000  1656398    4.17%
     578   431      300.0000  1035      288.0000      300.0000  1680139    4.17%
     580   433      300.0000  1003      288.0000      300.0000  1697900    4.17%
@@ -197,7 +197,7 @@ Elapsed time = 410.34 sec. (413692.91 ticks, tree = 7.06 MB, solutions = 1)
     603   454      300.0000   673      288.0000      300.0000  1820268    4.17%
     610   461      300.0000   741      288.0000      300.0000  1840848    4.17%
     618   469      300.0000   723      288.0000      300.0000  1860371    4.17%
-Elapsed time = 459.60 sec. (463086.79 ticks, tree = 7.82 MB, solutions = 1)
+Elapsed time = 467.01 sec. (463092.94 ticks, tree = 7.82 MB, solutions = 1)
     622   473      300.0000   599      288.0000      300.0000  1878660    4.17%
     629   480      300.0000   703      288.0000      300.0000  1899615    4.17%
     633   484      300.0000   611      288.0000      300.0000  1916050    4.17%
@@ -208,7 +208,7 @@ Elapsed time = 459.60 sec. (463086.79 ticks, tree = 7.82 MB, solutions = 1)
     661   511      300.0000   641      288.0000      300.0000  2014405    4.17%
     670   520      300.0000   654      288.0000      300.0000  2032512    4.17%
     677   527      300.0000   776      288.0000      300.0000  2062065    4.17%
-Elapsed time = 503.71 sec. (506189.22 ticks, tree = 8.82 MB, solutions = 1)
+Elapsed time = 512.23 sec. (506195.37 ticks, tree = 8.82 MB, solutions = 1)
     681   531      300.0000   657      288.0000      300.0000  2086992    4.17%
     688   538      299.9615   753      288.0000      300.0000  2108324    4.17%
     695   545      300.0000   709      288.0000      300.0000  2129936    4.17%
@@ -219,7 +219,7 @@ Elapsed time = 503.71 sec. (506189.22 ticks, tree = 8.82 MB, solutions = 1)
     730   580      300.0000   583      288.0000      300.0000  2251955    4.17%
     738   588      299.9461   703      288.0000      300.0000  2275981    4.17%
     745   595      299.8922   700      288.0000      300.0000  2300010    4.17%
-Elapsed time = 547.04 sec. (547569.08 ticks, tree = 10.01 MB, solutions = 1)
+Elapsed time = 556.53 sec. (547575.23 ticks, tree = 10.01 MB, solutions = 1)
     753   603      300.0000   598      288.0000      300.0000  2320293    4.17%
     761   611      300.0000   606      288.0000      300.0000  2341553    4.17%
     768   618      300.0000   608      288.0000      300.0000  2363387    4.17%
@@ -229,23 +229,20 @@ Elapsed time = 547.04 sec. (547569.08 ticks, tree = 10.01 MB, solutions = 1)
     799   649      300.0000   563      288.0000      300.0000  2468757    4.17%
 Starting limited solution polishing.
     807   657      299.8372   594      288.0000      300.0000  2497117    4.17%
-    816   666      300.0000   538      288.0000      300.0000  2524330    4.17%
-    824   674      300.0000   523      288.0000      300.0000  2555990    4.17%
-Elapsed time = 589.91 sec. (587594.83 ticks, tree = 11.38 MB, solutions = 1)
 
 Zero-half cuts applied:  15
 Gomory fractional cuts applied:  1
 
 Root node processing (before b&c):
-  Real time             =   34.11 sec. (38938.02 ticks)
+  Real time             =   34.26 sec. (38944.17 ticks)
 Sequential b&c:
-  Real time             =  560.02 sec. (552430.58 ticks)
+  Real time             =  559.87 sec. (542978.80 ticks)
                           ------------
-Total (root+branch&cut) =  594.13 sec. (591368.60 ticks)
+Total (root+branch&cut) =  594.13 sec. (581922.97 ticks)
 Primal:	288
 Dual:	300
 Status:	Feasible
-Time:	594.15
+Time:	594.13
 Sequence:
 	4
 	18

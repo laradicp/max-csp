@@ -1,13 +1,13 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99446825699999
+CPXPARAM_TimeLimit                               599.996666151
 Tried aggregator 1 time.
 MIP Presolve eliminated 24 rows and 0 columns.
 MIP Presolve modified 10 coefficients.
 Reduced MIP has 1101 rows, 2500 columns, and 35296 nonzeros.
 Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.03 sec. (17.27 ticks)
+Presolve time = 0.02 sec. (17.27 ticks)
 Probing time = 0.00 sec. (4.80 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -19,7 +19,7 @@ Clique table members: 302.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.04 sec. (30.95 ticks)
+Root relaxation solution time = 0.03 sec. (30.95 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -27,18 +27,18 @@ Root relaxation solution time = 0.04 sec. (30.95 ticks)
       0     0        0.0000   115                      0.0000      474         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000      474    0.00%
-Elapsed time = 0.21 sec. (143.42 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 0.18 sec. (143.42 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.21 sec. (143.50 ticks)
+  Real time             =    0.18 sec. (143.50 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.21 sec. (143.50 ticks)
+Total (root+branch&cut) =    0.18 sec. (143.50 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	0.243483
+Time:	0.200483
 Sequence:
 	5
 	14

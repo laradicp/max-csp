@@ -13,7 +13,7 @@ class Analytics
         Analytics(string instance);
         void readFile(string path);
         void readHeuristicFile();
-        void print(string path);
+        void print(string path, string instanceSet = "");
         string getInstance() { return instance; }
         int getPrimalBound(string path) { return primalBounds[path]; }
         bool getOptimal(string path) { return optimal[path]; }
@@ -112,17 +112,23 @@ void Analytics::readHeuristicFile()
 
 void Analytics::setHeuristicOptimal()
 {
+    if(primalBounds.find("heuristic") == primalBounds.end())
+    {
+        cout << "Error: heuristic primal bound not found" << endl;
+        return;
+    }
+    
     optimal["heuristic"] = primalBounds["heuristic"] == bestDual;
 }
 
-void Analytics::print(string path)
+void Analytics::print(string path, string instanceSet)
 {
     if(primalBounds.find(path) == primalBounds.end())
     {
         return;
     }
 
-    ifstream inputFile(path + "/gap-time.txt");
+    ifstream inputFile(path + "/gap-time" + instanceSet + ".txt");
 
     double sumGaps = 0;
     double sumTimes = 0;
@@ -139,11 +145,11 @@ void Analytics::print(string path)
         inputFile.close();    
     }
 
-    ofstream outputFile(path + "/gap-time.txt");
+    ofstream outputFile(path + "/gap-time" + instanceSet + ".txt");
 
     if(!outputFile.is_open())
     {
-        cout << "Error opening file " << path << "/gap-time.txt for writing" << endl;
+        cout << "Error opening file " << path << "/gap-time" << instanceSet << ".txt for writing" << endl;
         return;
     }
 
@@ -194,7 +200,7 @@ int main(int argc, char** argv)
     }
     analytics.setHeuristicOptimal();
 
-    analytics.print("heuristic");
+    analytics.print("heuristic", "-" + instanceSet);
     for(string path : paths)
     {
         analytics.print(instanceSet + "/" + path);

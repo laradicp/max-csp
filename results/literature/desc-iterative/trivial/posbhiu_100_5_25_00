@@ -1,13 +1,13 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99550836000003
+CPXPARAM_TimeLimit                               599.997680038
 Tried aggregator 1 time.
 MIP Presolve eliminated 14 rows and 0 columns.
 MIP Presolve modified 5 coefficients.
 Reduced MIP has 611 rows, 2500 columns, and 30180 nonzeros.
 Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.03 sec. (12.70 ticks)
+Presolve time = 0.02 sec. (12.70 ticks)
 Probing time = 0.00 sec. (3.03 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -19,14 +19,14 @@ Clique table members: 199.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.18 sec. (173.10 ticks)
+Root relaxation solution time = 0.16 sec. (173.10 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
       0     0        0.0000   474                      0.0000     1385         
       0     2        0.0000    73                      0.0000     1385         
-Elapsed time = 3.38 sec. (4172.65 ticks, tree = 0.01 MB, solutions = 0)
+Elapsed time = 3.69 sec. (4172.65 ticks, tree = 0.01 MB, solutions = 0)
       1     3        0.0000   179                      0.0000     4335         
       2     4        0.0000   416                      0.0000     6237         
       3     5        0.0000   148                      0.0000     8659         
@@ -37,7 +37,7 @@ Elapsed time = 3.38 sec. (4172.65 ticks, tree = 0.01 MB, solutions = 0)
      11    13        0.0000   181                      0.0000    18083         
      13    15        0.0000   114                      0.0000    20956         
      17    19        0.0000   206                      0.0000    26599         
-Elapsed time = 7.65 sec. (9625.59 ticks, tree = 0.08 MB, solutions = 0)
+Elapsed time = 8.66 sec. (9625.59 ticks, tree = 0.08 MB, solutions = 0)
      22    24        0.0000   194                      0.0000    31544         
      28    30        0.0000   105                      0.0000    34885         
      32    34        0.0000   234                      0.0000    39591         
@@ -45,15 +45,15 @@ Elapsed time = 7.65 sec. (9625.59 ticks, tree = 0.08 MB, solutions = 0)
 *    39     1      integral     0        0.0000        0.0000    50878    0.00%
 
 Root node processing (before b&c):
-  Real time             =    3.38 sec. (4172.61 ticks)
+  Real time             =    3.69 sec. (4172.61 ticks)
 Sequential b&c:
-  Real time             =    8.21 sec. (10296.73 ticks)
+  Real time             =    9.55 sec. (10296.73 ticks)
                           ------------
-Total (root+branch&cut) =   11.60 sec. (14469.35 ticks)
+Total (root+branch&cut) =   13.24 sec. (14469.35 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	11.6289
+Time:	13.2611
 Sequence:
 	23
 	11

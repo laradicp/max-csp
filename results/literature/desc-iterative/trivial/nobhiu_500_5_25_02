@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.97793236300004
+CPXPARAM_TimeLimit                               599.98753377399998
 Tried aggregator 1 time.
 MIP Presolve eliminated 15 rows and 0 columns.
 MIP Presolve modified 2 coefficients.
@@ -13,13 +13,13 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 3010 rows, 12500 columns, and 163116 nonzeros.
 Reduced MIP has 12500 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.12 sec. (81.54 ticks)
+Presolve time = 0.10 sec. (81.54 ticks)
 Probing time = 0.01 sec. (5.38 ticks)
 Clique table members: 500.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 4.46 sec. (4916.71 ticks)
+Root relaxation solution time = 4.58 sec. (4916.71 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -27,18 +27,18 @@ Root relaxation solution time = 4.46 sec. (4916.71 ticks)
       0     0        0.0000  1994                      0.0000     9195         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000     9195    0.00%
-Elapsed time = 38.43 sec. (40860.47 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 40.03 sec. (40860.47 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =   38.43 sec. (40860.84 ticks)
+  Real time             =   40.03 sec. (40860.84 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =   38.43 sec. (40860.84 ticks)
+Total (root+branch&cut) =   40.03 sec. (40860.84 ticks)
 Primal:	500
 Dual:	500
 Status:	Optimal
-Time:	38.5468
+Time:	40.1227
 Sequence:
 	3
 	21

@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.98445761400001
+CPXPARAM_TimeLimit                               599.98397561900003
 Tried aggregator 1 time.
 MIP Presolve eliminated 20 rows and 0 columns.
 MIP Presolve modified 1504 coefficients.
@@ -13,13 +13,13 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 5505 rows, 12500 columns, and 221052 nonzeros.
 Reduced MIP has 12500 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.17 sec. (141.19 ticks)
+Presolve time = 0.18 sec. (141.19 ticks)
 Probing time = 0.01 sec. (5.86 ticks)
 Clique table members: 2995.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 43.07 sec. (39289.00 ticks)
+Root relaxation solution time = 41.25 sec. (39289.00 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -31,21 +31,21 @@ Heuristic still looking.
 Heuristic still looking.
 Detecting symmetries...
       0     2        0.0000  1801                      0.0000   118749         
-Elapsed time = 499.04 sec. (468901.60 ticks, tree = 0.01 MB, solutions = 0)
+Elapsed time = 489.94 sec. (468901.60 ticks, tree = 0.01 MB, solutions = 0)
       1     3        0.0000  2633                      0.0000   175621         
 
 Clique cuts applied:  83
 Zero-half cuts applied:  39
 
 Root node processing (before b&c):
-  Real time             =  498.84 sec. (468707.12 ticks)
+  Real time             =  489.75 sec. (468707.12 ticks)
 Sequential b&c:
-  Real time             =  101.16 sec. (94911.16 ticks)
+  Real time             =  110.25 sec. (102979.90 ticks)
                           ------------
-Total (root+branch&cut) =  600.00 sec. (563618.27 ticks)
+Total (root+branch&cut) =  600.00 sec. (571687.02 ticks)
 Primal:	1
-Dual:	499
+Dual:	500
 Status:	Feasible
-Time:	600.111
+Time:	600.109
 Sequence:
 	0

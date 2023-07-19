@@ -1,27 +1,27 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998392099997
+CPXPARAM_TimeLimit                               599.99998489999996
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 1.0000.
 Tried aggregator 1 time.
-MIP Presolve eliminated 16 rows and 0 columns.
-MIP Presolve modified 5 coefficients.
+MIP Presolve eliminated 17 rows and 0 columns.
+MIP Presolve modified 305 coefficients.
 Reduced MIP has 1810 rows, 7800 columns, and 146198 nonzeros.
 Reduced MIP has 7800 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.10 sec. (133.20 ticks)
+Presolve time = 0.10 sec. (139.35 ticks)
 Probing time = 0.03 sec. (28.75 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 1810 rows, 7800 columns, and 146198 nonzeros.
 Reduced MIP has 7800 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.11 sec. (138.14 ticks)
+Presolve time = 0.10 sec. (138.14 ticks)
 Probing time = 0.03 sec. (28.75 ticks)
 Clique table members: 301.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 1.95 sec. (2343.38 ticks)
+Root relaxation solution time = 1.87 sec. (2343.38 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -30,7 +30,7 @@ Root relaxation solution time = 1.95 sec. (2343.38 ticks)
       0     0      300.0000  1304        1.0000      300.0000     5223     --- 
 Detecting symmetries...
       0     2      300.0000    40        1.0000      300.0000     5223     --- 
-Elapsed time = 19.47 sec. (20497.88 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 18.36 sec. (20504.03 ticks, tree = 0.01 MB, solutions = 1)
       1     3      300.0000   219        1.0000      300.0000    16105     --- 
       2     4      300.0000   106        1.0000      300.0000    19787     --- 
       3     5      300.0000   238        1.0000      300.0000    23295     --- 
@@ -41,7 +41,7 @@ Elapsed time = 19.47 sec. (20497.88 ticks, tree = 0.01 MB, solutions = 1)
       8    10      300.0000   107        1.0000      300.0000    32871     --- 
       9    11      300.0000    94        1.0000      300.0000    33331     --- 
      10    12      300.0000    98        1.0000      300.0000    35622     --- 
-Elapsed time = 34.14 sec. (37526.80 ticks, tree = 0.10 MB, solutions = 1)
+Elapsed time = 32.27 sec. (37532.96 ticks, tree = 0.10 MB, solutions = 1)
      12    14      300.0000    81        1.0000      300.0000    36458     --- 
      14    16      300.0000   137        1.0000      300.0000    38727     --- 
      16    18      300.0000    72        1.0000      300.0000    40839     --- 
@@ -52,20 +52,20 @@ Elapsed time = 34.14 sec. (37526.80 ticks, tree = 0.10 MB, solutions = 1)
      24    26      300.0000   726        1.0000      300.0000    56565     --- 
      25    27      300.0000   112        1.0000      300.0000    61675     --- 
      27    29      300.0000   104        1.0000      300.0000    63876     --- 
-Elapsed time = 49.39 sec. (53456.15 ticks, tree = 0.38 MB, solutions = 1)
+Elapsed time = 46.62 sec. (53462.31 ticks, tree = 0.38 MB, solutions = 1)
      29    31      300.0000   105        1.0000      300.0000    65595     --- 
 *    30+    2                          300.0000      300.0000             0.00%
 
 Root node processing (before b&c):
-  Real time             =   19.29 sec. (20380.16 ticks)
+  Real time             =   18.22 sec. (20386.32 ticks)
 Sequential b&c:
-  Real time             =   31.54 sec. (34500.05 ticks)
+  Real time             =   29.75 sec. (34500.05 ticks)
                           ------------
-Total (root+branch&cut) =   50.83 sec. (54880.21 ticks)
+Total (root+branch&cut) =   47.97 sec. (54886.37 ticks)
 Primal:	300
 Dual:	300
 Status:	Optimal
-Time:	50.84
+Time:	47.97
 Sequence:
 	4
 	6

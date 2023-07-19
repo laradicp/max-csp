@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.73713121900005
+CPXPARAM_TimeLimit                               599.73761457600006
 Tried aggregator 1 time.
 MIP Presolve eliminated 20 rows and 0 columns.
 MIP Presolve modified 4 coefficients.
@@ -13,13 +13,13 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 900 rows, 2000 columns, and 23152 nonzeros.
 Reduced MIP has 2000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (13.05 ticks)
+Presolve time = 0.01 sec. (13.05 ticks)
 Probing time = 0.00 sec. (2.98 ticks)
 Clique table members: 396.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.10 sec. (81.35 ticks)
+Root relaxation solution time = 0.08 sec. (81.35 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -27,7 +27,7 @@ Root relaxation solution time = 0.10 sec. (81.35 ticks)
       0     0        0.0000   391                      0.0000     1025         
       0     0        0.0000   172                    Cuts: 12     1494         
       0     2        0.0000    59                      0.0000     1494         
-Elapsed time = 3.22 sec. (3173.90 ticks, tree = 0.01 MB, solutions = 0)
+Elapsed time = 3.14 sec. (3173.90 ticks, tree = 0.01 MB, solutions = 0)
       2     4        0.0000   100                      0.0000     3578         
       4     6        0.0000   111                      0.0000     4759         
       7     9        0.0000   307                      0.0000     6202         
@@ -38,7 +38,7 @@ Elapsed time = 3.22 sec. (3173.90 ticks, tree = 0.01 MB, solutions = 0)
      18    20        0.0000   254                      0.0000    11474         
      20    22        0.0000   239                      0.0000    12223         
      30    32        0.0000   313                      0.0000    15215         
-Elapsed time = 7.57 sec. (7477.19 ticks, tree = 0.21 MB, solutions = 0)
+Elapsed time = 7.52 sec. (7477.19 ticks, tree = 0.21 MB, solutions = 0)
      40    42        0.0000   233                      0.0000    19895         
      50    52        0.0000   185                      0.0000    23340         
      60    62        0.0000   174                      0.0000    27320         
@@ -49,7 +49,7 @@ Elapsed time = 7.57 sec. (7477.19 ticks, tree = 0.21 MB, solutions = 0)
     129   105    infeasible                            0.0000    49076         
     147   108    infeasible                            0.0000    55296         
     172   106        0.0000   117                      0.0000    63059         
-Elapsed time = 18.02 sec. (17540.90 ticks, tree = 0.76 MB, solutions = 0)
+Elapsed time = 18.12 sec. (17540.90 ticks, tree = 0.76 MB, solutions = 0)
     203   105        0.0000   124                      0.0000    70314         
     230   108        0.0000   118                      0.0000    76026         
     261   105    infeasible                            0.0000    84097         
@@ -60,7 +60,7 @@ Elapsed time = 18.02 sec. (17540.90 ticks, tree = 0.76 MB, solutions = 0)
     395   118        0.0000    91                      0.0000   116869         
     425   116    infeasible                            0.0000   126693         
     454   119        0.0000   113                      0.0000   133395         
-Elapsed time = 28.14 sec. (27275.16 ticks, tree = 0.86 MB, solutions = 0)
+Elapsed time = 28.33 sec. (27275.16 ticks, tree = 0.86 MB, solutions = 0)
     479   120        0.0000   105                      0.0000   142975         
     510   119        0.0000   116                      0.0000   151007         
     542   117        0.0000   111                      0.0000   158526         
@@ -71,7 +71,7 @@ Elapsed time = 28.14 sec. (27275.16 ticks, tree = 0.86 MB, solutions = 0)
     688   120        0.0000   104                      0.0000   192191         
     722   118        0.0000    92                      0.0000   197211         
     748   124        0.0000   104                      0.0000   203976         
-Elapsed time = 38.56 sec. (37021.79 ticks, tree = 0.90 MB, solutions = 0)
+Elapsed time = 38.88 sec. (37021.79 ticks, tree = 0.90 MB, solutions = 0)
     775   125    infeasible                            0.0000   211343         
     802   128        0.0000   118                      0.0000   216521         
     830   134        0.0000   105                      0.0000   221831         
@@ -82,7 +82,7 @@ Elapsed time = 38.56 sec. (37021.79 ticks, tree = 0.90 MB, solutions = 0)
     985   127        0.0000   107                      0.0000   254243         
    1014   128        0.0000   113                      0.0000   262369         
    1043   128        0.0000   116                      0.0000   268120         
-Elapsed time = 48.93 sec. (46810.95 ticks, tree = 0.94 MB, solutions = 0)
+Elapsed time = 49.40 sec. (46810.95 ticks, tree = 0.94 MB, solutions = 0)
    1074   127        0.0000   112                      0.0000   274965         
    1103   124    infeasible                            0.0000   282165         
    1133   126        0.0000    86                      0.0000   288035         
@@ -93,7 +93,7 @@ Elapsed time = 48.93 sec. (46810.95 ticks, tree = 0.94 MB, solutions = 0)
    1265   124        0.0000   112                      0.0000   335625         
    1300   117        0.0000   119                      0.0000   343840         
    1329   117        0.0000   117                      0.0000   349930         
-Elapsed time = 59.39 sec. (56575.50 ticks, tree = 0.85 MB, solutions = 0)
+Elapsed time = 59.84 sec. (56575.50 ticks, tree = 0.85 MB, solutions = 0)
    1362   114        0.0000   121                      0.0000   356745         
    1390   116        0.0000   119                      0.0000   363382         
    1414   122        0.0000   117                      0.0000   369049         
@@ -104,7 +104,7 @@ Elapsed time = 59.39 sec. (56575.50 ticks, tree = 0.85 MB, solutions = 0)
    1563   121        0.0000   119                      0.0000   401849         
    1592   122        0.0000   108                      0.0000   408873         
    1624   120    infeasible                            0.0000   415297         
-Elapsed time = 69.87 sec. (66352.77 ticks, tree = 0.88 MB, solutions = 0)
+Elapsed time = 70.45 sec. (66352.77 ticks, tree = 0.88 MB, solutions = 0)
    1652   120    infeasible                            0.0000   423009         
    1683   119        0.0000   146                      0.0000   429184         
    1707   125        0.0000   108                      0.0000   435334         
@@ -115,7 +115,7 @@ Elapsed time = 69.87 sec. (66352.77 ticks, tree = 0.88 MB, solutions = 0)
    1834   124        0.0000   107                      0.0000   482342         
    1861   127        0.0000   115                      0.0000   488819         
    1888   126        0.0000   128                      0.0000   497201         
-Elapsed time = 80.36 sec. (76143.89 ticks, tree = 0.92 MB, solutions = 0)
+Elapsed time = 81.02 sec. (76143.89 ticks, tree = 0.92 MB, solutions = 0)
    1916   126        0.0000   129                      0.0000   504928         
    1938   129        0.0000   148                      0.0000   511445         
 
@@ -141,7 +141,7 @@ Represolve time = 0.14 sec. (78.61 ticks)
    1990    36        0.0000   183                      0.0000   545217         
    1995    37        0.0000   140                      0.0000   553671         
    2005    41        0.0000   144                      0.0000   565610         
-Elapsed time = 94.10 sec. (89431.68 ticks, tree = 0.29 MB, solutions = 0)
+Elapsed time = 94.81 sec. (89431.68 ticks, tree = 0.29 MB, solutions = 0)
    2015    41        0.0000   155                      0.0000   578020         
    2026    44        0.0000   146                      0.0000   588800         
    2038    46    infeasible                            0.0000   603284         
@@ -152,7 +152,7 @@ Elapsed time = 94.10 sec. (89431.68 ticks, tree = 0.29 MB, solutions = 0)
    2105    55    infeasible                            0.0000   641749         
    2121    49    infeasible                            0.0000   645986         
    2163    43        0.0000   114                      0.0000   673061         
-Elapsed time = 107.32 sec. (102321.08 ticks, tree = 0.31 MB, solutions = 0)
+Elapsed time = 108.05 sec. (102321.08 ticks, tree = 0.31 MB, solutions = 0)
    2207    51        0.0000   108                      0.0000   696641         
    2254    40        0.0000   191                      0.0000   726577         
    2296    42        0.0000   177                      0.0000   752195         
@@ -163,7 +163,7 @@ Elapsed time = 107.32 sec. (102321.08 ticks, tree = 0.31 MB, solutions = 0)
    2543    69        0.0000   159                      0.0000   822753         
    2607    69        0.0000   159                      0.0000   837783         
    2671    67        0.0000   160                      0.0000   852887         
-Elapsed time = 145.53 sec. (140878.61 ticks, tree = 0.51 MB, solutions = 0)
+Elapsed time = 146.34 sec. (140878.61 ticks, tree = 0.51 MB, solutions = 0)
    2734    68        0.0000   165                      0.0000   867656         
    2796    70        0.0000   178                      0.0000   881099         
    2856    70        0.0000   163                      0.0000   895885         
@@ -202,7 +202,7 @@ Represolve time = 0.29 sec. (124.94 ticks)
    3027    93        0.0000    79                      0.0000   967894         
    3079   111        0.0000    90                      0.0000   992000         
    3127   141        0.0000   243                      0.0000  1006797         
-Elapsed time = 200.97 sec. (195546.15 ticks, tree = 1.01 MB, solutions = 0)
+Elapsed time = 202.22 sec. (195546.15 ticks, tree = 1.01 MB, solutions = 0)
    3170   156        0.0000   219                      0.0000  1028669         
    3203   182        0.0000    95                      0.0000  1048941         
    3256   197        0.0000    79                      0.0000  1074030         
@@ -213,7 +213,7 @@ Elapsed time = 200.97 sec. (195546.15 ticks, tree = 1.01 MB, solutions = 0)
    3521   215        0.0000    79                      0.0000  1206493         
    3571   210    infeasible                            0.0000  1231952         
    3606   221        0.0000   238                      0.0000  1254854         
-Elapsed time = 241.39 sec. (234334.13 ticks, tree = 1.66 MB, solutions = 0)
+Elapsed time = 243.10 sec. (234334.13 ticks, tree = 1.66 MB, solutions = 0)
    3637   226    infeasible                            0.0000  1281848         
    3669   228        0.0000   151                      0.0000  1314919         
    3708   257        0.0000   134                      0.0000  1327931         
@@ -224,7 +224,7 @@ Elapsed time = 241.39 sec. (234334.13 ticks, tree = 1.66 MB, solutions = 0)
    3979   352        0.0000   119                      0.0000  1438413         
    4027   367        0.0000    88                      0.0000  1461675         
    4081   380        0.0000    89                      0.0000  1482600         
-Elapsed time = 281.93 sec. (272963.96 ticks, tree = 2.99 MB, solutions = 0)
+Elapsed time = 284.22 sec. (272963.96 ticks, tree = 2.99 MB, solutions = 0)
    4142   400        0.0000    79                      0.0000  1502092         
    4192   424        0.0000    79                      0.0000  1525096         
    4233   440        0.0000    87                      0.0000  1548746         
@@ -235,7 +235,7 @@ Elapsed time = 281.93 sec. (272963.96 ticks, tree = 2.99 MB, solutions = 0)
    4527   546    infeasible                            0.0000  1651425         
    4600   559        0.0000   101                      0.0000  1672605         
    4657   561    infeasible                            0.0000  1697789         
-Elapsed time = 322.78 sec. (311407.13 ticks, tree = 4.36 MB, solutions = 0)
+Elapsed time = 325.54 sec. (311407.13 ticks, tree = 4.36 MB, solutions = 0)
    4712   568    infeasible                            0.0000  1721701         
    4769   571        0.0000   138                      0.0000  1746529         
    4822   590        0.0000    99                      0.0000  1765900         
@@ -246,7 +246,7 @@ Elapsed time = 322.78 sec. (311407.13 ticks, tree = 4.36 MB, solutions = 0)
    5094   678        0.0000    87                      0.0000  1868838         
    5158   684    infeasible                            0.0000  1890900         
    5211   696    infeasible                            0.0000  1913212         
-Elapsed time = 363.18 sec. (349884.72 ticks, tree = 5.52 MB, solutions = 0)
+Elapsed time = 366.14 sec. (349884.72 ticks, tree = 5.52 MB, solutions = 0)
    5264   704        0.0000    98                      0.0000  1937111         
    5320   720        0.0000   101                      0.0000  1958381         
    5392   720    infeasible                            0.0000  1980464         
@@ -257,7 +257,7 @@ Elapsed time = 363.18 sec. (349884.72 ticks, tree = 5.52 MB, solutions = 0)
    5663   754    infeasible                            0.0000  2091941         
    5712   753    infeasible                            0.0000  2116587         
    5770   757        0.0000    89                      0.0000  2140801         
-Elapsed time = 403.09 sec. (388256.07 ticks, tree = 6.03 MB, solutions = 0)
+Elapsed time = 406.29 sec. (388256.07 ticks, tree = 6.03 MB, solutions = 0)
    5829   760        0.0000   110                      0.0000  2164364         
    5874   779        0.0000   139                      0.0000  2184639         
    5934   774        0.0000    93                      0.0000  2211575         
@@ -268,7 +268,7 @@ Elapsed time = 403.09 sec. (388256.07 ticks, tree = 6.03 MB, solutions = 0)
    6224   801        0.0000    56                      0.0000  2323081         
    6284   798    infeasible                            0.0000  2345313         
    6340   803        0.0000    60                      0.0000  2369259         
-Elapsed time = 443.36 sec. (426936.70 ticks, tree = 6.46 MB, solutions = 0)
+Elapsed time = 446.72 sec. (426936.70 ticks, tree = 6.46 MB, solutions = 0)
    6381   816        0.0000    56                      0.0000  2391982         
    6428   818        0.0000   111                      0.0000  2413107         
    6458   848        0.0000   160                      0.0000  2425903         
@@ -279,7 +279,7 @@ Elapsed time = 443.36 sec. (426936.70 ticks, tree = 6.46 MB, solutions = 0)
    6689   938    infeasible                            0.0000  2524112         
    6736   953        0.0000    52                      0.0000  2543305         
    6780   966    infeasible                            0.0000  2566082         
-Elapsed time = 483.95 sec. (465407.50 ticks, tree = 7.88 MB, solutions = 0)
+Elapsed time = 487.52 sec. (465407.50 ticks, tree = 7.88 MB, solutions = 0)
    6827   976        0.0000   109                      0.0000  2587949         
    6876   986    infeasible                            0.0000  2609983         
    6921   991        0.0000   159                      0.0000  2633912         
@@ -290,7 +290,7 @@ Elapsed time = 483.95 sec. (465407.50 ticks, tree = 7.88 MB, solutions = 0)
    7166  1025    infeasible                            0.0000  2751962         
    7211  1052    infeasible                            0.0000  2767058         
    7268  1058    infeasible                            0.0000  2787572         
-Elapsed time = 524.85 sec. (504009.97 ticks, tree = 8.74 MB, solutions = 0)
+Elapsed time = 528.62 sec. (504009.97 ticks, tree = 8.74 MB, solutions = 0)
    7328  1064    infeasible                            0.0000  2809791         
    7384  1081        0.0000    80                      0.0000  2828368         
    7447  1088        0.0000    84                      0.0000  2850511         
@@ -301,7 +301,7 @@ Elapsed time = 524.85 sec. (504009.97 ticks, tree = 8.74 MB, solutions = 0)
    7749  1106        0.0000    68                      0.0000  2963314         
    7797  1116        0.0000   107                      0.0000  2986035         
    7857  1125        0.0000    53                      0.0000  3008869         
-Elapsed time = 566.11 sec. (542635.79 ticks, tree = 9.32 MB, solutions = 0)
+Elapsed time = 569.86 sec. (542635.79 ticks, tree = 9.32 MB, solutions = 0)
    7911  1138        0.0000    92                      0.0000  3029110         
    7967  1143        0.0000    94                      0.0000  3050782         
    8027  1154        0.0000    49                      0.0000  3071231         
@@ -309,7 +309,6 @@ Elapsed time = 566.11 sec. (542635.79 ticks, tree = 9.32 MB, solutions = 0)
    8143  1171        0.0000    74                      0.0000  3112129         
    8196  1185    infeasible                            0.0000  3132934         
    8252  1191        0.0000    53                      0.0000  3154968         
-   8311  1204        0.0000   124                      0.0000  3173683         
 
 Clique cuts applied:  54
 Cover cuts applied:  20
@@ -318,14 +317,14 @@ Zero-half cuts applied:  23
 Gomory fractional cuts applied:  3
 
 Root node processing (before b&c):
-  Real time             =    3.22 sec. (3174.00 ticks)
+  Real time             =    3.14 sec. (3174.00 ticks)
 Sequential b&c:
-  Real time             =  596.51 sec. (570825.44 ticks)
+  Real time             =  596.60 sec. (567417.63 ticks)
                           ------------
-Total (root+branch&cut) =  599.74 sec. (573999.43 ticks)
+Total (root+branch&cut) =  599.74 sec. (570591.63 ticks)
 Primal:	94
-Dual:	99
+Dual:	100
 Status:	Feasible
-Time:	599.762
+Time:	599.761
 Sequence:
 	0

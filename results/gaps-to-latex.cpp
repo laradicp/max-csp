@@ -102,8 +102,7 @@ int main(int argc, char** argv)
                     instanceSets[i] + "/" + iter->first + "/" + iter->second[j] + "/gap-time.txt"
                 );
                 cout << initialization(iter->second[j]) << " & " << gapTime.optimalCount << " & " <<
-                    gapTime.gap*100/gapTime.count << "\\\% & " << gapTime.time/gapTime.count <<
-                    " \\\\" << endl;
+                    gapTime.gap*100/gapTime.count << " & " << gapTime.time/gapTime.count << " \\\\" << endl;
             }
         }
         cout << "\\hline" << endl;
