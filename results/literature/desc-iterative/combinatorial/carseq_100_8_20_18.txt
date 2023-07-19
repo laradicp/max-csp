@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99777893400005
+CPXPARAM_TimeLimit                               599.99801957199998
 Tried aggregator 1 time.
 MIP Presolve eliminated 23 rows and 0 columns.
 MIP Presolve modified 3 coefficients.
@@ -13,13 +13,13 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 897 rows, 2000 columns, and 22148 nonzeros.
 Reduced MIP has 2000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (12.99 ticks)
+Presolve time = 0.01 sec. (12.99 ticks)
 Probing time = 0.00 sec. (2.91 ticks)
 Clique table members: 492.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.09 sec. (82.68 ticks)
+Root relaxation solution time = 0.08 sec. (82.68 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -29,21 +29,21 @@ Root relaxation solution time = 0.09 sec. (82.68 ticks)
       0     0        0.0000   299                    Cuts: 76     1819         
 *     0+    0                            0.0000        0.0000             0.00%
       0     0        cutoff              0.0000        0.0000     1819    0.00%
-Elapsed time = 1.66 sec. (1505.35 ticks, tree = 0.01 MB, solutions = 1)
+Elapsed time = 1.59 sec. (1505.35 ticks, tree = 0.01 MB, solutions = 1)
 
 Clique cuts applied:  8
 Zero-half cuts applied:  3
 
 Root node processing (before b&c):
-  Real time             =    1.66 sec. (1505.49 ticks)
+  Real time             =    1.59 sec. (1505.49 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    1.66 sec. (1505.49 ticks)
+Total (root+branch&cut) =    1.59 sec. (1505.49 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	1.67912
+Time:	1.60029
 Sequence:
 	18
 	12

@@ -1,0 +1,249 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.59913292399995
+Tried aggregator 1 time.
+MIP Presolve eliminated 17 rows and 0 columns.
+MIP Presolve modified 7 coefficients.
+Reduced MIP has 596 rows, 2450 columns, and 33050 nonzeros.
+Reduced MIP has 2450 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (13.48 ticks)
+Probing time = 0.00 sec. (4.03 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 596 rows, 2450 columns, and 33050 nonzeros.
+Reduced MIP has 2450 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (16.47 ticks)
+Probing time = 0.00 sec. (4.03 ticks)
+Clique table members: 100.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.15 sec. (174.75 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000   422                      0.0000     1388         
+      0     2        0.0000    30                      0.0000     1388         
+Elapsed time = 2.90 sec. (3416.00 ticks, tree = 0.01 MB, solutions = 0)
+      1     3        0.0000   249                      0.0000     3528         
+      2     4        0.0000   196                      0.0000     4844         
+      3     5        0.0000   233                      0.0000     5833         
+      5     7        0.0000   200                      0.0000     6010         
+      8    10        0.0000   154                      0.0000     6149         
+     10    12        0.0000   170                      0.0000     6586         
+     13    15        0.0000   129                      0.0000     7156         
+     16    18        0.0000   165                      0.0000     7960         
+     19    21        0.0000   127                      0.0000     8487         
+     30    32        0.0000   139                      0.0000    10378         
+Elapsed time = 6.43 sec. (7223.08 ticks, tree = 0.15 MB, solutions = 0)
+     39    41        0.0000   142                      0.0000    13576         
+     49    51        0.0000   142                      0.0000    16665         
+*    50+    2                            0.0000        0.0000             0.00%
+
+Root node processing (before b&c):
+  Real time             =    2.90 sec. (3415.98 ticks)
+Sequential b&c:
+  Real time             =    5.64 sec. (6055.10 ticks)
+                          ------------
+Total (root+branch&cut) =    8.54 sec. (9471.08 ticks)
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               591.03885687699994
+Tried aggregator 1 time.
+MIP Presolve eliminated 17 rows and 0 columns.
+MIP Presolve modified 7 coefficients.
+Reduced MIP has 602 rows, 2475 columns, and 33398 nonzeros.
+Reduced MIP has 2475 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (13.61 ticks)
+Probing time = 0.00 sec. (4.05 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 602 rows, 2475 columns, and 33398 nonzeros.
+Reduced MIP has 2475 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (16.63 ticks)
+Probing time = 0.00 sec. (4.05 ticks)
+Clique table members: 101.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.13 sec. (147.12 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000   412                      0.0000     1202         
+      0     2        0.0000    85                      0.0000     1202         
+Elapsed time = 3.02 sec. (3486.41 ticks, tree = 0.01 MB, solutions = 0)
+      1     3        0.0000   221                      0.0000     3995         
+      3     5        0.0000   165                      0.0000     5348         
+      5     7        0.0000   248                      0.0000     5949         
+      8    10        0.0000   248                      0.0000     6896         
+     10    12        0.0000   220                      0.0000     7757         
+     12    14        0.0000   175                      0.0000     9138         
+     13    15        0.0000   273                      0.0000    11223         
+     15    17        0.0000   343                      0.0000    11672         
+     17    19        0.0000   259                      0.0000    11957         
+     25    27        0.0000   224                      0.0000    14673         
+Elapsed time = 6.68 sec. (7614.93 ticks, tree = 0.13 MB, solutions = 0)
+     33    34        0.0000   269                      0.0000    17059         
+     43    44        0.0000   290                      0.0000    18930         
+     52    53        0.0000   251                      0.0000    21875         
+     63    64        0.0000   153                      0.0000    24315         
+     74    73    infeasible                            0.0000    29656         
+     91    80        0.0000    80                      0.0000    31969         
+    115    80    infeasible                            0.0000    35610         
+*   120     0      integral     0        0.0000        0.0000    36372    0.00%
+
+Mixed integer rounding cuts applied:  1
+
+Root node processing (before b&c):
+  Real time             =    3.02 sec. (3486.37 ticks)
+Sequential b&c:
+  Real time             =   10.44 sec. (11182.92 ticks)
+                          ------------
+Total (root+branch&cut) =   13.46 sec. (14669.29 ticks)
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               577.56140821899999
+Tried aggregator 1 time.
+MIP Presolve eliminated 17 rows and 0 columns.
+MIP Presolve modified 7 coefficients.
+Reduced MIP has 608 rows, 2500 columns, and 33746 nonzeros.
+Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (13.73 ticks)
+Probing time = 0.00 sec. (4.06 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 608 rows, 2500 columns, and 33746 nonzeros.
+Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (16.82 ticks)
+Probing time = 0.00 sec. (4.06 ticks)
+Clique table members: 102.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.12 sec. (135.51 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000   425                      0.0000     1090         
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000     1090    0.00%
+Elapsed time = 2.10 sec. (2380.60 ticks, tree = 0.01 MB, solutions = 1)
+
+Root node processing (before b&c):
+  Real time             =    2.10 sec. (2380.67 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    2.10 sec. (2380.67 ticks)
+Primal:	100
+Dual:	100
+Status:	Optimal
+Time:	24.1529
+Sequence:
+	15
+	9
+	19
+	4
+	3
+	18
+	9
+	14
+	21
+	1
+	14
+	23
+	20
+	17
+	5
+	15
+	10
+	8
+	19
+	17
+	20
+	16
+	24
+	18
+	7
+	9
+	5
+	22
+	19
+	12
+	2
+	16
+	20
+	11
+	24
+	17
+	5
+	13
+	15
+	9
+	21
+	5
+	15
+	22
+	5
+	13
+	1
+	0
+	13
+	4
+	14
+	16
+	9
+	20
+	21
+	15
+	3
+	23
+	20
+	16
+	2
+	17
+	13
+	4
+	23
+	2
+	12
+	19
+	17
+	24
+	16
+	20
+	17
+	13
+	3
+	0
+	13
+	7
+	8
+	19
+	0
+	20
+	21
+	8
+	15
+	6
+	7
+	12
+	10
+	14
+	1
+	19
+	4
+	9
+	19
+	8
+	14
+	5
+	22
+	15

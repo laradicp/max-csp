@@ -1,0 +1,150 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.60150435699995
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 95.0000.
+Tried aggregator 1 time.
+MIP Presolve eliminated 18 rows and 0 columns.
+MIP Presolve modified 107 coefficients.
+Reduced MIP has 609 rows, 2600 columns, and 38796 nonzeros.
+Reduced MIP has 2600 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (20.70 ticks)
+Probing time = 0.01 sec. (13.78 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 609 rows, 2600 columns, and 38796 nonzeros.
+Reduced MIP has 2600 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (19.71 ticks)
+Probing time = 0.01 sec. (13.78 ticks)
+Clique table members: 103.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.20 sec. (232.57 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                           95.0000     5050.0000              --- 
+      0     0      100.0000   416       95.0000      100.0000     1653    5.26%
+      0     0      100.0000   140       95.0000   ZeroHalf: 1     1796    5.26%
+      0     0      100.0000   242       95.0000      Cuts: 17     2224    5.26%
+*     0+    0                          100.0000      100.0000             0.00%
+      0     0        cutoff            100.0000      100.0000     2224    0.00%
+Elapsed time = 2.87 sec. (3525.75 ticks, tree = 0.01 MB, solutions = 2)
+
+Zero-half cuts applied:  7
+Gomory fractional cuts applied:  1
+
+Root node processing (before b&c):
+  Real time             =    2.87 sec. (3525.85 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    2.87 sec. (3525.85 ticks)
+Primal:	100
+Dual:	100
+Status:	Optimal
+Time:	2.87
+Sequence:
+	14
+	5
+	15
+	23
+	4
+	20
+	16
+	22
+	2
+	21
+	15
+	8
+	19
+	2
+	21
+	17
+	9
+	13
+	3
+	17
+	13
+	24
+	17
+	16
+	20
+	13
+	0
+	17
+	5
+	20
+	9
+	19
+	3
+	17
+	23
+	20
+	14
+	16
+	12
+	2
+	13
+	1
+	18
+	4
+	24
+	18
+	1
+	20
+	5
+	22
+	11
+	24
+	14
+	16
+	12
+	4
+	6
+	15
+	9
+	21
+	7
+	0
+	19
+	23
+	4
+	5
+	15
+	22
+	10
+	7
+	16
+	15
+	20
+	10
+	17
+	8
+	13
+	7
+	0
+	13
+	1
+	20
+	5
+	15
+	9
+	21
+	3
+	9
+	19
+	14
+	12
+	5
+	9
+	19
+	19
+	8
+	8
+	19
+	14
+	15
