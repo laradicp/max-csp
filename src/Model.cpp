@@ -242,7 +242,7 @@ void Model::calculateOptionOverlap()
 void Model::sos1(int ub)
 {
     // let Zt assume value 1 if t is the first empty position in the sequence, and 0 otherwise
-    IloBoolVarArray z(env, data.getNbCars() + 1);
+    z = IloBoolVarArray(env, data.getNbCars() + 1);
 
     // add variable z to the model
     for(int t = 1; t < data.getNbCars() + 1; t++)
@@ -302,12 +302,31 @@ void Model::sos1(int ub)
     model.add(r);
 }
 
-bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
+bool Model::solve(double prevElapsedTime, vector<int>* initialSol, int branchPriority)
 {
     IloCplex maxCSP(model);
     maxCSP.setParam(IloCplex::Param::TimeLimit, 600.0 - prevElapsedTime);
     maxCSP.setParam(IloCplex::Param::Threads, 1);
     maxCSP.setParam(IloCplex::Param::MIP::Strategy::VariableSelect, 3);
+
+    // add branching priority
+    // 0 for no priority
+    // 1 for ascending priority
+    // -1 for descending priority
+    if(branchPriority == 1)
+    {
+        for(int t = 1; t < data.getNbCars() + 1; t++)
+        {
+            maxCSP.setPriority(z[t], data.getNbCars() - t);
+        }
+    }
+    else if(branchPriority == -1)
+    {
+        for(int t = 1; t < data.getNbCars() + 1; t++)
+        {
+            maxCSP.setPriority(z[t], t - 1);
+        }
+    }
 
     if(initialSol != nullptr)
     {

@@ -133,7 +133,7 @@ int main(int argc, char** argv)
     else if(!flags.getNoExact())
     {
         model.initModel(flags.getSos1Branching(), 0, ub);
-        model.solve(elapsedTime, &primalSolution);
+        model.solve(elapsedTime, &primalSolution, flags.getBranchPriority());
         model.output();
     }
 

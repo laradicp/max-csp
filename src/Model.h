@@ -18,6 +18,7 @@ class Model
         IloModel model;
         IloArray<IloBoolVarArray> x;
         IloArray<IloNumVarArray> y;
+        IloBoolVarArray z;
         
         vector<int> carsPerOption;
         vector<vector<int>> optionsIntersections;
@@ -51,7 +52,9 @@ class Model
 
         void initModel(bool sos1Branching = false, int customSearch = 0, int ub = __INT_MAX__);
 
-        bool solve(double prevElapsedTime = 0.0, vector<int>* initialSol = nullptr);
+        bool solve(
+            double prevElapsedTime = 0.0, vector<int>* initialSol = nullptr, int branchPriority = 0
+        );
         void output(bool toFile = false);
 
         int getSequenceSize();

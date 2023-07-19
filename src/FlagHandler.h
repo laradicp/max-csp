@@ -21,6 +21,7 @@ class FlagHandler
 		bool penalize;
 		bool checker;
 		bool minPaceDelay;
+		int branchPriority;
 
 		string heuristicPath;
 	
@@ -42,6 +43,7 @@ class FlagHandler
 		bool getPenalize();
 		bool getChecker();
 		bool getMinPaceDelay();
+		int getBranchPriority();
 
 		string getHeuristicPath();
 		

@@ -102,14 +102,14 @@ void FlagHandler::checkValidFlags()
 
         if(descIterativeSearch)
         {
-            cout << "Cannot use both -sos1 and -descitsearch flags" << endl;
-            exit(1);
+            branchPriority = -1;
+            descIterativeSearch = false;
         }
 
         if(ascIterativeSearch)
         {
-            cout << "Cannot use both -sos1 and -ascitsearch flags" << endl;
-            exit(1);
+            branchPriority = 1;
+            ascIterativeSearch = false;
         }
     }
 
@@ -236,4 +236,9 @@ bool FlagHandler::getChecker()
 bool FlagHandler::getMinPaceDelay()
 {
     return minPaceDelay;
+}
+
+int FlagHandler::getBranchPriority()
+{
+    return branchPriority;
 }
