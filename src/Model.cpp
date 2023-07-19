@@ -771,7 +771,7 @@ void Model::minPaceDelay()
             sumX += x[i][t];
         }
 
-        IloRange r = (sumX <= data.getNbCarsPerClass(i));
+        IloRange r = (sumX == data.getNbCarsPerClass(i));
         char name[100];
         sprintf(name, "CarsProduced(%d)", i);
         r.setName(name);
