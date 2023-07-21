@@ -14,12 +14,13 @@ Model::Model(string filePath, bool cumulative)
     firstViolationPos = data.getNbCars();
 }
 
-void Model::initModel(bool sos1Branching, int customSearch, int ub)
+void Model::initModel(bool sos1Branching, int branchPriority, int customSearch, int ub)
 {
     env.end();
     env = IloEnv();
 
     minViolations = false;
+    this->branchPriority = branchPriority;
 
     model = IloModel(env);
     // optionOverlap.resize(data.getNbOptions(), false);
@@ -242,7 +243,7 @@ void Model::calculateOptionOverlap()
 void Model::sos1(int ub)
 {
     // let Zt assume value 1 if t is the first empty position in the sequence, and 0 otherwise
-    z = IloBoolVarArray(env, data.getNbCars() + 1);
+    z = IloNumVarArray(env, data.getNbCars() + 1, 0, 1, ILOINT);
 
     // add variable z to the model
     for(int t = 1; t < data.getNbCars() + 1; t++)
@@ -252,6 +253,10 @@ void Model::sos1(int ub)
         z[t].setName(name);
         model.add(z[t]);
     }
+
+    // add SOS1 set
+    IloSOS1 sos1Set(env, z);
+    model.add(sos1Set);
 
     // add objective function (OF)
     IloExpr sumZ(env);
@@ -287,22 +292,9 @@ void Model::sos1(int ub)
         r.setName(name);
         model.add(r);
     }
-
-    // sos1
-    sumZ.clear();
-    for(int t = 1; t < data.getNbCars() + 1; t++)  
-    {
-        sumZ += z[t];
-    }
-
-    r = (sumZ == 1);
-    char name[100];
-    sprintf(name, "SOS1");
-    r.setName(name);
-    model.add(r);
 }
 
-bool Model::solve(double prevElapsedTime, vector<int>* initialSol, int branchPriority)
+bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
 {
     IloCplex maxCSP(model);
     maxCSP.setParam(IloCplex::Param::TimeLimit, 600.0 - prevElapsedTime);
@@ -756,14 +748,14 @@ void Model::minPaceDelay()
         }
     }
 
-    // let d be the pace delay of the assembly line,
-    // e.g. d = 1 means that the assembly line moves at half the usual speed
-    IloNumVar d(env, 0, nbPositions, ILOFLOAT);
-    d.setName("d");
-    model.add(d);
+    // let s be the pace delay of the assembly line,
+    // e.g. s = 1 means that the assembly line moves at half the usual speed
+    IloNumVar s(env, 0, nbPositions, ILOFLOAT);
+    s.setName("s");
+    model.add(s);
 
     // add objective function (OF)
-    model.add(IloMinimize(env, d));
+    model.add(IloMinimize(env, s));
 
     // each position is occupied by exactly one car
     for(int t = 0; t < nbPositions; t++)  
@@ -822,7 +814,7 @@ void Model::minPaceDelay()
                 }
             }
 
-            IloRange r = (sumX - data.getMaxCarsPerWindow(j)*(1 + d) <= 0);
+            IloRange r = (sumX - data.getMaxCarsPerWindow(j)*(1 + s) <= 0);
             char name[100];
             sprintf(name, "Capacity(%d,%d)", t, j);
             r.setName(name);

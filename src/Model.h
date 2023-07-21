@@ -18,7 +18,7 @@ class Model
         IloModel model;
         IloArray<IloBoolVarArray> x;
         IloArray<IloNumVarArray> y;
-        IloBoolVarArray z;
+        IloNumVarArray z;
         
         vector<int> carsPerOption;
         vector<vector<int>> optionsIntersections;
@@ -36,12 +36,13 @@ class Model
         bool minViolations;
         bool penalize;
         int firstViolationPos;
+        int branchPriority;
 
         void definePaths(string filePath);
 
         void calculateOptionsIntersections();
         void calculateOptionOverlap();
-
+        
         void sos1(int ub);
 
     public:
@@ -50,11 +51,10 @@ class Model
 
         Model(string filePath, bool cumulative = false);
 
-        void initModel(bool sos1Branching = false, int customSearch = 0, int ub = __INT_MAX__);
+        void initModel(bool sos1Branching = false, int branchPriority = 0,
+            int customSearch = 0, int ub = __INT_MAX__);
 
-        bool solve(
-            double prevElapsedTime = 0.0, vector<int>* initialSol = nullptr, int branchPriority = 0
-        );
+        bool solve(double prevElapsedTime = 0.0, vector<int>* initialSol = nullptr);
         void output(bool toFile = false);
 
         int getSequenceSize();

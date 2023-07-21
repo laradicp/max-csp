@@ -17,6 +17,7 @@ FlagHandler::FlagHandler(int argc, char** argv)
     penalize = false;
     checker = false;
     minPaceDelay = false;
+    branchPriority = 0;
     
     int begin = 2;
     if((begin < argc)&&(argv[begin][0] != '-')) // the third argument is the path for the heuristic solution
