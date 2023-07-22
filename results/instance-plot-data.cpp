@@ -183,7 +183,18 @@ double PlotData::calculateGap(string path)
     inputFile.open(path);
     int primalBound = data.getLowerBound();
 
-    if(path.substr(0, path.find_first_of("/")) == "heuristic")
+    if(path.find("instances") != string::npos)
+    {
+        while(getline(inputFile, line))
+        {
+            if(line.find(path) != string::npos)
+            {
+                primalBound = stoi(line.substr(line.find(" ") + 1));
+                break;
+            }
+        }
+    }
+    else if(path.substr(0, path.find_first_of("/")) == "heuristic")
     {
         inputFile >> primalBound;
     }
@@ -234,6 +245,11 @@ int main(int argc, char* argv[])
     string instance = argv[1];
 
     PlotData plotData(getInstanceName(instance));
+
+    if(instance.find("instances") != string::npos)
+    {
+        instance = instance.substr(instance.find_first_of("/") + 1);
+    }
     plotData.printData(instance);
 
     return 0;
