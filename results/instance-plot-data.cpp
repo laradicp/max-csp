@@ -167,45 +167,49 @@ PlotData::PlotData(string instance)
 
 double PlotData::calculateGap(string path)
 {
-    ifstream inputFile("results/best-dual.txt");
+    ifstream inputFile("best-dual.txt");
     string line;
     int dualBound = data.getUpperBound();
     while(getline(inputFile, line))
     {
         if(line.find(instance) != string::npos)
         {
-            dualBound = stoi(line.substr(line.find(" ") + 1));
+            dualBound = stoi(line.substr(line.find("\t") + 1));
             break;
         }
     }
     inputFile.close();
 
-    inputFile.open(path);
     int primalBound = data.getLowerBound();
-
     if(path.find("instances") != string::npos)
     {
+        inputFile.open("best-primal.txt");
         while(getline(inputFile, line))
         {
             if(line.find(path) != string::npos)
             {
-                primalBound = stoi(line.substr(line.find(" ") + 1));
+                primalBound = stoi(line.substr(line.find("\t") + 1));
                 break;
             }
         }
     }
-    else if(path.substr(0, path.find_first_of("/")) == "heuristic")
-    {
-        inputFile >> primalBound;
-    }
     else
     {
-        while(getline(inputFile, line))
+        inputFile.open(path);
+
+        if(path.substr(0, path.find_first_of("/")) == "heuristic")
         {
-            if(line.find("Primal:") != string::npos)
+            inputFile >> primalBound;
+        }
+        else
+        {
+            while(getline(inputFile, line))
             {
-                primalBound = stoi(line.substr(line.find(":") + 2));
-                break;
+                if(line.find("Primal:") != string::npos)
+                {
+                    primalBound = stoi(line.substr(line.find(":") + 2));
+                    break;
+                }
             }
         }
     }
