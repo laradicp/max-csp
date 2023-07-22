@@ -12,7 +12,7 @@ class PlotData
 {
     public:
 
-        PlotData(string instance);
+        PlotData(string instance, bool findMaxValues = false);
 
         void printData(string path);
 
@@ -86,7 +86,7 @@ int PlotData::getNbOptionsPerClass(int i)
     return nb;
 }
 
-PlotData::PlotData(string instance)
+PlotData::PlotData(string instance, bool findMaxValues)
 {
     this->instance = instance;
 
@@ -143,6 +143,31 @@ PlotData::PlotData(string instance)
     ifstream inputFile("results/instance-plot-data-max-values.txt");
     inputFile >> maxNbOptions >> maxNbClasses >> maxAvgNbOptionsPerClass;
     inputFile.close();
+
+    if(findMaxValues)
+    {
+        if(nbOptions > maxNbOptions)
+        {
+            maxNbOptions = nbOptions;
+        }
+
+        if(nbClasses > maxNbClasses)
+        {
+            maxNbClasses = nbClasses;
+        }
+
+        if(avgNbOptionsPerClass > maxAvgNbOptionsPerClass)
+        {
+            maxAvgNbOptionsPerClass = avgNbOptionsPerClass;
+        }
+
+        ofstream outputFile("results/instance-plot-data-max-values.txt");
+        outputFile << maxNbOptions << " " << maxNbClasses << " " << maxAvgNbOptionsPerClass << endl;
+
+        outputFile.close();
+
+        return;
+    }
 
     // Sun et al. (2022)
     weights = {
@@ -240,10 +265,16 @@ string getInstanceName(string path)
 
 int main(int argc, char* argv[])
 {
-    if(argc != 2)
+    if(argc < 2)
     {
-        cout << "Usage: ./instance-plot-data <instance>" << endl;
+        cout << "Usage: ./instance-plot-data <instance> -<flags>" << endl;
         exit(1);
+    }
+
+    if((argc == 3)&&(strcmp(argv[2], "-maxvals") == 0))
+    {
+        PlotData plotData(getInstanceName(argv[1]), true);
+        return 0;
     }
 
     string instance = argv[1];

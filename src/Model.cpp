@@ -574,7 +574,7 @@ void Model::minViolationsModel(bool penalize)
                 exit(1);
             }
             
-            alpha[t] = alpha[t + 1]*(1 + data.getNbOptions()*sumOptionsInfeasPos);
+            alpha[t] = alpha[t + 1]*(1 + sumOptionsInfeasPos);
         }
     }
     
