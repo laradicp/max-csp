@@ -140,9 +140,16 @@ PlotData::PlotData(string instance, bool findMaxValues)
     avgMaxCarsWindowSizeRatio /= nbOptions;
 
     // read in file
-    ifstream inputFile("results/instance-plot-data-max-values.txt");
-    inputFile >> maxNbOptions >> maxNbClasses >> maxAvgNbOptionsPerClass;
-    inputFile.close();
+    maxNbOptions = 0;
+    maxNbClasses = 0;
+    maxAvgNbOptionsPerClass = 0;
+
+    ifstream inputFile("instance-plot-data-max-values.txt");
+    if(inputFile.is_open())
+    {
+        inputFile >> maxNbOptions >> maxNbClasses >> maxAvgNbOptionsPerClass;
+        inputFile.close();
+    }
 
     if(findMaxValues)
     {
@@ -161,7 +168,7 @@ PlotData::PlotData(string instance, bool findMaxValues)
             maxAvgNbOptionsPerClass = avgNbOptionsPerClass;
         }
 
-        ofstream outputFile("results/instance-plot-data-max-values.txt");
+        ofstream outputFile("instance-plot-data-max-values.txt");
         outputFile << maxNbOptions << " " << maxNbClasses << " " << maxAvgNbOptionsPerClass << endl;
 
         outputFile.close();
