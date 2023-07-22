@@ -38,7 +38,7 @@ class PlotData
         // for normalizing features, read in file
         int maxNbOptions;
         int maxNbClasses;
-        int maxAvgNbOptionsPerClass;
+        double maxAvgNbOptionsPerClass;
 
         vector<double> coord;
         vector<vector<double>> weights;
@@ -191,7 +191,7 @@ PlotData::PlotData(string instance, bool findMaxValues)
             weights[i][2]*minUtilization +
             weights[i][3]*avgUtilization +
             weights[i][4]*stdUtilization +
-            weights[i][5]*((double)avgNbOptionsPerClass/maxAvgNbOptionsPerClass) +
+            weights[i][5]*avgNbOptionsPerClass/maxAvgNbOptionsPerClass +
             weights[i][6]*avgMaxCarsWindowSizeRatio +
             weights[i][7]*maxMaxCarsWindowSizeRatio;
     }
