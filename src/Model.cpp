@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 #include <chrono>
+#include <queue>
 
 Model::Model(string filePath, bool cumulative)
 {
@@ -14,13 +15,13 @@ Model::Model(string filePath, bool cumulative)
     firstViolationPos = data.getNbCars();
 }
 
-void Model::initModel(bool sos1Branching, int branchPriority, int customSearch, int ub)
+void Model::initModel(bool sos1Branching, int customSearch, int branchPriority, int lb, int ub)
 {
     env.end();
     env = IloEnv();
 
     minViolations = false;
-    this->branchPriority = branchPriority;
+    this->sos1Branching = sos1Branching;
 
     model = IloModel(env);
     // optionOverlap.resize(data.getNbOptions(), false);
@@ -58,9 +59,9 @@ void Model::initModel(bool sos1Branching, int branchPriority, int customSearch, 
         }
     }
 
-    if(sos1Branching)
+    if(this->sos1Branching)
     {
-        sos1(ub);
+        sos1(lb, ub, branchPriority);
     }
     else
     {
@@ -240,7 +241,31 @@ void Model::calculateOptionOverlap()
     }
 }
 
-void Model::sos1(int ub)
+void Model::setBinarySearchWeights(int lb, int ub)
+{
+    queue<pair<int, int>> q;
+    q.push(make_pair(lb, ub));
+    int weight = data.getNbCars();
+
+    while(!q.empty())
+    {
+        pair<int, int> p = q.front();
+        q.pop();
+
+        if(p.first == p.second)
+        {
+            weights[p.first] = weight--;
+            continue;
+        }
+
+        int mid = ceil((p.first + p.second)/2.0);
+        weights[mid] = weight--;
+        q.push(make_pair(p.first, mid - 1));
+        q.push(make_pair(mid, p.second));
+    }
+}
+
+void Model::sos1(int lb, int ub, int branchPriority)
 {
     // let Zt assume value 1 if t is the first empty position in the sequence, and 0 otherwise
     z = IloNumVarArray(env, data.getNbCars() + 1, 0, 1, ILOINT);
@@ -254,12 +279,42 @@ void Model::sos1(int ub)
         model.add(z[t]);
     }
 
+    weights = IloNumArray(env, data.getNbCars() + 1, 0, data.getNbCars(), ILOINT);
+    
+    if(branchPriority == 1)
+    {
+        for(int t = 1; t < data.getNbCars() + 1; t++)
+        {
+            weights[t] = data.getNbCars() + 1 - t;
+        }
+    }
+    else
+    {
+        for(int t = 0; t < data.getNbCars() + 1; t++)
+        {
+            weights[t] = t;
+        }
+
+        if(branchPriority == 0)
+        {
+            setBinarySearchWeights(lb, min(ub, data.getUpperBound()));
+        }
+    }
+
     // add SOS1 set
-    IloSOS1 sos1Set(env, z);
+    IloSOS1 sos1Set(env, z, weights);
     model.add(sos1Set);
 
-    // add objective function (OF)
+    // enforce the sum of z to be equal to 1
     IloExpr sumZ(env);
+    for(int t = 1; t < data.getNbCars() + 1; t++)
+    {
+        sumZ += z[t];
+    }
+    IloRange r = (sumZ == 1);
+
+    // add objective function (OF)
+    sumZ.clear();
     for(int t = 1; t < data.getNbCars() + 1; t++) 
     {
         sumZ += t*z[t];
@@ -267,7 +322,7 @@ void Model::sos1(int ub)
     model.add(IloMaximize(env, sumZ));
 
     // add objective function upper bound
-    IloRange r = (sumZ <= ub);
+    r = (sumZ <= ub);
     r.setName("OFUpperBound");
     model.add(r);
 
@@ -301,22 +356,11 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
     maxCSP.setParam(IloCplex::Param::Threads, 1);
     maxCSP.setParam(IloCplex::Param::MIP::Strategy::VariableSelect, 3);
 
-    // add branching priority
-    // 0 for no priority
-    // 1 for ascending priority
-    // -1 for descending priority
-    if(branchPriority == 1)
+    if(sos1Branching)
     {
         for(int t = 1; t < data.getNbCars() + 1; t++)
         {
-            maxCSP.setPriority(z[t], data.getNbCars() - t);
-        }
-    }
-    else if(branchPriority == -1)
-    {
-        for(int t = 1; t < data.getNbCars() + 1; t++)
-        {
-            maxCSP.setPriority(z[t], t - 1);
+            maxCSP.setPriority(z[t], 1);
         }
     }
 

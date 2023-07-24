@@ -36,14 +36,16 @@ class Model
         bool minViolations;
         bool penalize;
         int firstViolationPos;
-        int branchPriority;
+        bool sos1Branching;
+        IloNumArray weights;
 
         void definePaths(string filePath);
 
         void calculateOptionsIntersections();
         void calculateOptionOverlap();
         
-        void sos1(int ub);
+        void setBinarySearchWeights(int lb, int ub);
+        void sos1(int lb, int ub, int branchPriority);
 
     public:
     
@@ -51,8 +53,8 @@ class Model
 
         Model(string filePath, bool cumulative = false);
 
-        void initModel(bool sos1Branching = false, int branchPriority = 0,
-            int customSearch = 0, int ub = __INT_MAX__);
+        void initModel(bool sos1Branching = false, int customSearch = 0,
+            int branchPriority = 0, int lb = 1, int ub = __INT_MAX__);
 
         bool solve(double prevElapsedTime = 0.0, vector<int>* initialSol = nullptr);
         void output(bool toFile = false);
