@@ -12,6 +12,7 @@ Model::Model(string filePath, bool cumulative)
     data = Data(filePath, cumulative);
     minViolations = false;
     penalize = false;
+    sos1Branching = false;
     firstViolationPos = data.getNbCars();
 }
 
@@ -252,13 +253,18 @@ void Model::setBinarySearchWeights(int lb, int ub)
         pair<int, int> p = q.front();
         q.pop();
 
+        int mid = ceil((p.first + p.second)/2.0);
+        if(weights[mid] != 0)
+        {
+            continue;
+        }
+
         if(p.first == p.second)
         {
             weights[p.first] = weight--;
             continue;
         }
 
-        int mid = ceil((p.first + p.second)/2.0);
         weights[mid] = weight--;
         q.push(make_pair(p.first, mid - 1));
         q.push(make_pair(mid, p.second));
@@ -281,7 +287,27 @@ void Model::sos1(int lb, int ub, int branchPriority)
 
     weights = IloNumArray(env, data.getNbCars() + 1, 0, data.getNbCars(), ILOINT);
     
-    if(branchPriority == 1)
+    if(branchPriority == 0)
+    {
+        int end = min(ub, data.getUpperBound());
+        for(int t = lb; t <= end; t++)
+        {
+            weights[t] = 0;
+        }
+        
+        setBinarySearchWeights(lb, end);
+
+        int t = 0;
+        for(; t < lb; t++)
+        {
+            weights[t] = t;
+        }
+        for(int t2 = end + 1; t2 < data.getNbCars() + 1; t2++)
+        {
+            weights[t2] = t++;
+        }
+    }
+    else if(branchPriority == 1)
     {
         for(int t = 1; t < data.getNbCars() + 1; t++)
         {
@@ -293,11 +319,6 @@ void Model::sos1(int lb, int ub, int branchPriority)
         for(int t = 0; t < data.getNbCars() + 1; t++)
         {
             weights[t] = t;
-        }
-
-        if(branchPriority == 0)
-        {
-            setBinarySearchWeights(lb, min(ub, data.getUpperBound()));
         }
     }
 
