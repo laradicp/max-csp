@@ -8,6 +8,7 @@ using namespace std;
 class FlagHandler
 {
 	private:
+		bool branching;
 		bool sos1Branching;
 		bool cumulative;
 		bool binarySearch;
@@ -30,6 +31,7 @@ class FlagHandler
 
 		void checkValidFlags();
 
+		bool getBranching();
 		bool getSos1Branching();
 		bool getCumulative();
 		bool getBinarySearch();

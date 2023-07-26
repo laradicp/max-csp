@@ -4,6 +4,7 @@
 
 FlagHandler::FlagHandler(int argc, char** argv)
 {
+    branching = false;
     sos1Branching = false;
     cumulative = false;
     binarySearch = false;
@@ -29,7 +30,11 @@ FlagHandler::FlagHandler(int argc, char** argv)
 
 	for(int i = begin; i < argc; i++)
     {
-        if(strcmp(argv[i], "-minviolations") == 0)
+        if(strcmp(argv[i], "-branch") == 0)
+        {
+            branching = true;
+        }
+        else if(strcmp(argv[i], "-minviolations") == 0)
         {
             minViolations = true;
         }
@@ -95,6 +100,8 @@ void FlagHandler::checkValidFlags()
 {
     if(sos1Branching)
     {
+        branching = true;
+
         if(binarySearch)
         {
             cout << "Cannot use both -sos1 and -binsearch flags" << endl;
@@ -167,6 +174,11 @@ void FlagHandler::checkValidFlags()
         cout << "Flag -penalize cannot be used without flag -minviolations" << endl;
         exit(1);
     }
+}
+
+bool FlagHandler::getBranching()
+{
+    return branching;
 }
 
 bool FlagHandler::getSos1Branching()

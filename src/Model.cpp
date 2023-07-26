@@ -16,12 +16,14 @@ Model::Model(string filePath, bool cumulative)
     firstViolationPos = data.getNbCars();
 }
 
-void Model::initModel(bool sos1Branching, int customSearch, int branchPriority, int lb, int ub)
+void Model::initModel(bool branching, bool sos1Branching, int customSearch,
+    int branchPriority, int lb, int ub)
 {
     env.end();
     env = IloEnv();
 
     minViolations = false;
+    this->branching = branching;
     this->sos1Branching = sos1Branching;
 
     model = IloModel(env);
@@ -60,9 +62,9 @@ void Model::initModel(bool sos1Branching, int customSearch, int branchPriority, 
         }
     }
 
-    if(this->sos1Branching)
+    if(this->branching)
     {
-        sos1(lb, ub, branchPriority);
+        setBranching(lb, ub, branchPriority);
     }
     else
     {
@@ -271,7 +273,7 @@ void Model::setBinarySearchWeights(int lb, int ub)
     }
 }
 
-void Model::sos1(int lb, int ub, int branchPriority)
+void Model::setBranching(int lb, int ub, int branchPriority)
 {
     // let Zt assume value 1 if t is the first empty position in the sequence, and 0 otherwise
     z = IloNumVarArray(env, data.getNbCars() + 1, 0, 1, ILOINT);
@@ -285,47 +287,50 @@ void Model::sos1(int lb, int ub, int branchPriority)
         model.add(z[t]);
     }
 
-    weights = IloNumArray(env, data.getNbCars() + 1, 0, data.getNbCars(), ILOINT);
-    
-    if(branchPriority == 0)
+    if(sos1Branching)
     {
-        int end = min(ub, data.getUpperBound());
-        for(int t = lb; t <= end; t++)
-        {
-            weights[t] = 0;
-        }
+        weights = IloNumArray(env, data.getNbCars() + 1, 0, data.getNbCars(), ILOINT);
         
-        setBinarySearchWeights(lb, end);
+        if(branchPriority == 0)
+        {
+            int end = min(ub, data.getUpperBound());
+            for(int t = lb; t <= end; t++)
+            {
+                weights[t] = 0;
+            }
+            
+            setBinarySearchWeights(lb, end);
 
-        int t = 0;
-        for(; t < lb; t++)
-        {
-            weights[t] = t;
+            int t = 0;
+            for(; t < lb; t++)
+            {
+                weights[t] = t;
+            }
+            for(int t2 = end + 1; t2 < data.getNbCars() + 1; t2++)
+            {
+                weights[t2] = t++;
+            }
         }
-        for(int t2 = end + 1; t2 < data.getNbCars() + 1; t2++)
+        else if(branchPriority == 1)
         {
-            weights[t2] = t++;
+            for(int t = 1; t < data.getNbCars() + 1; t++)
+            {
+                weights[t] = data.getNbCars() + 1 - t;
+            }
         }
-    }
-    else if(branchPriority == 1)
-    {
-        for(int t = 1; t < data.getNbCars() + 1; t++)
+        else
         {
-            weights[t] = data.getNbCars() + 1 - t;
+            for(int t = 0; t < data.getNbCars() + 1; t++)
+            {
+                weights[t] = t;
+            }
         }
-    }
-    else
-    {
-        for(int t = 0; t < data.getNbCars() + 1; t++)
-        {
-            weights[t] = t;
-        }
-    }
 
-    // add SOS1 set
-    IloSOS1 sos1Set(env, z, weights);
-    model.add(sos1Set);
-
+        // add SOS1 set
+        IloSOS1 sos1Set(env, z, weights);
+        model.add(sos1Set);
+    }
+    
     // enforce the sum of z to be equal to 1
     IloExpr sumZ(env);
     for(int t = 1; t < data.getNbCars() + 1; t++)
@@ -377,7 +382,7 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
     maxCSP.setParam(IloCplex::Param::Threads, 1);
     maxCSP.setParam(IloCplex::Param::MIP::Strategy::VariableSelect, 3);
 
-    if(sos1Branching)
+    if(branching)
     {
         for(int t = 1; t < data.getNbCars() + 1; t++)
         {

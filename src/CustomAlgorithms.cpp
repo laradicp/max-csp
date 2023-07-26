@@ -18,7 +18,7 @@ void CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 	{
 		int mid = ceil((lb + ub)/2.0);
 
-		model->initModel(false, mid);
+		model->initModel(false, false, mid);
 
 		elapsedTime = chrono::steady_clock::now() - start;
 		if(model->solve(elapsedTime.count() + prevElapsedTime))
@@ -45,7 +45,7 @@ void CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTim
 
 	while((elapsedTime.count() + prevElapsedTime < 600.0)&&(ub > lb))
 	{
-		model->initModel(false, ub);
+		model->initModel(false, false, ub);
 
 		elapsedTime = chrono::steady_clock::now() - start;
 		if(model->solve(elapsedTime.count() + prevElapsedTime))
@@ -76,7 +76,7 @@ void CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
 	{
 		defineOutput(lb, model->data.getUpperBound(), start);
 
-		model->initModel(false, lb + 1);
+		model->initModel(false, false, lb + 1);
 
 		elapsedTime = chrono::steady_clock::now() - start;
 		model->solve(elapsedTime.count() + prevElapsedTime);
