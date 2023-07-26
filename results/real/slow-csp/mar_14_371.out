@@ -1,0 +1,486 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               600
+Tried aggregator 1 time.
+MIP Presolve eliminated 380 rows and 371 columns.
+MIP Presolve modified 1 coefficients.
+Reduced MIP has 2229 rows, 4082 columns, and 40241 nonzeros.
+Reduced MIP has 4081 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (18.56 ticks)
+Found incumbent of value 17.000000 after 0.06 sec. (43.53 ticks)
+Probing time = 0.00 sec. (6.03 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 2229 rows, 4082 columns, and 40241 nonzeros.
+Reduced MIP has 4081 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (16.85 ticks)
+Probing time = 0.00 sec. (6.03 ticks)
+Clique table members: 372.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.21 sec. (183.20 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                           17.0000        0.0000           100.00%
+      0     0        0.0484   838       17.0000        0.0484     2055   99.72%
+*     0+    0                            4.0000        0.0484            98.79%
+*     0+    0                            1.0000        0.0484            95.16%
+Detecting symmetries...
+      0     2        0.0484   145        1.0000        0.0484     2055   95.16%
+Elapsed time = 1.52 sec. (1415.46 ticks, tree = 0.01 MB, solutions = 3)
+      4     6        0.0484   138        1.0000        0.0484     2698   95.16%
+      9    11        0.0484   156        1.0000        0.0484     3327   95.16%
+     12    14        0.0484   153        1.0000        0.0484     3852   95.16%
+     17    19        0.0484   142        1.0000        0.0484     4156   95.16%
+     21    23        0.0492   136        1.0000        0.0484     4447   95.16%
+     25    27        0.0484   194        1.0000        0.0484     5040   95.16%
+     29    31        0.0492   192        1.0000        0.0484     5383   95.16%
+     31    33        0.0492   245        1.0000        0.0484     5573   95.16%
+     34    36        0.0484   165        1.0000        0.0484     6210   95.16%
+     47    49        0.0492   280        1.0000        0.0484     9145   95.16%
+Elapsed time = 5.12 sec. (4904.45 ticks, tree = 0.13 MB, solutions = 3)
+     60    62        0.0492   157        1.0000        0.0484    11330   95.16%
+     75    77        0.0484   141        1.0000        0.0484    13336   95.16%
+     90    90        0.0484   153        1.0000        0.0484    14233   95.16%
+    105   104        0.0492   138        1.0000        0.0484    16602   95.16%
+    122   119        0.0492   200        1.0000        0.0484    18814   95.16%
+    140   136        0.0484   151        1.0000        0.0484    19463   95.16%
+    158   153        0.0484   154        1.0000        0.0484    20524   95.16%
+    186   162        0.0492   280        1.0000        0.0484    23866   95.16%
+    205   173        0.0500   201        1.0000        0.0484    25359   95.16%
+    231   192        0.0500   172        1.0000        0.0484    26481   95.16%
+Elapsed time = 15.35 sec. (14946.54 ticks, tree = 0.44 MB, solutions = 3)
+    252   208        0.0508   170        1.0000        0.0484    27821   95.16%
+    275   230        0.0517   168        1.0000        0.0484    29670   95.16%
+    301   253        0.0526   153        1.0000        0.0484    31597   95.16%
+    328   279        0.0526   149        1.0000        0.0484    32819   95.16%
+    354   303        0.0727   140        1.0000        0.0484    33716   95.16%
+    380   325        0.0962   162        1.0000        0.0484    34614   95.16%
+    403   347        0.0755   138        1.0000        0.0484    35380   95.16%
+    428   371        0.0833   124        1.0000        0.0484    36302   95.16%
+    450   393        0.1087   135        1.0000        0.0484    36794   95.16%
+    482   422        0.0889   116        1.0000        0.0484    37062   95.16%
+Elapsed time = 25.06 sec. (24760.93 ticks, tree = 0.89 MB, solutions = 3)
+
+Performing restart 1
+
+Repeating presolve.
+Tried aggregator 1 time.
+MIP Presolve modified 24332 coefficients.
+Reduced MIP has 2229 rows, 4082 columns, and 30291 nonzeros.
+Reduced MIP has 4081 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.03 sec. (26.14 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 2229 rows, 4082 columns, and 30291 nonzeros.
+Reduced MIP has 4081 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (14.44 ticks)
+Represolve time = 0.08 sec. (75.30 ticks)
+    495     0        0.0484   447        1.0000       Cuts: 4    39260   95.16%
+    495     0        0.0535   567        1.0000     Cuts: 321    39875   94.65%
+    495     0        0.0535   613        1.0000     Cuts: 303    40254   94.65%
+    495     0        0.0561   622        1.0000     Cuts: 309    40509   94.39%
+    495     0        0.0567   600        1.0000     Cuts: 291    40795   94.33%
+    495     0        0.0568   701        1.0000     Cuts: 364    41171   94.32%
+    495     0        0.0592   716        1.0000     Cuts: 158    41526   94.08%
+    495     0        0.0597   696        1.0000     Cuts: 293    41677   94.03%
+    495     0        0.0626   755        1.0000     Cuts: 160    42015   93.74%
+    495     0        0.0669   717        1.0000     Cuts: 155    42603   93.31%
+    495     0        0.0686   731        1.0000     Cuts: 273    43007   93.14%
+    495     0        0.0792   635        1.0000     Cuts: 161    43869   92.08%
+    495     0        0.0884   637        1.0000     Cuts: 305    44650   91.16%
+    495     0        0.0992   618        1.0000     Cuts: 316    45285   90.08%
+    495     0        0.1106   671        1.0000     Cuts: 196    46032   88.94%
+    495     0        cutoff              1.0000                  47421    0.00%
+
+GUB cover cuts applied:  1
+Cover cuts applied:  214
+Flow cuts applied:  3
+Mixed integer rounding cuts applied:  413
+Zero-half cuts applied:  88
+
+Root node processing (before b&c):
+  Real time             =    1.52 sec. (1415.42 ticks)
+Sequential b&c:
+  Real time             =   29.56 sec. (28281.27 ticks)
+                          ------------
+Total (root+branch&cut) =   31.07 sec. (29696.69 ticks)
+Primal:	1
+Dual:	1
+Status:	Optimal
+Time:	31.04
+Sequence:
+	7
+	4
+	9
+	9
+	4
+	4
+	3
+	9
+	9
+	4
+	9
+	9
+	7
+	9
+	4
+	4
+	9
+	9
+	7
+	4
+	9
+	4
+	4
+	9
+	7
+	4
+	9
+	9
+	9
+	9
+	7
+	9
+	9
+	9
+	9
+	9
+	7
+	0
+	4
+	4
+	9
+	9
+	7
+	9
+	9
+	9
+	9
+	9
+	7
+	9
+	9
+	9
+	9
+	9
+	7
+	9
+	9
+	9
+	9
+	9
+	7
+	9
+	9
+	9
+	9
+	9
+	7
+	9
+	9
+	9
+	9
+	9
+	11
+	4
+	5
+	9
+	10
+	4
+	7
+	2
+	4
+	5
+	9
+	4
+	7
+	0
+	9
+	9
+	5
+	7
+	7
+	9
+	9
+	1
+	4
+	9
+	7
+	0
+	1
+	4
+	9
+	4
+	7
+	9
+	4
+	9
+	4
+	9
+	7
+	0
+	5
+	9
+	5
+	9
+	7
+	4
+	10
+	4
+	9
+	4
+	3
+	4
+	10
+	4
+	9
+	9
+	7
+	4
+	1
+	0
+	5
+	9
+	7
+	4
+	2
+	1
+	9
+	4
+	11
+	9
+	9
+	9
+	4
+	2
+	7
+	4
+	9
+	5
+	4
+	9
+	7
+	9
+	10
+	2
+	5
+	9
+	7
+	9
+	4
+	5
+	0
+	9
+	7
+	9
+	5
+	9
+	1
+	4
+	11
+	4
+	5
+	9
+	0
+	9
+	7
+	9
+	1
+	4
+	10
+	4
+	7
+	0
+	4
+	9
+	5
+	9
+	7
+	4
+	9
+	4
+	5
+	9
+	7
+	4
+	9
+	4
+	5
+	2
+	7
+	4
+	10
+	4
+	5
+	9
+	7
+	4
+	9
+	1
+	9
+	9
+	9
+	3
+	4
+	9
+	5
+	0
+	4
+	7
+	9
+	5
+	9
+	4
+	10
+	4
+	7
+	9
+	9
+	4
+	1
+	4
+	7
+	9
+	9
+	0
+	1
+	4
+	7
+	9
+	5
+	9
+	5
+	9
+	3
+	9
+	1
+	9
+	1
+	4
+	7
+	2
+	5
+	4
+	1
+	9
+	7
+	2
+	5
+	9
+	5
+	9
+	3
+	2
+	4
+	9
+	5
+	4
+	11
+	4
+	9
+	1
+	9
+	4
+	3
+	4
+	5
+	0
+	5
+	4
+	3
+	4
+	4
+	9
+	10
+	0
+	7
+	9
+	5
+	0
+	10
+	9
+	11
+	4
+	9
+	5
+	9
+	4
+	7
+	2
+	1
+	9
+	0
+	4
+	7
+	9
+	4
+	5
+	9
+	4
+	7
+	9
+	4
+	1
+	9
+	5
+	3
+	3
+	4
+	6
+	9
+	4
+	9
+	7
+	4
+	1
+	9
+	9
+	9
+	3
+	4
+	4
+	1
+	9
+	4
+	7
+	9
+	1
+	4
+	9
+	4
+	7
+	9
+	4
+	5
+	9
+	4
+	7
+	9
+	1
+	9
+	10
+	9
+	7
+	4
+	9
+	10
+	4
+	10
+	9
+	7
+	4
+	7
+	10
+	4
+	4
+	3
+	4
+	5
+	9
+	4
+	4
+	3

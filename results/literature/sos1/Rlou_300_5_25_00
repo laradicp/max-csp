@@ -1,23 +1,25 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998485699996
+CPXPARAM_TimeLimit                               599.99998481399996
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 1.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 14 rows and 0 columns.
-MIP Presolve modified 332 coefficients.
+Tried aggregator 2 times.
+MIP Presolve eliminated 40 rows and 1 columns.
+MIP Presolve added 36 rows and 9 columns.
+MIP Presolve modified 32 coefficients.
+Aggregator did 9 substitutions.
 Reduced MIP has 1813 rows, 7800 columns, and 131244 nonzeros.
 Reduced MIP has 7800 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.12 sec. (182.26 ticks)
-Probing time = 0.03 sec. (25.61 ticks)
+Presolve time = 0.16 sec. (217.02 ticks)
+Probing time = 0.02 sec. (25.61 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 9 coefficients.
 Reduced MIP has 1813 rows, 7800 columns, and 131541 nonzeros.
 Reduced MIP has 7800 binaries, 0 generals, 0 SOSs, and 0 indicators.
 Presolve time = 0.12 sec. (171.30 ticks)
-Probing time = 0.02 sec. (25.63 ticks)
+Probing time = 0.03 sec. (25.63 ticks)
 Clique table members: 601.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
@@ -31,18 +33,18 @@ Root relaxation solution time = 0.56 sec. (667.20 ticks)
       0     0      300.0000   619        1.0000      300.0000     2751     --- 
 *     0+    0                          300.0000      300.0000             0.00%
       0     0        cutoff            300.0000      300.0000     2751    0.00%
-Elapsed time = 3.10 sec. (3427.39 ticks, tree = 0.01 MB, solutions = 2)
+Elapsed time = 2.92 sec. (3239.89 ticks, tree = 0.01 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    3.11 sec. (3427.69 ticks)
+  Real time             =    2.92 sec. (3240.18 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    3.11 sec. (3427.69 ticks)
+Total (root+branch&cut) =    2.92 sec. (3240.18 ticks)
 Primal:	300
 Dual:	300
 Status:	Optimal
-Time:	3.14
+Time:	2.96
 Sequence:
 	8
 	11
@@ -53,12 +55,12 @@ Sequence:
 	18
 	17
 	18
-	15
+	17
+	0
+	17
 	18
 	17
-	21
-	12
-	8
+	18
 	17
 	15
 	17
@@ -113,7 +115,7 @@ Sequence:
 	15
 	19
 	24
-	17
+	12
 	19
 	15
 	8
@@ -122,134 +124,134 @@ Sequence:
 	21
 	8
 	20
-	18
-	17
-	8
-	0
-	4
-	22
-	15
-	9
-	15
-	4
-	4
-	15
-	19
-	17
-	15
-	4
-	19
-	15
-	22
-	10
-	24
-	7
-	13
-	15
-	3
-	20
-	19
-	8
-	24
-	22
-	5
-	15
-	24
-	22
-	13
-	0
-	24
-	8
-	17
-	9
-	15
-	17
-	7
-	15
-	8
-	22
-	20
-	15
-	1
-	15
-	22
-	24
-	19
-	15
-	22
-	15
-	17
-	21
-	15
-	7
-	24
-	9
-	10
-	8
-	4
-	18
-	17
-	19
-	15
-	19
-	12
-	3
-	10
-	15
-	22
-	14
-	3
-	10
-	20
-	16
-	19
-	12
-	8
-	12
-	19
-	8
-	20
-	18
-	17
-	2
-	14
-	7
-	2
-	12
-	11
-	2
-	4
-	21
-	10
-	4
-	18
-	10
-	21
-	4
-	22
-	2
-	8
-	7
-	24
-	21
-	8
-	20
-	22
-	16
-	22
-	16
-	19
-	12
-	2
-	17
 	6
-	24
-	14
+	8
+	8
 	9
+	24
+	22
+	15
+	9
+	15
+	4
+	4
+	15
+	19
+	17
+	15
+	4
+	19
+	15
+	22
+	10
+	24
+	7
+	13
+	15
+	3
+	20
+	19
+	8
+	24
+	22
+	5
+	15
+	24
+	22
+	15
+	19
+	24
+	8
+	17
+	9
+	15
+	4
+	7
+	15
+	8
+	22
+	20
+	15
+	19
+	15
+	22
+	24
+	19
+	15
+	22
+	15
+	17
+	21
+	15
+	7
+	24
+	9
+	10
 	8
 	4
 	18
+	17
+	19
+	15
+	19
+	12
+	3
+	10
+	15
+	22
 	14
+	3
+	10
+	20
+	16
+	16
+	12
+	22
+	8
+	19
+	20
+	8
+	18
+	17
+	2
+	14
+	7
+	2
+	12
+	3
+	2
+	15
+	4
+	12
+	8
+	4
+	2
+	21
+	4
+	10
+	18
+	8
+	7
+	10
+	18
+	8
+	14
+	22
+	16
+	22
+	16
+	19
+	12
+	8
+	17
+	15
+	4
+	14
+	2
+	3
+	2
+	11
+	5
 	3
 	20
 	19
@@ -262,9 +264,9 @@ Sequence:
 	19
 	24
 	22
-	5
+	13
 	21
-	17
+	20
 	22
 	2
 	19
@@ -276,16 +278,16 @@ Sequence:
 	10
 	17
 	16
+	24
+	1
 	20
-	15
-	16
-	3
+	21
 	10
 	20
 	21
 	17
 	10
-	8
+	21
 	17
 	12
 	21
@@ -306,9 +308,9 @@ Sequence:
 	19
 	2
 	17
-	2
-	3
-	15
+	17
+	0
+	17
 	19
 	24
 	19
@@ -316,7 +318,7 @@ Sequence:
 	8
 	3
 	15
-	19
+	21
 	17
 	15
 	6

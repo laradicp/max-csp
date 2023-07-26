@@ -1,0 +1,357 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.99998247400003
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 1.0000.
+Tried aggregator 2 times.
+MIP Presolve eliminated 45 rows and 1 columns.
+MIP Presolve added 36 rows and 9 columns.
+MIP Presolve modified 60 coefficients.
+Aggregator did 9 substitutions.
+Reduced MIP has 2703 rows, 6300 columns, and 106752 nonzeros.
+Reduced MIP has 6300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.14 sec. (207.44 ticks)
+Probing time = 0.02 sec. (19.19 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 15 coefficients.
+Reduced MIP has 2703 rows, 6300 columns, and 107013 nonzeros.
+Reduced MIP has 6300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.11 sec. (157.81 ticks)
+Probing time = 0.02 sec. (19.22 ticks)
+Clique table members: 1493.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 1.04 sec. (1097.89 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            1.0000    45150.0000              --- 
+      0     0      300.0000  1192        1.0000      300.0000     4602     --- 
+*     0+    0                          154.0000      300.0000            94.81%
+      0     0      300.0000    60      154.0000    Cliques: 1     5273   94.81%
+      0     0      300.0000   129      154.0000      Cuts: 42     6276   94.81%
+      0     0      300.0000    93      154.0000    Cliques: 2     8273   94.81%
+*     0+    0                          300.0000      300.0000             0.00%
+      0     0        cutoff            300.0000      300.0000     8273    0.00%
+      0     0        cutoff            300.0000      300.0000     8273    0.00%
+Elapsed time = 18.67 sec. (19618.13 ticks, tree = 0.01 MB, solutions = 3)
+
+Clique cuts applied:  12
+Zero-half cuts applied:  9
+Gomory fractional cuts applied:  3
+
+Root node processing (before b&c):
+  Real time             =   18.68 sec. (19618.77 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =   18.68 sec. (19618.77 ticks)
+Primal:	300
+Dual:	300
+Status:	Optimal
+Time:	18.69
+Sequence:
+	13
+	19
+	5
+	13
+	16
+	6
+	14
+	15
+	4
+	14
+	15
+	6
+	11
+	10
+	5
+	0
+	15
+	3
+	0
+	15
+	6
+	0
+	15
+	5
+	0
+	17
+	2
+	12
+	17
+	19
+	12
+	1
+	19
+	12
+	17
+	16
+	12
+	1
+	19
+	12
+	17
+	19
+	12
+	17
+	2
+	12
+	17
+	19
+	12
+	17
+	2
+	7
+	9
+	16
+	7
+	8
+	19
+	6
+	13
+	16
+	3
+	12
+	19
+	1
+	12
+	16
+	1
+	12
+	16
+	17
+	12
+	16
+	17
+	12
+	19
+	1
+	7
+	16
+	9
+	7
+	16
+	9
+	7
+	16
+	8
+	7
+	2
+	8
+	5
+	16
+	13
+	3
+	16
+	13
+	5
+	16
+	13
+	5
+	16
+	13
+	5
+	19
+	9
+	7
+	2
+	8
+	7
+	19
+	17
+	0
+	18
+	17
+	0
+	3
+	10
+	11
+	6
+	15
+	0
+	5
+	10
+	6
+	3
+	2
+	8
+	7
+	19
+	8
+	7
+	19
+	1
+	12
+	19
+	1
+	7
+	2
+	8
+	4
+	18
+	9
+	4
+	18
+	8
+	6
+	18
+	8
+	4
+	18
+	1
+	14
+	18
+	1
+	11
+	18
+	1
+	6
+	18
+	8
+	5
+	2
+	8
+	7
+	16
+	8
+	7
+	2
+	9
+	7
+	19
+	8
+	7
+	19
+	17
+	12
+	16
+	1
+	12
+	16
+	17
+	12
+	2
+	1
+	12
+	19
+	17
+	11
+	18
+	3
+	6
+	10
+	14
+	6
+	10
+	0
+	6
+	15
+	11
+	3
+	10
+	14
+	6
+	15
+	0
+	6
+	10
+	0
+	3
+	15
+	0
+	3
+	16
+	13
+	5
+	16
+	13
+	3
+	16
+	13
+	6
+	2
+	1
+	11
+	18
+	17
+	4
+	18
+	9
+	4
+	18
+	8
+	4
+	2
+	8
+	3
+	4
+	15
+	14
+	4
+	15
+	14
+	4
+	15
+	0
+	6
+	15
+	14
+	4
+	15
+	0
+	5
+	10
+	0
+	6
+	10
+	14
+	4
+	10
+	11
+	6
+	15
+	11
+	6
+	10
+	0
+	3
+	10
+	14
+	3
+	10
+	0
+	3
+	15
+	11
+	4
+	10
+	0
+	4
+	15
+	11
+	6
+	19
+	13
+	5
+	19
+	13
+	5
+	19
+	13
+	4
+	3
+	10
+	14
+	4
+	15
+	14
+	6
+	10
+	14
+	6
+	10

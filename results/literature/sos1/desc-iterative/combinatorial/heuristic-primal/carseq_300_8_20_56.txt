@@ -1,0 +1,359 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               596.177243051
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 289.0000.
+Tried aggregator 2 times.
+MIP Presolve eliminated 44 rows and 1 columns.
+MIP Presolve added 36 rows and 9 columns.
+MIP Presolve modified 77 coefficients.
+Aggregator did 9 substitutions.
+Reduced MIP has 2704 rows, 6300 columns, and 104123 nonzeros.
+Reduced MIP has 6300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.14 sec. (212.53 ticks)
+Probing time = 0.02 sec. (16.98 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 17 coefficients.
+Reduced MIP has 2704 rows, 6300 columns, and 104374 nonzeros.
+Reduced MIP has 6300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.10 sec. (156.79 ticks)
+Probing time = 0.02 sec. (17.00 ticks)
+Clique table members: 2090.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 1.61 sec. (1734.56 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                          289.0000    45150.0000              --- 
+      0     0      300.0000  1333      289.0000      300.0000     5132    3.81%
+      0     0      300.0000   143      289.0000    Cliques: 1     5603    3.81%
+      0     0      300.0000   290      289.0000      Cuts: 68     8145    3.81%
+      0     0      300.0000    32      289.0000       Cuts: 2     8464    3.81%
+*     0+    0                          293.0000      300.0000             2.39%
+      0     0        cutoff            293.0000      300.0000     8464    2.39%
+      0     0      300.0000   337      293.0000      Cuts: 16    10410    2.39%
+*     0+    0                          300.0000      300.0000             0.00%
+      0     0        cutoff            300.0000      300.0000    10410    0.00%
+Elapsed time = 35.25 sec. (34903.65 ticks, tree = 0.01 MB, solutions = 3)
+
+Clique cuts applied:  15
+Zero-half cuts applied:  11
+Lift and project cuts applied:  2
+Gomory fractional cuts applied:  1
+
+Root node processing (before b&c):
+  Real time             =   35.25 sec. (34904.29 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =   35.25 sec. (34904.29 ticks)
+Primal:	300
+Dual:	300
+Status:	Optimal
+Time:	35.24
+Sequence:
+	9
+	2
+	5
+	9
+	2
+	5
+	9
+	2
+	5
+	13
+	1
+	17
+	4
+	7
+	17
+	16
+	18
+	17
+	16
+	7
+	17
+	16
+	18
+	3
+	8
+	12
+	17
+	6
+	18
+	19
+	3
+	13
+	2
+	15
+	11
+	5
+	15
+	11
+	0
+	1
+	13
+	17
+	1
+	13
+	17
+	1
+	13
+	17
+	1
+	13
+	3
+	1
+	13
+	17
+	1
+	13
+	3
+	0
+	7
+	14
+	15
+	18
+	14
+	19
+	18
+	14
+	19
+	7
+	14
+	19
+	7
+	14
+	19
+	7
+	14
+	19
+	18
+	14
+	15
+	2
+	11
+	15
+	2
+	11
+	1
+	0
+	14
+	12
+	0
+	14
+	12
+	0
+	14
+	12
+	6
+	4
+	10
+	5
+	8
+	10
+	2
+	8
+	10
+	5
+	4
+	10
+	6
+	8
+	12
+	5
+	4
+	10
+	0
+	4
+	10
+	0
+	4
+	10
+	6
+	4
+	10
+	5
+	8
+	10
+	5
+	4
+	10
+	0
+	4
+	12
+	3
+	8
+	18
+	17
+	16
+	18
+	3
+	16
+	7
+	17
+	16
+	7
+	3
+	16
+	7
+	3
+	16
+	18
+	3
+	8
+	12
+	17
+	4
+	12
+	17
+	4
+	12
+	3
+	8
+	12
+	3
+	4
+	12
+	3
+	4
+	12
+	3
+	8
+	12
+	17
+	4
+	19
+	7
+	14
+	15
+	18
+	14
+	19
+	7
+	14
+	19
+	7
+	14
+	19
+	5
+	11
+	15
+	2
+	11
+	15
+	5
+	11
+	1
+	0
+	11
+	15
+	5
+	11
+	15
+	2
+	13
+	1
+	3
+	13
+	1
+	3
+	13
+	1
+	3
+	13
+	1
+	3
+	13
+	1
+	6
+	2
+	9
+	6
+	2
+	9
+	5
+	2
+	9
+	5
+	2
+	9
+	6
+	0
+	10
+	4
+	5
+	10
+	4
+	2
+	10
+	4
+	2
+	10
+	4
+	6
+	10
+	8
+	5
+	10
+	4
+	0
+	12
+	14
+	6
+	18
+	14
+	19
+	18
+	14
+	1
+	18
+	14
+	19
+	18
+	14
+	1
+	0
+	11
+	2
+	1
+	11
+	2
+	15
+	11
+	6
+	15
+	11
+	0
+	5
+	9
+	2
+	0
+	10
+	4
+	2
+	10
+	8
+	2
+	10
+	8
+	2
+	1
+	11
+	2
+	15
+	11
+	0
+	2
+	9
+	6
+	5
+	9
+	6
+	2
+	9

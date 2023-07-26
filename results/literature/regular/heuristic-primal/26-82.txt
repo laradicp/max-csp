@@ -1,80 +1,95 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.74552179600005
+CPXPARAM_TimeLimit                               599.74552186899996
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 96.0000.
 Tried aggregator 1 time.
-MIP Presolve eliminated 13 rows and 0 columns.
-MIP Presolve modified 5 coefficients.
-Reduced MIP has 710 rows, 2400 columns, and 29172 nonzeros.
+MIP Presolve eliminated 9 rows and 0 columns.
+MIP Presolve modified 8 coefficients.
+Reduced MIP has 715 rows, 2400 columns, and 31697 nonzeros.
 Reduced MIP has 2400 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (14.91 ticks)
-Probing time = 0.00 sec. (4.19 ticks)
+Presolve time = 0.02 sec. (17.35 ticks)
+Probing time = 0.00 sec. (4.32 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
-Reduced MIP has 710 rows, 2400 columns, and 29172 nonzeros.
+Reduced MIP has 715 rows, 2400 columns, and 31697 nonzeros.
 Reduced MIP has 2400 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (16.57 ticks)
-Probing time = 0.00 sec. (4.19 ticks)
+Presolve time = 0.02 sec. (18.33 ticks)
+Probing time = 0.00 sec. (4.32 ticks)
 Clique table members: 400.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.16 sec. (169.48 ticks)
+Root relaxation solution time = 0.16 sec. (178.64 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
 *     0+    0                           96.0000     2400.0000              --- 
-      0     0      100.0000   400       96.0000      100.0000     1672    4.17%
+      0     0      100.0000   409       96.0000      100.0000     1574    4.17%
+      0     0      100.0000    86       96.0000   ZeroHalf: 1     2009    4.17%
 *     0+    0                          100.0000      100.0000             0.00%
-      0     0        cutoff            100.0000      100.0000     1672    0.00%
-Elapsed time = 2.11 sec. (2256.04 ticks, tree = 0.01 MB, solutions = 2)
+      0     0        cutoff            100.0000      100.0000     2009    0.00%
+Elapsed time = 2.34 sec. (2773.58 ticks, tree = 0.01 MB, solutions = 2)
+
+Zero-half cuts applied:  1
 
 Root node processing (before b&c):
-  Real time             =    2.11 sec. (2256.14 ticks)
+  Real time             =    2.34 sec. (2773.67 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    2.11 sec. (2256.14 ticks)
+Total (root+branch&cut) =    2.34 sec. (2773.67 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	2.12
+Time:	2.34
 Sequence:
 	20
 	2
 	10
-	1
-	3
-	21
-	3
-	2
+	6
 	10
-	19
-	0
-	1
-	7
-	19
-	3
 	5
-	10
+	3
+	8
+	3
+	1
+	17
+	2
+	9
+	4
+	3
+	22
+	7
+	1
+	9
+	4
+	11
 	8
 	3
 	1
 	7
 	1
-	7
-	23
-	3
-	2
-	16
-	2
-	11
+	0
 	19
+	3
+	4
+	11
+	15
+	10
+	1
+	12
+	13
 	7
 	1
+	3
+	8
+	11
+	2
+	10
+	6
 	7
 	1
 	14
@@ -83,63 +98,51 @@ Sequence:
 	15
 	10
 	1
+	3
+	4
+	12
+	1
+	10
+	19
+	7
+	2
+	3
+	19
+	11
+	2
 	18
 	1
-	11
-	8
 	3
-	2
+	19
+	0
+	5
 	16
 	1
 	3
-	4
+	8
 	11
-	8
-	3
+	2
+	16
 	1
 	7
-	22
-	7
-	1
-	3
-	8
-	17
-	2
-	3
-	19
+	23
 	3
 	2
-	7
+	10
+	2
+	9
 	13
-	9
-	1
-	10
-	15
-	11
-	4
-	3
+	7
 	19
-	2
-	11
+	7
+	1
+	3
 	8
-	10
-	1
-	12
-	13
-	0
-	6
-	10
-	2
-	9
-	4
 	11
+	2
+	10
 	19
 	3
-	4
-	9
 	2
 	10
-	6
-	10
-	5
-	12
+	21

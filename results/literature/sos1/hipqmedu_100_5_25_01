@@ -1,15 +1,17 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998472499999
+CPXPARAM_TimeLimit                               599.99998523099998
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 1.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 14 rows and 0 columns.
-MIP Presolve modified 106 coefficients.
+Tried aggregator 2 times.
+MIP Presolve eliminated 34 rows and 1 columns.
+MIP Presolve added 28 rows and 7 columns.
+MIP Presolve modified 6 coefficients.
+Aggregator did 7 substitutions.
 Reduced MIP has 613 rows, 2600 columns, and 35030 nonzeros.
 Reduced MIP has 2600 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (18.84 ticks)
+Presolve time = 0.03 sec. (27.20 ticks)
 Probing time = 0.01 sec. (13.03 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -30,18 +32,18 @@ Root relaxation solution time = 0.07 sec. (84.70 ticks)
       0     0      100.0000   167        1.0000      100.0000      939     --- 
 *     0+    0                          100.0000      100.0000             0.00%
       0     0        cutoff            100.0000      100.0000      939    0.00%
-Elapsed time = 0.44 sec. (475.05 ticks, tree = 0.01 MB, solutions = 2)
+Elapsed time = 0.40 sec. (396.49 ticks, tree = 0.01 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    0.44 sec. (475.15 ticks)
+  Real time             =    0.40 sec. (396.59 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.44 sec. (475.15 ticks)
+Total (root+branch&cut) =    0.40 sec. (396.59 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	0.44
+Time:	0.42
 Sequence:
 	19
 	5
@@ -66,27 +68,27 @@ Sequence:
 	5
 	13
 	23
-	20
+	8
 	13
 	7
-	17
+	20
 	24
 	14
 	14
 	16
-	6
+	17
 	22
 	20
 	10
 	23
 	4
 	6
-	9
+	13
 	4
 	8
 	2
 	24
-	2
+	6
 	2
 	21
 	16
@@ -118,16 +120,16 @@ Sequence:
 	16
 	18
 	9
-	24
+	2
 	6
 	19
-	4
+	24
 	7
 	11
 	1
 	14
-	13
-	8
+	9
+	4
 	18
 	8
 	9

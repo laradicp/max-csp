@@ -1,0 +1,236 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               600
+Retaining values of one MIP start for possible repair.
+Tried aggregator 2 times.
+MIP Presolve eliminated 43 rows and 655 columns.
+MIP Presolve added 32 rows and 8 columns.
+MIP Presolve modified 61 coefficients.
+Aggregator did 8 substitutions.
+Reduced MIP has 1520 rows, 2180 columns, and 40938 nonzeros.
+Reduced MIP has 2180 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.06 sec. (86.89 ticks)
+Found incumbent of value 1.000000 after 0.08 sec. (94.89 ticks)
+Probing time = 0.01 sec. (9.64 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 11 coefficients.
+Reduced MIP has 1520 rows, 2180 columns, and 41115 nonzeros.
+Reduced MIP has 2180 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (60.12 ticks)
+Probing time = 0.01 sec. (9.65 ticks)
+Clique table members: 1081.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.06 sec. (55.90 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            1.0000    23871.0000              --- 
+      0     0      199.0000   442        1.0000      199.0000      995     --- 
+      0     0      184.9975   289        1.0000       Cuts: 9     1249     --- 
+      0     0      182.0000   333        1.0000   Impl Bds: 1     1280     --- 
+      0     0      181.0000   327        1.0000   Impl Bds: 1     1296     --- 
+*     0     0      integral     0      181.0000   ZeroHalf: 2     1385    0.00%
+      0     0        cutoff            181.0000      181.0000     1385    0.00%
+Elapsed time = 0.63 sec. (576.75 ticks, tree = 0.01 MB, solutions = 2)
+
+Implied bound cuts applied:  3
+Zero-half cuts applied:  2
+Gomory fractional cuts applied:  1
+
+Root node processing (before b&c):
+  Real time             =    0.63 sec. (577.00 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.63 sec. (577.00 ticks)
+Primal:	181
+Dual:	181
+Status:	Optimal
+Time:	0.64
+Sequence:
+	1
+	4
+	6
+	9
+	1
+	0
+	5
+	9
+	6
+	2
+	1
+	9
+	6
+	9
+	5
+	9
+	5
+	9
+	6
+	9
+	11
+	9
+	6
+	2
+	1
+	4
+	5
+	9
+	6
+	9
+	1
+	9
+	1
+	9
+	11
+	9
+	5
+	9
+	5
+	9
+	5
+	9
+	5
+	2
+	5
+	9
+	11
+	9
+	6
+	9
+	5
+	9
+	5
+	9
+	6
+	0
+	5
+	9
+	1
+	9
+	1
+	9
+	11
+	9
+	1
+	9
+	5
+	9
+	1
+	2
+	1
+	4
+	1
+	0
+	5
+	4
+	1
+	9
+	6
+	4
+	1
+	0
+	5
+	9
+	5
+	9
+	11
+	9
+	5
+	9
+	5
+	9
+	5
+	9
+	6
+	4
+	1
+	9
+	1
+	9
+	5
+	9
+	5
+	0
+	1
+	9
+	1
+	9
+	5
+	9
+	6
+	4
+	1
+	9
+	6
+	9
+	5
+	9
+	6
+	9
+	5
+	9
+	5
+	9
+	6
+	9
+	1
+	4
+	6
+	9
+	5
+	9
+	5
+	9
+	6
+	9
+	5
+	0
+	1
+	9
+	5
+	0
+	5
+	4
+	1
+	9
+	5
+	0
+	5
+	9
+	5
+	4
+	11
+	9
+	1
+	9
+	6
+	0
+	1
+	4
+	10
+	4
+	5
+	9
+	5
+	9
+	1
+	9
+	5
+	9
+	6
+	9
+	5
+	0
+	6
+	9
+	5
+	9
+	6
+	9
+	5

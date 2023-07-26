@@ -5,20 +5,20 @@ CPXPARAM_TimeLimit                               600
 Tried aggregator 1 time.
 Reduced MIP has 5525 rows, 22500 columns, and 232029 nonzeros.
 Reduced MIP has 17500 binaries, 5000 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.13 sec. (94.75 ticks)
-Found incumbent of value 4225.000000 after 0.33 sec. (229.19 ticks)
+Presolve time = 0.12 sec. (94.75 ticks)
+Found incumbent of value 4225.000000 after 0.31 sec. (229.19 ticks)
 Probing time = 0.01 sec. (13.91 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 5525 rows, 22500 columns, and 232029 nonzeros.
 Reduced MIP has 17500 binaries, 5000 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.16 sec. (116.44 ticks)
+Presolve time = 0.15 sec. (116.44 ticks)
 Probing time = 0.01 sec. (13.91 ticks)
 Clique table members: 506.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 21.78 sec. (22004.89 ticks)
+Root relaxation solution time = 23.63 sec. (22004.89 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -37,23 +37,21 @@ Heuristic still looking.
       0     0  -1.00000e+75     0      764.0000        0.0000   114315  100.00%
 Detecting symmetries...
       0     2        0.0000  4906      764.0000        0.0000   114315  100.00%
-Elapsed time = 474.78 sec. (513933.82 ticks, tree = 0.01 MB, solutions = 5)
+Elapsed time = 522.53 sec. (513933.82 ticks, tree = 0.01 MB, solutions = 5)
       1     3        0.0000  5242      764.0000        0.0000   160634  100.00%
-      2     4        0.0000  5158      764.0000        0.0000   193134  100.00%
-      3     5        0.0000  5124      764.0000        0.0000   225200  100.00%
 
 Zero-half cuts applied:  62
 
 Root node processing (before b&c):
-  Real time             =  474.67 sec. (513799.56 ticks)
+  Real time             =  522.40 sec. (513799.57 ticks)
 Sequential b&c:
-  Real time             =  125.35 sec. (131017.98 ticks)
+  Real time             =   77.62 sec. (74733.29 ticks)
                           ------------
-Total (root+branch&cut) =  600.02 sec. (644817.54 ticks)
+Total (root+branch&cut) =  600.02 sec. (588532.86 ticks)
 Primal number of violations:	764
 Dual number of violations:	0
 Status:	Feasible
-Time:	599.99
+Time:	600.01
 Sequence:
 	15
 	1

@@ -1,48 +1,50 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99997241100004
+CPXPARAM_TimeLimit                               599.99997316700001
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 1.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 29 rows and 0 columns.
-MIP Presolve modified 534 coefficients.
+Tried aggregator 2 times.
+MIP Presolve eliminated 55 rows and 1 columns.
+MIP Presolve added 36 rows and 9 columns.
+MIP Presolve modified 34 coefficients.
+Aggregator did 9 substitutions.
 Reduced MIP has 5498 rows, 13000 columns, and 328996 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.33 sec. (530.60 ticks)
+Presolve time = 0.44 sec. (628.96 ticks)
 Probing time = 0.05 sec. (47.17 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 11 coefficients.
 Reduced MIP has 5498 rows, 13000 columns, and 329219 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.33 sec. (507.98 ticks)
+Presolve time = 0.34 sec. (507.98 ticks)
 Probing time = 0.05 sec. (47.18 ticks)
 Clique table members: 1498.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.32 sec. (357.59 ticks)
+Root relaxation solution time = 0.33 sec. (360.74 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
 *     0+    0                            1.0000   125250.0000              --- 
-      0     0      500.0000   361        1.0000      500.0000     2249     --- 
+      0     0      500.0000   377        1.0000      500.0000     2242     --- 
 *     0+    0                          500.0000      500.0000             0.00%
-      0     0        cutoff            500.0000      500.0000     2249    0.00%
-Elapsed time = 2.37 sec. (2817.15 ticks, tree = 0.01 MB, solutions = 2)
+      0     0        cutoff            500.0000      500.0000     2242    0.00%
+Elapsed time = 2.66 sec. (2976.58 ticks, tree = 0.01 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    2.37 sec. (2817.66 ticks)
+  Real time             =    2.67 sec. (2977.09 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    2.37 sec. (2817.66 ticks)
+Total (root+branch&cut) =    2.67 sec. (2977.09 ticks)
 Primal:	500
 Dual:	500
 Status:	Optimal
-Time:	2.44
+Time:	2.73
 Sequence:
 	0
 	11
@@ -68,11 +70,11 @@ Sequence:
 	16
 	1
 	18
-	10
-	11
-	18
 	0
+	11
+	10
 	19
+	18
 	1
 	10
 	18
@@ -83,14 +85,14 @@ Sequence:
 	24
 	10
 	18
-	19
-	22
-	23
+	11
+	15
+	2
 	18
 	19
-	2
-	14
 	23
+	2
+	9
 	19
 	1
 	18
@@ -128,7 +130,7 @@ Sequence:
 	20
 	18
 	24
-	19
+	9
 	22
 	18
 	24
@@ -171,16 +173,16 @@ Sequence:
 	23
 	13
 	2
+	14
 	24
-	19
 	1
 	24
 	13
 	21
-	9
+	10
 	18
 	10
-	23
+	20
 	22
 	9
 	18
@@ -191,24 +193,24 @@ Sequence:
 	1
 	18
 	1
-	17
-	24
-	11
-	20
-	24
-	18
-	1
-	20
-	18
 	23
-	20
-	2
+	24
+	13
+	8
+	24
+	19
 	1
-	20
 	18
 	7
+	20
+	23
+	2
+	20
+	11
+	18
+	17
 	24
-	15
+	18
 	1
 	2
 	11
@@ -219,20 +221,20 @@ Sequence:
 	1
 	18
 	24
-	23
-	11
-	18
 	19
-	0
-	16
 	11
-	17
 	18
+	24
+	0
+	17
+	11
 	16
 	14
-	15
+	16
+	17
+	11
 	18
-	10
+	17
 	11
 	11
 	18
@@ -242,15 +244,15 @@ Sequence:
 	23
 	17
 	9
-	11
-	15
-	1
-	0
-	3
 	16
-	11
-	11
+	1
+	20
+	0
+	1
+	16
 	3
+	11
+	24
 	24
 	0
 	19
@@ -277,7 +279,7 @@ Sequence:
 	24
 	1
 	1
-	17
+	15
 	22
 	0
 	17
@@ -351,17 +353,17 @@ Sequence:
 	20
 	1
 	9
-	9
-	11
+	14
 	19
+	18
 	16
-	1
 	20
 	11
+	6
 	1
 	4
-	10
-	24
+	22
+	1
 	0
 	3
 	8
@@ -370,7 +372,7 @@ Sequence:
 	4
 	0
 	2
-	2
+	19
 	8
 	24
 	24
@@ -388,26 +390,26 @@ Sequence:
 	1
 	19
 	8
-	16
+	23
 	17
 	2
-	14
+	6
 	8
 	1
 	2
 	23
-	6
+	10
 	18
 	14
 	19
-	18
+	2
 	24
 	14
 	24
 	14
 	9
-	12
-	17
+	15
+	18
 	1
 	11
 	9
@@ -435,7 +437,7 @@ Sequence:
 	20
 	24
 	0
-	13
+	3
 	14
 	23
 	2
@@ -503,7 +505,7 @@ Sequence:
 	9
 	11
 	1
-	24
+	19
 	1
 	1
 	20
@@ -517,14 +519,14 @@ Sequence:
 	2
 	24
 	23
-	2
 	19
-	8
 	24
 	11
-	6
-	11
 	4
+	11
+	12
+	11
+	23
 	9
 	24
 	23

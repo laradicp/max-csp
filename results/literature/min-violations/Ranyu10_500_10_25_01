@@ -5,8 +5,8 @@ CPXPARAM_TimeLimit                               600
 Tried aggregator 1 time.
 Reduced MIP has 5525 rows, 22500 columns, and 217578 nonzeros.
 Reduced MIP has 17000 binaries, 5500 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.12 sec. (88.57 ticks)
-Found incumbent of value 4329.000000 after 0.31 sec. (215.54 ticks)
+Presolve time = 0.11 sec. (88.57 ticks)
+Found incumbent of value 4329.000000 after 0.30 sec. (215.54 ticks)
 Probing time = 0.01 sec. (7.55 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -18,7 +18,7 @@ Clique table members: 505.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 13.63 sec. (14475.09 ticks)
+Root relaxation solution time = 16.04 sec. (14475.09 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -37,21 +37,20 @@ Root relaxation solution time = 13.63 sec. (14475.09 ticks)
       0     0        0.0000  2149      739.0000   ZeroHalf: 4    87164  100.00%
 Detecting symmetries...
       0     0        0.0000  2058      739.0000  ZeroHalf: 19   101048  100.00%
-      0     0        0.0000  2063      739.0000  ZeroHalf: 15   117065  100.00%
 
-Zero-half cuts applied:  62
+Zero-half cuts applied:  56
 Gomory fractional cuts applied:  7
 
 Root node processing (before b&c):
-  Real time             =  600.04 sec. (743073.06 ticks)
+  Real time             =  600.05 sec. (627463.98 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =  600.04 sec. (743073.06 ticks)
+Total (root+branch&cut) =  600.05 sec. (627463.98 ticks)
 Primal number of violations:	739
 Dual number of violations:	0
 Status:	Feasible
-Time:	600.02
+Time:	600
 Sequence:
 	24
 	15

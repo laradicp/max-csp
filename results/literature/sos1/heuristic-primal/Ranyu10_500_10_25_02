@@ -1,52 +1,58 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               582.36858555599997
+CPXPARAM_TimeLimit                               582.36858449299996
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 314.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 22 rows and 0 columns.
-MIP Presolve modified 565 coefficients.
+Tried aggregator 2 times.
+MIP Presolve eliminated 48 rows and 1 columns.
+MIP Presolve added 36 rows and 9 columns.
+MIP Presolve modified 65 coefficients.
+Aggregator did 9 substitutions.
 Reduced MIP has 5505 rows, 13000 columns, and 339393 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.36 sec. (560.67 ticks)
-Probing time = 0.04 sec. (42.34 ticks)
+Presolve time = 0.49 sec. (654.46 ticks)
+Probing time = 0.06 sec. (42.34 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 17 coefficients.
 Reduced MIP has 5505 rows, 13000 columns, and 339691 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.35 sec. (518.59 ticks)
-Probing time = 0.04 sec. (42.36 ticks)
+Presolve time = 0.38 sec. (518.59 ticks)
+Probing time = 0.05 sec. (42.36 ticks)
 Clique table members: 2996.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 32.92 sec. (36158.45 ticks)
+Root relaxation solution time = 44.29 sec. (39152.50 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
 *     0+    0                          314.0000   125250.0000              --- 
-      0     0      500.0000  2669      314.0000      500.0000    31519   59.24%
-      0     0      500.0000  2660      314.0000     Cuts: 156    65599   59.24%
-      0     0      500.0000  2707      314.0000     Cuts: 230    99044   59.24%
-      0     0      500.0000  2708      314.0000     Cuts: 270   136866   59.24%
+      0     0      500.0000  2622      314.0000      500.0000    34307   59.24%
+      0     0      500.0000  2666      314.0000     Cuts: 221    69232   59.24%
+      0     0      500.0000  2692      314.0000     Cuts: 249   105065   59.24%
 Heuristic still looking.
+Heuristic still looking.
+Detecting symmetries...
+      0     2      500.0000  1879      314.0000      500.0000   105065   59.24%
+Elapsed time = 554.91 sec. (486214.74 ticks, tree = 0.01 MB, solutions = 1)
 
-Clique cuts applied:  189
-Zero-half cuts applied:  34
+Clique cuts applied:  143
+Zero-half cuts applied:  26
+Gomory fractional cuts applied:  1
 
 Root node processing (before b&c):
-  Real time             =  582.39 sec. (605688.71 ticks)
+  Real time             =  554.53 sec. (485829.04 ticks)
 Sequential b&c:
-  Real time             =    0.00 sec. (0.00 ticks)
+  Real time             =   27.86 sec. (24927.78 ticks)
                           ------------
-Total (root+branch&cut) =  582.39 sec. (605688.71 ticks)
+Total (root+branch&cut) =  582.39 sec. (510756.82 ticks)
 Primal:	314
 Dual:	500
 Status:	Feasible
-Time:	582.4
+Time:	582.44
 Sequence:
 	12
 	16

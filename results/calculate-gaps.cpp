@@ -187,7 +187,10 @@ int main(int argc, char** argv)
         "desc-iterative/combinatorial", "desc-iterative/trivial", "desc-iterative/combinatorial/heuristic-primal",
         "min-violations/penalize",
         "regular", "regular/heuristic-primal",
-        "sos1", "sos1/heuristic-primal"
+        "sos1", "sos1/heuristic-primal",
+        "sos1/asc-iterative/combinatorial", "sos1/asc-iterative/trivial", "sos1/asc-iterative/heuristic",
+        "sos1/desc-iterative/combinatorial", "sos1/desc-iterative/trivial",
+        "sos1/desc-iterative/combinatorial/heuristic-primal"
     };
 
     Analytics analytics(argv[1]);

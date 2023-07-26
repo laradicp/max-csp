@@ -1,182 +1,77 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99996995599997
+CPXPARAM_TimeLimit                               599.99996972600002
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 1.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 22 rows and 0 columns.
-MIP Presolve modified 565 coefficients.
+Tried aggregator 2 times.
+MIP Presolve eliminated 48 rows and 1 columns.
+MIP Presolve added 36 rows and 9 columns.
+MIP Presolve modified 65 coefficients.
+Aggregator did 9 substitutions.
 Reduced MIP has 5505 rows, 13000 columns, and 339393 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.35 sec. (560.67 ticks)
-Probing time = 0.04 sec. (42.34 ticks)
+Presolve time = 0.48 sec. (654.49 ticks)
+Probing time = 0.05 sec. (42.34 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 17 coefficients.
 Reduced MIP has 5505 rows, 13000 columns, and 339691 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.34 sec. (518.59 ticks)
+Presolve time = 0.35 sec. (518.59 ticks)
 Probing time = 0.04 sec. (42.36 ticks)
 Clique table members: 2996.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 32.67 sec. (36158.45 ticks)
+Root relaxation solution time = 40.91 sec. (39152.50 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
 *     0+    0                            1.0000   125250.0000              --- 
-      0     0      500.0000  2669        1.0000      500.0000    31519     --- 
-      0     0      500.0000  2656        1.0000     Cuts: 157    65364     --- 
-*     0+    0                          130.0000      500.0000           284.62%
-      0     0      500.0000  2689      130.0000     Cuts: 281   100946  284.62%
-      0     0      500.0000  2775      130.0000     Cuts: 274   137864  284.62%
+      0     0      500.0000  2622        1.0000      500.0000    34307     --- 
+      0     0      500.0000  2678        1.0000     Cuts: 227    66187     --- 
+      0     0      500.0000  2755        1.0000     Cuts: 284   102794     --- 
+*     0+    0                            4.0000      500.0000              --- 
 Heuristic still looking.
-Starting limited solution polishing.
+Heuristic still looking.
+*     0+    0                           17.0000      500.0000              --- 
+      0     0        cutoff             17.0000      500.0000   102794     --- 
+Detecting symmetries...
+      0     2      500.0000  1835       17.0000      500.0000   102794     --- 
+Elapsed time = 492.94 sec. (469344.07 ticks, tree = 0.01 MB, solutions = 3)
+      1     1    infeasible             17.0000      500.0000   103263     --- 
+      2     2      500.0000  2600       17.0000      500.0000   140903     --- 
 
-Clique cuts applied:  206
-Zero-half cuts applied:  30
+Clique cuts applied:  133
+Zero-half cuts applied:  21
 
 Root node processing (before b&c):
-  Real time             =  600.03 sec. (634673.79 ticks)
+  Real time             =  491.75 sec. (468162.54 ticks)
 Sequential b&c:
-  Real time             =    0.00 sec. (0.00 ticks)
+  Real time             =  108.27 sec. (97638.98 ticks)
                           ------------
-Total (root+branch&cut) =  600.03 sec. (634673.79 ticks)
-Primal:	130
+Total (root+branch&cut) =  600.02 sec. (565801.52 ticks)
+Primal:	17
 Dual:	500
 Status:	Feasible
-Time:	600.04
+Time:	600.03
 Sequence:
-	0
-	6
-	15
-	0
-	19
-	15
-	0
-	6
-	15
-	19
-	1
-	0
-	9
-	17
-	0
-	6
-	15
-	0
-	19
-	12
-	16
-	0
-	13
-	19
-	13
-	0
-	6
-	17
-	6
-	19
-	15
-	6
-	0
-	16
-	15
-	19
-	13
-	16
-	0
-	1
-	19
-	16
-	2
-	17
-	6
-	19
-	10
-	19
-	24
-	0
-	21
-	16
-	17
-	0
-	6
-	20
-	0
-	21
+	5
 	17
 	21
 	8
 	17
-	6
-	2
-	23
 	0
-	23
-	0
-	18
-	16
-	0
-	21
-	17
-	21
 	8
 	17
+	19
 	16
-	12
 	0
 	12
-	24
-	0
-	7
-	24
-	19
-	7
-	24
-	19
 	8
-	13
+	17
 	19
-	6
-	17
-	16
-	13
-	0
-	19
-	1
-	0
-	0
-	12
-	24
-	19
-	13
-	0
-	2
-	24
-	0
-	9
-	17
-	9
-	0
-	12
-	16
-	17
-	6
-	0
-	15
 	16
 	0
-	21
-	17
-	9
-	2
-	13
-	0
-	13
-	16
-	0
-	14

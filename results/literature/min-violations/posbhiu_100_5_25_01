@@ -6,7 +6,7 @@ Tried aggregator 1 time.
 Reduced MIP has 625 rows, 3500 columns, and 28310 nonzeros.
 Reduced MIP has 3000 binaries, 500 generals, 0 SOSs, and 0 indicators.
 Presolve time = 0.01 sec. (11.11 ticks)
-Found incumbent of value 551.000000 after 0.03 sec. (27.97 ticks)
+Found incumbent of value 551.000000 after 0.04 sec. (27.97 ticks)
 Probing time = 0.00 sec. (3.38 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -18,7 +18,7 @@ Clique table members: 105.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.19 sec. (222.30 ticks)
+Root relaxation solution time = 0.21 sec. (222.30 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -29,7 +29,7 @@ Root relaxation solution time = 0.19 sec. (222.30 ticks)
 *     0+    0                           16.0000        0.0000           100.00%
 Detecting symmetries...
       0     2        0.0000   291       16.0000        0.0000     1791  100.00%
-Elapsed time = 3.79 sec. (4330.73 ticks, tree = 0.01 MB, solutions = 3)
+Elapsed time = 4.00 sec. (4330.73 ticks, tree = 0.01 MB, solutions = 3)
       1     3       -0.0000   519       16.0000        0.0000     5357  100.00%
       2     4        0.0000   586       16.0000        0.0000     7739  100.00%
       4     6       -0.0000   520       16.0000        0.0000     9309  100.00%
@@ -40,7 +40,7 @@ Elapsed time = 3.79 sec. (4330.73 ticks, tree = 0.01 MB, solutions = 3)
      13    15       -0.0000   420       16.0000        0.0000    14915  100.00%
      15    17        0.0000   415       16.0000        0.0000    15904  100.00%
      20    22       -0.0000   417       16.0000        0.0000    19263  100.00%
-Elapsed time = 8.82 sec. (10336.55 ticks, tree = 0.03 MB, solutions = 3)
+Elapsed time = 9.30 sec. (10336.55 ticks, tree = 0.03 MB, solutions = 3)
      24    26       -0.0000   404       16.0000        0.0000    23853  100.00%
      29    31        0.0000   463       16.0000        0.0000    30061  100.00%
      34    36        0.0000   310       16.0000        0.0000    35620  100.00%
@@ -53,7 +53,7 @@ Elapsed time = 8.82 sec. (10336.55 ticks, tree = 0.03 MB, solutions = 3)
      63    65       -0.0000    80        9.0000        0.0000    77896  100.00%
 *    70+   70                            7.0000        0.0000           100.00%
      70    72       -0.0000    72        7.0000        0.0000    81288  100.00%
-Elapsed time = 18.35 sec. (20604.52 ticks, tree = 0.13 MB, solutions = 5)
+Elapsed time = 19.03 sec. (20604.52 ticks, tree = 0.13 MB, solutions = 5)
      77    79        0.0384   220        7.0000        0.0000    84662  100.00%
      85    87        0.5346   261        7.0000        0.0000    87209  100.00%
 *    92    84      integral     0        2.0000        0.0000    88765  100.00%
@@ -65,20 +65,20 @@ Elapsed time = 18.35 sec. (20604.52 ticks, tree = 0.13 MB, solutions = 5)
 *   141    69      integral     0        1.0000        0.0000   100404  100.00%
     151    72        0.0000    66        1.0000        0.0000   105202  100.00%
     165    76       -0.0000    44        1.0000        0.0000   109291  100.00%
-Elapsed time = 27.39 sec. (30347.30 ticks, tree = 0.17 MB, solutions = 7)
+Elapsed time = 28.61 sec. (30347.30 ticks, tree = 0.17 MB, solutions = 7)
     177    78        0.0000   149        1.0000        0.0000   114731  100.00%
 *   181     1      integral     0        0.0000        0.0000   115543    0.00%
 
 Root node processing (before b&c):
-  Real time             =    3.78 sec. (4319.67 ticks)
+  Real time             =    3.99 sec. (4319.67 ticks)
 Sequential b&c:
-  Real time             =   24.92 sec. (27295.91 ticks)
+  Real time             =   26.01 sec. (27295.91 ticks)
                           ------------
-Total (root+branch&cut) =   28.70 sec. (31615.58 ticks)
+Total (root+branch&cut) =   30.01 sec. (31615.58 ticks)
 Primal number of violations:	0
 Dual number of violations:	0
 Status:	Optimal
-Time:	28.69
+Time:	30.01
 Sequence:
 	22
 	12
