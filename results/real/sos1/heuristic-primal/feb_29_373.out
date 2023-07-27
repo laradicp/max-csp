@@ -1,15 +1,17 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99978727400003
+CPXPARAM_TimeLimit                               599.99978733800003
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 373.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 20 rows and 1492 columns.
+Tried aggregator 2 times.
+MIP Presolve eliminated 47 rows and 1493 columns.
+MIP Presolve added 36 rows and 9 columns.
 MIP Presolve modified 43 coefficients.
+Aggregator did 9 substitutions.
 Reduced MIP has 2604 rows, 3357 columns, and 98877 nonzeros.
 Reduced MIP has 3357 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.10 sec. (158.70 ticks)
+Presolve time = 0.13 sec. (194.66 ticks)
 Probing time = 0.01 sec. (14.40 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
@@ -22,7 +24,7 @@ Clique table members: 1855.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.01 sec. (12.72 ticks)
+Root relaxation solution time = 0.02 sec. (12.73 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -31,15 +33,15 @@ Root relaxation solution time = 0.01 sec. (12.72 ticks)
       0     0        cutoff            373.0000                      9     --- 
 
 Root node processing (before b&c):
-  Real time             =    0.29 sec. (413.53 ticks)
+  Real time             =    0.35 sec. (458.43 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.29 sec. (413.53 ticks)
+Total (root+branch&cut) =    0.35 sec. (458.43 ticks)
 Primal:	373
 Dual:	373
 Status:	Optimal
-Time:	0.32
+Time:	0.38
 Sequence:
 	0
 	11

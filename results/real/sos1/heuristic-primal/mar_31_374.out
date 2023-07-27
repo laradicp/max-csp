@@ -1,52 +1,52 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               598.36007377199996
+CPXPARAM_TimeLimit                               598.36007631400003
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 347.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 20 rows and 1496 columns.
+Tried aggregator 2 times.
+MIP Presolve eliminated 48 rows and 1511 columns.
+MIP Presolve added 36 rows and 9 columns.
 MIP Presolve modified 44 coefficients.
-Reduced MIP has 2611 rows, 3366 columns, and 100455 nonzeros.
-Reduced MIP has 3366 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.09 sec. (162.36 ticks)
-Probing time = 0.01 sec. (13.78 ticks)
+Aggregator did 9 substitutions.
+Reduced MIP has 2610 rows, 3352 columns, and 99990 nonzeros.
+Reduced MIP has 3352 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.13 sec. (195.37 ticks)
+Probing time = 0.01 sec. (13.72 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 10 coefficients.
-Reduced MIP has 2611 rows, 3366 columns, and 100573 nonzeros.
-Reduced MIP has 3366 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.08 sec. (147.60 ticks)
-Probing time = 0.01 sec. (13.79 ticks)
-Clique table members: 1860.
+Reduced MIP has 2610 rows, 3352 columns, and 100108 nonzeros.
+Reduced MIP has 3352 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.09 sec. (147.35 ticks)
+Probing time = 0.01 sec. (13.73 ticks)
+Clique table members: 1859.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.14 sec. (172.74 ticks)
+Root relaxation solution time = 0.10 sec. (116.20 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                          347.0000    70125.0000              --- 
-      0     0      360.0000   727      347.0000      360.0000     1660    3.75%
-      0     0      353.0000   176      347.0000       Cuts: 3     2003    1.73%
-      0     0      348.6029   689      347.0000      Fract: 1     2378    0.46%
-      0     0        cutoff            347.0000                   2381     --- 
-Elapsed time = 2.59 sec. (3070.09 ticks, tree = 0.01 MB, solutions = 1)
+*     0+    0                          347.0000    64980.0000              --- 
+      0     0      353.0000   726      347.0000      353.0000     1395    1.73%
+      0     0      348.0060   529      347.0000      Fract: 1     1667    0.29%
+      0     0        cutoff            347.0000                   1668     --- 
+Elapsed time = 1.37 sec. (1415.64 ticks, tree = 0.01 MB, solutions = 1)
 
-Clique cuts applied:  1
 Gomory fractional cuts applied:  1
 
 Root node processing (before b&c):
-  Real time             =    2.59 sec. (3070.54 ticks)
+  Real time             =    1.37 sec. (1416.09 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    2.59 sec. (3070.54 ticks)
+Total (root+branch&cut) =    1.37 sec. (1416.09 ticks)
 Primal:	347
 Dual:	347
 Status:	Optimal
-Time:	2.62
+Time:	1.38
 Sequence:
 	6
 	9

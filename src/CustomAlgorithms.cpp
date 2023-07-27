@@ -146,6 +146,10 @@ void CustomAlgorithms::defineOutput(int lb, int ub, chrono::time_point<chrono::s
 		{
 			status = IloAlgorithm::Status::Feasible;
 		}
+		else
+		{
+			status = IloAlgorithm::Status::Optimal;
+		}
 		
 		for(int t = 0; t < model->getSequenceSize(); t++)
 		{

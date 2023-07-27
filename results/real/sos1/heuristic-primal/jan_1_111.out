@@ -1,28 +1,30 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99999615399997
+CPXPARAM_TimeLimit                               599.99999641099998
 1 of 1 MIP starts provided solutions.
 MIP start 'm1' defined initial solution with objective 111.0000.
-Tried aggregator 1 time.
-MIP Presolve eliminated 237 rows and 777 columns.
-MIP Presolve modified 56 coefficients.
-Reduced MIP has 553 rows, 666 columns, and 10799 nonzeros.
+Tried aggregator 2 times.
+MIP Presolve eliminated 258 rows and 778 columns.
+MIP Presolve added 28 rows and 7 columns.
+MIP Presolve modified 57 coefficients.
+Aggregator did 7 substitutions.
+Reduced MIP has 553 rows, 666 columns, and 10827 nonzeros.
 Reduced MIP has 666 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (21.81 ticks)
+Presolve time = 0.02 sec. (26.55 ticks)
 Probing time = 0.01 sec. (4.83 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 6 coefficients.
-Reduced MIP has 553 rows, 666 columns, and 10973 nonzeros.
+Reduced MIP has 553 rows, 666 columns, and 11004 nonzeros.
 Reduced MIP has 666 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.01 sec. (13.60 ticks)
-Probing time = 0.00 sec. (4.85 ticks)
+Presolve time = 0.01 sec. (13.73 ticks)
+Probing time = 0.01 sec. (4.85 ticks)
 Clique table members: 332.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.00 sec. (1.62 ticks)
+Root relaxation solution time = 0.00 sec. (1.63 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -31,15 +33,15 @@ Root relaxation solution time = 0.00 sec. (1.62 ticks)
       0     0        cutoff            111.0000                      6     --- 
 
 Root node processing (before b&c):
-  Real time             =    0.05 sec. (52.79 ticks)
+  Real time             =    0.05 sec. (59.48 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.05 sec. (52.79 ticks)
+Total (root+branch&cut) =    0.05 sec. (59.48 ticks)
 Primal:	111
 Dual:	111
 Status:	Optimal
-Time:	0.05
+Time:	0.06
 Sequence:
 	1
 	9

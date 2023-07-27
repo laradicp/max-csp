@@ -190,7 +190,8 @@ int main(int argc, char** argv)
         "sos1", "sos1/heuristic-primal",
         "sos1/asc-iterative/combinatorial", "sos1/asc-iterative/trivial", "sos1/asc-iterative/heuristic",
         "sos1/desc-iterative/combinatorial", "sos1/desc-iterative/trivial",
-        "sos1/desc-iterative/combinatorial/heuristic-primal"
+        "sos1/desc-iterative/combinatorial/heuristic-primal",
+        "branching", "branching/heuristic-primal"
     };
 
     Analytics analytics(argv[1]);

@@ -1,0 +1,169 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.77544815700003
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 95.0000.
+Tried aggregator 1 time.
+MIP Presolve eliminated 15 rows and 0 columns.
+MIP Presolve modified 233 coefficients.
+Reduced MIP has 906 rows, 2100 columns, and 24167 nonzeros.
+Reduced MIP has 2100 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.06 sec. (55.38 ticks)
+Probing time = 0.01 sec. (7.90 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 14 coefficients.
+Reduced MIP has 906 rows, 2100 columns, and 24563 nonzeros.
+Reduced MIP has 2100 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.03 sec. (28.27 ticks)
+Probing time = 0.01 sec. (7.95 ticks)
+Clique table members: 594.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.11 sec. (108.00 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                           95.0000     5050.0000              --- 
+      0     0      100.0000   359       95.0000      100.0000     1302    5.26%
+      0     0      100.0000   148       95.0000       Cuts: 8     1491    5.26%
+      0     0      100.0000   229       95.0000      Cuts: 31     1907    5.26%
+      0     0      100.0000   133       95.0000    Cliques: 3     2271    5.26%
+      0     0      100.0000   249       95.0000      Cuts: 54     2803    5.26%
+*     0+    0                           96.0000      100.0000             4.17%
+      0     0        cutoff             96.0000      100.0000     2803    4.17%
+Detecting symmetries...
+      0     2      100.0000   142       96.0000      100.0000     2803    4.17%
+Elapsed time = 3.57 sec. (3388.24 ticks, tree = 0.01 MB, solutions = 2)
+      3     5      100.0000   345       96.0000      100.0000     4613    4.17%
+      6     8      100.0000   157       96.0000      100.0000     5737    4.17%
+      9    11      100.0000   235       96.0000      100.0000     6657    4.17%
+     12    14      100.0000   245       96.0000      100.0000     7666    4.17%
+     15    17      100.0000   269       96.0000      100.0000     8451    4.17%
+     18    20      100.0000   250       96.0000      100.0000     9190    4.17%
+     21    23      100.0000   187       96.0000      100.0000     9948    4.17%
+     25    27      100.0000   238       96.0000      100.0000    11255    4.17%
+     28    30      100.0000   188       96.0000      100.0000    11884    4.17%
+     39    41      100.0000   204       96.0000      100.0000    17162    4.17%
+Elapsed time = 7.29 sec. (7086.93 ticks, tree = 0.25 MB, solutions = 2)
+     51    53      100.0000    97       96.0000      100.0000    19705    4.17%
+     61    63      100.0000    74       96.0000      100.0000    24650    4.17%
+*    66     1      integral     0      100.0000      100.0000    25032    0.00%
+
+Clique cuts applied:  22
+Zero-half cuts applied:  3
+
+Root node processing (before b&c):
+  Real time             =    3.56 sec. (3378.91 ticks)
+Sequential b&c:
+  Real time             =    5.95 sec. (5853.63 ticks)
+                          ------------
+Total (root+branch&cut) =    9.51 sec. (9232.55 ticks)
+Primal:	100
+Dual:	100
+Status:	Optimal
+Time:	9.52
+Sequence:
+	14
+	13
+	4
+	18
+	6
+	4
+	14
+	5
+	4
+	14
+	5
+	4
+	13
+	14
+	4
+	3
+	11
+	9
+	3
+	12
+	10
+	8
+	3
+	1
+	8
+	10
+	17
+	2
+	9
+	1
+	15
+	5
+	19
+	16
+	3
+	19
+	2
+	12
+	10
+	8
+	17
+	5
+	10
+	12
+	8
+	0
+	1
+	15
+	10
+	3
+	12
+	8
+	19
+	3
+	5
+	14
+	4
+	4
+	14
+	4
+	4
+	14
+	6
+	3
+	18
+	13
+	6
+	18
+	5
+	6
+	14
+	5
+	4
+	10
+	11
+	3
+	0
+	11
+	3
+	9
+	16
+	7
+	9
+	8
+	17
+	4
+	10
+	11
+	3
+	5
+	14
+	6
+	5
+	18
+	3
+	6
+	18
+	6
+	5
+	14

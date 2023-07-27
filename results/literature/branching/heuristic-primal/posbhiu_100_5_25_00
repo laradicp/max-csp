@@ -1,0 +1,173 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.67446375999998
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 94.0000.
+Tried aggregator 1 time.
+MIP Presolve eliminated 14 rows and 0 columns.
+MIP Presolve modified 168 coefficients.
+Reduced MIP has 612 rows, 2600 columns, and 37246 nonzeros.
+Reduced MIP has 2600 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.04 sec. (62.36 ticks)
+Probing time = 0.01 sec. (12.44 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 9 coefficients.
+Reduced MIP has 612 rows, 2600 columns, and 37858 nonzeros.
+Reduced MIP has 2600 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.03 sec. (35.67 ticks)
+Probing time = 0.01 sec. (12.49 ticks)
+Clique table members: 200.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.22 sec. (262.96 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                           94.0000     5050.0000              --- 
+      0     0      100.0000   438       94.0000      100.0000     2164    6.38%
+Detecting symmetries...
+      0     2      100.0000   183       94.0000      100.0000     2164    6.38%
+Elapsed time = 3.01 sec. (3477.42 ticks, tree = 0.01 MB, solutions = 1)
+      2     4      100.0000   364       94.0000      100.0000     4568    6.38%
+      3     5      100.0000   251       94.0000      100.0000     6207    6.38%
+      4     6      100.0000   157       94.0000      100.0000     7287    6.38%
+      5     7      100.0000   164       94.0000      100.0000     8245    6.38%
+      7     9      100.0000   174       94.0000      100.0000     9222    6.38%
+      8    10      100.0000   255       94.0000      100.0000    12586    6.38%
+      9    11      100.0000   249       94.0000      100.0000    15994    6.38%
+     10    12      100.0000   174       94.0000      100.0000    15998    6.38%
+     12    14      100.0000   127       94.0000      100.0000    20897    6.38%
+     16    18      100.0000   125       94.0000      100.0000    27293    6.38%
+Elapsed time = 7.54 sec. (8924.06 ticks, tree = 0.03 MB, solutions = 1)
+     21    23      100.0000   144       94.0000      100.0000    33048    6.38%
+     25    27      100.0000   124       94.0000      100.0000    36597    6.38%
+     31    33      100.0000   134       94.0000      100.0000    39993    6.38%
+     39    41      100.0000   107       94.0000      100.0000    42692    6.38%
+     46    47       98.0000   196       94.0000      100.0000    46151    6.38%
+     55    55      100.0000   116       94.0000      100.0000    49878    6.38%
+     66    64      100.0000   133       94.0000      100.0000    52955    6.38%
+     76    73      100.0000    78       94.0000      100.0000    56369    6.38%
+     86    81      100.0000    46       94.0000      100.0000    60553    6.38%
+     98    89       99.0000    64       94.0000      100.0000    65850    6.38%
+Elapsed time = 17.09 sec. (19368.89 ticks, tree = 0.42 MB, solutions = 1)
+    113    97       99.0000    59       94.0000      100.0000    72851    6.38%
+*   117    88      integral     0       98.0000      100.0000    74248    2.04%
+    125    93      100.0000    60       98.0000      100.0000    77889    2.04%
+    135   101      100.0000    67       98.0000      100.0000    81847    2.04%
+*   137     0      integral     0      100.0000      100.0000    82461    0.00%
+
+Root node processing (before b&c):
+  Real time             =    2.99 sec. (3464.15 ticks)
+Sequential b&c:
+  Real time             =   17.11 sec. (18997.74 ticks)
+                          ------------
+Total (root+branch&cut) =   20.10 sec. (22461.89 ticks)
+Primal:	100
+Dual:	100
+Status:	Optimal
+Time:	20.11
+Sequence:
+	23
+	11
+	24
+	13
+	3
+	2
+	14
+	7
+	23
+	20
+	24
+	17
+	22
+	10
+	15
+	2
+	14
+	13
+	24
+	20
+	23
+	21
+	5
+	10
+	6
+	8
+	16
+	0
+	23
+	9
+	12
+	11
+	22
+	1
+	16
+	2
+	14
+	1
+	19
+	11
+	12
+	4
+	3
+	0
+	12
+	17
+	24
+	20
+	5
+	21
+	23
+	11
+	19
+	20
+	16
+	2
+	23
+	20
+	19
+	11
+	23
+	2
+	15
+	20
+	24
+	17
+	23
+	0
+	3
+	13
+	18
+	0
+	5
+	17
+	24
+	20
+	8
+	22
+	11
+	14
+	7
+	3
+	17
+	24
+	10
+	15
+	9
+	23
+	8
+	6
+	1
+	18
+	8
+	5
+	4
+	15
+	17
+	22
+	10
+	23

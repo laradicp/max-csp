@@ -1,0 +1,346 @@
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               597.72374612299996
+1 of 1 MIP starts provided solutions.
+MIP start 'm1' defined initial solution with objective 292.0000.
+Tried aggregator 1 time.
+MIP Presolve eliminated 18 rows and 0 columns.
+MIP Presolve modified 199 coefficients.
+Reduced MIP has 2703 rows, 6300 columns, and 102561 nonzeros.
+Reduced MIP has 6300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.16 sec. (209.38 ticks)
+Probing time = 0.03 sec. (18.96 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve modified 15 coefficients.
+Reduced MIP has 2703 rows, 6300 columns, and 102818 nonzeros.
+Reduced MIP has 6300 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.12 sec. (156.17 ticks)
+Probing time = 0.02 sec. (18.98 ticks)
+Clique table members: 1573.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 2.51 sec. (2833.92 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                          292.0000    45150.0000              --- 
+      0     0      300.0000   876      292.0000      300.0000     9140    2.74%
+*     0+    0                          300.0000      300.0000             0.00%
+      0     0        cutoff            300.0000      300.0000     9140    0.00%
+Elapsed time = 7.91 sec. (8625.11 ticks, tree = 0.01 MB, solutions = 2)
+
+Root node processing (before b&c):
+  Real time             =    7.91 sec. (8625.69 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    7.91 sec. (8625.69 ticks)
+Primal:	300
+Dual:	300
+Status:	Optimal
+Time:	7.95
+Sequence:
+	11
+	14
+	19
+	5
+	1
+	12
+	5
+	6
+	12
+	5
+	1
+	12
+	15
+	4
+	12
+	6
+	5
+	12
+	1
+	6
+	13
+	0
+	8
+	19
+	11
+	14
+	7
+	15
+	10
+	7
+	5
+	10
+	19
+	15
+	8
+	19
+	5
+	14
+	19
+	5
+	0
+	18
+	4
+	17
+	18
+	3
+	16
+	18
+	3
+	16
+	18
+	1
+	16
+	18
+	3
+	16
+	2
+	19
+	17
+	4
+	18
+	17
+	4
+	7
+	17
+	8
+	19
+	0
+	8
+	9
+	0
+	8
+	13
+	0
+	3
+	9
+	14
+	6
+	15
+	12
+	3
+	6
+	12
+	15
+	3
+	12
+	4
+	11
+	19
+	2
+	16
+	7
+	8
+	16
+	7
+	8
+	16
+	19
+	2
+	0
+	13
+	2
+	0
+	13
+	8
+	0
+	9
+	8
+	4
+	13
+	14
+	1
+	13
+	10
+	6
+	13
+	14
+	4
+	9
+	0
+	2
+	9
+	0
+	2
+	13
+	6
+	10
+	6
+	13
+	0
+	8
+	9
+	0
+	8
+	13
+	0
+	8
+	9
+	3
+	14
+	9
+	3
+	2
+	17
+	4
+	7
+	10
+	6
+	11
+	12
+	6
+	11
+	12
+	1
+	5
+	18
+	0
+	15
+	19
+	14
+	5
+	19
+	10
+	15
+	7
+	10
+	11
+	19
+	10
+	11
+	1
+	18
+	17
+	4
+	18
+	11
+	3
+	12
+	5
+	3
+	12
+	15
+	4
+	12
+	15
+	3
+	12
+	11
+	1
+	7
+	14
+	6
+	9
+	14
+	3
+	9
+	10
+	4
+	13
+	14
+	6
+	9
+	10
+	6
+	19
+	2
+	16
+	19
+	2
+	16
+	19
+	6
+	14
+	13
+	4
+	14
+	13
+	4
+	2
+	13
+	0
+	8
+	13
+	0
+	8
+	19
+	16
+	2
+	19
+	11
+	0
+	18
+	15
+	1
+	12
+	15
+	1
+	14
+	5
+	19
+	14
+	15
+	7
+	14
+	11
+	7
+	14
+	5
+	7
+	14
+	5
+	7
+	0
+	11
+	8
+	0
+	7
+	15
+	4
+	12
+	11
+	3
+	12
+	6
+	11
+	12
+	6
+	15
+	10
+	3
+	7
+	14
+	5
+	7
+	10
+	5
+	7
+	3
+	17
+	2
+	19
+	17
+	2
+	7
+	17
+	2
+	19
+	17
+	8
+	7
+	16
+	2
+	19
+	16
+	8
+	7
+	17
+	4
+	18
+	17
