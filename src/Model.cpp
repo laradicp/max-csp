@@ -12,6 +12,7 @@ Model::Model(string filePath, bool cumulative)
     data = Data(filePath, cumulative);
     minViolations = false;
     penalize = false;
+    branching = false;
     sos1Branching = false;
     firstViolationPos = data.getNbCars();
 }
@@ -479,6 +480,26 @@ bool Model::solve(double prevElapsedTime, vector<int>* initialSol)
             return true;
         }
 
+        // trivial lb
+        unscheduled.resize(data.getNbClasses());
+        for(int i = 0; i < data.getNbClasses(); i++)
+        {
+            unscheduled[i] = data.getNbCarsPerClass(i);
+
+            if((unscheduled[i] > 0)&&sequence.empty())
+            {
+                sequence.push_back(i);
+                unscheduled[i]--;
+            }
+        }
+
+        if(minViolations)
+        {
+            firstViolationPos = sequence.size();
+        }
+
+        primal = sequence.size();
+        dual = maxCSP.getBestObjValue();;
         status = maxCSP.getStatus();
         elapsedTime = maxCSP.getTime();
     }
