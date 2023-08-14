@@ -286,8 +286,8 @@ int Data::used(int r, int s, vector<int> &nbCarsPerScore, vector<vector<int>> &c
 {
     calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection);
 
-    int nbFittingCars = getMaxCarsPerWindow(s - 1)*
-        ((int)floor(lb[s - 1]/(getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))) + 1);
+    int nbFittingCars = getMaxCarsPerWindow(s - 1)*(int)floor(lb[r]/(double)getWindowSize(s - 1))
+        + min(getMaxCarsPerWindow(s - 1), lb[r]%getWindowSize(s - 1));
     if(r == s)
     {
         return min(nbFittingCars, nbCarsPerScore[s]);
@@ -349,7 +349,7 @@ void Data::calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &
     }
 
     int nbCarsToSchedule = max(min(getMaxCarsPerWindow(s - 1)*
-        ((int)floor(lb[s - 1]/(getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))) + 1),
+        ((int)floor(lb[s - 1]/(double)(getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))) + 1),
         nbCarsPerScore[s]) - violations, 0);
     
     // update primal solution
