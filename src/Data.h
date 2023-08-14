@@ -42,11 +42,11 @@ class Data
 
         void definePaths(string filePath);
 
-        int used(int r, int s, vector<double> &score, vector<int> &nbCarsPerScore,
-            vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection);
+        int used(int r, int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+            vector<vector<int>> &intersection);
 
-        void calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore,
-            vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection);
+        void calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+            vector<vector<int>> &intersection);
 
     public:
 

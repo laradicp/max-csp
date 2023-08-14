@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <math.h>
+#include <algorithm>
 
 Data::Data(string filePath, bool cumulative)
 {
@@ -65,6 +66,25 @@ void Data::readInstance(string filePath)
         instance >> windowSize[i];
     }
 
+    // sort the options by the score
+    vector<pair<double, int>> scoreIds;
+    for(int i = 0; i < nbOptions; i++)
+    {
+        scoreIds.push_back(
+            make_pair((double)(windowSize[i] - maxCarsPerWindow[i])/maxCarsPerWindow[i], i)
+        );
+    }
+    sort(scoreIds.begin(), scoreIds.end());
+    
+    // update maxCarsPerWindow and windowSize
+    vector<int> maxCarsPerWindowCopy = maxCarsPerWindow;
+    vector<int> windowSizeCopy = windowSize;
+    for(int i = 0; i < nbOptions; i++)
+    {
+        maxCarsPerWindow[i] = maxCarsPerWindowCopy[scoreIds[i].second];
+        windowSize[i] = windowSizeCopy[scoreIds[i].second];
+    }
+
     nbCarsPerClass.resize(nbClasses);
     options.resize(nbClasses);
     for(int i = 0; i < nbClasses; i++)
@@ -73,12 +93,13 @@ void Data::readInstance(string filePath)
         instance >> idx; // the index is ignored
 
         instance >> nbCarsPerClass[i];
-
+        
+        options[i].resize(nbOptions);
         for(int j = 0; j < nbOptions; j++)
         {
             int hasOption;
             instance >> hasOption;
-            options[i].push_back(hasOption == 1);
+            options[i][scoreIds[j].second] = hasOption == 1;
         }
     }
 
@@ -236,8 +257,9 @@ int Data::getUpperBound()
                 }
             }
 
-            surplus[j1] = nbCarsPerOption[j1] - ceil(getMaxCarsPerWindow(j1)*nbCars/
-                        (double)(getWindowSize(j1)));
+            surplus[j1] = nbCarsPerOption[j1] - (getMaxCarsPerWindow(j1)*
+                floor(nbCars/(double)(getWindowSize(j1))) +
+                min(getMaxCarsPerWindow(j1), nbCars%getWindowSize(j1)));
             surplus[j1] = max(surplus[j1], 0);
 
             for(int j2 = 0; j2 < j1; j2++)
@@ -259,22 +281,23 @@ int Data::getUpperBound()
     return ub;
 }
 
-int Data::used(int r, int s, vector<double> &score, vector<int> &nbCarsPerScore,
-    vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection)
+int Data::used(int r, int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+    vector<vector<int>> &intersection)
 {
-    calculateLB(s - 1, score, nbCarsPerScore, classesPerScore, intersection);
+    calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection);
 
-    int nbFittingCars = ceil(lb[s - 1]/score[s]);
+    int nbFittingCars = getMaxCarsPerWindow(s - 1)*
+        ((int)floor(lb[s - 1]/(getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))) + 1);
     if(r == s)
     {
         return min(nbFittingCars, nbCarsPerScore[s]);
     }
 
-    return used(r, s - 1, score, nbCarsPerScore, classesPerScore, intersection) + min(nbFittingCars, intersection[s][r]);
+    return used(r, s - 1, nbCarsPerScore, classesPerScore, intersection) + min(nbFittingCars, intersection[s][r]);
 }
 
-void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore,
-    vector<vector<int>> &classesPerScore, vector<vector<int>> &intersection)
+void Data::calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+    vector<vector<int>> &intersection)
 {
     if(lb[s] != -1)
     {
@@ -309,23 +332,25 @@ void Data::calculateLB(int s, vector<double> &score, vector<int> &nbCarsPerScore
         return;
     }
     
-    calculateLB(s - 1, score, nbCarsPerScore, classesPerScore, intersection);
+    calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection);
 
     int violations = 0;
     int usedPos = 0;
     if(s == 1)
     {
-        usedPos = used(s, s, score, nbCarsPerScore, classesPerScore, intersection);
+        usedPos = used(s, s, nbCarsPerScore, classesPerScore, intersection);
     }
     
     // r = 0 does not correspond to any option, therefore it is not used for violations
     for(int r = 1; r < s; r++)
     {
-        usedPos = used(r, s, score, nbCarsPerScore, classesPerScore, intersection);
+        usedPos = used(r, s, nbCarsPerScore, classesPerScore, intersection);
         violations += min(intersection[s][r], usedPos);
     }
 
-    int nbCarsToSchedule = max(min((int)ceil(lb[s - 1]/score[s]), nbCarsPerScore[s]) - violations, 0);
+    int nbCarsToSchedule = max(min(getMaxCarsPerWindow(s - 1)*
+        ((int)floor(lb[s - 1]/(getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))) + 1),
+        nbCarsPerScore[s]) - violations, 0);
     
     // update primal solution
     int nbScheduled = 0;
@@ -423,16 +448,9 @@ int Data::getLowerBound()
             unscheduled[i] = getNbCarsPerClass(i);
         }
 
-        vector<double> score(nbOptions + 1, 0);
         vector<int> nbCarsPerScore(nbOptions + 1, 0);
         vector<vector<int>> classesPerScore(nbOptions + 1, vector<int>(0, 0));
         vector<vector<int>> intersection(nbOptions + 1, vector<int>(nbOptions + 1, 0));
-
-        // Set scores
-        for(int s = 1; s < nbOptions + 1; s++)
-        {
-            score[s] = (getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))/(double)(getMaxCarsPerWindow(s - 1));
-        }
 
         // Set |M| and intersections
         for(int i = 0; i < nbClasses; i++)
@@ -477,7 +495,7 @@ int Data::getLowerBound()
             }
         }
         
-        calculateLB(nbOptions, score, nbCarsPerScore, classesPerScore, intersection);
+        calculateLB(nbOptions, nbCarsPerScore, classesPerScore, intersection);
 
         if(lb[nbOptions] == 0) // trivial solution
         {
