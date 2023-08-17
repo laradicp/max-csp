@@ -30,6 +30,7 @@ class Data
         chrono::duration<double> elapsedTimeUB;
 
         vector<int> lb;
+        vector<vector<int>> added;
         vector<int> primalSol;
         vector<int> unscheduled;
         chrono::duration<double> elapsedTimeLB;
@@ -42,10 +43,10 @@ class Data
 
         void definePaths(string filePath);
 
-        int used(int r, int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+        int calculateAdded(int r, int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
             vector<vector<int>> &intersection);
 
-        void calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+        int calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
             vector<vector<int>> &intersection);
 
     public:

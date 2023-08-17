@@ -11,10 +11,15 @@ struct GapTime
 {
     double gap;
     double time;
+    double timeNotExceeded;
     int count;
+    int countNotExceeded;
     int optimalCount;
-    GapTime(double gap, double time, int count, int optimalCount) :
-        gap(gap), time(time), count(count), optimalCount(optimalCount) {}
+    int smallestCount;
+    GapTime(double gap, double time, double timeNotExceeded, int count, int countNotExceeded,
+        int optimalCount, int smallestCount) :
+        gap(gap), time(time), timeNotExceeded(timeNotExceeded), count(count), countNotExceeded(countNotExceeded),
+        optimalCount(optimalCount), smallestCount(smallestCount) {}
 };
 
 GapTime readFile(string gapTimePath)
@@ -23,23 +28,29 @@ GapTime readFile(string gapTimePath)
 
     if(!inputFile.is_open())
     {
-        cout << "Error opening file " << gapTimePath << "/gap-time.txt for reading" << endl;
+        cout << "Error opening file " << gapTimePath << " for reading" << endl;
         exit(1);
     }
 
     double gap;
     double time;
+    double timeNotExceeded;
     int count;
+    int countNotExceeded;
     int optimalCount;
+    int smallestCount;
 
     inputFile >> gap;
     inputFile >> time;
+    inputFile >> timeNotExceeded;
     inputFile >> count;
+    inputFile >> countNotExceeded;
     inputFile >> optimalCount;
+    inputFile >> smallestCount;
 
     inputFile.close();
 
-    return GapTime(gap, time, count, optimalCount);
+    return GapTime(gap, time, timeNotExceeded, count, countNotExceeded, optimalCount, smallestCount);
 }
 
 string getMethodName(string method)
@@ -119,11 +130,10 @@ int main(int argc, char** argv)
         "sos1/desc-iterative/combinatorial/heuristic-primal", "sos1/desc-iterative/combinatorial",
         "sos1/heuristic-primal", "sos1"
     };
-    // methods["min-violations"].push_back("penalize");
 
     for(int i = 0; i < instanceSets.size(); i++)
     {
-        cout << "\\hline method & optimal (\\\%) & avg. gap (\\\%) & avg. time (s) \\\\ \\hline" << endl;
+        cout << "\\hline method & optimal (\\\%) & smallest (\\\%) & avg. gap (\\\%) & avg. time (s) & avg. time$^*$ (s) \\\\ \\hline" << endl;
         for(int j = 0; j < methods.size(); j++)
         {
             GapTime gapTime = readFile(
@@ -137,8 +147,9 @@ int main(int argc, char** argv)
             {
                 cout << getMethodName(methods[j]) << " & " << 
                     gapTime.optimalCount*100.0/gapTime.count << " & " <<
-                    gapTime.gap*100/gapTime.count << " & " << gapTime.time/gapTime.count <<
-                    " \\\\" << endl;
+                    gapTime.smallestCount*100.0/gapTime.count << " & " <<
+                    gapTime.gap*100/gapTime.count << " & " << gapTime.time/gapTime.count << " & " <<
+                    gapTime.timeNotExceeded/gapTime.countNotExceeded << " \\\\" << endl;
             }
         }
         cout << "\\hline" << endl << endl;

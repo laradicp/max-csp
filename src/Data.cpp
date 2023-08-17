@@ -281,27 +281,45 @@ int Data::getUpperBound()
     return ub;
 }
 
-int Data::used(int r, int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+int Data::calculateAdded(int r, int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
     vector<vector<int>> &intersection)
 {
-    calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection);
-
-    int nbFittingCars = getMaxCarsPerWindow(s - 1)*(int)floor(lb[r]/(double)getWindowSize(s - 1))
-        + min(getMaxCarsPerWindow(s - 1), lb[r]%getWindowSize(s - 1));
-    if(r == s)
+    if(added[r][s] != -1)
     {
-        return min(nbFittingCars, nbCarsPerScore[s]);
+        return added[r][s];
     }
 
-    return used(r, s - 1, nbCarsPerScore, classesPerScore, intersection) + min(nbFittingCars, intersection[s][r]);
+    if(r == s)
+    {
+        int violations = 0;
+        // u = 0 does not correspond to any option, therefore it is not used for violations
+        for(int u = 1; u < s; u++)
+        {
+            violations += min(
+                intersection[s][u], calculateAdded(u, s - 1, nbCarsPerScore, classesPerScore, intersection)
+            );
+        }
+
+        added[s][s] = max(min(getMaxCarsPerWindow(s - 1)*
+            ((int)floor(calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection)/
+            (double)(getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))) + 1),
+            nbCarsPerScore[s]) - violations, 0);
+    }
+    else
+    {
+        added[r][s] = calculateAdded(r, s - 1, nbCarsPerScore, classesPerScore, intersection) +
+            min(intersection[s][r], calculateAdded(s, s, nbCarsPerScore, classesPerScore, intersection));
+    }
+
+    return added[r][s];
 }
 
-void Data::calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
+int Data::calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &classesPerScore,
     vector<vector<int>> &intersection)
 {
     if(lb[s] != -1)
     {
-        return;
+        return lb[s];
     }
 
     if(s == 0)
@@ -329,28 +347,10 @@ void Data::calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &
 
         lb[s] = nbCarsPerScore[s];
 
-        return;
+        return lb[s];
     }
     
-    calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection);
-
-    int violations = 0;
-    int usedPos = 0;
-    if(s == 1)
-    {
-        usedPos = used(s, s, nbCarsPerScore, classesPerScore, intersection);
-    }
-    
-    // r = 0 does not correspond to any option, therefore it is not used for violations
-    for(int r = 1; r < s; r++)
-    {
-        usedPos = used(r, s, nbCarsPerScore, classesPerScore, intersection);
-        violations += min(intersection[s][r], usedPos);
-    }
-
-    int nbCarsToSchedule = max(min(getMaxCarsPerWindow(s - 1)*
-        ((int)floor(lb[s - 1]/(double)(getWindowSize(s - 1) - getMaxCarsPerWindow(s - 1))) + 1),
-        nbCarsPerScore[s]) - violations, 0);
+    int nbCarsToSchedule = calculateAdded(s, s, nbCarsPerScore, classesPerScore, intersection);
     
     // update primal solution
     int nbScheduled = 0;
@@ -432,7 +432,9 @@ void Data::calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &
         }
     }
 
-    lb[s] = lb[s - 1] + nbScheduled;
+    lb[s] = calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection) + nbScheduled;
+
+    return lb[s];
 }
 
 int Data::getLowerBound()
@@ -442,6 +444,7 @@ int Data::getLowerBound()
         auto start = chrono::system_clock::now();
 
         lb.resize(nbOptions + 1, -1);
+        added.resize(nbOptions + 1, vector<int>(nbOptions + 1, -1));
         unscheduled.resize(nbClasses);
         for(int i = 0; i < nbClasses; i++)
         {
@@ -494,10 +497,8 @@ int Data::getLowerBound()
                 classesPerScore[0].push_back(i);
             }
         }
-        
-        calculateLB(nbOptions, nbCarsPerScore, classesPerScore, intersection);
 
-        if(lb[nbOptions] == 0) // trivial solution
+        if(calculateLB(nbOptions, nbCarsPerScore, classesPerScore, intersection) == 0) // trivial solution
         {
             for(int i = 0; i < nbClasses; i++)
             {

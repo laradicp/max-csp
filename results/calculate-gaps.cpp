@@ -21,6 +21,7 @@ class Analytics
 
     private:
         int bestDual;
+        int bestPrimal;
         string instance;
         string heuristicInstance;
         unordered_map<string, int> primalBounds;
@@ -31,6 +32,7 @@ class Analytics
 Analytics::Analytics(string instance)
 {
     bestDual = __INT_MAX__;
+    bestPrimal = 0;
     this->instance = instance;
     if(instance.substr(instance.size() - 4, 4) == ".out")
     {
@@ -64,6 +66,10 @@ void Analytics::readFile(string path)
             line.find("Violation-free sequence bound:") != string::npos)
         {
             primalBounds[path] = stoi(line.substr(line.find(":") + 2));
+            if(primalBounds[path] > bestPrimal)
+            {
+                bestPrimal = primalBounds[path];
+            }
         }
         else if(line.find("Dual:") != string::npos)
         {
@@ -132,15 +138,21 @@ void Analytics::print(string path, string instanceSet)
 
     double sumGaps = 0;
     double sumTimes = 0;
+    double sumTimesNotExceeded = 0;
     int count = 0;
+    int countNotExceeded = 0;
     int optimalCount = 0;
+    int smallestCount = 0;
 
     if(inputFile.is_open())
     {
         inputFile >> sumGaps;
         inputFile >> sumTimes;
+        inputFile >> sumTimesNotExceeded;
         inputFile >> count;
+        inputFile >> countNotExceeded;
         inputFile >> optimalCount;
+        inputFile >> smallestCount;
 
         inputFile.close();    
     }
@@ -161,12 +173,24 @@ void Analytics::print(string path, string instanceSet)
 
     outputFile << sumGaps + (double)(bestDual - primalBounds[path])/primalBounds[path] << endl;
     outputFile << sumTimes + times[path] << endl;
+    if(times[path] < 599)
+    {
+        sumTimesNotExceeded += times[path];
+        countNotExceeded++;
+    }
+    outputFile << sumTimesNotExceeded << endl;
     outputFile << count + 1 << endl;
+    outputFile << countNotExceeded << endl;
     if(optimal[path])
     {
         optimalCount++;
     }
     outputFile << optimalCount << endl;
+    if(primalBounds[path] == bestPrimal)
+    {
+        smallestCount++;
+    }
+    outputFile << smallestCount << endl;
 
     outputFile.close();
 }
