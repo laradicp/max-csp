@@ -431,6 +431,28 @@ int Data::calculateLB(int s, vector<int> &nbCarsPerScore, vector<vector<int>> &c
             }
         }
     }
+    
+    if(primalSol.empty())
+    {
+        for(int iIdx = 0; iIdx < classesPerScore[s].size(); iIdx++)
+        {
+            for(; nbScheduled < nbCarsToSchedule; nbScheduled++)
+            {
+                if(unscheduled[classesPerScore[s][iIdx]] == 0)
+                {
+                    break;
+                }
+
+                primalSol.push_back(classesPerScore[s][iIdx]);
+                unscheduled[classesPerScore[s][iIdx]]--;
+            }
+
+            if(nbScheduled == nbCarsToSchedule)
+            {
+                break;
+            }
+        }
+    }
 
     lb[s] = calculateLB(s - 1, nbCarsPerScore, classesPerScore, intersection) + nbScheduled;
 
