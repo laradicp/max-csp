@@ -79,8 +79,10 @@ void Data::readInstance(string filePath)
     // update maxCarsPerWindow and windowSize
     vector<int> maxCarsPerWindowCopy = maxCarsPerWindow;
     vector<int> windowSizeCopy = windowSize;
+    vector <int> newId(nbOptions);
     for(int i = 0; i < nbOptions; i++)
     {
+        newId[scoreIds[i].second] = i;
         maxCarsPerWindow[i] = maxCarsPerWindowCopy[scoreIds[i].second];
         windowSize[i] = windowSizeCopy[scoreIds[i].second];
     }
@@ -99,7 +101,7 @@ void Data::readInstance(string filePath)
         {
             int hasOption;
             instance >> hasOption;
-            options[i][scoreIds[j].second] = hasOption == 1;
+            options[i][newId[j]] = hasOption == 1;
         }
     }
 

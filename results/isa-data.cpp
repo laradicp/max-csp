@@ -12,15 +12,16 @@ class PlotData
 {
     public:
 
-        PlotData(string instance, bool findMaxValues = false);
+        PlotData(string instance, string instanceSet, bool findMaxValues = false);
 
-        void printData(string path);
+        void printData();
 
     private:
 
         Data data;
 
         string instance;
+        string instanceSet;
 
         int nbOptions;
         int nbClasses;
@@ -39,9 +40,6 @@ class PlotData
         int maxNbOptions;
         int maxNbClasses;
         double maxAvgNbOptionsPerClass;
-
-        vector<double> coord;
-        vector<vector<double>> weights;
 
         int getNbCarsWithOption(int j);
         double getUtilization(int j);
@@ -86,11 +84,12 @@ int PlotData::getNbOptionsPerClass(int i)
     return nb;
 }
 
-PlotData::PlotData(string instance, bool findMaxValues)
+PlotData::PlotData(string instance, string instanceSet, bool findMaxValues)
 {
     this->instance = instance;
+    this->instanceSet = instanceSet;
 
-    data = Data("../instances/" + this->instance, false);
+    data = Data("../instances/" + this->instanceSet + this->instance, false);
 
     nbOptions = data.getNbOptions();
     nbClasses = data.getNbClasses();
@@ -144,7 +143,7 @@ PlotData::PlotData(string instance, bool findMaxValues)
     maxNbClasses = 0;
     maxAvgNbOptionsPerClass = 0;
 
-    ifstream inputFile("instance-plot-data-max-values.txt");
+    ifstream inputFile("isa-data-max-values.txt");
     if(inputFile.is_open())
     {
         inputFile >> maxNbOptions >> maxNbClasses >> maxAvgNbOptionsPerClass;
@@ -168,32 +167,12 @@ PlotData::PlotData(string instance, bool findMaxValues)
             maxAvgNbOptionsPerClass = avgNbOptionsPerClass;
         }
 
-        ofstream outputFile("instance-plot-data-max-values.txt");
+        ofstream outputFile("isa-data-max-values.txt");
         outputFile << maxNbOptions << " " << maxNbClasses << " " << maxAvgNbOptionsPerClass << endl;
 
         outputFile.close();
 
         return;
-    }
-
-    // Sun et al. (2022)
-    weights = {
-        {0.46417697, -0.13786325, -0.71876354, -0.36351993, 0.22506848, -0.25113443, -0.04415605, 0.03303967},
-        {0.13118315, 0.40042554, 0.03250308, -0.44927092, -0.33242684, 0.21863308, 0.59942745, 0.31926206}
-    };
-
-    coord = vector<double>(2, 0);
-    // multiply normalized features by weights and add to coord
-    for(int i = 0; i < 2; i++)
-    {
-        coord[i] = weights[i][0]*((double)nbOptions/maxNbOptions) +
-            weights[i][1]*((double)nbClasses/maxNbClasses) +
-            weights[i][2]*minUtilization +
-            weights[i][3]*avgUtilization +
-            weights[i][4]*stdUtilization +
-            weights[i][5]*avgNbOptionsPerClass/maxAvgNbOptionsPerClass +
-            weights[i][6]*avgMaxCarsWindowSizeRatio +
-            weights[i][7]*maxMaxCarsWindowSizeRatio;
     }
 }
 
@@ -213,6 +192,7 @@ double PlotData::calculateGap(string path)
     inputFile.close();
 
     int primalBound = data.getLowerBound();
+    // if no specified primal bound, use best primal bound
     if(path.find("instances") != string::npos)
     {
         inputFile.open("best-primal.txt");
@@ -251,48 +231,66 @@ double PlotData::calculateGap(string path)
     return (double)(dualBound - primalBound)/primalBound;
 }
 
-void PlotData::printData(string path)
+void PlotData::printData()
 {
-    cout << instance << " " << coord[0] << " " << coord[1] << " " << 100*calculateGap(path) << endl;
+    cout << instance << "\t" << (double)nbOptions/maxNbOptions << "\t" <<
+        (double)nbClasses/maxNbClasses << "\t" << minUtilization << "\t" <<
+        avgUtilization << "\t" << stdUtilization << "\t" <<
+        avgNbOptionsPerClass/maxAvgNbOptionsPerClass << "\t" <<
+        avgMaxCarsWindowSizeRatio << "\t" << maxMaxCarsWindowSizeRatio << "\t" <<
+        calculateGap("heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "regular/" + instance) << "\t" <<
+        calculateGap(instanceSet + "regular/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "asc-iterative/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "asc-iterative/heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "desc-iterative/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "desc-iterative/heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "binary/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "binary/heuristic-combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "branching/" + instance) << "\t" <<
+        calculateGap(instanceSet + "branching/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/asc-iterative/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/asc-iterative/heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/desc-iterative/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/desc-iterative/heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/binary/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/binary/heuristic-combinatorial/" + instance) << "\t" <<
+        endl;
 }
 
 string getInstanceName(string path)
 {
-    string instanceSet;
+    return path.substr(path.find_last_of("/") + 1);
+}
+
+string getInstanceSet(string path)
+{
     if(path.find(".in") != string::npos)
     {
-        instanceSet = "real";
+        return "real/";
     }
-    else
-    {
-        instanceSet = "literature";
-    }
-    return instanceSet + "/" + path.substr(path.find_last_of("/") + 1);
+    
+    return "literature/";
 }
 
 int main(int argc, char* argv[])
 {
     if(argc < 2)
     {
-        cout << "Usage: ./instance-plot-data <instance> -<flags>" << endl;
+        cout << "Usage: ./isa-data <instance> -<flags>" << endl;
         exit(1);
-    }
-
-    if((argc == 3)&&(strcmp(argv[2], "-maxvals") == 0))
-    {
-        PlotData plotData(getInstanceName(argv[1]), true);
-        return 0;
     }
 
     string instance = argv[1];
 
-    PlotData plotData(getInstanceName(instance));
-
-    if(instance.find("instances") != string::npos)
+    if((argc == 3)&&(strcmp(argv[2], "-maxvals") == 0))
     {
-        instance = instance.substr(instance.find_first_of("/") + 1);
+        PlotData plotData(getInstanceName(instance), getInstanceSet(instance), true);
+        return 0;
     }
-    plotData.printData(instance);
+
+    PlotData plotData(getInstanceName(instance), getInstanceSet(instance));
+    plotData.printData();
 
     return 0;
 }
