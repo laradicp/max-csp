@@ -1,423 +1,374 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998550400005
+CPXPARAM_TimeLimit                               599.99998243499999
 1 of 1 MIP starts provided solutions.
-MIP start 'm1' defined initial solution with objective 1.0000.
+MIP start 'm1' defined initial solution with objective 5.0000.
 Tried aggregator 1 time.
 MIP Presolve eliminated 13 rows and 0 columns.
 MIP Presolve modified 33 coefficients.
 Reduced MIP has 3013 rows, 13000 columns, and 271768 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.26 sec. (441.08 ticks)
-Probing time = 0.03 sec. (37.84 ticks)
+Presolve time = 0.27 sec. (441.08 ticks)
+Probing time = 0.04 sec. (37.84 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve modified 11 coefficients.
 Reduced MIP has 3013 rows, 13000 columns, and 271980 nonzeros.
 Reduced MIP has 13000 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.25 sec. (422.93 ticks)
-Probing time = 0.03 sec. (37.85 ticks)
+Presolve time = 0.27 sec. (422.93 ticks)
+Probing time = 0.04 sec. (37.85 ticks)
 Clique table members: 1748.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 55.61 sec. (80068.77 ticks)
+Root relaxation solution time = 62.40 sec. (85166.21 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                            1.0000   125250.0000              --- 
-      0     0      500.0000  2266        1.0000      500.0000    83517     --- 
+*     0+    0                            5.0000   125250.0000              --- 
+      0     0      500.0000  2262        5.0000      500.0000    88366     --- 
 *     0+    0                           99.0000      500.0000           405.05%
-      0     0      500.0000  2043       99.0000      Cuts: 44   169021  405.05%
-      0     0      500.0000  2084       99.0000     Cuts: 129   180826  405.05%
-*     0+    0                          100.0000      500.0000           400.00%
-      0     0      500.0000  1901      100.0000      Cuts: 62   247753  400.00%
-*     0+    0                          366.0000      500.0000            36.61%
-      0     0        cutoff            366.0000      500.0000   247753   36.61%
-      0     0      500.0000  1740      366.0000      Cuts: 65   258667   36.61%
-      0     0      500.0000  1735      366.0000      Cuts: 94   335987   36.61%
-Detecting symmetries...
-      0     0      500.0000  2118      366.0000      Cuts: 92   350175   36.61%
+      0     0      500.0000  1822       99.0000      Cuts: 56   180248  405.05%
+      0     0      500.0000  1697       99.0000      Cuts: 44   254623  405.05%
+*     0+    0                          103.0000      500.0000           385.44%
+      0     0      500.0000  2047      103.0000      Cuts: 45   340572  385.44%
+      0     0      500.0000  2266      103.0000     Cuts: 100   354168  385.44%
+*     0+    0                          318.0000      500.0000            57.23%
+Heuristic still looking.
+Heuristic still looking.
+Starting limited solution polishing.
 
-Clique cuts applied:  253
-Zero-half cuts applied:  63
+Clique cuts applied:  115
+Zero-half cuts applied:  28
 
 Root node processing (before b&c):
-  Real time             =  600.02 sec. (747036.76 ticks)
+  Real time             =  600.03 sec. (710732.94 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =  600.02 sec. (747036.76 ticks)
-Primal:	366
+Total (root+branch&cut) =  600.03 sec. (710732.94 ticks)
+Primal:	318
 Dual:	500
 Status:	Feasible
-Time:	600.1
+Time:	600.11
 Sequence:
 	3
-	20
-	9
-	20
-	21
-	22
-	9
-	20
-	9
-	20
-	9
-	13
 	10
-	13
-	9
-	20
-	10
-	3
+	7
 	11
-	24
-	17
+	4
+	10
 	20
+	13
 	9
 	13
 	22
 	10
-	18
+	21
 	1
-	21
+	20
+	11
 	22
+	20
+	11
 	10
 	21
 	20
+	22
+	10
+	20
 	9
+	20
+	22
+	18
+	20
+	4
+	10
+	13
 	11
 	9
 	22
-	21
 	20
-	2
+	21
+	13
+	20
+	24
+	20
+	13
+	9
+	22
+	9
+	11
+	18
 	10
 	4
-	11
-	18
-	20
-	11
-	9
-	22
-	3
-	11
-	11
-	20
 	10
-	22
-	18
-	20
-	11
-	22
-	20
-	11
-	3
-	22
-	18
-	22
-	11
-	20
 	7
-	10
-	3
-	24
-	20
-	17
 	11
+	18
+	20
+	4
 	10
+	2
+	20
 	21
-	13
-	10
-	2
-	20
-	11
+	1
 	23
-	22
-	9
-	20
-	20
 	0
-	9
-	13
-	10
+	18
 	20
-	20
-	10
-	17
-	22
-	9
-	13
-	10
-	20
-	15
-	2
-	10
-	17
-	11
-	2
-	15
-	9
-	20
-	17
+	4
 	10
 	7
-	0
+	19
+	7
+	1
+	21
+	20
+	2
+	19
 	23
 	11
-	3
+	21
 	20
+	2
+	19
+	2
+	20
+	21
+	22
+	23
+	15
+	23
+	13
+	21
+	1
+	7
+	19
 	6
-	20
-	20
+	13
+	3
+	11
 	10
-	7
-	0
-	9
 	20
 	3
 	11
-	20
-	13
-	9
-	20
 	11
-	22
+	10
+	20
+	21
+	11
 	23
 	0
 	14
-	13
-	15
-	10
-	23
-	20
-	6
-	20
-	13
-	11
-	17
-	13
-	10
-	22
-	9
-	20
-	11
-	16
-	9
-	22
-	17
-	11
-	20
-	18
-	13
-	2
-	19
-	7
-	20
-	0
 	20
 	11
 	10
-	3
-	20
-	18
-	0
-	7
-	22
-	10
-	18
-	0
-	18
-	13
-	3
-	11
-	20
 	2
 	11
-	23
-	22
-	18
-	11
-	24
-	10
-	11
-	3
-	20
-	24
-	21
-	22
-	9
 	20
 	1
-	11
-	11
-	17
-	20
-	24
-	19
-	13
-	10
-	11
-	9
-	13
-	17
-	10
-	20
-	10
-	20
-	2
-	11
-	13
-	10
-	3
-	22
-	11
-	20
-	9
-	15
-	22
-	11
-	10
-	9
-	15
-	22
-	20
-	11
-	3
-	22
-	11
-	10
-	13
-	20
-	9
-	22
-	17
-	10
-	20
-	13
 	0
-	10
 	2
 	20
-	21
-	20
-	10
-	21
-	20
-	10
-	17
-	24
-	20
-	17
-	10
-	7
-	0
-	9
-	13
-	3
 	11
+	20
 	2
-	19
+	0
 	18
-	13
+	20
+	20
+	10
+	20
 	3
 	11
 	2
 	19
-	7
-	1
-	21
+	20
+	20
+	11
+	11
+	19
+	20
+	10
+	11
 	13
-	23
-	0
+	4
+	10
 	23
 	11
 	17
-	22
-	9
-	20
-	3
 	11
-	7
-	19
-	7
+	20
+	13
+	11
+	20
+	4
+	10
+	10
+	11
+	20
+	4
+	11
+	20
+	0
+	9
+	11
+	4
+	20
+	11
+	3
+	13
+	11
+	3
+	13
 	10
 	4
 	13
-	9
-	16
-	23
-	24
+	10
 	17
-	13
-	9
-	0
-	2
+	11
+	11
+	4
 	20
-	21
-	1
-	2
-	0
-	18
-	20
-	21
-	20
-	2
-	0
-	18
+	10
 	22
+	13
+	11
+	20
+	9
+	22
+	4
+	11
+	14
+	20
+	9
+	10
+	4
+	11
+	13
+	18
+	10
+	20
 	17
 	11
 	2
-	19
-	7
-	1
-	21
-	10
-	7
-	19
-	2
+	0
+	9
 	20
 	21
 	22
+	2
+	19
 	18
-	0
-	23
 	11
 	3
-	13
-	9
-	8
+	10
+	7
+	0
 	7
 	10
-	17
-	24
-	2
+	3
+	20
+	18
+	0
+	7
+	10
+	3
+	11
+	23
 	15
-	23
-	20
-	12
-	13
-	23
-	0
-	18
-	22
-	21
-	20
 	2
-	19
+	10
+	17
+	11
 	2
 	11
 	17
-	22
+	20
 	18
-	0
-	7
 	10
+	2
+	0
+	20
+	20
+	10
+	11
+	23
+	10
+	11
+	22
+	21
+	20
+	10
+	13
+	23
+	10
+	20
+	9
+	11
+	21
+	13
+	23
+	10
+	2
+	20
+	11
+	22
+	10
+	4
+	20
+	11
+	4
+	10
+	11
+	1
+	20
+	10
+	4
+	20
+	11
+	11
+	20
+	24
 	3
+	13
+	11
+	17
+	10
+	20
+	20
 	11
 	2
+	20
+	9
 	11
+	2
+	1
+	21
+	10
+	13
+	4
+	10
+	20
+	22
+	15
+	2
+	20
+	9
+	22
+	17
+	10
+	7
+	20
+	21
+	22
+	18
+	24
+	17
+	22
+	9
+	13
+	4

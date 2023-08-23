@@ -1,9 +1,9 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998372699997
+CPXPARAM_TimeLimit                               599.99997680700005
 1 of 1 MIP starts provided solutions.
-MIP start 'm1' defined initial solution with objective 1.0000.
+MIP start 'm1' defined initial solution with objective 27.0000.
 Tried aggregator 2 times.
 MIP Presolve eliminated 43 rows and 1 columns.
 MIP Presolve added 36 rows and 9 columns.
@@ -24,291 +24,173 @@ Clique table members: 1791.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 1.05 sec. (1139.37 ticks)
+Root relaxation solution time = 0.93 sec. (1037.75 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                            1.0000    45150.0000              --- 
-      0     0      300.0000  1216        1.0000      300.0000     4549     --- 
+*     0+    0                           27.0000    45150.0000              --- 
+      0     0      300.0000  1190       27.0000      300.0000     4445     --- 
+*     0+    0                          154.0000      300.0000            94.81%
 *     0+    0                          300.0000      300.0000             0.00%
-      0     0        cutoff            300.0000      300.0000     4549    0.00%
-Elapsed time = 8.09 sec. (8832.62 ticks, tree = 0.01 MB, solutions = 2)
+      0     0        cutoff            300.0000      300.0000     4445    0.00%
+Elapsed time = 7.40 sec. (8005.18 ticks, tree = 0.01 MB, solutions = 3)
 
 Root node processing (before b&c):
-  Real time             =    8.09 sec. (8832.86 ticks)
+  Real time             =    7.40 sec. (8005.47 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    8.09 sec. (8832.86 ticks)
+Total (root+branch&cut) =    7.40 sec. (8005.47 ticks)
 Primal:	300
 Dual:	300
 Status:	Optimal
-Time:	8.12
+Time:	7.42
 Sequence:
 	12
-	7
+	0
+	10
+	9
+	13
+	10
+	9
+	1
+	16
+	9
+	1
 	16
 	12
-	1
+	5
+	16
+	12
+	4
+	16
+	12
+	5
 	16
 	9
-	1
-	16
-	9
-	1
-	16
-	2
-	15
-	0
-	18
-	3
-	0
-	18
-	3
+	5
 	13
-	2
+	12
+	6
+	13
+	9
+	6
+	13
+	9
 	10
-	19
-	2
-	6
-	15
-	8
-	6
-	15
+	0
+	9
+	10
+	7
 	17
-	6
-	3
+	11
+	1
 	8
-	10
-	3
+	11
+	7
 	17
+	11
+	7
+	17
+	15
+	10
+	2
+	19
 	6
-	3
+	2
+	19
+	7
+	18
+	0
+	7
+	9
+	16
+	1
+	9
+	10
+	13
+	9
+	10
+	13
+	12
+	6
+	13
+	9
+	6
+	4
+	19
+	18
+	1
+	19
+	2
+	10
+	19
+	5
+	2
+	11
+	7
+	17
+	11
+	1
 	8
+	3
 	7
-	11
-	2
-	0
-	11
-	2
-	13
-	11
-	2
-	0
-	11
-	2
-	13
-	11
-	2
-	0
-	11
-	2
-	13
-	6
-	9
-	13
-	10
-	9
-	13
-	5
-	12
-	16
-	5
-	9
-	13
-	6
+	18
+	19
 	4
-	12
-	10
-	13
-	9
-	7
-	16
-	5
-	12
-	16
-	7
-	12
-	16
+	18
+	19
 	1
-	9
-	16
+	18
+	19
 	7
-	12
-	16
+	18
+	19
 	4
-	9
-	13
 	10
 	9
-	13
-	10
-	12
 	0
 	6
 	9
 	0
+	10
+	12
+	13
 	6
 	12
 	0
+	6
+	12
+	13
+	6
+	9
+	13
 	10
-	9
-	13
-	6
-	12
-	13
-	10
-	9
-	13
-	6
 	12
 	13
 	6
 	9
-	5
-	16
-	12
-	5
-	16
-	9
-	5
-	16
-	9
+	0
 	7
+	9
 	16
-	9
 	5
+	9
 	16
-	12
 	5
+	9
 	16
-	9
-	5
-	16
-	9
-	5
-	0
-	9
-	6
-	5
-	9
-	10
-	1
-	19
-	18
-	4
-	19
-	18
-	1
-	19
-	18
-	7
-	19
-	18
 	4
 	3
 	14
-	7
-	15
-	14
-	1
-	15
-	17
-	6
-	3
-	8
-	6
-	3
-	8
-	6
-	15
-	8
-	6
-	3
-	8
-	10
-	3
-	8
-	10
-	3
-	17
-	10
-	15
-	17
-	6
-	15
-	17
-	10
-	3
-	13
-	18
-	15
-	7
-	14
-	3
-	1
-	14
-	3
-	7
-	8
-	11
-	5
-	8
-	11
-	4
-	2
-	19
-	10
-	2
-	19
-	10
-	2
-	19
-	6
-	2
-	3
-	0
-	18
-	15
-	13
-	18
-	3
-	4
-	18
-	19
-	4
-	18
-	13
-	7
-	12
-	13
-	4
-	18
-	19
-	1
-	18
-	19
-	1
-	10
-	19
-	2
-	10
-	19
-	2
-	6
-	19
-	2
-	5
-	11
-	8
-	5
-	11
-	8
 	4
 	15
 	14
-	1
+	4
+	15
+	14
+	7
 	3
 	14
 	1
@@ -316,33 +198,152 @@ Sequence:
 	14
 	7
 	15
+	14
+	4
+	3
+	14
+	4
+	3
+	14
+	4
+	15
+	16
+	2
+	3
+	16
+	2
+	15
+	13
+	5
+	12
+	16
+	5
+	9
+	16
+	1
+	12
+	16
+	5
+	15
+	8
+	6
+	3
+	17
+	10
+	3
+	8
+	6
+	3
+	17
+	6
+	3
+	8
+	10
+	3
+	8
+	6
+	3
+	17
+	1
+	11
 	8
 	5
+	11
+	8
+	1
+	11
+	17
+	4
+	11
+	8
+	1
 	11
 	2
 	0
 	11
+	2
+	13
+	11
+	2
+	0
+	11
+	2
+	13
+	11
+	2
+	0
+	11
+	2
+	13
+	3
+	18
+	13
+	3
+	18
+	0
+	15
+	18
+	13
+	1
+	9
+	16
+	5
+	12
+	16
+	5
+	12
+	10
+	13
+	2
+	10
+	19
+	2
+	6
+	5
+	8
+	15
+	6
+	17
+	15
+	6
+	8
+	15
+	6
+	8
+	3
+	6
+	17
+	3
+	10
+	8
+	3
+	10
+	2
+	15
+	16
+	2
+	15
+	5
+	2
+	11
 	5
 	8
 	11
-	1
-	17
-	11
-	4
+	5
 	8
-	11
-	7
-	17
-	11
-	4
-	17
-	11
-	1
-	17
 	15
 	7
-	14
-	15
-	4
 	14
 	3
+	1
+	18
+	19
+	7
+	18
+	19
+	7
+	18
+	19
+	4
+	18
+	19

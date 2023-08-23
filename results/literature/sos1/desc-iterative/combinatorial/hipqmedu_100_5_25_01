@@ -1,9 +1,9 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998425199999
+CPXPARAM_TimeLimit                               599.99997880499996
 1 of 1 MIP starts provided solutions.
-MIP start 'm1' defined initial solution with objective 1.0000.
+MIP start 'm1' defined initial solution with objective 8.0000.
 Tried aggregator 2 times.
 MIP Presolve eliminated 34 rows and 1 columns.
 MIP Presolve added 28 rows and 7 columns.
@@ -23,125 +23,125 @@ Clique table members: 101.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.07 sec. (84.70 ticks)
+Root relaxation solution time = 0.10 sec. (108.96 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                            1.0000     5050.0000              --- 
-      0     0      100.0000   167        1.0000      100.0000      939     --- 
+*     0+    0                            8.0000     5050.0000              --- 
+      0     0      100.0000   176        8.0000      100.0000     1120     --- 
 *     0+    0                          100.0000      100.0000             0.00%
-      0     0        cutoff            100.0000      100.0000      939    0.00%
-Elapsed time = 0.40 sec. (396.50 ticks, tree = 0.01 MB, solutions = 2)
+      0     0        cutoff            100.0000      100.0000     1120    0.00%
+Elapsed time = 0.50 sec. (489.00 ticks, tree = 0.01 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    0.40 sec. (396.60 ticks)
+  Real time             =    0.50 sec. (489.10 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.40 sec. (396.60 ticks)
+Total (root+branch&cut) =    0.50 sec. (489.10 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	0.42
+Time:	0.5
 Sequence:
-	19
-	5
-	13
-	8
-	4
-	11
-	13
-	3
-	7
+	9
 	13
 	20
-	16
 	22
-	18
-	5
-	21
-	2
-	1
-	23
-	21
-	5
 	13
-	23
-	8
-	13
-	7
-	20
-	24
-	14
-	14
-	16
 	17
 	22
+	5
+	13
+	15
+	1
+	22
+	13
 	20
 	10
-	23
-	4
+	16
+	2
+	2
 	6
+	7
+	24
+	23
+	20
+	12
+	0
+	18
+	23
+	8
+	21
+	14
+	17
 	13
+	14
+	1
+	23
+	7
+	1
+	19
+	14
+	16
+	7
+	23
+	24
+	20
+	18
+	19
+	24
+	18
+	20
+	11
+	24
+	9
+	4
+	0
+	23
+	18
+	8
+	16
 	4
 	8
-	2
+	8
+	21
+	17
+	19
+	15
 	24
-	6
+	4
+	9
+	20
+	24
+	12
+	7
+	16
+	13
+	14
+	3
+	10
+	2
 	2
 	21
-	16
-	14
-	14
-	17
-	3
-	2
-	1
-	15
-	0
-	18
-	20
 	23
-	24
-	12
-	10
-	20
-	0
-	4
-	6
-	24
-	12
-	22
-	20
-	1
-	15
-	9
-	16
-	18
-	9
 	2
+	16
 	6
-	19
-	24
-	7
+	4
+	4
 	11
+	6
+	24
+	14
+	5
 	1
+	7
+	9
+	17
 	14
-	9
-	4
-	18
-	8
-	9
-	24
+	3
+	6
 	15
-	19
-	17
-	24
-	14
-	23
-	16
-	7
-	23
-	17
-	7
+	5

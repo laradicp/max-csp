@@ -1,13 +1,13 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99087159700002
+CPXPARAM_TimeLimit                               599.99542397499999
 Tried aggregator 1 time.
 MIP Presolve eliminated 402 rows and 774 columns.
 Reduced MIP has 2319 rows, 3870 columns, and 35775 nonzeros.
 Reduced MIP has 3870 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.04 sec. (25.78 ticks)
-Probing time = 0.00 sec. (5.10 ticks)
+Presolve time = 0.03 sec. (25.78 ticks)
+Probing time = 0.01 sec. (5.10 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 2319 rows, 3870 columns, and 35775 nonzeros.
@@ -18,26 +18,26 @@ Clique table members: 1541.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.11 sec. (104.05 ticks)
+Root relaxation solution time = 0.13 sec. (108.46 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000   559                      0.0000     1344         
+      0     0        0.0000   727                      0.0000     1491         
 *     0+    0                            0.0000        0.0000             0.00%
-      0     0        cutoff              0.0000        0.0000     1344    0.00%
-Elapsed time = 0.79 sec. (656.90 ticks, tree = 0.01 MB, solutions = 1)
+      0     0        cutoff              0.0000        0.0000     1491    0.00%
+Elapsed time = 0.76 sec. (592.25 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.79 sec. (657.04 ticks)
+  Real time             =    0.76 sec. (592.39 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.79 sec. (657.04 ticks)
+Total (root+branch&cut) =    0.76 sec. (592.39 ticks)
 Primal:	387
 Dual:	387
 Status:	Optimal
-Time:	0.838945
+Time:	0.788385
 Sequence:
 	7
 	9
@@ -47,16 +47,16 @@ Sequence:
 	9
 	7
 	9
-	9
+	5
 	9
 	9
 	9
 	7
 	9
 	9
-	9
-	9
 	4
+	5
+	9
 	7
 	9
 	9
@@ -72,15 +72,15 @@ Sequence:
 	7
 	9
 	5
-	9
-	5
+	4
+	10
 	4
 	11
 	4
 	9
 	9
 	9
-	9
+	4
 	7
 	9
 	9
@@ -119,308 +119,308 @@ Sequence:
 	4
 	7
 	9
-	5
 	9
-	9
-	4
-	7
 	9
 	5
-	4
-	9
-	9
-	7
-	4
-	9
-	5
-	9
-	4
+	2
 	7
 	9
 	9
 	4
 	9
+	9
+	7
 	4
+	9
+	5
+	9
+	4
+	4
+	9
+	9
+	7
+	9
+	10
+	4
+	9
+	5
+	0
+	9
+	7
+	0
+	4
+	4
+	10
+	4
+	4
+	11
+	4
+	2
+	9
+	5
+	2
 	7
 	9
 	5
 	0
 	5
+	9
+	7
 	4
-	11
+	9
+	5
 	4
+	2
+	7
+	9
+	1
+	0
+	1
+	9
+	7
 	4
 	10
 	2
+	1
+	9
+	7
 	4
+	1
+	4
+	1
+	4
+	7
+	0
+	9
+	9
+	4
+	0
+	7
+	4
+	2
+	4
+	5
+	2
+	7
+	4
+	0
+	4
+	1
+	4
+	7
+	2
+	1
+	4
+	1
+	0
 	3
 	4
+	4
+	2
+	1
+	4
+	7
+	9
+	0
+	5
+	4
+	2
+	7
+	4
+	9
+	4
+	5
+	0
+	7
+	9
+	2
+	4
 	5
 	9
+	7
+	0
+	4
 	5
-	2
+	0
+	5
+	9
+	7
+	9
+	4
+	5
+	0
+	4
 	11
 	4
 	5
-	0
-	4
-	5
-	0
-	1
-	9
-	7
-	4
 	2
-	5
-	9
-	0
-	7
-	9
-	0
-	4
-	4
-	10
-	2
-	5
-	9
-	7
-	4
-	1
-	4
-	1
-	4
-	7
-	0
-	9
 	10
 	4
-	0
 	7
-	4
-	10
-	4
+	0
 	5
-	2
-	7
-	4
+	9
 	0
-	4
-	1
 	4
 	11
+	9
 	2
 	5
 	4
-	1
-	0
+	9
 	11
-	4
-	4
-	2
-	1
-	4
-	11
-	4
-	0
-	5
-	4
-	9
-	7
-	0
-	5
-	4
-	10
-	4
-	7
-	2
-	5
-	4
-	9
-	4
-	7
 	0
 	4
 	5
-	0
-	4
-	7
-	0
 	9
 	4
-	5
-	9
 	7
 	2
 	4
+	9
 	5
 	2
-	4
-	7
-	9
-	0
-	5
-	9
-	0
-	7
-	9
-	5
-	9
-	2
-	4
-	7
-	2
-	1
-	4
-	5
-	9
 	7
 	4
 	2
-	4
-	1
-	2
-	11
-	4
-	4
-	1
-	2
-	9
-	7
-	4
-	2
-	5
-	4
-	9
-	7
-	0
-	5
-	4
-	0
-	9
-	7
-	4
-	0
-	5
-	4
-	9
-	7
-	2
-	5
-	4
-	1
-	4
-	7
-	2
-	5
-	4
-	1
-	0
-	7
-	9
-	2
-	10
-	4
-	0
-	7
-	4
-	10
-	0
-	1
-	9
-	7
-	4
-	0
-	1
-	4
-	0
-	7
-	4
-	2
-	5
-	4
-	2
-	7
-	9
-	5
-	9
-	5
-	0
-	7
-	4
-	9
-	4
-	4
-	2
-	7
-	9
-	4
-	5
-	0
-	5
-	9
-	2
-	7
-	4
-	0
-	1
-	9
-	2
-	9
-	7
-	0
-	4
-	1
-	2
-	9
-	7
-	9
-	10
 	4
 	5
 	0
 	7
 	4
 	1
-	9
-	2
+	4
+	0
 	5
 	4
 	11
 	4
+	10
+	9
 	2
-	4
-	1
 	4
 	7
 	0
 	4
+	1
+	4
+	5
+	2
+	1
+	4
+	7
+	2
+	4
+	5
+	0
+	4
+	7
+	0
+	1
+	9
+	0
+	4
+	7
+	2
+	4
 	10
+	2
+	9
+	7
+	4
+	0
+	5
+	4
+	2
+	7
+	9
+	4
+	5
+	9
+	9
+	7
+	4
+	9
+	5
+	2
+	4
+	11
+	2
+	4
+	5
+	0
+	4
+	7
+	0
+	5
+	4
+	9
+	5
+	9
+	7
+	2
+	1
+	4
+	1
+	2
+	9
+	7
+	9
+	10
+	4
+	4
+	0
+	7
+	9
+	5
+	9
+	0
+	4
+	7
 	0
 	10
-	9
+	4
+	1
+	0
 	11
 	9
-	2
-	4
 	5
-	0
+	4
 	1
 	4
 	7
-	9
+	0
 	4
-	9
+	5
+	0
+	4
+	7
+	0
 	10
+	9
+	5
+	9
+	11
+	4
+	5
+	0
+	1
+	4
+	7
+	9
+	4
+	1
+	2
 	4
 	7
 	2
 	5
 	4
 	1
-	0
+	2
 	7
 	4
-	1
+	10
 	4
 	5
 	9

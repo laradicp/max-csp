@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99763016600002
+CPXPARAM_TimeLimit                               599.99777713200001
 Tried aggregator 1 time.
 MIP Presolve eliminated 13 rows and 0 columns.
 MIP Presolve modified 6 coefficients.
@@ -19,133 +19,52 @@ Clique table members: 199.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.13 sec. (140.76 ticks)
+Root relaxation solution time = 0.14 sec. (153.16 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000   450                      0.0000     1250         
-      0     2        0.0000   162                      0.0000     1250         
-Elapsed time = 3.55 sec. (3847.80 ticks, tree = 0.01 MB, solutions = 0)
-      1     3        0.0000   308                      0.0000     3551         
-      2     4        0.0000   306                      0.0000     5342         
-      3     5        0.0000   385                      0.0000     6821         
-      5     7        0.0000   335                      0.0000     7487         
-      7     9        0.0000   357                      0.0000     8131         
-      9    11        0.0000   357                      0.0000     9627         
-     10    12        0.0000   306                      0.0000     9652         
-     12    14        0.0000   308                      0.0000    10114         
-     13    15        0.0000   357                      0.0000    11288         
-     21    23        0.0000   373                      0.0000    13383         
-Elapsed time = 7.49 sec. (8289.16 ticks, tree = 0.10 MB, solutions = 0)
-     28    30        0.0000   446                      0.0000    15951         
-     35    37        0.0000   305                      0.0000    17852         
-     40    42        0.0000   422                      0.0000    19832         
-     44    46        0.0000   417                      0.0000    23190         
-     50    52        0.0000   337                      0.0000    26474         
-     57    59        0.0000   298                      0.0000    29619         
-     64    66        0.0000   293                      0.0000    31853         
-     69    71        0.0000   225                      0.0000    37853         
-     73    75        0.0000   278                      0.0000    42752         
-*    80+    2                            0.0000        0.0000             0.00%
+      0     0        0.0000   474                      0.0000     1288         
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000     1288    0.00%
+Elapsed time = 2.08 sec. (2301.40 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    3.55 sec. (3847.75 ticks)
+  Real time             =    2.08 sec. (2301.48 ticks)
 Sequential b&c:
-  Real time             =   14.14 sec. (15418.92 ticks)
+  Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =   17.69 sec. (19266.66 ticks)
+Total (root+branch&cut) =    2.08 sec. (2301.48 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	17.7036
+Time:	2.10024
 Sequence:
-	4
-	2
+	14
+	18
 	8
+	6
 	2
-	4
-	24
-	0
-	2
-	8
-	18
-	12
-	24
-	21
-	6
-	17
-	16
-	14
-	10
-	0
-	18
-	5
-	16
-	0
-	10
-	6
-	14
-	24
-	6
-	7
-	9
-	23
-	3
-	22
-	19
-	14
-	13
-	3
-	6
-	22
-	3
-	18
-	11
-	7
-	0
-	15
-	20
-	2
-	17
-	19
-	14
-	13
-	1
-	18
-	22
-	3
-	6
 	5
 	18
-	21
-	15
-	19
-	15
-	17
-	19
-	14
-	22
-	3
-	13
-	2
+	4
+	10
+	12
+	24
+	18
 	20
 	22
-	3
-	2
-	17
-	7
-	21
-	15
 	12
-	7
-	8
-	6
-	1
-	15
-	4
-	7
+	16
 	9
+	18
+	8
+	2
+	3
+	10
+	14
+	19
+	17
 	2
 	3
 	13
@@ -154,9 +73,70 @@ Sequence:
 	11
 	23
 	21
+	22
+	14
+	19
+	15
+	0
+	7
+	15
+	2
+	21
 	13
+	14
+	19
+	15
+	6
+	20
+	15
+	0
+	16
+	9
+	6
+	3
+	13
+	3
+	6
+	11
+	7
+	4
+	24
+	21
+	2
+	17
+	7
+	3
+	22
+	1
+	13
+	4
+	24
+	0
+	2
+	8
+	6
+	3
+	22
+	14
+	19
+	17
+	23
+	21
+	15
+	0
+	7
+	11
+	18
+	3
+	22
 	20
 	2
-	11
+	5
+	7
+	6
+	13
+	1
+	2
+	17
 	7
 	4

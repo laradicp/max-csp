@@ -1,20 +1,8 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99839621900003
-Found incumbent of value 0.000000 after 0.00 sec. (0.22 ticks)
-
-Root node processing (before b&c):
-  Real time             =    0.00 sec. (0.24 ticks)
-Sequential b&c:
-  Real time             =    0.00 sec. (0.00 ticks)
-                          ------------
-Total (root+branch&cut) =    0.00 sec. (0.24 ticks)
-Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
-CPXPARAM_Threads                                 1
-CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.98772314300004
-Found incumbent of value 0.000000 after 0.00 sec. (0.25 ticks)
+CPXPARAM_TimeLimit                               599.99736713499999
+Found incumbent of value 0.000000 after 0.00 sec. (0.26 ticks)
 
 Root node processing (before b&c):
   Real time             =    0.00 sec. (0.29 ticks)
@@ -25,8 +13,8 @@ Total (root+branch&cut) =    0.00 sec. (0.29 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.97650471300005
-Found incumbent of value 0.000000 after 0.00 sec. (0.27 ticks)
+CPXPARAM_TimeLimit                               599.97448687999997
+Found incumbent of value 0.000000 after 0.00 sec. (0.28 ticks)
 
 Root node processing (before b&c):
   Real time             =    0.00 sec. (0.31 ticks)
@@ -37,7 +25,7 @@ Total (root+branch&cut) =    0.00 sec. (0.31 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.96425804299997
+CPXPARAM_TimeLimit                               599.955540058
 Found incumbent of value 0.000000 after 0.00 sec. (0.28 ticks)
 
 Root node processing (before b&c):
@@ -49,19 +37,44 @@ Total (root+branch&cut) =    0.00 sec. (0.32 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.95170725499997
-Found incumbent of value 0.000000 after 0.00 sec. (0.30 ticks)
+CPXPARAM_TimeLimit                               599.93783877800001
+Tried aggregator 1 time.
+MIP Presolve eliminated 189 rows and 519 columns.
+MIP Presolve modified 1 coefficients.
+Reduced MIP has 1034 rows, 1557 columns, and 13495 nonzeros.
+Reduced MIP has 1557 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (7.67 ticks)
+Probing time = 0.00 sec. (2.44 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 1034 rows, 1557 columns, and 13495 nonzeros.
+Reduced MIP has 1557 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (8.46 ticks)
+Probing time = 0.00 sec. (2.44 ticks)
+Clique table members: 684.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.01 sec. (10.21 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0        0.0000    56                      0.0000      330         
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000      330    0.00%
+Elapsed time = 0.12 sec. (87.12 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.00 sec. (0.33 ticks)
+  Real time             =    0.12 sec. (87.18 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.00 sec. (0.33 ticks)
+Total (root+branch&cut) =    0.12 sec. (87.18 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.93896752900002
+CPXPARAM_TimeLimit                               599.80665052300003
 Tried aggregator 1 time.
 MIP Presolve eliminated 190 rows and 522 columns.
 MIP Presolve modified 1 coefficients.
@@ -79,26 +92,26 @@ Clique table members: 688.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.01 sec. (9.60 ticks)
+Root relaxation solution time = 0.01 sec. (9.53 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000    40                      0.0000      306         
+      0     0        0.0000    84                      0.0000      324         
 *     0+    0                            0.0000        0.0000             0.00%
-      0     0        cutoff              0.0000        0.0000      306    0.00%
-Elapsed time = 0.11 sec. (89.66 ticks, tree = 0.01 MB, solutions = 1)
+      0     0        cutoff              0.0000        0.0000      324    0.00%
+Elapsed time = 0.09 sec. (74.35 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.11 sec. (89.72 ticks)
+  Real time             =    0.09 sec. (74.41 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.11 sec. (89.72 ticks)
+Total (root+branch&cut) =    0.09 sec. (74.41 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.82119330399996
+CPXPARAM_TimeLimit                               599.70568797199996
 Tried aggregator 1 time.
 MIP Presolve eliminated 191 rows and 525 columns.
 MIP Presolve modified 1 coefficients.
@@ -116,26 +129,26 @@ Clique table members: 692.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.01 sec. (10.92 ticks)
+Root relaxation solution time = 0.01 sec. (9.52 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000    60                      0.0000      329         
+      0     0        0.0000   124                      0.0000      311         
 *     0+    0                            0.0000        0.0000             0.00%
-      0     0        cutoff              0.0000        0.0000      329    0.00%
-Elapsed time = 0.10 sec. (94.47 ticks, tree = 0.01 MB, solutions = 1)
+      0     0        cutoff              0.0000        0.0000      311    0.00%
+Elapsed time = 0.11 sec. (91.41 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.10 sec. (94.53 ticks)
+  Real time             =    0.11 sec. (91.48 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.10 sec. (94.53 ticks)
+Total (root+branch&cut) =    0.11 sec. (91.48 ticks)
 Primal:	175
 Dual:	175
 Status:	Optimal
-Time:	0.290367
+Time:	0.414577
 Sequence:
 	1
 	4
@@ -145,28 +158,18 @@ Sequence:
 	4
 	9
 	9
-	4
+	9
 	0
 	5
 	9
 	9
 	9
-	9
+	4
 	1
 	9
 	0
 	9
-	3
 	9
-	9
-	9
-	0
-	9
-	9
-	0
-	9
-	9
-	0
 	9
 	9
 	9
@@ -180,14 +183,24 @@ Sequence:
 	9
 	9
 	9
+	0
+	9
+	9
+	0
+	9
 	9
 	0
 	9
 	9
 	9
-	9
+	4
 	0
 	9
+	9
+	9
+	9
+	9
+	8
 	9
 	9
 	8
@@ -199,12 +212,12 @@ Sequence:
 	9
 	0
 	9
-	9
+	5
 	0
 	9
 	9
 	1
-	9
+	0
 	9
 	1
 	9
@@ -213,101 +226,101 @@ Sequence:
 	9
 	0
 	9
+	9
+	9
+	0
+	9
+	3
+	0
+	9
+	9
+	0
+	4
+	9
+	0
+	1
 	9
 	8
 	9
-	9
-	3
-	9
-	9
-	9
-	9
-	9
-	0
-	9
-	1
-	9
-	8
-	9
 	5
 	0
 	1
-	9
-	0
-	10
-	9
-	0
-	4
-	3
-	4
-	5
-	0
-	5
-	9
-	5
-	0
-	4
-	5
-	0
-	5
-	4
-	0
-	1
-	4
-	0
-	5
-	4
-	0
-	5
 	9
 	0
 	11
-	4
-	0
-	9
-	10
-	0
-	4
-	4
 	9
 	0
 	4
 	1
+	4
 	0
 	4
 	11
-	0
-	4
-	1
-	0
-	5
-	4
-	0
-	5
 	9
 	5
 	0
-	1
-	9
-	1
+	4
+	5
 	0
-	1
+	5
 	4
 	0
+	1
 	4
 	3
 	9
+	0
+	9
 	5
 	0
 	5
 	4
+	10
 	0
-	5
-	4
+	3
+	9
 	1
+	4
 	0
 	9
 	1
+	4
+	0
+	5
+	4
+	0
+	5
+	4
+	0
+	4
+	5
+	0
+	9
+	5
+	9
+	0
+	4
+	1
+	9
+	1
+	9
+	1
+	0
+	3
+	4
+	0
+	9
+	5
+	0
+	9
+	10
+	4
+	5
+	9
+	1
+	0
+	9
+	5
 	4
 	0
 	4

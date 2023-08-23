@@ -1,43 +1,19 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99850947499999
-Found incumbent of value 0.000000 after 0.00 sec. (0.18 ticks)
-
-Root node processing (before b&c):
-  Real time             =    0.00 sec. (0.21 ticks)
-Sequential b&c:
-  Real time             =    0.00 sec. (0.00 ticks)
-                          ------------
-Total (root+branch&cut) =    0.00 sec. (0.21 ticks)
-Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
-CPXPARAM_Threads                                 1
-CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.98906306100002
+CPXPARAM_TimeLimit                               599.998360413
 Found incumbent of value 0.000000 after 0.00 sec. (0.22 ticks)
 
 Root node processing (before b&c):
-  Real time             =    0.00 sec. (0.24 ticks)
+  Real time             =    0.00 sec. (0.25 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.00 sec. (0.24 ticks)
+Total (root+branch&cut) =    0.00 sec. (0.25 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.97931469900004
-Found incumbent of value 0.000000 after 0.00 sec. (0.23 ticks)
-
-Root node processing (before b&c):
-  Real time             =    0.00 sec. (0.26 ticks)
-Sequential b&c:
-  Real time             =    0.00 sec. (0.00 ticks)
-                          ------------
-Total (root+branch&cut) =    0.00 sec. (0.26 ticks)
-Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
-CPXPARAM_Threads                                 1
-CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.968758665
+CPXPARAM_TimeLimit                               599.98819718300001
 Found incumbent of value 0.000000 after 0.00 sec. (0.24 ticks)
 
 Root node processing (before b&c):
@@ -49,7 +25,19 @@ Total (root+branch&cut) =    0.00 sec. (0.27 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.95773234900003
+CPXPARAM_TimeLimit                               599.97867437800005
+Found incumbent of value 0.000000 after 0.00 sec. (0.24 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.00 sec. (0.27 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.00 sec. (0.27 ticks)
+Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Strategy_VariableSelect             3
+CPXPARAM_TimeLimit                               599.96933827600003
 Found incumbent of value 0.000000 after 0.00 sec. (0.27 ticks)
 
 Root node processing (before b&c):
@@ -61,7 +49,7 @@ Total (root+branch&cut) =    0.00 sec. (0.30 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.94665609799995
+CPXPARAM_TimeLimit                               599.95987109999999
 Tried aggregator 1 time.
 MIP Presolve eliminated 166 rows and 740 columns.
 MIP Presolve modified 1 coefficients.
@@ -71,15 +59,15 @@ Presolve time = 0.01 sec. (5.13 ticks)
 Found incumbent of value 0.000000 after 0.02 sec. (14.50 ticks)
 
 Root node processing (before b&c):
-  Real time             =    0.02 sec. (14.56 ticks)
+  Real time             =    0.02 sec. (14.57 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.02 sec. (14.56 ticks)
+Total (root+branch&cut) =    0.02 sec. (14.57 ticks)
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.91119341399997
+CPXPARAM_TimeLimit                               599.92917740999997
 Tried aggregator 1 time.
 MIP Presolve eliminated 167 rows and 745 columns.
 MIP Presolve modified 1 coefficients.
@@ -97,27 +85,29 @@ Clique table members: 589.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.01 sec. (6.11 ticks)
+Root relaxation solution time = 0.01 sec. (6.40 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0     0      integral     0        0.0000        0.0000      231    0.00%
-Elapsed time = 0.07 sec. (53.27 ticks, tree = 0.00 MB, solutions = 1)
+      0     0        0.0000    42                      0.0000      242         
+*     0+    0                            0.0000        0.0000             0.00%
+      0     0        cutoff              0.0000        0.0000      242    0.00%
+Elapsed time = 0.07 sec. (57.46 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.07 sec. (53.32 ticks)
+  Real time             =    0.07 sec. (57.51 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.07 sec. (53.32 ticks)
+Total (root+branch&cut) =    0.07 sec. (57.51 ticks)
 Primal:	149
 Dual:	149
 Status:	Optimal
-Time:	0.169048
+Time:	0.144289
 Sequence:
-	0
-	5
+	1
+	4
 	4
 	0
 	4
@@ -130,12 +120,12 @@ Sequence:
 	9
 	9
 	9
-	5
+	9
 	9
 	9
 	0
 	9
-	9
+	11
 	9
 	9
 	9
@@ -151,7 +141,7 @@ Sequence:
 	9
 	0
 	9
-	9
+	1
 	0
 	9
 	5
@@ -160,22 +150,22 @@ Sequence:
 	5
 	9
 	9
-	9
-	9
-	9
-	9
-	9
-	9
-	9
-	9
-	9
-	9
-	9
-	5
 	0
+	9
+	9
+	9
+	9
+	9
+	9
+	9
+	11
+	9
+	9
+	0
+	5
+	9
 	4
 	4
-	9
 	0
 	9
 	9
@@ -193,7 +183,7 @@ Sequence:
 	0
 	9
 	9
-	4
+	9
 	0
 	1
 	4
@@ -219,7 +209,40 @@ Sequence:
 	0
 	4
 	1
+	0
 	4
+	9
+	0
+	5
+	4
+	0
+	9
+	1
+	4
+	0
+	5
+	4
+	0
+	1
+	9
+	5
+	0
+	1
+	4
+	4
+	0
+	1
+	4
+	0
+	9
+	1
+	0
+	9
+	5
+	0
+	5
+	9
+	9
 	0
 	9
 	4
@@ -227,41 +250,8 @@ Sequence:
 	5
 	9
 	0
-	1
-	4
-	0
-	11
-	4
-	0
-	5
 	9
-	4
-	0
-	1
-	4
-	0
-	5
-	4
-	0
-	9
-	1
-	0
-	1
 	9
 	0
-	1
-	9
-	0
-	9
-	5
-	0
-	4
-	11
-	0
-	1
-	9
-	0
-	9
-	1
 	4
 	4

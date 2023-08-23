@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.997166161
+CPXPARAM_TimeLimit                               599.99723545699999
 Tried aggregator 1 time.
 MIP Presolve eliminated 24 rows and 0 columns.
 MIP Presolve modified 9 coefficients.
@@ -19,42 +19,42 @@ Clique table members: 303.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.03 sec. (31.79 ticks)
+Root relaxation solution time = 0.05 sec. (52.36 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000   139                      0.0000      454         
+      0     0        0.0000   166                      0.0000      665         
 *     0+    0                            0.0000        0.0000             0.00%
-      0     0        cutoff              0.0000        0.0000      454    0.00%
-Elapsed time = 0.36 sec. (263.50 ticks, tree = 0.01 MB, solutions = 1)
+      0     0        cutoff              0.0000        0.0000      665    0.00%
+Elapsed time = 0.58 sec. (515.90 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    0.36 sec. (263.58 ticks)
+  Real time             =    0.58 sec. (515.98 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.36 sec. (263.58 ticks)
+Total (root+branch&cut) =    0.58 sec. (515.98 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	0.375485
+Time:	0.600189
 Sequence:
 	12
 	12
 	24
-	19
 	14
+	20
 	10
 	24
 	10
 	24
+	10
+	4
+	3
 	10
 	21
-	3
-	10
 	24
-	3
 	10
 	22
 	10
@@ -62,9 +62,9 @@ Sequence:
 	5
 	10
 	10
-	24
-	24
-	11
+	13
+	3
+	10
 	17
 	7
 	10
@@ -78,65 +78,65 @@ Sequence:
 	15
 	14
 	24
-	7
-	24
-	12
-	19
+	10
 	18
 	21
-	15
-	12
+	19
+	24
+	23
 	11
-	2
+	12
+	19
+	24
 	20
-	3
+	15
+	17
 	14
 	11
-	17
-	16
-	24
-	24
-	19
-	22
-	17
-	10
-	20
+	3
+	15
+	14
 	12
+	9
+	7
+	17
+	20
+	16
+	14
+	24
 	11
+	20
+	14
+	11
+	16
+	2
+	17
+	22
+	24
+	11
+	21
+	20
+	24
+	24
+	13
+	20
+	24
+	1
+	24
 	21
 	8
-	10
-	20
-	11
-	16
-	23
-	17
-	22
-	24
-	21
-	1
-	20
-	14
-	24
-	24
-	20
-	14
-	13
-	24
-	20
-	10
 	6
 	11
 	22
 	0
 	17
-	9
-	4
-	15
+	22
+	10
+	12
 	24
-	14
+	24
 	18
 	13
-	13
+	19
 	14
 	18

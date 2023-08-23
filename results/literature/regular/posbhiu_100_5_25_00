@@ -1,175 +1,168 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998527800005
+CPXPARAM_TimeLimit                               599.99998290400003
 1 of 1 MIP starts provided solutions.
-MIP start 'm1' defined initial solution with objective 1.0000.
+MIP start 'm1' defined initial solution with objective 3.0000.
 Tried aggregator 1 time.
 MIP Presolve eliminated 11 rows and 0 columns.
 MIP Presolve modified 6 coefficients.
 Reduced MIP has 714 rows, 2500 columns, and 35310 nonzeros.
 Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (19.27 ticks)
+Presolve time = 0.02 sec. (19.26 ticks)
 Probing time = 0.00 sec. (3.13 ticks)
 Tried aggregator 1 time.
 Detecting symmetries...
 MIP Presolve eliminated 4 rows and 0 columns.
 Reduced MIP has 710 rows, 2500 columns, and 35130 nonzeros.
 Reduced MIP has 2500 binaries, 0 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (18.14 ticks)
+Presolve time = 0.02 sec. (18.13 ticks)
 Probing time = 0.00 sec. (3.13 ticks)
 Clique table members: 199.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.22 sec. (242.12 ticks)
+Root relaxation solution time = 0.22 sec. (241.95 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                            1.0000     2500.0000              --- 
-      0     0      100.0000   433        1.0000      100.0000     1899     --- 
-*     0+    0                           88.0000      100.0000            13.64%
-*     0+    0                           91.0000      100.0000             9.89%
-*     0+    0                           93.0000      100.0000             7.53%
-      0     0        cutoff             93.0000      100.0000     1899    7.53%
+*     0+    0                            3.0000     2500.0000              --- 
+      0     0      100.0000   437        3.0000      100.0000     1914     --- 
+*     0+    0                           67.0000      100.0000            49.25%
+*     0+    0                           95.0000      100.0000             5.26%
+      0     0        cutoff             95.0000      100.0000     1914    5.26%
 Detecting symmetries...
-      0     2      100.0000   134       93.0000      100.0000     1899    7.53%
-Elapsed time = 4.00 sec. (4120.57 ticks, tree = 0.01 MB, solutions = 4)
-      1     3      100.0000   301       93.0000      100.0000     5525    7.53%
-      2     4      100.0000   231       93.0000      100.0000     7381    7.53%
-      4     6      100.0000   170       93.0000      100.0000     8639    7.53%
-      6     8      100.0000   173       93.0000      100.0000    11296    7.53%
-      7     9      100.0000   181       93.0000      100.0000    13231    7.53%
-      8    10      100.0000   185       93.0000      100.0000    15057    7.53%
-      9    11      100.0000   177       93.0000      100.0000    17376    7.53%
-     10    12      100.0000   263       93.0000      100.0000    19361    7.53%
-     11    13      100.0000   167       93.0000      100.0000    20860    7.53%
-     16    18      100.0000   178       93.0000      100.0000    23633    7.53%
-Elapsed time = 8.89 sec. (9499.41 ticks, tree = 0.05 MB, solutions = 4)
-     20    22      100.0000   169       93.0000      100.0000    25530    7.53%
-     25    27      100.0000   221       93.0000      100.0000    28459    7.53%
-     30    32      100.0000   250       93.0000      100.0000    30984    7.53%
-     34    36      100.0000   150       93.0000      100.0000    36935    7.53%
-     38    40      100.0000   238       93.0000      100.0000    41461    7.53%
-     42    44      100.0000   162       93.0000      100.0000    45673    7.53%
-     48    50      100.0000   151       93.0000      100.0000    48039    7.53%
-     54    56      100.0000   181       93.0000      100.0000    51329    7.53%
-     61    63      100.0000   132       93.0000      100.0000    53505    7.53%
-     67    68      100.0000   116       93.0000      100.0000    57174    7.53%
-Elapsed time = 19.28 sec. (20693.55 ticks, tree = 0.36 MB, solutions = 4)
-     73    74      100.0000   102       93.0000      100.0000    60604    7.53%
-     80    81      100.0000    85       93.0000      100.0000    63954    7.53%
-*    85     1      integral     0      100.0000      100.0000    67675    0.00%
+      0     2      100.0000   112       95.0000      100.0000     1914    5.26%
+Elapsed time = 3.61 sec. (3829.42 ticks, tree = 0.01 MB, solutions = 3)
+      1     3      100.0000   115       95.0000      100.0000     3805    5.26%
+      2     4      100.0000   193       95.0000      100.0000     5339    5.26%
+      3     5      100.0000   118       95.0000      100.0000     6282    5.26%
+      4     6      100.0000   139       95.0000      100.0000     7261    5.26%
+      6     8      100.0000   104       95.0000      100.0000    12796    5.26%
+      7     9      100.0000   120       95.0000      100.0000    15930    5.26%
+      8    10      100.0000   221       95.0000      100.0000    18806    5.26%
+      9    11      100.0000    86       95.0000      100.0000    20418    5.26%
+     10    12      100.0000    85       95.0000      100.0000    20596    5.26%
+     14    16      100.0000    77       95.0000      100.0000    25066    5.26%
+Elapsed time = 8.30 sec. (9158.75 ticks, tree = 0.03 MB, solutions = 3)
+     17    19      100.0000    96       95.0000      100.0000    30590    5.26%
+     21    23      100.0000    86       95.0000      100.0000    34002    5.26%
+     25    27      100.0000   173       95.0000      100.0000    38411    5.26%
+     29    31      100.0000    38       95.0000      100.0000    43654    5.26%
+     33    35      100.0000   172       95.0000      100.0000    47544    5.26%
+     38    40      100.0000   116       95.0000      100.0000    51827    5.26%
+     44    46      100.0000    52       95.0000      100.0000    54881    5.26%
+*    45     0      integral     0      100.0000      100.0000    54912    0.00%
 
 Root node processing (before b&c):
-  Real time             =    3.99 sec. (4108.42 ticks)
+  Real time             =    3.60 sec. (3817.28 ticks)
 Sequential b&c:
-  Real time             =   18.10 sec. (19439.45 ticks)
+  Real time             =   11.65 sec. (13045.56 ticks)
                           ------------
-Total (root+branch&cut) =   22.09 sec. (23547.88 ticks)
+Total (root+branch&cut) =   15.25 sec. (16862.84 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	22.09
+Time:	15.26
 Sequence:
 	23
-	8
-	24
-	20
+	11
+	4
 	15
-	2
-	23
-	17
-	22
-	20
-	23
-	21
-	23
-	20
+	1
+	24
+	11
 	19
-	11
+	20
 	23
-	7
-	3
-	11
-	24
-	8
-	3
-	0
+	2
 	15
 	11
 	22
-	10
-	12
+	8
+	23
 	9
 	14
 	13
 	24
-	11
-	22
-	17
-	19
-	11
-	24
 	20
-	16
-	0
 	14
-	10
-	19
-	11
-	5
-	4
-	12
-	1
-	18
-	1
-	16
-	0
-	24
-	20
-	15
-	2
-	23
-	13
-	18
-	20
-	12
-	2
-	15
-	10
-	6
-	8
-	23
-	9
-	5
-	17
-	2
-	16
-	1
-	22
-	17
-	23
-	4
-	3
-	13
-	24
-	17
-	3
-	2
-	5
-	17
-	24
-	20
-	23
 	7
-	14
+	23
+	21
+	15
+	0
+	23
+	2
+	16
+	20
+	22
 	8
-	6
+	3
+	2
+	16
+	1
+	24
+	20
+	12
+	4
+	5
+	11
+	19
 	10
+	14
+	0
+	15
+	10
+	24
+	17
+	3
+	0
+	23
+	17
+	24
+	20
 	5
 	21
+	23
+	8
+	6
+	1
+	16
+	2
+	5
+	17
+	22
+	11
+	24
+	13
 	14
+	9
+	23
+	8
+	22
+	11
+	3
+	7
+	12
+	10
+	18
+	20
+	19
+	10
+	24
+	17
+	3
 	0
+	23
+	17
+	6
+	17
+	5
+	2
+	12
+	20
+	18
+	13
 	23

@@ -1,9 +1,9 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998694400006
+CPXPARAM_TimeLimit                               599.99996504199999
 1 of 1 MIP starts provided solutions.
-MIP start 'm1' defined initial solution with objective 158.0000.
+MIP start 'm1' defined initial solution with objective 226.0000.
 Tried aggregator 2 times.
 MIP Presolve eliminated 344 rows and 904 columns.
 MIP Presolve added 36 rows and 9 columns.
@@ -24,72 +24,69 @@ Clique table members: 1197.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.03 sec. (26.40 ticks)
+Root relaxation solution time = 0.03 sec. (29.94 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                          158.0000    45451.0000              --- 
-      0     0      301.0000    98      158.0000      301.0000      499   90.51%
+*     0+    0                          226.0000    45451.0000              --- 
+      0     0      301.0000   115      226.0000      301.0000      549   33.19%
 *     0+    0                          301.0000      301.0000             0.00%
-      0     0        cutoff            301.0000      301.0000      499    0.00%
-Elapsed time = 0.35 sec. (413.68 ticks, tree = 0.01 MB, solutions = 2)
+      0     0        cutoff            301.0000      301.0000      549    0.00%
+Elapsed time = 0.38 sec. (447.91 ticks, tree = 0.01 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    0.35 sec. (413.84 ticks)
+  Real time             =    0.38 sec. (448.06 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.35 sec. (413.84 ticks)
+Total (root+branch&cut) =    0.38 sec. (448.06 ticks)
 Primal:	301
 Dual:	301
 Status:	Optimal
-Time:	0.37
+Time:	0.4
 Sequence:
-	0
 	5
+	4
+	3
+	8
+	4
 	9
+	9
+	1
 	9
 	7
 	9
 	9
-	1
+	9
+	9
+	9
 	9
 	10
 	9
 	9
-	3
+	7
+	9
+	1
 	9
 	9
+	9
+	7
+	9
+	1
 	9
 	9
 	9
 	7
 	9
 	9
-	1
 	9
 	9
-	7
-	9
-	9
-	1
-	9
-	9
-	7
-	9
-	9
-	9
-	1
 	9
 	5
 	9
 	4
-	9
-	9
-	9
 	7
-	9
 	9
 	9
 	9
@@ -97,6 +94,19 @@ Sequence:
 	9
 	7
 	9
+	5
+	4
+	9
+	1
+	9
+	5
+	9
+	9
+	9
+	9
+	9
+	9
+	7
 	9
 	5
 	9
@@ -112,16 +122,6 @@ Sequence:
 	9
 	9
 	9
-	7
-	9
-	9
-	9
-	5
-	9
-	3
-	9
-	9
-	5
 	4
 	9
 	7
@@ -134,121 +134,121 @@ Sequence:
 	7
 	9
 	4
-	9
 	4
-	4
-	1
-	4
-	5
-	9
-	7
-	9
-	0
-	4
-	5
-	9
-	7
-	0
-	4
-	5
-	0
-	4
-	4
-	0
-	4
-	1
-	4
-	7
-	0
-	1
-	9
-	4
-	9
-	7
-	9
-	9
-	9
-	9
-	9
-	9
-	7
-	9
-	9
-	4
-	9
-	9
-	7
-	9
-	5
-	9
-	5
-	9
-	9
-	9
-	9
-	5
-	9
-	7
-	9
-	9
-	9
-	9
-	9
-	9
-	9
-	9
-	7
-	9
-	9
-	1
-	9
-	9
-	9
-	9
 	9
 	1
 	4
-	9
-	9
-	9
-	9
-	5
-	9
-	7
 	9
 	5
 	9
 	5
 	0
+	7
+	4
 	1
+	9
+	5
+	0
 	9
 	7
+	4
 	9
+	4
 	1
-	0
-	5
 	4
 	0
+	4
 	7
+	0
+	1
+	9
+	9
+	4
+	7
+	9
+	9
+	9
+	9
+	9
+	9
+	7
+	9
+	9
+	9
+	4
+	9
+	7
+	9
+	9
+	5
+	9
+	5
 	9
 	10
-	0
+	9
+	9
+	9
+	7
+	9
+	9
+	9
+	9
+	9
+	9
+	9
+	9
+	7
+	9
+	9
 	1
 	9
 	9
 	7
+	9
+	9
+	1
+	9
+	9
+	9
+	7
+	9
+	9
+	5
+	9
+	9
+	5
+	9
+	5
+	0
+	1
+	9
+	5
+	9
+	1
+	0
+	5
+	9
+	5
+	0
+	9
+	7
+	0
+	1
+	9
+	1
+	9
+	7
+	4
+	9
 	8
-	1
-	9
-	8
-	1
+	5
 	9
 	5
 	0
 	5
+	4
 	9
-	9
-	5
+	7
 	9
 	9
 	9
@@ -258,31 +258,18 @@ Sequence:
 	0
 	1
 	9
+	0
+	1
+	9
+	9
+	3
+	9
+	1
+	0
 	1
 	9
 	7
 	9
-	5
-	9
-	1
-	9
-	1
-	9
-	7
-	9
-	9
-	9
-	9
-	1
-	9
-	9
-	7
-	9
-	9
-	9
-	9
-	9
-	1
 	9
 	5
 	9
@@ -291,6 +278,19 @@ Sequence:
 	9
 	7
 	9
+	9
+	9
+	9
+	9
+	1
+	9
+	5
+	9
+	1
+	9
+	9
+	7
+	9
 	1
 	9
 	9
@@ -299,30 +299,30 @@ Sequence:
 	9
 	9
 	7
+	9
 	9
 	5
 	9
 	9
 	9
 	9
-	9
-	7
-	4
-	9
-	9
-	4
-	9
-	4
-	9
-	9
 	7
 	9
+	4
+	9
+	9
+	4
+	9
+	4
+	9
+	7
+	9
+	4
 	4
 	1
 	4
 	4
 	9
-	4
 	3
 	4
 	4
@@ -330,9 +330,9 @@ Sequence:
 	4
 	1
 	4
-	1
 	4
-	5
+	1
+	9
 	0
 	1
 	9
@@ -340,10 +340,10 @@ Sequence:
 	4
 	1
 	4
-	4
+	8
 	9
 	7
-	8
+	9
 	9
 	4
 	5

@@ -1,7 +1,7 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.998071353
+CPXPARAM_TimeLimit                               599.998065924
 Tried aggregator 1 time.
 MIP Presolve eliminated 20 rows and 0 columns.
 MIP Presolve modified 2 coefficients.
@@ -19,129 +19,124 @@ Clique table members: 494.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.11 sec. (110.50 ticks)
+Root relaxation solution time = 0.12 sec. (118.58 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-      0     0        0.0000   445                      0.0000     1243         
-      0     0        0.0000   124                  Cliques: 2     1531         
-      0     0        0.0000   444                    Cuts: 62     2534         
+      0     0        0.0000   444                      0.0000     1304         
 *     0+    0                            0.0000        0.0000             0.00%
-      0     0        cutoff              0.0000        0.0000     2534    0.00%
-Elapsed time = 1.72 sec. (1619.48 ticks, tree = 0.01 MB, solutions = 1)
-
-Clique cuts applied:  14
-Zero-half cuts applied:  3
+      0     0        cutoff              0.0000        0.0000     1304    0.00%
+Elapsed time = 0.86 sec. (823.91 ticks, tree = 0.01 MB, solutions = 1)
 
 Root node processing (before b&c):
-  Real time             =    1.72 sec. (1619.61 ticks)
+  Real time             =    0.86 sec. (823.97 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    1.72 sec. (1619.61 ticks)
+Total (root+branch&cut) =    0.86 sec. (823.97 ticks)
 Primal:	100
 Dual:	100
 Status:	Optimal
-Time:	1.73383
+Time:	0.87053
 Sequence:
 	19
+	5
 	1
-	5
-	3
-	14
-	5
+	17
+	16
+	6
+	19
+	10
 	12
 	17
+	16
+	2
+	14
 	10
+	1
+	17
+	5
 	1
 	19
 	10
 	3
 	19
-	16
+	5
+	12
+	15
+	8
+	0
+	13
+	11
+	12
+	15
+	8
+	6
+	13
+	11
+	1
+	4
+	8
 	3
-	17
+	13
+	11
+	1
+	15
+	8
+	3
+	13
+	5
+	9
+	4
+	5
+	9
+	15
+	10
+	9
+	4
 	18
-	6
-	14
-	5
-	1
-	17
-	16
-	3
-	19
-	5
-	12
-	17
-	16
-	2
-	14
-	5
-	1
-	15
-	8
-	0
-	13
-	11
-	1
-	4
-	8
-	6
-	13
-	11
-	12
-	4
-	8
-	0
-	13
-	11
-	12
-	15
-	8
-	6
-	13
-	11
-	2
-	13
-	8
-	6
-	4
-	16
-	9
-	4
-	5
-	9
-	15
-	5
-	9
-	13
-	5
 	7
-	15
-	18
-	9
-	4
-	5
-	9
-	15
-	10
-	1
-	19
-	10
 	2
+	16
+	14
+	0
+	5
+	13
+	9
+	5
+	4
+	9
+	10
+	15
+	9
+	18
+	4
+	6
+	16
+	14
+	2
+	5
 	14
 	12
 	5
 	17
-	0
-	16
-	14
-	2
+	1
 	5
 	19
+	0
 	1
-	10
+	11
+	13
+	3
+	8
 	15
-	9
+	12
+	5
+	14
+	6
 	16
+	17
+	2
+	16
+	19

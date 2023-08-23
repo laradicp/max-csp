@@ -1,9 +1,9 @@
 Version identifier: 22.1.0.0 | 2022-03-09 | 1a383f8ce
 CPXPARAM_Threads                                 1
 CPXPARAM_MIP_Strategy_VariableSelect             3
-CPXPARAM_TimeLimit                               599.99998823199996
+CPXPARAM_TimeLimit                               599.99996724599998
 1 of 1 MIP starts provided solutions.
-MIP start 'm1' defined initial solution with objective 82.0000.
+MIP start 'm1' defined initial solution with objective 158.0000.
 Tried aggregator 1 time.
 MIP Presolve eliminated 236 rows and 660 columns.
 MIP Presolve modified 192 coefficients.
@@ -22,245 +22,243 @@ Clique table members: 912.
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
-Root relaxation solution time = 0.04 sec. (43.68 ticks)
+Root relaxation solution time = 0.03 sec. (37.56 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
 
-*     0+    0                           82.0000    24310.0000              --- 
-      0     0      220.0000    87       82.0000      220.0000      609  168.29%
-*     0+    0                          220.0000      220.0000             0.00%
-      0     0        cutoff            220.0000      220.0000      609    0.00%
-Elapsed time = 0.23 sec. (285.60 ticks, tree = 0.01 MB, solutions = 2)
+*     0+    0                          158.0000    24310.0000              --- 
+*     0     0      integral     0      220.0000      220.0000      601    0.00%
+Elapsed time = 0.18 sec. (231.27 ticks, tree = 0.00 MB, solutions = 2)
 
 Root node processing (before b&c):
-  Real time             =    0.23 sec. (285.85 ticks)
+  Real time             =    0.18 sec. (231.52 ticks)
 Sequential b&c:
   Real time             =    0.00 sec. (0.00 ticks)
                           ------------
-Total (root+branch&cut) =    0.23 sec. (285.85 ticks)
+Total (root+branch&cut) =    0.18 sec. (231.52 ticks)
 Primal:	220
 Dual:	220
 Status:	Optimal
-Time:	0.24
+Time:	0.2
 Sequence:
-	5
-	4
-	2
-	9
-	5
-	9
-	7
-	9
-	9
-	9
-	9
-	9
-	1
-	9
-	9
-	7
-	9
-	9
-	1
-	9
-	9
-	9
-	7
-	9
-	9
-	1
-	9
-	5
-	9
-	5
-	9
-	5
-	9
-	9
-	1
-	0
-	1
-	9
-	1
-	9
-	7
-	9
-	1
-	9
-	5
-	9
-	5
-	8
-	9
-	5
-	9
-	1
-	4
-	1
-	9
-	9
-	7
-	4
-	0
-	4
-	1
-	4
-	0
-	4
 	7
 	0
-	4
 	1
-	8
-	1
+	9
+	9
 	9
 	7
+	9
+	9
+	9
 	0
-	4
-	1
-	8
-	4
-	1
-	4
-	4
-	1
 	9
 	5
-	0
+	9
+	9
+	7
+	9
+	4
+	9
+	1
+	9
 	3
 	9
 	5
-	8
+	9
+	9
+	9
+	3
+	4
+	9
 	1
 	9
 	9
 	7
 	9
+	9
+	9
+	9
+	1
+	9
+	7
+	8
+	1
+	9
+	9
 	1
 	8
 	1
 	9
-	4
-	9
-	7
-	4
-	9
-	1
-	4
-	9
-	4
-	4
-	1
-	4
 	5
 	9
 	7
-	4
-	9
 	9
 	1
 	4
+	1
 	9
 	7
+	0
 	4
-	9
-	4
-	9
-	4
-	9
-	7
-	9
 	1
-	9
-	9
-	9
-	9
+	4
 	1
-	9
+	0
+	3
+	4
+	8
+	1
+	4
+	1
 	2
 	5
+	4
+	1
+	8
+	7
+	9
+	1
+	4
+	1
+	0
+	1
+	4
+	0
+	5
+	9
+	7
+	4
+	1
+	4
+	1
+	9
+	1
+	9
+	4
+	1
+	9
+	1
+	4
+	2
+	5
+	4
+	9
+	4
+	9
+	4
+	1
+	4
+	9
+	5
+	9
+	5
+	9
+	4
+	5
+	9
+	7
+	9
+	5
+	9
+	4
+	5
+	9
+	5
 	9
 	9
 	9
 	7
 	9
+	1
+	9
+	1
+	9
+	9
+	1
+	0
+	9
+	5
+	9
+	7
+	9
+	0
+	5
+	9
+	5
+	9
+	0
+	7
 	4
+	0
+	5
+	9
+	5
+	9
+	7
+	9
+	9
+	1
+	4
+	5
 	9
 	5
 	4
-	0
 	1
+	8
+	5
 	9
-	3
+	5
+	9
 	4
+	4
+	9
+	4
+	4
+	9
+	4
+	9
+	4
+	4
+	9
+	4
+	9
 	5
 	2
 	4
-	5
-	0
-	5
-	4
 	9
-	5
-	4
-	9
-	5
-	4
-	3
-	4
-	9
-	5
-	4
-	9
-	5
-	0
-	4
-	5
-	9
-	5
-	4
-	1
-	4
-	1
-	4
-	4
-	1
-	4
-	1
 	4
 	9
 	4
+	5
+	9
 	7
 	9
+	0
+	1
+	9
+	9
+	5
+	9
+	9
+	3
+	4
 	4
 	9
+	4
 	4
 	9
 	4
 	3
 	4
 	4
-	9
-	9
-	5
-	9
-	3
-	9
-	9
-	9
-	9
 	1
-	9
+	4
 	0
 	7
-	9
+	4
+	1
+	4
 	1
 	9
-	1
-	0
-	1
-	9
-	7
-	0
-	5
