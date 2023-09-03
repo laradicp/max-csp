@@ -23,6 +23,7 @@ class PlotData
         string instance;
         string instanceSet;
 
+        int nbCars;
         int nbOptions;
         int nbClasses;
         // utilization of option j = \mu_j(\sum_{i \in P} d_i*c_{ij})/|D|
@@ -30,16 +31,23 @@ class PlotData
         //     \mu_j(n) = q_j((n − 1) div p_j) + ((n − 1) mod p_j) + 1
         double minUtilization;
         double avgUtilization;
+        double maxUtilization;
         double stdUtilization; // standard deviation of utilization
         // standard deviation = sqrt(pow(sum_{j \in C}{(\mu_j(n_j)/|D| - avgUtilization), 2))/|C|}
         double avgNbOptionsPerClass; // avg number of options per class
+        double minMaxCarsWindowSizeRatio;
         double avgMaxCarsWindowSizeRatio;
         double maxMaxCarsWindowSizeRatio;
+        double stdMaxCarsWindowSizeRatio; // standard deviation of maxCarsWindowSizeRatio
+        int lcmWindowSize; // least common multiple of all window sizes
+        double stdNbCarsPerClass; // standard deviation of number of cars per class
 
         // for normalizing features, read in file
+        int maxNbCars;
         int maxNbOptions;
         int maxNbClasses;
         double maxAvgNbOptionsPerClass;
+        int maxLcmWindowSize;
 
         int getNbCarsWithOption(int j);
         double getUtilization(int j);
@@ -47,6 +55,8 @@ class PlotData
         int getNbOptionsPerClass(int i);
 
         double calculateGap(string path);
+
+        int lcm(int n1, int n2);
 };
 
 int PlotData::getNbCarsWithOption(int j)
@@ -91,9 +101,11 @@ PlotData::PlotData(string instance, string instanceSet, bool findMaxValues)
 
     data = Data("../instances/" + this->instanceSet + this->instance, false);
 
+    nbCars = data.getNbCars();
     nbOptions = data.getNbOptions();
     nbClasses = data.getNbClasses();
     minUtilization = 1;
+    maxUtilization = 0;
 
     vector<double> utilizations;
     double sumUtilizations = 0;
@@ -105,6 +117,10 @@ PlotData::PlotData(string instance, string instanceSet, bool findMaxValues)
         if(mu < minUtilization)
         {
             minUtilization = mu;
+        }
+        if(mu > maxUtilization)
+        {
+            maxUtilization = mu;
         }
     }
 
@@ -124,6 +140,7 @@ PlotData::PlotData(string instance, string instanceSet, bool findMaxValues)
     }
     avgNbOptionsPerClass /= nbClasses;
 
+    minMaxCarsWindowSizeRatio = 1;
     avgMaxCarsWindowSizeRatio = 0;
     maxMaxCarsWindowSizeRatio = 0;
     for(int j = 0; j < nbOptions; j++)
@@ -131,6 +148,10 @@ PlotData::PlotData(string instance, string instanceSet, bool findMaxValues)
         double ratio = (double)data.getMaxCarsPerWindow(j)/data.getWindowSize(j);
         avgMaxCarsWindowSizeRatio += ratio;
 
+        if(ratio < minMaxCarsWindowSizeRatio)
+        {
+            minMaxCarsWindowSizeRatio = ratio;
+        }
         if(ratio > maxMaxCarsWindowSizeRatio)
         {
             maxMaxCarsWindowSizeRatio = ratio;
@@ -138,20 +159,54 @@ PlotData::PlotData(string instance, string instanceSet, bool findMaxValues)
     }
     avgMaxCarsWindowSizeRatio /= nbOptions;
 
+    stdMaxCarsWindowSizeRatio = 0;
+    for(int j = 0; j < nbOptions; j++)
+    {
+        stdMaxCarsWindowSizeRatio += pow((double)data.getMaxCarsPerWindow(j)/data.getWindowSize(j) - avgMaxCarsWindowSizeRatio, 2);
+    }
+    stdMaxCarsWindowSizeRatio = sqrt(stdMaxCarsWindowSizeRatio/nbOptions);
+
+    lcmWindowSize = data.getWindowSize(0);
+    for(int j = 1; j < nbOptions; j++)
+    {
+        lcmWindowSize = lcm(lcmWindowSize, data.getWindowSize(j));
+    }
+
+    double avgNbCarsPerClass = 0;
+    for(int i = 0; i < nbClasses; i++)
+    {
+        avgNbCarsPerClass += data.getNbCarsPerClass(i);
+    }
+    avgNbCarsPerClass /= nbClasses;
+    stdNbCarsPerClass = 0;
+    for(int i = 0; i < nbClasses; i++)
+    {
+        stdNbCarsPerClass += pow(data.getNbCarsPerClass(i) - avgMaxCarsWindowSizeRatio, 2);
+    }
+    stdNbCarsPerClass = sqrt(stdNbCarsPerClass/nbClasses);
+
     // read in file
+    maxNbCars = 0;
     maxNbOptions = 0;
     maxNbClasses = 0;
     maxAvgNbOptionsPerClass = 0;
+    maxLcmWindowSize = 0;
 
     ifstream inputFile("isa-data-max-values.txt");
     if(inputFile.is_open())
     {
-        inputFile >> maxNbOptions >> maxNbClasses >> maxAvgNbOptionsPerClass;
+        inputFile >> maxNbCars >> maxNbOptions >> maxNbClasses >> maxAvgNbOptionsPerClass >>
+            maxLcmWindowSize;
         inputFile.close();
     }
 
     if(findMaxValues)
     {
+        if(nbCars > maxNbCars)
+        {
+            maxNbCars = nbCars;
+        }
+
         if(nbOptions > maxNbOptions)
         {
             maxNbOptions = nbOptions;
@@ -167,8 +222,14 @@ PlotData::PlotData(string instance, string instanceSet, bool findMaxValues)
             maxAvgNbOptionsPerClass = avgNbOptionsPerClass;
         }
 
+        if(lcmWindowSize > maxLcmWindowSize)
+        {
+            maxLcmWindowSize = lcmWindowSize;
+        }
+
         ofstream outputFile("isa-data-max-values.txt");
-        outputFile << maxNbOptions << " " << maxNbClasses << " " << maxAvgNbOptionsPerClass << endl;
+        outputFile << maxNbCars << " " << maxNbOptions << " " << maxNbClasses << " " <<
+            maxAvgNbOptionsPerClass << " " << maxLcmWindowSize << endl;
 
         outputFile.close();
 
@@ -231,13 +292,27 @@ double PlotData::calculateGap(string path)
     return (double)(dualBound - primalBound)/primalBound;
 }
 
+int PlotData::lcm(int n1, int n2)
+{
+    int m = max(n1, n2);
+    while(m%n1 || m%n2)
+    {
+        m++;
+    }
+
+    return m;
+}
+
 void PlotData::printData()
 {
-    cout << instance << "\t" << (double)nbOptions/maxNbOptions << "\t" <<
+    cout << instance << "\t" << (double)nbCars/maxNbCars << "\t" <<
+        (double)nbOptions/maxNbOptions << "\t" <<
         (double)nbClasses/maxNbClasses << "\t" << minUtilization << "\t" <<
-        avgUtilization << "\t" << stdUtilization << "\t" <<
-        avgNbOptionsPerClass/maxAvgNbOptionsPerClass << "\t" <<
+        avgUtilization << "\t" << maxUtilization << "\t" << stdUtilization << "\t" <<
+        avgNbOptionsPerClass/maxAvgNbOptionsPerClass << "\t" << minMaxCarsWindowSizeRatio << "\t" <<
         avgMaxCarsWindowSizeRatio << "\t" << maxMaxCarsWindowSizeRatio << "\t" <<
+        stdMaxCarsWindowSizeRatio << "\t" << (double)lcmWindowSize/maxLcmWindowSize << "\t" <<
+        stdNbCarsPerClass << "\t" <<
         calculateGap("heuristic/" + instance) << "\t" <<
         calculateGap(instanceSet + "regular/" + instance) << "\t" <<
         calculateGap(instanceSet + "regular/heuristic-primal/" + instance) << "\t" <<
