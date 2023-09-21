@@ -133,7 +133,7 @@ int main(int argc, char** argv)
 
     for(int i = 0; i < instanceSets.size(); i++)
     {
-        cout << "\\hline method & optimal (\\\%) & smallest (\\\%) & avg. gap (\\\%) & avg. time (s) & avg. time$^*$ (s) \\\\ \\hline" << endl;
+        cout << "\\hline method & avg. gap (\\\%) & optimal (\\\%) & smallest (\\\%) & avg. time (s) & avg. time$^*$ (s) \\\\ \\hline" << endl;
         for(int j = 0; j < methods.size(); j++)
         {
             GapTime gapTime = readFile(
@@ -141,14 +141,15 @@ int main(int argc, char** argv)
             );
 
             cout.setf(ios::fixed,ios::floatfield);
-            cout.precision(3);
+            cout.precision(2);
 
             if(initialization == isInitialized(methods[j]))
             {
                 cout << getMethodName(methods[j]) << " & " << 
+                    gapTime.gap*100/gapTime.count << " & " <<
                     gapTime.optimalCount*100.0/gapTime.count << " & " <<
                     gapTime.smallestCount*100.0/gapTime.count << " & " <<
-                    gapTime.gap*100/gapTime.count << " & " << gapTime.time/gapTime.count << " & " <<
+                    gapTime.time/gapTime.count << " & " <<
                     gapTime.timeNotExceeded/gapTime.countNotExceeded << " \\\\" << endl;
             }
         }
