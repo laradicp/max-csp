@@ -76,8 +76,8 @@ double PlotData::getUtilization(int j)
 {
     // \mu_j(n) = q_j((n − 1) div p_j) + ((n − 1) mod p_j) + 1
     int nbCarsWithOption = getNbCarsWithOption(j);
-    double mu = floor(data.getWindowSize(j)*((nbCarsWithOption - 1)/data.getMaxCarsPerWindow(j))) +
-        ((nbCarsWithOption - 1)%data.getMaxCarsPerWindow(j)) + 1;
+    double mu = floor(data.getWindowSize(j)*(max(nbCarsWithOption - 1, 0)/data.getMaxCarsPerWindow(j))) +
+        (max(nbCarsWithOption - 1, 0)%data.getMaxCarsPerWindow(j)) + 1;
     return mu/data.getNbCars();
 }
 
@@ -242,6 +242,13 @@ double PlotData::calculateGap(string path)
     ifstream inputFile("best-dual.txt");
     string line;
     int dualBound = data.getUpperBound();
+    string instance = this->instance;
+    if(instance.substr(instance.size() - 3, 3) == ".in")
+    {
+        if(path.substr(0, path.find_first_of("/")) != "heuristic")
+            path = path.substr(0, path.size() - 3) + ".out";
+        instance = instance.substr(0, instance.size() - 3) + ".out";
+    }
     while(getline(inputFile, line))
     {
         if(line.find(instance) != string::npos)
@@ -259,7 +266,7 @@ double PlotData::calculateGap(string path)
         inputFile.open("best-primal.txt");
         while(getline(inputFile, line))
         {
-            if(line.find(path) != string::npos)
+            if(line.find(instance) != string::npos)
             {
                 primalBound = stoi(line.substr(line.find("\t") + 1));
                 break;
@@ -319,7 +326,7 @@ void PlotData::printData()
         calculateGap(instanceSet + "asc-iterative/combinatorial/" + instance) << "\t" <<
         calculateGap(instanceSet + "asc-iterative/heuristic/" + instance) << "\t" <<
         calculateGap(instanceSet + "desc-iterative/combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "desc-iterative/heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "desc-iterative/combinatorial/heuristic-primal/" + instance) << "\t" <<
         calculateGap(instanceSet + "binary/combinatorial/" + instance) << "\t" <<
         calculateGap(instanceSet + "binary/heuristic-combinatorial/" + instance) << "\t" <<
         calculateGap(instanceSet + "branching/" + instance) << "\t" <<
@@ -327,9 +334,9 @@ void PlotData::printData()
         calculateGap(instanceSet + "sos1/asc-iterative/combinatorial/" + instance) << "\t" <<
         calculateGap(instanceSet + "sos1/asc-iterative/heuristic/" + instance) << "\t" <<
         calculateGap(instanceSet + "sos1/desc-iterative/combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/desc-iterative/heuristic/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/binary/combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/binary/heuristic-combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/desc-iterative/combinatorial/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/" + instance) << "\t" <<
+        calculateGap(instanceSet + "sos1/heuristic-primal/" + instance) << "\t" <<
         endl;
 }
 
