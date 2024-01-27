@@ -276,6 +276,11 @@ double PlotData::calculateGap(string path)
     else
     {
         inputFile.open(path);
+        if(!inputFile.is_open())
+        {
+            cout << "Error: could not open file " << path << endl;
+            return 0;
+        }
 
         if(path.substr(0, path.find_first_of("/")) == "heuristic")
         {
