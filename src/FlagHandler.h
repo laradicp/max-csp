@@ -12,8 +12,8 @@ class FlagHandler
 		bool sos1Branching;
 		bool cumulative;
 		bool binarySearch;
-		bool descIterativeSearch;
-		bool ascIterativeSearch;
+		bool decrementalSearch;
+		bool incrementalSearch;
 		bool heuristic;
 		bool noExact;
 		bool trivialUB;
@@ -35,8 +35,8 @@ class FlagHandler
 		bool getSos1Branching();
 		bool getCumulative();
 		bool getBinarySearch();
-		bool getDescIterativeSearch();
-		bool getAscIterativeSearch();
+		bool getDecrementalSearch();
+		bool getIncrementalSearch();
 		bool getHeuristic();
 		bool getNoExact();
 		bool getTrivialUB();

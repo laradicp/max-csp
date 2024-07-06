@@ -55,21 +55,17 @@ GapTime readFile(string gapTimePath)
 
 string getMethodName(string method)
 {
-    if(method.find("regular") != string::npos)
+    if(method.find("f1") != string::npos)
     {
         return "F1";
     }
-    if(method.find("branching") != string::npos)
+    if(method.find("sos1") != string::npos)
     {
-        return "F2";
-    }
-    else if(method.find("sos1") != string::npos)
-    {
-        if(method.find("asc") != string::npos)
+        if(method.find("incremental") != string::npos)
         {
             return "F2$_I$";
         }
-        else if(method.find("desc") != string::npos)
+        else if(method.find("decremental") != string::npos)
         {
             return "F2$_D$";
         }
@@ -78,11 +74,15 @@ string getMethodName(string method)
             return "F2$_B$";
         }
     }
-    else if(method.find("asc") != string::npos)
+    else if(method.find("f2") != string::npos)
+    {
+        return "F2";
+    }
+    else if(method.find("incremental") != string::npos)
     {
         return "I$_I$";
     }
-    else if(method.find("desc") != string::npos)
+    else if(method.find("decremental") != string::npos)
     {
         return "I$_D$";
     }
@@ -117,18 +117,18 @@ int main(int argc, char** argv)
     bool initialization = strcmp(argv[1], "-true") == 0 ? true : false;
 
     vector<string> instanceSets = {
-        "real",
-        "literature"
+        "2",
+        "1"
     };
     vector<string> methods = {
-        "regular/heuristic-primal", "regular",
-        "asc-iterative/heuristic", "asc-iterative/combinatorial",
-        "desc-iterative/combinatorial/heuristic-primal", "desc-iterative/combinatorial",
+        "f1/heuristic-primal", "f1",
+        "incremental/heuristic", "incremental/combinatorial",
+        "decremental/combinatorial/heuristic-primal", "decremental/combinatorial",
         "binary/heuristic-combinatorial", "binary/combinatorial",
-        "branching/heuristic-primal", "branching",
-        "sos1/asc-iterative/combinatorial", "sos1/asc-iterative/heuristic",
-        "sos1/desc-iterative/combinatorial/heuristic-primal", "sos1/desc-iterative/combinatorial",
-        "sos1/heuristic-primal", "sos1"
+        "f2/heuristic-primal", "f2",
+        "f2/sos1/incremental/combinatorial", "sos1/incremental/heuristic",
+        "f2/sos1/decremental/combinatorial/heuristic-primal", "f2/sos1/decremental/combinatorial",
+        "f2/sos1/heuristic-primal", "f2/sos1"
     };
 
     for(int i = 0; i < instanceSets.size(); i++)

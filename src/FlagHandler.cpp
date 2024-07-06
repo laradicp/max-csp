@@ -8,8 +8,8 @@ FlagHandler::FlagHandler(int argc, char** argv)
     sos1Branching = false;
     cumulative = false;
     binarySearch = false;
-    descIterativeSearch = false;
-    ascIterativeSearch = false;
+    decrementalSearch = false;
+    incrementalSearch = false;
     heuristic = false;
     noExact = false;
     trivialUB = false;
@@ -54,13 +54,13 @@ FlagHandler::FlagHandler(int argc, char** argv)
         {
             binarySearch = true;
         }
-        else if(strcmp(argv[i], "-descitsearch") == 0)
+        else if(strcmp(argv[i], "-decsearch") == 0)
         {
-            descIterativeSearch = true;
+            decrementalSearch = true;
         }
-        else if(strcmp(argv[i], "-ascitsearch") == 0)
+        else if(strcmp(argv[i], "-incsearch") == 0)
         {
-            ascIterativeSearch = true;
+            incrementalSearch = true;
         }
         else if(strcmp(argv[i], "-heuristic") == 0)
         {
@@ -108,37 +108,37 @@ void FlagHandler::checkValidFlags()
             exit(1);
         }
 
-        if(descIterativeSearch)
+        if(decrementalSearch)
         {
             branchPriority = -1;
-            descIterativeSearch = false;
+            decrementalSearch = false;
         }
 
-        if(ascIterativeSearch)
+        if(incrementalSearch)
         {
             branchPriority = 1;
-            ascIterativeSearch = false;
+            incrementalSearch = false;
         }
     }
 
     if(binarySearch)
     {
-        if(descIterativeSearch)
+        if(decrementalSearch)
         {
-            cout << "Cannot use both -binsearch and -descitsearch flags" << endl;
+            cout << "Cannot use both -binsearch and -decsearch flags" << endl;
             exit(1);
         }
 
-        if(ascIterativeSearch)
+        if(incrementalSearch)
         {
-            cout << "Cannot use both -binsearch and -ascitsearch flags" << endl;
+            cout << "Cannot use both -binsearch and -incsearch flags" << endl;
             exit(1);
         }
     }
 
-    if(descIterativeSearch&&ascIterativeSearch)
+    if(decrementalSearch&&incrementalSearch)
     {
-        cout << "Cannot use both -descitsearch and -ascitsearch flags" << endl;
+        cout << "Cannot use both -decsearch and -incsearch flags" << endl;
         exit(1);
     }
 
@@ -156,15 +156,15 @@ void FlagHandler::checkValidFlags()
             exit(1);
         }
 
-        if(descIterativeSearch)
+        if(decrementalSearch)
         {
-            cout << "Cannot use both -noexact and -descitsearch flags" << endl;
+            cout << "Cannot use both -noexact and -decsearch flags" << endl;
             exit(1);
         }
 
-        if(ascIterativeSearch)
+        if(incrementalSearch)
         {
-            cout << "Cannot use both -noexact and -ascitsearch flags" << endl;
+            cout << "Cannot use both -noexact and -incsearch flags" << endl;
             exit(1);
         }
     }
@@ -196,14 +196,14 @@ bool FlagHandler::getBinarySearch()
 	return binarySearch;
 }
 
-bool FlagHandler::getDescIterativeSearch()
+bool FlagHandler::getDecrementalSearch()
 {
-	return descIterativeSearch;
+	return decrementalSearch;
 }
 
-bool FlagHandler::getAscIterativeSearch()
+bool FlagHandler::getIncrementalSearch()
 {
-	return ascIterativeSearch;
+	return incrementalSearch;
 }
 
 bool FlagHandler::getHeuristic()

@@ -25,8 +25,8 @@ class CustomAlgorithms
 	public:
 		CustomAlgorithms(Model* model);
 		void binarySearch(int lb, int ub, double prevElapsedTime = 0.0);
-		void descIterativeSearch(int ub, int lb = 1, double prevElapsedTime = 0.0);
-		void ascIterativeSearch(int lb, double prevElapsedTime = 0.0);
+		void decrementalSearch(int ub, int lb = 1, double prevElapsedTime = 0.0);
+		void incrementalSearch(int lb, double prevElapsedTime = 0.0);
 
 		void output(bool toFile = false);
 };

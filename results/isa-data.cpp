@@ -325,23 +325,23 @@ void PlotData::printData()
         avgMaxCarsWindowSizeRatio << "\t" << maxMaxCarsWindowSizeRatio << "\t" <<
         stdMaxCarsWindowSizeRatio << "\t" << (double)lcmWindowSize/maxLcmWindowSize << "\t" <<
         stdNbCarsPerClass << "\t" <<
-        calculateGap("heuristic/" + instance) << "\t" <<
-        calculateGap(instanceSet + "regular/" + instance) << "\t" <<
-        calculateGap(instanceSet + "regular/heuristic-primal/" + instance) << "\t" <<
-        calculateGap(instanceSet + "asc-iterative/combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "asc-iterative/heuristic/" + instance) << "\t" <<
-        calculateGap(instanceSet + "desc-iterative/combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "desc-iterative/combinatorial/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f1/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f1/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "incremental/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "incremental/heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "decremental/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "decremental/combinatorial/heuristic-primal/" + instance) << "\t" <<
         calculateGap(instanceSet + "binary/combinatorial/" + instance) << "\t" <<
         calculateGap(instanceSet + "binary/heuristic-combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "branching/" + instance) << "\t" <<
-        calculateGap(instanceSet + "branching/heuristic-primal/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/asc-iterative/combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/asc-iterative/heuristic/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/desc-iterative/combinatorial/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/desc-iterative/combinatorial/heuristic-primal/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/" + instance) << "\t" <<
-        calculateGap(instanceSet + "sos1/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/sos1/incremental/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/sos1/incremental/heuristic/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/sos1/decremental/combinatorial/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/sos1/decremental/combinatorial/heuristic-primal/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/sos1/binary/" + instance) << "\t" <<
+        calculateGap(instanceSet + "f2/sos1/binary/heuristic-primal/" + instance) << "\t" <<
         endl;
 }
 
@@ -354,10 +354,10 @@ string getInstanceSet(string path)
 {
     if(path.find(".in") != string::npos)
     {
-        return "real/";
+        return "2/";
     }
     
-    return "literature/";
+    return "1/";
 }
 
 int main(int argc, char* argv[])

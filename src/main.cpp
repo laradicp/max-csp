@@ -120,14 +120,14 @@ int main(int argc, char** argv)
         customAlgorithms.binarySearch(lb, ub, elapsedTime);
         customAlgorithms.output();
     }
-    else if(flags.getDescIterativeSearch())
+    else if(flags.getDecrementalSearch())
     {
-        customAlgorithms.descIterativeSearch(ub, lb, elapsedTime);
+        customAlgorithms.decrementalSearch(ub, lb, elapsedTime);
         customAlgorithms.output();
     }
-    else if(flags.getAscIterativeSearch())
+    else if(flags.getIncrementalSearch())
     {
-        customAlgorithms.ascIterativeSearch(lb, elapsedTime);
+        customAlgorithms.incrementalSearch(lb, elapsedTime);
         customAlgorithms.output();
     }
     else if(!flags.getNoExact())

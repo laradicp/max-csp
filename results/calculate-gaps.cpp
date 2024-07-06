@@ -12,7 +12,7 @@ class Analytics
     public:
         Analytics(string instance);
         void readFile(string path);
-        void readHeuristicFile();
+        void readHeuristicFile(string instanceSet);
         void print(string path, string instanceSet = "");
         string getInstance() { return instance; }
         int getPrimalBound(string path) { return primalBounds[path]; }
@@ -97,9 +97,9 @@ void Analytics::readFile(string path)
     inputFile.close();
 }
 
-void Analytics::readHeuristicFile()
+void Analytics::readHeuristicFile(string instanceSet)
 {
-    ifstream heuristicFile("heuristic/" + heuristicInstance);
+    ifstream heuristicFile(instanceSet + "/heuristic/" + heuristicInstance);
 
     if(!heuristicFile.is_open())
     {
@@ -134,7 +134,7 @@ void Analytics::print(string path, string instanceSet)
         return;
     }
 
-    ifstream inputFile(path + "/gap-time" + instanceSet + ".txt");
+    ifstream inputFile(instanceSet + "/" + path + "/gap-time.txt");
 
     double sumGaps = 0;
     double sumTimes = 0;
@@ -157,11 +157,11 @@ void Analytics::print(string path, string instanceSet)
         inputFile.close();    
     }
 
-    ofstream outputFile(path + "/gap-time" + instanceSet + ".txt");
+    ofstream outputFile(instanceSet + "/" + path + "/gap-time.txt");
 
     if(!outputFile.is_open())
     {
-        cout << "Error opening file " << path << "/gap-time" << instanceSet << ".txt for writing" << endl;
+        cout << "Error opening file " << instanceSet + "/" + path + "/gap-time.txt for writing" << endl;
         return;
     }
 
@@ -205,30 +205,30 @@ int main(int argc, char** argv)
 
     string instanceSet = argv[2] + 1;
     vector<string> paths = {
-        "asc-iterative/combinatorial", "asc-iterative/trivial", "asc-iterative/heuristic",
+        "incremental/combinatorial", "incremental/trivial", "incremental/heuristic",
         "binary/combinatorial", "binary/combinatorial-trivial", "binary/trivial",
         "binary/trivial-combinatorial", "binary/heuristic-combinatorial", "binary/heuristic-trivial",
-        "desc-iterative/combinatorial", "desc-iterative/trivial", "desc-iterative/combinatorial/heuristic-primal",
+        "decremental/combinatorial", "decremental/trivial", "decremental/combinatorial/heuristic-primal",
         "min-violations/penalize",
-        "regular", "regular/heuristic-primal",
-        "sos1", "sos1/heuristic-primal",
-        "sos1/asc-iterative/combinatorial", "sos1/asc-iterative/trivial", "sos1/asc-iterative/heuristic",
-        "sos1/desc-iterative/combinatorial", "sos1/desc-iterative/trivial",
-        "sos1/desc-iterative/combinatorial/heuristic-primal",
-        "branching", "branching/heuristic-primal"
+        "f1", "f1/heuristic-primal",
+        "f2/sos1", "f2/sos1/heuristic-primal",
+        "f2/sos1/incremental/combinatorial", "f2/sos1/incremental/trivial", "f2/sos1/incremental/heuristic",
+        "f2/sos1/decremental/combinatorial", "f2/sos1/decremental/trivial",
+        "f2/sos1/decremental/combinatorial/heuristic-primal",
+        "f2", "f2/heuristic-primal"
     };
 
     Analytics analytics(argv[1]);
 
     // populate dicts and find best dual
-    analytics.readHeuristicFile();
+    analytics.readHeuristicFile(instanceSet);
     for(string path : paths)
     {
         analytics.readFile(instanceSet + "/" + path);
     }
     analytics.setHeuristicOptimal();
 
-    analytics.print("heuristic", "-" + instanceSet);
+    analytics.print("heuristic", instanceSet);
     for(string path : paths)
     {
         analytics.print(instanceSet + "/" + path);

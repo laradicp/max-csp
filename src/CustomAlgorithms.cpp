@@ -36,7 +36,7 @@ void CustomAlgorithms::binarySearch(int lb, int ub, double prevElapsedTime)
 	defineOutput(lb, ub, start);
 }
 
-void CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTime)
+void CustomAlgorithms::decrementalSearch(int ub, int lb, double prevElapsedTime)
 {
 	initialLB = lb;
 
@@ -65,7 +65,7 @@ void CustomAlgorithms::descIterativeSearch(int ub, int lb, double prevElapsedTim
 	defineOutput(lb, ub, start);
 }
 
-void CustomAlgorithms::ascIterativeSearch(int lb, double prevElapsedTime)
+void CustomAlgorithms::incrementalSearch(int lb, double prevElapsedTime)
 {
 	chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
 	elapsedTime = chrono::steady_clock::now() - start;
